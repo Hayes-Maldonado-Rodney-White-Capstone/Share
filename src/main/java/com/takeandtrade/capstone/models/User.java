@@ -43,6 +43,12 @@ public class User {
 //    @JoinColumn (name = "role_id")
 //    private User role;
 
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
 
 
