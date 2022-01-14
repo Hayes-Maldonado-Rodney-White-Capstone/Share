@@ -156,8 +156,8 @@ body {
     }
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
-        background-size: 25% !important;
-        height: 55%;
+        background-size: 40% !important;
+        height: 65%;
     }
 
 }
@@ -179,11 +179,11 @@ body {
     }
 
     .img-overlay {
-        margin-top: 250px;
+        margin-top: 260px;
     }
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
-        background-size: 25% !important;
+        background-size: 35% !important;
         height: 55%;
     }
 
@@ -206,12 +206,12 @@ body {
     }
 
     .img-overlay {
-        margin-top: 170px;
+        margin-top: 200px;
     }
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
-        background-size: 16% !important;
-        height: 55%;
+        background-size: 30% !important;
+        height: 40%;
     }
 
 }
@@ -233,7 +233,7 @@ body {
     }
 
     .img-overlay {
-        margin-top: 130px;
+        margin-top: 160px;
     }
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
