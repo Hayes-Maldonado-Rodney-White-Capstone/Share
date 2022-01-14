@@ -21,18 +21,18 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/sign-up")
+    @GetMapping("/registerForm")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
-        return "sign-up";
+        return "registerForm";
     }
 
-    @PostMapping("/sign-up")
+    @PostMapping("/registerForm")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/homepage";
     }
 
 
