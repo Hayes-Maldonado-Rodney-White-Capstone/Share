@@ -14,6 +14,21 @@ body {
     max-width: 2000px;
 }
 
+/* NAVBAR SECTION */
+
+.navbar-section {
+    margin-bottom: 40px;
+}
+
+.navbar {
+    background-color: #97F6F7 !important;
+}
+
+.navbar.scrolled {
+    background-color: #fff !important;
+    transition: background-color 100ms linear;
+}
+
 
 /* TOP SECTION */
 
@@ -55,6 +70,38 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.tnt-back-layer-img {
+    position: absolute;
+    width: 2000px;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.tnt-back-layer-img:before, .tnt-back-layer-img:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(https://i.postimg.cc/XJF6SX0D/tnt-back-layer.png) repeat-x 0 / 100% auto;
+    background-size: 40%;
+    animation: move 20s linear infinite;
+    animation-direction: reverse;
+}
+
+
+@keyframes move {
+    0%{background-position: 0 0;}
+    100%{background-position: 100vw 0;}
+}
+
+/* ABOUT SECTION  */
+
+.about-section {
+    margin-top: 300px;
+}
+
 
 /* RESPONSIVENESS */
 
@@ -189,30 +236,4 @@ body {
         height: 55%;
     }
 
-}
-
-/* LG MOVING BACKGROUND */
-.tnt-back-layer-img {
-    position: absolute;
-    width: 2000px;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.tnt-back-layer-img:before, .tnt-back-layer-img:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url(https://i.postimg.cc/XJF6SX0D/tnt-back-layer.png) repeat-x 0 / 100% auto;
-    background-size: 40%;
-    animation: move 20s linear infinite;
-    animation-direction: reverse;
-}
-
-
-@keyframes move {
-    0%{background-position: 0 0;}
-    100%{background-position: 100vw 0;}
 }
