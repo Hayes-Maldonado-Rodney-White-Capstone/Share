@@ -33,6 +33,105 @@ public class Item {
     @Column(nullable = false)
     private Date datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
 
+    //default constructor
+    public Item() {
+    }
+
+    //2 constructors, 1 with id and 1 without for insertion and extraction
+    public Item(long id, String itemName, String itemDescription, String specialInstructions, String condition, double price, String image, Boolean available, Date datePosted) {
+        this.id = id;
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.specialInstructions = specialInstructions;
+        this.condition = condition;
+        this.price = price;
+        this.image = image;
+        this.available = available;
+        this.datePosted = datePosted;
+    }
+
+    public Item(String itemName, String itemDescription, String specialInstructions, String condition, double price, String image, Boolean available, Date datePosted) {
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.specialInstructions = specialInstructions;
+        this.condition = condition;
+        this.price = price;
+        this.image = image;
+        this.available = available;
+        this.datePosted = datePosted;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    public String getSpecialInstructions() {
+        return specialInstructions;
+    }
+
+    public void setSpecialInstructions(String specialInstructions) {
+        this.specialInstructions = specialInstructions;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    public Date getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(Date datePosted) {
+        this.datePosted = datePosted;
+    }
 
     //when we add mapping, one user can have many items, and many items can have one user
 //    @ManyToOne
