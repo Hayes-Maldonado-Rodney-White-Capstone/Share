@@ -1,4 +1,4 @@
-package com.takeandtrade.capstone;
+package com.takeandtrade.capstone.models;
 
 import javax.persistence.*;
 
