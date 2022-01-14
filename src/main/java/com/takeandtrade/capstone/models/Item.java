@@ -145,6 +145,10 @@ public class Item {
 //    private User userzip;
 //
     // we'll also need to map category after we set up the category table. one item has one category
+//    @OneToOne
+//    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
+//    private Item itemcat;
+
 
 
 //    //***in the User table we will need the following:
