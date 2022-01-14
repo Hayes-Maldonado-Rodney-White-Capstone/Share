@@ -37,5 +37,6 @@ public class Category {
     }
 
     //for now, one item will only have one category
-//    @OneToOne(mappedBy = "itemcat")
+    @OneToOne(mappedBy = "category")
+    private Item item;
 }
