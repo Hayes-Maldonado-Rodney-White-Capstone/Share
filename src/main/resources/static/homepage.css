@@ -133,6 +133,11 @@ body {
         margin-top: 480px;
     }
 
+    .tnt-back-layer-img:before, .tnt-back-layer-img:after {
+        background-size: 50% !important;
+        height: 100%;
+    }
+
 }
 
 /* Extra Large -> Large */
