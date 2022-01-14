@@ -25,8 +25,13 @@ body {
 }
 
 .navbar.scrolled {
-    background-color: #fff !important;
+    background-color: #1FC168 !important;
     transition: background-color 100ms linear;
+}
+
+.navbar-logo {
+    width: 30px;
+    height: 35px;
 }
 
 
@@ -99,7 +104,7 @@ body {
 /* ABOUT SECTION  */
 
 .about-section {
-    margin-top: 300px;
+    /*margin-top: 300px;*/
 }
 
 
