@@ -25,7 +25,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     display: block;
-    width: 2000px;
+    width: 1800px;
     height: 1200px;
 }
 
@@ -44,4 +44,119 @@ body {
     font-size: 25px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+/* RESPONSIVENESS */
+
+/* Extra Large */
+
+@media (min-width: 1800px) and (max-width: 2000px) {
+
+    .tnt-top-img {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 2000px;
+        height: 1400px;
+    }
+
+    .top-btns {
+        margin: 10px;
+        font-size: 23px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .img-overlay {
+        margin-top: 480px;
+    }
+
+}
+
+/* Extra Large -> Large */
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+
+    .tnt-top-img {
+        width: 1200px;
+        height: 800px;
+    }
+
+    .top-btns {
+        margin: 10px;
+        font-size: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .img-overlay {
+        margin-top: 300px;
+    }
+
+}
+
+/* Large -> Medium */
+
+@media (min-width: 760px) and (max-width: 1000px) {
+
+    .tnt-top-img {
+        width: 1050px;
+        height: 700px;
+    }
+
+    .top-btns {
+        margin: 10px;
+        font-size: 17px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .img-overlay {
+        margin-top: 250px;
+    }
+
+}
+
+/* Medium -> Small */
+
+@media (min-width: 580px) and (max-width: 760px) {
+
+    .tnt-top-img {
+        width: 800px;
+        height: 500px;
+    }
+
+    .top-btns {
+        margin: 10px;
+        font-size: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .img-overlay {
+        margin-top: 170px;
+    }
+
+}
+
+/* Extra Small */
+
+@media (max-width: 580px)  {
+
+    .tnt-top-img {
+        width: 650px;
+        height: 400px;
+    }
+
+    .top-btns {
+        margin: 10px;
+        font-size: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .img-overlay {
+        margin-top: 130px;
+    }
+
 }
