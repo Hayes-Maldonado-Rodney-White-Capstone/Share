@@ -1,6 +1,13 @@
 package com.takeandtrade.capstone.models;
 
-public class UserWithRoles extends User implements UserDetails{
+//import org.hibernate.mapping.Collection;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+
+public class UserWithRoles extends User implements UserDetails {
     public UserWithRoles(User user) {
         super(user);  // Call the copy constructor defined in User
     }

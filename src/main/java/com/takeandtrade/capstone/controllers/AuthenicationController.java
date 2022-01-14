@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AuthenicationController {
     @GetMapping("/login")
     public String showLoginForm() {
+
         return "users/login";
     }
 }
-}
+
