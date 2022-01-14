@@ -1,5 +1,7 @@
 package com.takeandtrade.capstone.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,7 +22,9 @@ public class User {
     private String username;
 
     @Column (nullable = false)
-    private Date dateOfBirth;
+    @DateTimeFormat(pattern ="mm-dd-yyyy")
+    private String dateOfBirth;
+
 
     @Column (nullable = false, length = 255)
     private String email;
@@ -72,11 +76,12 @@ public class User {
         this.username = username;
     }
 
-    public Date getDateOfBirth() {
+
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -141,6 +146,17 @@ public class User {
 
     public User(){}
 
-
-
+    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, int phoneNumber, String city, String state, int zipCode) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+    }
 }
