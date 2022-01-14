@@ -134,6 +134,21 @@ public class Item {
         this.datePosted = datePosted;
     }
 
+    //one item has one category
+    @OneToOne
+    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
+    private Category category;
+
+    //we'll need to add a getter (I think) after adding the relationship
+    //do I need a constructor similar to this one below, or does it need every field?:
+    //public Item(String name, Category category) {
+    // this.name = name;
+    // this.category = category;
+    // this.category.setItem(this);
+    // }
+
+
+
     //when we add mapping, one user can have many items, and many items can have one user
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
@@ -144,7 +159,8 @@ public class Item {
 //    @JoinColumn(name = "user_zip")  //this will create the FK in the Item table
 //    private User userzip;
 //
-    // we'll also need to map category after we set up the category table. one item has one category
+
+
 
 
 //    //***in the User table we will need the following:
