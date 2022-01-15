@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <head th:replace="partials ::head(pageTitle='Take and Trade')"></head>
 <!--     Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -79,12 +79,12 @@
         <div class="flex-container">
 
             <div class="row about-rows">
-                <div class="col-12">
+                <div class="col-xl-12 col-lg-12">
                     <h1 class="about-header">About The Company</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6">
                     <h1 class="about-mini-header">What IS Take and Trade?</h1>
 
                     <p class="about-p">Do you have things laying around your house that you don’t use anymore?
@@ -98,16 +98,37 @@
                         Trade community as a whole, so you’ll never feel unsure of your lendings or borrows.
                     </p>
                 </div>
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6">
                     <img class="about-img-1" src="../static/images/homepage-images/talking.png" th:src="@{images/homepage-images/talking.png}">
                 </div>
             </div>
 
             <div class="row about-rows">
-                <div class="col-6">
+
+                <div class="col-xl-6 col-lg-6 hide-on-lg">
+                    <h1 class="about-mini-header hide-on-lg">Why should YOU use Take and Trade?</h1>
+
+                    <p class="about-p hide-on-lg">Why let something sit in a storage room or a garage collecting
+                        dust when you can make money off of it? Take and Trade is a simple, easy way to monetize
+                        your belongings without getting rid of them. Not only is Take and Trade a great way to earn
+                        money passively for yourself, but it’s also great for your community, allowing others to have
+                        access to things that may not have been accessible by normal means.
+
+                    </p>
+
+                    <div class="col-xl-6 col-lg-6 hide-on-lg">
+                        <img class="about-img-2" src="../static/images/homepage-images/user.png" th:src="@{images/homepage-images/user.png}">
+                    </div>
+
+                </div>
+
+            <div class="row about-rows">
+                <div class="col-xl-6 col-lg-6 hide-on-sm">
                     <img class="about-img-2" src="../static/images/homepage-images/user.png" th:src="@{images/homepage-images/user.png}">
                 </div>
-                <div class="col-6">
+
+                <div class="col-xl-6 col-lg-6">
+                    <div class="hide-on-sm">
                     <h1 class="about-mini-header">Why should YOU use Take and Trade?</h1>
 
                     <p class="about-p">Why let something sit in a storage room or a garage collecting
@@ -116,14 +137,14 @@
                         money passively for yourself, but it’s also great for your community, allowing others to have
                         access to things that may not have been accessible by normal means.
 
-
                     </p>
 
+                        </div>
                 </div>
             </div>
 
             <div class="row about-rows">
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6">
                     <h1 class="about-mini-header">OUR Mission</h1>
 
                     <p class="about-p">Our mission here at Take and Trade is to help people become more
@@ -135,8 +156,8 @@
                         recycling, sharing and community engagement.
                     </p>
                 </div>
-                <div class="col-6">
-                    <img class="about-img-1" src="../static/images/homepage-images/world.png" th:src="@{images/homepage-images/world.png}">
+                <div class="col-xl-6 col-lg-6">
+                    <img class="about-img-3" src="../static/images/homepage-images/world.png" th:src="@{images/homepage-images/world.png}">
                 </div>
             </div>
 
