@@ -19,11 +19,11 @@ public class ItemController {
         this.itemDao = itemDao;
     }
 
-//    @GetMapping("/items/create")
-//    public String viewCreateItemForm(Model model){
-//        model.addAttribute("item", new Item());
-//        return "/items/create";
-//    }
+    @GetMapping("/items/create")
+    public String viewCreateItemForm(Model model){
+        model.addAttribute("item", new Item());
+        return "/create";
+    }
 //
 //    @PostMapping("/items/create")
 //    public String addNewItem(@ModelAttribute Item item) {
