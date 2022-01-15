@@ -35,6 +35,12 @@ public class UserController {
         return "redirect:/homepage";
     }
 
+    @GetMapping("/userProfile")
+    public String userHome(){
+        return "userProfile";
+    }
+
+
 
 
 }
