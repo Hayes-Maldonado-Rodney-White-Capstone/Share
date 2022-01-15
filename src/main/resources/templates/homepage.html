@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
-    <!-- Bootstrap -->
+<!--     Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Google Fonts -->
@@ -13,6 +13,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
+
+
 </head>
 <body>
 
@@ -57,11 +59,13 @@
 
             <div class="img-wrapper">
                 <div class="tnt-back-layer-img"></div>
+
                 <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png" th:src="@{images/homepage-images/tnt-front-layer.png}" alt="Homepage">
+
             </div>
             <div class="img-overlay">
-                <button class="btn btn-success top-btns">Register</button>
-                <button class="btn btn-success top-btns">Login</button>
+                <a href="/registerForm" th:action="@{/registerForm}" class="btn btn-success top-btns">Register</a>
+                <a href="/login" th:href="@{/login}" class="btn btn-success top-btns">Login</a>
             </div>
 
 
