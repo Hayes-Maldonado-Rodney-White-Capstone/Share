@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -33,7 +34,7 @@ public class User {
     private String password;
 
     @Column (nullable = false)
-    private int phoneNumber;
+    private long phoneNumber;
 
     @Column (nullable = false, length = 255)
     private String city;
@@ -101,11 +102,11 @@ public class User {
         this.password = password;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -146,7 +147,7 @@ public class User {
 
     public User(){}
 
-    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, int phoneNumber, String city, String state, int zipCode) {
+    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, long phoneNumber, String city, String state, int zipCode) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -159,4 +160,10 @@ public class User {
         this.state = state;
         this.zipCode = zipCode;
     }
+
+    @OneToOne(mappedBy = "userzip")
+    private Item item;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Item> items;
 }
