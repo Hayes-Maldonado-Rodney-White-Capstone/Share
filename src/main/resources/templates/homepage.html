@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
 <!--     Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/homepage.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
 
 
@@ -53,8 +59,9 @@
 
             <div class="img-wrapper">
                 <div class="tnt-back-layer-img"></div>
-<!--                <img class="tnt-top-back-img" src="homepage-images/tnt-back-layer.png" alt="Homepage">-->
-                <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png" alt="Homepage">
+
+                <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png" th:src="@{images/homepage-images/tnt-front-layer.png}" alt="Homepage">
+
             </div>
             <div class="img-overlay">
                 <a href="/registerForm" th:action="@{/registerForm}" class="btn btn-success top-btns">Register</a>
@@ -69,7 +76,73 @@
 
     <section class="about-section">
 
-        <h1>About the company</h1>
+        <div class="flex-container">
+
+            <div class="row about-rows">
+                <div class="col-12">
+                    <h1 class="about-header">About The Company</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="about-mini-header">What IS Take and Trade?</h1>
+
+                    <p class="about-p">Do you have things laying around your house that you don’t use anymore?
+                        Do these things still have use? Would you like to make money off of your items without selling
+                        them? You can repurpose and lend out your things using Take and Trade!</br></br>
+
+                        Take and Trade is a social networking and online marketplace that allows members to share and
+                        borrow items with fellow neighbors. Take and Trade users can list their items, freely adjust
+                        daily borrow fees and time limits, and engage in lending with other users. Users can also leave
+                        reviews and message others directly, ensuring open and honest communication with the Take and
+                        Trade community as a whole, so you’ll never feel unsure of your lendings or borrows.
+                    </p>
+                </div>
+                <div class="col-6">
+                    <img class="about-img-1" src="../static/images/homepage-images/talking.png" th:src="@{images/homepage-images/talking.png}">
+                </div>
+            </div>
+
+            <div class="row about-rows">
+                <div class="col-6">
+                    <img class="about-img-2" src="../static/images/homepage-images/user.png" th:src="@{images/homepage-images/user.png}">
+                </div>
+                <div class="col-6">
+                    <h1 class="about-mini-header">Why should YOU use Take and Trade?</h1>
+
+                    <p class="about-p">Why let something sit in a storage room or a garage collecting
+                        dust when you can make money off of it? Take and Trade is a simple, easy way to monetize
+                        your belongings without getting rid of them. Not only is Take and Trade a great way to earn
+                        money passively for yourself, but it’s also great for your community, allowing others to have
+                        access to things that may not have been accessible by normal means.
+
+
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row about-rows">
+                <div class="col-6">
+                    <h1 class="about-mini-header">OUR Mission</h1>
+
+                    <p class="about-p">Our mission here at Take and Trade is to help people become more
+                        connected with their neighborhoods and keep the world a little greener. In past generations,
+                        not everybody owned a tent, a specialty tool or a bicycle. These things were commonly lent to
+                        trusted neighbors as a regular practice. Take and Trade is hoping to revive this tradition
+                        in a modern and digital way, making things more accessible to others. Using Take and Trade
+                        will also negate the need for throwing away unwanted items somewhere to rot and encourage
+                        recycling, sharing and community engagement.
+                    </p>
+                </div>
+                <div class="col-6">
+                    <img class="about-img-1" src="../static/images/homepage-images/world.png" th:src="@{images/homepage-images/world.png}">
+                </div>
+            </div>
+
+        </div>
+
+
 
     </section>
 
