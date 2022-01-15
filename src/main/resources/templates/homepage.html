@@ -5,7 +5,6 @@
     <title>Homepage</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/homepage.css">
     <link rel="stylesheet" type="text/css" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
 </head>
 <body>
@@ -17,7 +16,7 @@
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a href="#" class="navbar-brand">
-                    <img class="navbar-logo" src="homepage-images/a-logo.png" alt="CoolBrand">
+                    <img class="navbar-logo" src="../static/images/homepage-images/a-logo.png" th:src="@{images/homepage-images/a-logo.png}" alt="CoolBrand">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -52,7 +51,7 @@
             <div class="img-wrapper">
                 <div class="tnt-back-layer-img"></div>
 <!--                <img class="tnt-top-back-img" src="homepage-images/tnt-back-layer.png" alt="Homepage">-->
-                <img class="tnt-top-img" src="homepage-images/tnt-front-layer.png" alt="Homepage">
+                <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png" th:src="@{images/homepage-images/tnt-front-layer.png}" alt="Homepage">
             </div>
             <div class="img-overlay">
                 <button class="btn btn-success top-btns">Register</button>
@@ -80,6 +79,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!-- Custom JS -->
-<script src="/static/homepage.js"></script>
+<script type="text/javascript" th:src="@{/js/homepage.js}"></script>
 </body>
 </html>
