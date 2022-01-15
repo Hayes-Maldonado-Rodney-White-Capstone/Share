@@ -54,7 +54,7 @@ body {
     margin-left: auto;
     display: block;
     width: 1800px;
-    height: 1200px;
+    height: 1500px;
 }
 
 .tnt-top-back-img {
@@ -120,10 +120,15 @@ body {
     margin-bottom: 70px;
 }
 
+.about-area {
+    margin-top: -100px;
+}
+
 .about-header {
     text-align: center;
     font-family: 'Roboto Slab', serif;
     font-size: 60px;
+    margin-top: -100px;
     margin-bottom: 30px;
     color: #006366;
 }
@@ -192,7 +197,7 @@ body {
         margin-left: auto;
         display: block;
         width: 2000px;
-        height: 1400px;
+        height: 1600px;
     }
 
     .top-btns {
@@ -219,7 +224,7 @@ body {
 
     .tnt-top-img {
         width: 1200px;
-        height: 800px;
+        height: 1000px;
     }
 
     .top-btns {
@@ -269,7 +274,7 @@ body {
 
     .tnt-top-img {
         width: 1050px;
-        height: 700px;
+        height: 900px;
     }
 
     .top-btns {
@@ -309,7 +314,7 @@ body {
 
     .tnt-top-img {
         width: 800px;
-        height: 500px;
+        height: 700px;
     }
 
     .top-btns {
@@ -325,7 +330,7 @@ body {
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 30% !important;
-        height: 40%;
+        height: 45%;
     }
 
     .hide-on-sm {
@@ -349,7 +354,7 @@ body {
 
     .tnt-top-img {
         width: 650px;
-        height: 400px;
+        height: 500px;
     }
 
     .top-btns {
