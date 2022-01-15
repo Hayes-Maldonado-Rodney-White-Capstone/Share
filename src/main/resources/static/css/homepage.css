@@ -266,6 +266,11 @@ body {
         margin-top: 120px;
     }
 
+    .about-header {
+        margin-top: -20px;
+        margin-bottom: -100px;
+    }
+
 }
 
 /* Large -> Medium */
@@ -304,6 +309,11 @@ body {
     .about-rows {
         margin-top: 0px;
         margin-bottom: 0px;
+    }
+
+    .about-header {
+        margin-top: -20px;
+        margin-bottom: -50px;
     }
 
 }
@@ -346,6 +356,11 @@ body {
         margin-bottom: 0px;
     }
 
+    .about-header {
+        margin-top: 20px;
+        margin-bottom: -30px;
+    }
+
 }
 
 /* Extra Small */
@@ -373,13 +388,17 @@ body {
         height: 55%;
     }
 
-
     .hide-on-sm {
         display: none;
     }
 
     .hide-on-lg {
         display: block;
+    }
+
+    .about-header {
+        margin-top: 20px;
+        margin-bottom: -80px;
     }
 
 }
