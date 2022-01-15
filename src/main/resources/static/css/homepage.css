@@ -107,6 +107,49 @@ body {
     /*margin-top: 300px;*/
 }
 
+.about-rows {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.about-header {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+.about-mini-header {
+    margin-right: 40px;
+    margin-left: 40px;
+    text-align: center;
+    margin-top: 120px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.about-p {
+    margin-right: 40px;
+    margin-left: 40px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+.about-img-1 {
+    width: 500px;
+    height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.about-img-2 {
+    width: 500px;
+    height: 500px;
+    margin-left: 120px;
+    margin-right: auto;
+    display: block;
+}
 
 /* RESPONSIVENESS */
 
