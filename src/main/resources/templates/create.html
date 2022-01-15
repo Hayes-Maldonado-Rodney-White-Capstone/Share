@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials::head"/>
+
+<body>
+<nav th:replace="partials :: navbar"/>
+
+<h1>Create an Item</h1>
+<form th:action="@{/items/create}" th:method="post" th:object="${item}">
+    <label for="itemName"> Name </label>
+    <input type="text" id="itemName" name="itemName" th:field="*{itemName}"/>
+    <label for="itemDescription"> Description </label>
+    <input type="text" id="itemDescription" name="itemDescription" th:field="*{itemDescription}"/>
+
+    <label class="btn btn-secondary active">
+        <input type="radio" th:field="*{itemCondition}" name="itemCondition" id="Excellent" value="Excellent"> Excellent
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" th:field="*{itemCondition}" name="itemCondition" id="Good" value="Good"> Good
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" th:field="*{itemCondition}" name="itemCondition" id="Fair" value="Fair"> Fair
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" th:field="*{itemCondition}" name="itemCondition" id="Poor" value="Poor"> Poor
+    </label>
+    <label for="price">Price</label>
+    <input type="text" id="price" name="price" th:field="*{price}"/>
+    <label for="image">Image</label>
+    <input type="text" id="image" name="image" th:field="*{image}"/>
+    <label for="availability">Avalability</label>
+    <input type="text" id="availability" name="availability" th:field="*{availability}"/>
+    <label for="datePosted">Date Posted</label>
+    <input type="text" id="datePosted" name="datePosted" th:field="*{datePosted}"/>
+    <label for="specialInstructions"> Special Instructions</label>
+    <input type="text" id="specialInstructions" name="specialInstructions" th:field="*{specialInstructions}"/>
+    <input type="submit" value="Create" />
+</form>
+</body>
+</html>
