@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials ::head(pageTitle='Item Index')"></head>
+
+<body>
+<nav th:insert="partials :: navbar"></nav>
+
+<h1>Here are all the Items.</h1>
+<p>this page is not done.</p>
+<div class="container">
+    <div th:if="${items.isEmpty()}">
+        <p>There are no posts yet. Write one now.</p>
+    </div>
+
+    <div class="border border-info m-1 p-1" th:each="item : ${items}">
+        <h2 th:text="${item.itemName}"></h2>
+        <p th:text="${item.itemDescription}"></p>
+        <p th:text="${item.getUser().getUsername()}">Posted By: </p>
+
+        <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
+            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>
+        </form>
+        <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
+
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
