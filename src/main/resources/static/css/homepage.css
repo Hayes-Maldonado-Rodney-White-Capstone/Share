@@ -186,6 +186,49 @@ body {
     display: none;
 }
 
+/* SLOGAN SECTION */
+
+
+.card {
+    width: 300px;
+    box-sizing: border-box;
+    padding: 2em;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 25px;
+    color: #54e360;
+    text-align: center;
+    line-height: 25px;
+    float: left;
+    border: none;
+    margin: 5% 5%;
+    flex: none !important; /* Keeps cards from going into crazy sizes! */
+}
+
+.card-rows {
+    margin-top: 200px;
+}
+
+.card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+}
+
+.card.green {
+    background: linear-gradient(180deg, #005250, #07c5af 100%);
+}
+
+.background-img {
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 1800px;
+    height: 1100px;
+    margin-top: -150px;
+    z-index: -1;
+}
+
+
 /* RESPONSIVENESS */
 
 /* Extra Large */
@@ -216,6 +259,16 @@ body {
         height: 100%;
     }
 
+
+    .card-rows {
+        margin-top: 150px;
+    }
+
+    .background-img {
+        width: 2000px;
+        height: 1000px;
+    }
+
 }
 
 /* Extra Large -> Large */
@@ -241,6 +294,21 @@ body {
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 40% !important;
         height: 65%;
+    }
+
+    .card-rows {
+        margin-top: 300px;
+    }
+
+    .background-img {
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 1500px;
+        height: 1800px;
+        margin-top: -150px;
+        z-index: -1;
     }
 
 }
@@ -316,6 +384,16 @@ body {
         margin-bottom: -50px;
     }
 
+    .card-rows {
+        margin-top: 350px;
+    }
+
+    .background-img {
+        width: 1500px;
+        height: 1800px;
+        margin-top: -150px;
+    }
+
 }
 
 /* Medium -> Small */
@@ -361,6 +439,16 @@ body {
         margin-bottom: -30px;
     }
 
+    .card-rows {
+        margin-top: 350px;
+    }
+
+    .background-img {
+        width: 1500px;
+        height: 3200px;
+        margin-top: -450px;
+    }
+
 }
 
 /* Extra Small */
@@ -399,6 +487,16 @@ body {
     .about-header {
         margin-top: 20px;
         margin-bottom: -80px;
+    }
+
+    .card-rows {
+        margin-top: 350px;
+    }
+
+    .background-img {
+        width: 1500px;
+        height: 3200px;
+        margin-top: -450px;
     }
 
 }

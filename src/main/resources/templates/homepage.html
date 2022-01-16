@@ -65,7 +65,7 @@
 
             </div>
             <div class="img-overlay" th:if="${#authorization.expression('!isAuthenticated()')}">
-                <a href="/registerForm" th:action="@{/registerForm}"  areia-hidden="true" class="btn btn-success top-btns">Register</a>
+                <a href="/registerForm" th:action="@{/registerForm}"  aria-hidden="true" class="btn btn-success top-btns">Register</a>
                 <a href="/login" th:href="@{/login}" areia-hidden="true" class="btn btn-success top-btns">Login</a>
             </div>
 
@@ -164,9 +164,56 @@
 
         </div>
 
-
+        </div>
 
     </section>
+
+<section class="slogan-section">
+
+    <div class="flex-container d-flex justify-content-around">
+
+        <img class="background-img" src="../static/images/homepage-images/green-bg-2.png" th:src="@{images/homepage-images/green-bg-2.png}" alt="Homepage">
+
+        <div class="card-deck row card-rows">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+                <div class="card green">
+                    <h5 class="card-title">Share</h5>
+                    <div class="card-body">
+                        <img class="card-img-top" src="../static/images/homepage-images/share.png" th:src="@{images/homepage-images/share.png}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+            <div class="card green">
+                <h5 class="card-title">Save</h5>
+                <div class="card-body">
+                    <img class="card-img-top" src="../static/images/homepage-images/save.png" th:src="@{images/homepage-images/save.png}">
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+            <div class="card green">
+                <h5 class="card-title">Sell</h5>
+                <div class="card-body">
+                    <img class="card-img-top" src="../static/images/homepage-images/sell.png" th:src="@{images/homepage-images/sell.png}">
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+            <div class="card green">
+                <h5 class="card-title">Smile</h5>
+                <div class="card-body">
+                    <img class="card-img-top" src="../static/images/homepage-images/smile.png" th:src="@{images/homepage-images/smile.png}">
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+</section>
 
 
 </div>
