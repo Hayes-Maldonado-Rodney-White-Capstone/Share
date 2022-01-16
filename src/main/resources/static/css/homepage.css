@@ -186,6 +186,33 @@ body {
     display: none;
 }
 
+/* SLOGAN SECTION */
+
+.card-rows{
+    /*margin: 10px;*/
+}
+
+.card {
+    width: 300px;
+    box-sizing: border-box;
+    padding: 2em;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 25px;
+    color: #54e360;
+    text-align: center;
+    line-height: 25px;
+    box-shadow: 5px 5px 10px #ccc;
+    float: left;
+    border: none;
+    margin: 5% 0%;
+
+}
+
+.card.green {
+    background: linear-gradient(180deg, #005250, #07c5af 100%);
+}
+
+
 /* RESPONSIVENESS */
 
 /* Extra Large */
