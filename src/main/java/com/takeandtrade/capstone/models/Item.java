@@ -134,6 +134,34 @@ public class Item {
         this.datePosted = datePosted;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUserzip() {
+        return userzip;
+    }
+
+    public void setUserzip(User userzip) {
+        this.userzip = userzip;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     //one item has one category
     @OneToOne
     @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
@@ -148,18 +176,15 @@ public class Item {
     // }
 
 
-
-    //when we add mapping, one user can have many items, and many items can have one user
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    //one user can have many items-- many items can have one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")  //this should create a FK in the Item table
+    private User user;
 
 //    //One item will have a zip code FK that is mapped to the user
-//    @OneToOne
-//    @JoinColumn(name = "user_zip")  //this will create the FK in the Item table
-//    private User userzip;
-//
-
+    @OneToOne
+    @JoinColumn(name = "user_zip")  //this will create the FK in the Item table
+    private User userzip;
 
 
 

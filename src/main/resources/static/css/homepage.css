@@ -24,6 +24,14 @@ body {
     background-color: #97F6F7 !important;
 }
 
+.nav-link {
+    color: #006366 !important;
+}
+
+.nav-link:hover {
+    color: black !important;
+}
+
 .navbar.scrolled {
     background-color: #1FC168 !important;
     transition: background-color 100ms linear;
@@ -46,7 +54,7 @@ body {
     margin-left: auto;
     display: block;
     width: 1800px;
-    height: 1200px;
+    height: 1500px;
 }
 
 .tnt-top-back-img {
@@ -107,6 +115,76 @@ body {
     /*margin-top: 300px;*/
 }
 
+.about-rows {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.about-area {
+    margin-top: -100px;
+}
+
+.about-header {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 60px;
+    margin-top: -100px;
+    margin-bottom: 30px;
+    color: #006366;
+}
+
+.about-mini-header {
+    margin-right: 40px;
+    margin-left: 40px;
+    text-align: center;
+    margin-top: 120px;
+    font-family: 'Roboto Slab', serif;
+    color: #008a4c;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.about-p {
+    margin-right: 40px;
+    margin-left: 40px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.about-img-1 {
+    width: 500px;
+    height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.about-img-2 {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.about-img-3 {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.hide-on-sm {
+    display: block;
+}
+
+.hide-on-lg {
+    display: none;
+}
 
 /* RESPONSIVENESS */
 
@@ -119,7 +197,7 @@ body {
         margin-left: auto;
         display: block;
         width: 2000px;
-        height: 1400px;
+        height: 1600px;
     }
 
     .top-btns {
@@ -146,7 +224,7 @@ body {
 
     .tnt-top-img {
         width: 1200px;
-        height: 800px;
+        height: 1000px;
     }
 
     .top-btns {
@@ -167,13 +245,41 @@ body {
 
 }
 
+@media (min-width: 1000px) and (max-width: 1300px) {
+
+    .about-img-2 {
+        margin-left: 40px;
+        margin-top: 80px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .about-img-1 {
+        width: 400px;
+        height: 400px;
+        margin-top: 90px;
+    }
+
+    .about-img-3 {
+        width: 400px;
+        height: 400px;
+        margin-top: 120px;
+    }
+
+    .about-header {
+        margin-top: -20px;
+        margin-bottom: -100px;
+    }
+
+}
+
 /* Large -> Medium */
 
-@media (min-width: 760px) and (max-width: 1000px) {
+@media (min-width: 780px) and (max-width: 1000px) {
 
     .tnt-top-img {
         width: 1050px;
-        height: 700px;
+        height: 900px;
     }
 
     .top-btns {
@@ -192,15 +298,33 @@ body {
         height: 55%;
     }
 
+    .hide-on-sm {
+        display: none;
+    }
+
+    .hide-on-lg {
+        display: block;
+    }
+
+    .about-rows {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .about-header {
+        margin-top: -20px;
+        margin-bottom: -50px;
+    }
+
 }
 
 /* Medium -> Small */
 
-@media (min-width: 580px) and (max-width: 760px) {
+@media (min-width: 580px) and (max-width: 780px) {
 
     .tnt-top-img {
         width: 800px;
-        height: 500px;
+        height: 700px;
     }
 
     .top-btns {
@@ -216,7 +340,25 @@ body {
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 30% !important;
-        height: 40%;
+        height: 45%;
+    }
+
+    .hide-on-sm {
+        display: none;
+    }
+
+    .hide-on-lg {
+        display: block;
+    }
+
+    .about-rows {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .about-header {
+        margin-top: 20px;
+        margin-bottom: -30px;
     }
 
 }
@@ -227,7 +369,7 @@ body {
 
     .tnt-top-img {
         width: 650px;
-        height: 400px;
+        height: 500px;
     }
 
     .top-btns {
@@ -244,6 +386,19 @@ body {
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 13% !important;
         height: 55%;
+    }
+
+    .hide-on-sm {
+        display: none;
+    }
+
+    .hide-on-lg {
+        display: block;
+    }
+
+    .about-header {
+        margin-top: 20px;
+        margin-bottom: -80px;
     }
 
 }

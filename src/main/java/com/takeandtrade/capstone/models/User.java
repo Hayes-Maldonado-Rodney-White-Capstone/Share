@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -159,4 +160,10 @@ public class User {
         this.state = state;
         this.zipCode = zipCode;
     }
+
+    @OneToOne(mappedBy = "userzip")
+    private Item item;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Item> items;
 }
