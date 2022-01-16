@@ -12,38 +12,39 @@
 </head>
 <body>
 
-<div class="size-wrapper">
+<nav th:replace="partials :: navbar"/>
+<!--<div class="size-wrapper">-->
 
-    <section class="navbar-section">
+<!--    <section class="navbar-section">-->
 
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a href="#" class="navbar-brand">
-                    <img class="navbar-logo" src="../static/images/homepage-images/a-logo.png" th:src="@{images/homepage-images/a-logo.png}" alt="CoolBrand">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<!--        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">-->
+<!--            <div class="container-fluid">-->
+<!--                <a href="#" class="navbar-brand">-->
+<!--                    <img class="navbar-logo" src="../static/images/homepage-images/a-logo.png" th:src="@{images/homepage-images/a-logo.png}" alt="CoolBrand">-->
+<!--                </a>-->
+<!--                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                    <span class="navbar-toggler-icon"></span>-->
+<!--                </button>-->
+<!--                <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--                    <ul class="navbar-nav">-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" href="#">Home</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" href="#">About</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" href="#">Features</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" href="#">FAQ</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </nav>-->
 
-    </section>
+<!--    </section>-->
 
 
 <section class="top-section">
@@ -56,9 +57,9 @@
 <!--                <img class="tnt-top-back-img" src="homepage-images/tnt-back-layer.png" alt="Homepage">-->
                 <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png" alt="Homepage">
             </div>
-            <div class="img-overlay">
-                <a href="/registerForm" th:action="@{/registerForm}" class="btn btn-success top-btns">Register</a>
-                <a href="/login" th:href="@{/login}" class="btn btn-success top-btns">Login</a>
+            <div class="img-overlay" th:if="${#authorization.expression('!isAuthenticated()')}">
+                <a href="/registerForm" th:action="@{/registerForm}"  areia-hidden="true" class="btn btn-success top-btns">Register</a>
+                <a href="/login" th:href="@{/login}" areia-hidden="true" class="btn btn-success top-btns">Login</a>
             </div>
 
 

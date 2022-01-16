@@ -26,8 +26,8 @@
                         <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
                             <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home</a>
                         </li>
-                        <li class="nav-item" th:classappend="${module == 'user_profile' ? 'active' : ''}">
-                            <a class="nav-link" href="#" th:href="@{/userProfile}">My Profile</a>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
@@ -39,16 +39,15 @@
                             <a class="nav-link" href="#">FAQ</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
-                            <a href="/login" th:href="@{/login}">
-                                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Log in
+                            <a class="nav-link" href="/login" th:href="@{/login}" aria-hidden="true"> Login
                             </a>
                         </li>
-                        <li th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
-                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/logout" th:href="@{#}" aria-hidden="true" onclick="$('#form').submit();">Logout
                             </a>
-                            <form style="visibility: hidden" id="form" method="post" action="#"
+                            <form style="visibility: hidden" id="form" method="post" action="/homepage"
                                   th:action="@{/logout}"></form>
+
                         </li>
                     </ul>
                 </div>
