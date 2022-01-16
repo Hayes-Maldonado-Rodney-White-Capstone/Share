@@ -5,14 +5,14 @@
 <body>
 <nav th:replace="partials :: navbar"/>
 
-<h1>Create an Item</h1>
+<h1>Add an Item to Lend</h1>
 <form th:action="@{/items/create}" th:method="post" th:object="${item}">
     <label for="itemName"> Name </label>
     <input type="text" id="itemName" name="itemName" th:field="*{itemName}"/>
     <label for="itemDescription"> Description </label>
     <input type="text" id="itemDescription" name="itemDescription" th:field="*{itemDescription}"/>
 
-    <label class="btn btn-secondary active">
+    <label class="btn btn-secondary active">Condition
         <input type="radio" th:field="*{itemCondition}" name="itemCondition" id="Excellent" value="Excellent"> Excellent
     </label>
     <label class="btn btn-secondary">
@@ -32,8 +32,14 @@
     <input type="text" id="availability" name="availability" th:field="*{availability}"/>
     <label for="specialInstructions"> Special Instructions</label>
     <input type="text" id="specialInstructions" name="specialInstructions" th:field="*{specialInstructions}"/>
+
+    <label for="category-select">Select one category:</label>
+    <select th:field="*category" id="category-select">
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category}"></option> <!--not sure how to map the category input to the db-->
+    </select>
+
     <!--date posted will automatically be created when the user submits the form-->
-    <input type="submit" value="Create" />
+    <input type="submit" value="Add" />
 </form>
 </body>
 </html>
