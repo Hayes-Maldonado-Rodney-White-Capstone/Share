@@ -4,17 +4,24 @@
 <head th:replace="partials :: head" />
 <body>
 <nav th:replace="partials :: navbar" />
-<h1>This be your user profile page</h1>
-<br/>
-<h2>do your thing Rhiannon. YOu go girl!!</h2>
+</br>
 
 
-<!-- ... -->
+
+
 <div sec:authorize="isAuthenticated()">
+    </br>
     This content is only shown to authenticated users.
+    <h1>Welcome back, </h1>
+    <br/>
 
-<!--    User ID: <span th:text="${#authentication.principal.id}"/>-->
-<!--    Username: <span th:text="${#authentication.principal.username}"/>-->
-<!--    Email: <span th:text="${#authentication.principal.email}"/>-->
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    </br>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    </br>
+    Email: <span th:text="${#authentication.principal.email}"/>
+    </br>
+
 </div>
+<script th:replace="partials :: scripts"/>
 </body>
