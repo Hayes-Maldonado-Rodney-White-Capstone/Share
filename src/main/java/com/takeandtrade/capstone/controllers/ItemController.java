@@ -1,14 +1,11 @@
 package com.takeandtrade.capstone.controllers;
 
+import com.takeandtrade.capstone.*;
 import com.takeandtrade.capstone.models.Item;
-import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.ItemRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ItemController {
@@ -22,7 +19,7 @@ public class ItemController {
     @GetMapping("/items/create")
     public String viewCreateItemForm(Model model){
         model.addAttribute("item", new Item());
-        return "/create";
+        return "items/create";
     }
 //
 //    @PostMapping("/items/create")
@@ -32,12 +29,12 @@ public class ItemController {
 //        itemDao.save(item);
 //        return "redirect:/templates/items";
 //    }
-//
-//    @GetMapping("/items")
-//    public String itemsIndex(Model model) {
-//        model.addAttribute("items", itemDao.findAll());
-//        return "templates/items";
-//    }
+
+    @GetMapping("/items")
+    public String viewItemsIndex(Model model) {
+        model.addAttribute("items", itemDao.findAll());
+        return "items/itemsindex";
+    }
 
 
 
