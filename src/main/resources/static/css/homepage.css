@@ -188,9 +188,6 @@ body {
 
 /* SLOGAN SECTION */
 
-.card-rows{
-    /*margin: 10px;*/
-}
 
 .card {
     width: 300px;
@@ -201,15 +198,34 @@ body {
     color: #54e360;
     text-align: center;
     line-height: 25px;
-    box-shadow: 5px 5px 10px #ccc;
     float: left;
     border: none;
-    margin: 5% 0%;
+    margin: 5% 5%;
+    flex: none !important; /* Keeps cards from going into crazy sizes! */
+}
 
+.card-rows {
+    margin-top: 200px;
+}
+
+.card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
 }
 
 .card.green {
     background: linear-gradient(180deg, #005250, #07c5af 100%);
+}
+
+.background-img {
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 1800px;
+    height: 1100px;
+    margin-top: -150px;
+    z-index: -1;
 }
 
 
