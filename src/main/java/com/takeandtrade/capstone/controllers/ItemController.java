@@ -3,12 +3,17 @@ package com.takeandtrade.capstone.controllers;
 import com.takeandtrade.capstone.*;
 import com.takeandtrade.capstone.models.Category;
 import com.takeandtrade.capstone.models.Item;
+import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.CategoryRepository;
 import com.takeandtrade.capstone.repositories.ItemRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,19 +31,21 @@ public class ItemController {
     @GetMapping("/items/create")
     public String viewCreateItemForm(Model model){
         model.addAttribute("item", new Item());
-        List<Category> categoryList = categoryDao.getCategories();
+        List<Category> categoryList = categoryDao.findAll();
         model.addAttribute("categories", categoryList);
 
         return "items/create";
     }
-//
-//    @PostMapping("/items/create")
-//    public String addNewItem(@ModelAttribute Item item) {
-//        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        item.setUser(itemLender);
-//        itemDao.save(item);
-//        return "redirect:/templates/items";
-//    }
+
+    @PostMapping("/items/create")
+    public String addNewItem(@ModelAttribute Item item, Model model) {
+        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
+        item.setUser(itemLender);
+        model.addAttribute("timestamp", Instant.now()); //how do I get the timestamp generated?
+
+        itemDao.save(item);
+        return "redirect:items/itemsindex";
+    }
 
     @GetMapping("/items")
     public String viewItemsIndex(Model model) {

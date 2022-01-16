@@ -1,5 +1,7 @@
 package com.takeandtrade.capstone.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -32,6 +34,7 @@ public class Item {
     private boolean availability;
 
     @Column(nullable = false)
+    @DateTimeFormat(pattern ="mm-dd-yyyy")
     private Date datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
 
     //default constructor
@@ -118,7 +121,8 @@ public class Item {
         this.image = image;
     }
 
-    public boolean getAvailability() {
+
+    public boolean isAvailability() {
         return availability;
     }
 
@@ -148,10 +152,6 @@ public class Item {
 
     public void setUserzip(User userzip) {
         this.userzip = userzip;
-    }
-
-    public boolean isAvailability() {
-        return availability;
     }
 
     public Category getCategory() {
