@@ -161,9 +161,6 @@ public class User {
         this.zipCode = zipCode;
     }
 
-    @OneToOne(mappedBy = "userzip")
-    private Item item;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Item> items;
 }

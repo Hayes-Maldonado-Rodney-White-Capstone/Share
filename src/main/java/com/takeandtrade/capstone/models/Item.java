@@ -174,17 +174,5 @@ public class Item {
     @JoinColumn(name = "user_id")  //this should create a FK in the Item table
     private User user;
 
-    //One item will have a zip code FK that is mapped to the user
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //adding in cascade and orphanRemoval and fetch bc I got this error More than one row with the given identifier was found: 4
-    @JoinColumn(name = "user_zip")  //this will create the FK in the Item table
-    private User userzip;
-
-    public User getUserzip() {
-        return userzip;
-    }
-
-    public void setUserzip(User userzip) {
-        this.userzip = userzip;
-    }
 
 }
