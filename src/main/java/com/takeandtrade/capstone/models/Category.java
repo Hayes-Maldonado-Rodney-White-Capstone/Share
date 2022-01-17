@@ -36,20 +36,4 @@ public class Category {
         this.name = name;
     }
 
-    //for now, one item will only have one category
-//    @OneToOne(mappedBy = "category") //commenting this out to see if it gets rid of my error
-//    private Item item;
-
-//    public Item getItem() {
-//        return item;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Category{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", item=" + item +
-//                '}';
-//    }
 }

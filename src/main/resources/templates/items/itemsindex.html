@@ -15,8 +15,8 @@
     <div class="border border-info m-1 p-1" th:each="item : ${items}">
         <h2 th:text="${item.itemName}"></h2>
         <p th:text="${item.itemDescription}"></p>
-        <p th:text="${item.getUser().getUsername()}">Posted by username:</p>
-<!--        <p th:text="${item.getUser().getUsername()}"></p>-->
+        <p th:text="${item.user.username}">Posted by username:</p>
+        <p th:text="${item.user.zipCode}">Posted by username:</p>
         <p>Date posted:</p>
         <p th:text="${item.datePosted}"></p>
         <p>Special Instructions:</p>
