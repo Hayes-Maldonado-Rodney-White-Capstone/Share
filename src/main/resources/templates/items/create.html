@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head th:replace="partials::head"/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials ::head(pageTitle='Create a post')"></head>
 
 <body>
-<nav th:replace="partials :: navbar"/>
+<nav th:insert="partials :: navbar"></nav>
 <div class="container">
 <h1>Add an Item to Lend</h1>
 <form th:action="@{/items/create}" th:method="post" th:object="${item}">
