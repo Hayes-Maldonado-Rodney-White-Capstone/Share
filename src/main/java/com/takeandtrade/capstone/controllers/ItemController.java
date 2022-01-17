@@ -50,7 +50,7 @@ public class ItemController {
         User user = userDao.getById(1L);
         item.setUser(user);
         //
-        model.addAttribute("zipCode", user.getZipCode()); //adding this to see if it will pull in user zip code
+//        model.addAttribute("zipCode", user.getZipCode()); //adding this to see if it will pull in user zip code
         item.setDatePosted(LocalDateTime.now());
         itemDao.save(item);
         return "redirect:/items";

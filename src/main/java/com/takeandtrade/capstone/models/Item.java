@@ -164,7 +164,7 @@ public class Item {
     }
 
     //one item has one category
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //adding in cascade and orphanRemoval and fetch bc I got this error More than one row with the given identifier was found: 4
     @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
     private Category category;
 
@@ -183,7 +183,7 @@ public class Item {
     private User user;
 
 //    //One item will have a zip code FK that is mapped to the user
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //adding in cascade and orphanRemoval and fetch bc I got this error More than one row with the given identifier was found: 4
     @JoinColumn(name = "user_zip")  //this will create the FK in the Item table
     private User userzip;
 
