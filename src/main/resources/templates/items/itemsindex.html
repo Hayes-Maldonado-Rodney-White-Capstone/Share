@@ -6,7 +6,7 @@
 <nav th:insert="partials :: navbar"></nav>
 
 <h1>Here are all the Items.</h1>
-<p>this page is not done.</p>
+<p>this page is not done. Maybe a table would look better, or cards?</p>
 <div class="container">
     <div th:if="${items.isEmpty()}">
         <p>There are no posts yet. Write one now.</p>
@@ -15,10 +15,15 @@
     <div class="border border-info m-1 p-1" th:each="item : ${items}">
         <h2 th:text="${item.itemName}"></h2>
         <p th:text="${item.itemDescription}"></p>
-        <p th:text="${item.getUser().getUsername()}">Posted By: </p>
+        <p th:text="${item.getUser().getUsername()}">Posted by username:</p>
+        <p th:text="${item.getUser().getUsername()}"></p>
+        <p>Date posted:</p>
+        <p th:text="${item.datePosted}"></p>
+        <p>Special Instructions:</p>
+        <p th:text="${item.specialInstructions}"></p>
 
         <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
-            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>
+            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item (don't click, no mapping yet)</button>
         </form>
         <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
 

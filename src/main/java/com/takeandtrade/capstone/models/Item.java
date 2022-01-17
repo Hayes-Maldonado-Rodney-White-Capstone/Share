@@ -1,6 +1,9 @@
 package com.takeandtrade.capstone.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -28,18 +31,19 @@ public class Item {
     @Column(nullable = false)
     private String image;   //in mySQL this will be a BLOB. I need to research whether it should be a String here.
 
-    @Column(nullable = false)  //this will automatically default to true (the item is available) can be data type TINYINT in mysql
+    @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
     private boolean availability;
 
     @Column(nullable = false)
-    private Date datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
+    @DateTimeFormat(pattern ="mm-dd-yyyy")
+    private LocalDateTime datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
 
     //default constructor
     public Item() {
     }
 
     //2 constructors, 1 with id and 1 without for insertion and extraction
-    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, Date datePosted) {
+    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
         this.id = id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -51,7 +55,7 @@ public class Item {
         this.datePosted = datePosted;
     }
 
-    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, Date datePosted) {
+    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.specialInstructions = specialInstructions;
@@ -118,7 +122,8 @@ public class Item {
         this.image = image;
     }
 
-    public boolean getAvailability() {
+
+    public boolean isAvailability() {
         return availability;
     }
 
@@ -126,11 +131,11 @@ public class Item {
         this.availability = availability;
     }
 
-    public Date getDatePosted() {
+    public LocalDateTime getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(Date datePosted) {
+    public void setDatePosted(LocalDateTime datePosted) {
         this.datePosted = datePosted;
     }
 
@@ -148,10 +153,6 @@ public class Item {
 
     public void setUserzip(User userzip) {
         this.userzip = userzip;
-    }
-
-    public boolean isAvailability() {
-        return availability;
     }
 
     public Category getCategory() {
