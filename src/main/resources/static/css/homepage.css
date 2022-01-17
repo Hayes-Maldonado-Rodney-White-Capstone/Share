@@ -332,6 +332,49 @@ body {
     100% {opacity:1;}
 }
 
+/* LIST SECTION */
+
+.list-section {
+    margin-top: 400px;
+}
+
+.list-header {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 60px;
+    margin-top: -100px;
+    margin-bottom: 80px;
+    color: #006366;
+}
+
+.list-mini-header {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 35px;
+    color: #008a4c;
+}
+
+.list-mini-footer {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+    color: #006366;
+}
+
+.list-img {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-img-2 {
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
+}
 
 /* RESPONSIVENESS */
 
