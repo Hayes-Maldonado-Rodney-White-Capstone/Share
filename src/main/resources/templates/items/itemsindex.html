@@ -7,7 +7,7 @@
 
 <h1>Here are all the Items.</h1>
 <p>this page is not done. Maybe a table would look better, or cards?</p>
-<div class="container">
+<div class="container mt-4">
     <div th:if="${items.isEmpty()}">
         <p>There are no posts yet. Write one now.</p>
     </div>
@@ -23,14 +23,13 @@
         <p>Date posted:<span th:text="${item.datePosted}"></span></p>
 
         <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
-            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item (don't click, no mapping yet)</button>
+            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>
         </form>
         <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
 
 
     </div>
 </div>
-
 
 
 </body>
