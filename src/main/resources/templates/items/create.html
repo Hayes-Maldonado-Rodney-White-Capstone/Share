@@ -74,7 +74,6 @@
         <label for="category-select">Select one category:</label>
         <select class="form-control" th:field="*{category}" id="category-select">
             <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-            <!--not sure how to map the category input to the db-->
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
