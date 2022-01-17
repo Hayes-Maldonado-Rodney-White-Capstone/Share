@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.Instant;
@@ -32,6 +33,7 @@ public class ItemController {
         this.userDao = userDao;
     }
 
+    //this gets the form that allows the logged in user to create a new post
     @GetMapping("/items/create")
     public String viewCreateItemForm(Model model){
         model.addAttribute("item", new Item());
@@ -41,6 +43,7 @@ public class ItemController {
         return "items/create";
     }
 
+    //when the user submits the form, the postmapping saves the information into the db, and then redirects the browser to /items
     @PostMapping("/items/create")
     public String addNewItem(@ModelAttribute Item item, Model model) {
 //        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
@@ -55,10 +58,20 @@ public class ItemController {
         return "redirect:/items";
     }
 
+    //get item index
     @GetMapping("/items")
     public String viewItemsIndex(Model model) {
         model.addAttribute("items", itemDao.findAll());
         return "items/itemsindex";
+    }
+
+    //view one item
+    @GetMapping("/items/{itemId}")
+    public String viewOneItem(Model model, @PathVariable Long itemId){
+        Item viewItem = itemDao.getById(itemId);
+        model.addAttribute("item", viewItem);
+        model.addAttribute("user", viewItem.getUser()); //getting the user that created the item
+        return "/items/viewone";
     }
 
 
