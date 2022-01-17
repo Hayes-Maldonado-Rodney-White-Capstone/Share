@@ -228,18 +228,34 @@ body {
     z-index: -1;
 }
 
+.ani-words-1 {
+    width: 100%;
+    opacity: 0;
+}
+
 .ani-card-1 {
     width: 100%;
     opacity: 0;
+}
+
+.ani-card-1-animation {
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
+.ani-words-2 {
+    width: 100%;
+    opacity: 0;
+}
+
 .ani-card-2  {
     width: 100%;
     opacity: 0;
+}
+
+.ani-card-2-animation {
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -250,6 +266,14 @@ body {
 .ani-card-3 {
     width: 100%;
     opacity: 0;
+}
+
+.ani-words-3 {
+    width: 100%;
+    opacity: 0;
+}
+
+.ani-card-3-animation {
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -260,6 +284,14 @@ body {
 .ani-card-4  {
     width: 100%;
     opacity: 0;
+}
+
+.ani-words-4 {
+    width: 100%;
+    opacity: 0;
+}
+
+.ani-card-4-animation {
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
