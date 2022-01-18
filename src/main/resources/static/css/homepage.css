@@ -353,6 +353,8 @@ body {
     font-size: 35px;
     color: #008a4c;
     padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 .list-mini-footer {
@@ -645,6 +647,10 @@ body {
         width: 1500px;
         height: 3200px;
         margin-top: -450px;
+    }
+
+    .list-section {
+        margin-top: 550px;
     }
 
 }
