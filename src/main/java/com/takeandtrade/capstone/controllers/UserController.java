@@ -3,6 +3,7 @@ package com.takeandtrade.capstone.controllers;
 import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.UserRepository;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,19 +34,23 @@ public class UserController {
         return "redirect:/homepage";
     }
 
-    @GetMapping("/userProfile")
+    @GetMapping("/userProfile/")
     public String userHome() {
-//        User userProfile = userDao.getById();
-//        model.addAttribute("viewUser", userProfile);
-//        userDao.getById(userProfile);
+//        User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
+//        model.addAttribute("viewUser", loggedinUser);
+//        userId = loggedinUser.getId();
+//        User userProfile = userDao.getById(userId);
+//        userDao.getById(userId);
 
         return "userProfile";
     }
 
-    @GetMapping("/userSettings")
-    public String updateUser(@PathVariable Long id, Model model) {
-        User updateUser = userDao.getById(id);
-        model.addAttribute("updateTheUser", updateUser);
+
+
+    @GetMapping("/userSettings/{userId}")
+    public String updateUser(@PathVariable Long userId, Model model ) {
+        User updateUser = userDao.getById(userId);
+        model.addAttribute("user", updateUser);
         return "userSettings";
 
     }
@@ -79,10 +84,9 @@ public class UserController {
         return "redirect:/userProfile";
     }
 
-    @PostMapping("/user/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        long deleteUserId = id;
-        userDao.deleteById(deleteUserId);
+    @PostMapping("/user/delete/{userId}")
+    public String deleteUser(@PathVariable Long userId) {
+        userDao.deleteById(userId);
 
         return "redirect:/homepage";
     }
