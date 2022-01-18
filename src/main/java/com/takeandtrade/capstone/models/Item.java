@@ -1,6 +1,7 @@
 package com.takeandtrade.capstone.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,7 +30,9 @@ public class Item {
     private double price;  //in mysql this can be DECIMAL(6,2) which allows prices up to 9999.99
 
     @Column(nullable = false)
-    private String image;   //in mySQL this will be a BLOB. I need to research whether it should be a String here.
+//    private String image;   //in mySQL this will be a BLOB. I need to research whether it should be a String here.
+    @Transient
+    private MultipartFile image;
 
     @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
     private boolean availability;
@@ -43,7 +46,7 @@ public class Item {
     }
 
     //2 constructors, 1 with id and 1 without for insertion and extraction
-    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
+    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, MultipartFile image, boolean availability, LocalDateTime datePosted) {
         this.id = id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -55,7 +58,7 @@ public class Item {
         this.datePosted = datePosted;
     }
 
-    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
+    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, MultipartFile image, boolean availability, LocalDateTime datePosted) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.specialInstructions = specialInstructions;
@@ -114,14 +117,13 @@ public class Item {
         this.price = price;
     }
 
-    public String getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
-
 
     public boolean isAvailability() {
         return availability;

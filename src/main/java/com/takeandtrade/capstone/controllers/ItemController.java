@@ -7,14 +7,18 @@ import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.CategoryRepository;
 import com.takeandtrade.capstone.repositories.ItemRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -33,6 +37,13 @@ public class ItemController {
         this.userDao = userDao;
     }
 
+    //adding this for file upload
+    @Autowired
+    ServletContext context;
+
+    @Value("${file-upload-path}")
+    private String uploadPath;
+
     //this gets the form that allows the logged in user to create a new post
     @GetMapping("/items/create")
     public String viewCreateItemForm(Model model){
@@ -45,7 +56,7 @@ public class ItemController {
 
     //when the user submits the form, the postmapping saves the information into the db, and then redirects the browser to /items
     @PostMapping("/items/create")
-    public String addNewItem(@ModelAttribute Item item, Model model) {
+    public String addNewItem(@ModelAttribute Item item, Model model, @RequestParam(name = "image") MultipartFile uploadedFile) {
 //        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
 //        item.setUser(itemLender);
 
@@ -54,7 +65,27 @@ public class ItemController {
         item.setUser(user);
         //
         item.setDatePosted(LocalDateTime.now());
-        itemDao.save(item);
+
+        String filename = uploadedFile.getOriginalFilename();
+        String realPath = context.getRealPath("resources/uploaded");
+        String contextPath = context.getContextPath();
+        System.out.println("'Real path' test : " + realPath);
+        System.out.println("'Context path' rest:" + contextPath);
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        System.out.println("uploaded file" + uploadedFile.getName());
+        try {
+            uploadedFile.transferTo(destinationFile);
+            model.addAttribute("message", "File successfully uploaded!");
+            item.setImage(item.getImage());
+            itemDao.save(item);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
+        }
+
+//        itemDao.save(item);
         return "redirect:/items";
     }
 
