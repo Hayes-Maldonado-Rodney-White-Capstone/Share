@@ -72,7 +72,7 @@ body {
     top: 0;
     bottom: 0;
     left: 0;
-    right: 25px;
+    right: 12px;
     text-align: center;
     margin-top: 450px;
 }
@@ -379,6 +379,43 @@ body {
     margin-top: 50px;
 }
 
+/* SIGN UP SECTION */
+
+.signup-header {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 60px;
+    margin-top: 300px;
+    margin-bottom: 50px;
+    color: #008a4c;
+}
+
+.signup-img {
+    margin-top: -150px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 1800px;
+    height: 1600px;
+    z-index: -1;
+}
+
+.img-overlay-2 {
+    position: absolute;
+    top: 5500px;
+    bottom: 0;
+    left: 0;
+    right: 25px;
+    text-align: center;
+}
+
+.signup-btns {
+    margin-top: -20px;
+    font-size: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* RESPONSIVENESS */
 
 /* Extra Large */
@@ -419,6 +456,27 @@ body {
         height: 1000px;
     }
 
+    .signup-img {
+        margin-top: -50px;
+        width: 2000px;
+        height: 1500px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 5500px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 380px;
+        font-size: 50px;
+    }
+
 }
 
 /* Extra Large -> Large */
@@ -438,6 +496,7 @@ body {
     }
 
     .img-overlay {
+        top: -25px;
         margin-top: 300px;
     }
 
@@ -461,7 +520,28 @@ body {
         z-index: -1;
     }
 
-}
+    .signup-img {
+        margin-top: -50px;
+        width: 1400px;
+        height: 1200px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 5500px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 380px;
+        font-size: 50px;
+    }
+
+    }
 
 @media (min-width: 1000px) and (max-width: 1300px) {
 
@@ -508,6 +588,7 @@ body {
     }
 
     .img-overlay {
+        top: -35px;
         margin-top: 260px;
     }
 
@@ -544,6 +625,28 @@ body {
         margin-top: -150px;
     }
 
+    .signup-img {
+        margin-top: -50px;
+        width: 1200px;
+        height: 1000px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 7750px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 380px;
+        font-size: 50px;
+    }
+
+
 }
 
 /* Medium -> Small */
@@ -563,6 +666,7 @@ body {
     }
 
     .img-overlay {
+        top: -25px;
         margin-top: 200px;
     }
 
@@ -599,6 +703,27 @@ body {
         margin-top: -450px;
     }
 
+    .signup-img {
+        margin-top: -50px;
+        width: 1200px;
+        height: 1200px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 8570px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 450px;
+        font-size: 40px;
+    }
+
 }
 
 /* Extra Small */
@@ -611,13 +736,14 @@ body {
     }
 
     .top-btns {
-        margin: 10px;
+        margin-left: 10px;
         font-size: 12px;
         padding-left: 10px;
         padding-right: 10px;
     }
 
     .img-overlay {
+        top: -40px;
         margin-top: 160px;
     }
 
@@ -651,6 +777,27 @@ body {
 
     .list-section {
         margin-top: 550px;
+    }
+
+    .signup-img {
+        margin-top: -50px;
+        width: 1200px;
+        height: 1000px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 9070px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 540px;
+        font-size: 40px;
     }
 
 }
