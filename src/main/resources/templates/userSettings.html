@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 
 <head th:replace="partials :: head"/>
 <body>
@@ -10,34 +10,41 @@
     This content is only shown to authenticated users.
     <h1>Welcome back, <span th:text="${#authentication.principal.username}"></span></h1>
     <br/>
-    <div class="card" style="width: 18rem;">
+    <div class="card mb-4" style="width: 18rem;">
         <div class="card-header">
-            <span th:text="${#authentication.principal.username}"/>
+            <span th:text="${#authentication.principal.username}"/></span>
+
         </div>
-        <form th:action="${'/userSettings'}" th:method="post">
+        <form th:action="@{'/userSettings/' + ${userId}}" th:object="${user}" th:value="${userId}" th:method="post">
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <label th:for="firstName">First Name</label>
-                            <input th:id="firstName" th:type="text" class="form-control" th:value="${updateTheUser.getFirstName()}"/>
+                            <input th:field="*{firstName}" name="firstName" type="text"/>
                         </li>
+                        <a href="/userSettings" th:href="@{/userSettings/{userId}(userId=${userId})}" class="btn btn-success top-btns">Edit Profile</a>
 
-
-
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
                     </ul>
+                </div>
+            </div>
+                    </form>
+
                     <div class="card-footer">
                         <a href="#" class="btn btn-outline-success btn-lg active" role="button" aria-pressed="true">Cancel</a>
-                        <a href="#" class="btn btn-outline-danager btn-lg active" role="button" aria-pressed="true">Deactivate
-                            Account</a>
+                        <form th:action="@{/user/delete/{userId}}" method="post">
+                            <button class="btn btn-outline-danger btn-lg active" name="userId" th:value="${userId}"
+                                    type="submit">Deactivate
+                                Account
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>
-        </form>
+
     </div>
-        <script th:replace="partials :: scripts"/>
+    <script th:replace="partials :: scripts"/>
 </body>
 
 </html>

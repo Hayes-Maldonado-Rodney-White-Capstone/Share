@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
 </head>
 <body>
+
+<!--  Navbar  -->
 <div class="size-wrapper" th:fragment="navbar">
     <section class="navbar-section">
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -27,7 +29,7 @@
                             <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile</a>
+                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile/}" aria-hidden="true">My Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
@@ -45,7 +47,7 @@
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/logout" th:href="@{#}" aria-hidden="true" onclick="$('#form').submit();">Logout
                             </a>
-                            <form style="visibility: hidden" id="form" method="post" action="/homepage"
+                            <form style="visibility: hidden" id="form" method="post" action="/logout"
                                   th:action="@{/logout}"></form>
 
                         </li>
@@ -55,7 +57,7 @@
         </nav>
     </section>
 </div>
-<!-- JS Scripts -->
+<!-- Custom CSS and JS Scripts -->
 <script th:fragment="scripts">
 <!--   JS Scripts -->
     src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"

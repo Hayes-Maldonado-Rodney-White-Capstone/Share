@@ -1,27 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="partials :: head" />
+<head th:replace="partials :: head"/>
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials :: navbar"/>
 </br>
 
 
-
-
 <div sec:authorize="isAuthenticated()">
-    </br>
-    This content is only shown to authenticated users.
-    <h1>Welcome back, </h1>
-    <br/>
+    <div th:object="${viewUser}">
+        </br>
+        <!--        <dev th:object="${#authentication.firstName}">-->
+        This content is only shown to authenticated users.
+        <h1>Welcome back, </h1>
+        <br/>
 
-    User ID: <span th:text="${#authentication.principal.id}"/>
-    </br>
-    Username: <span th:text="${#authentication.principal.username}"/>
-    </br>
-    Email: <span th:text="${#authentication.principal.email}"/>
-    </br>
-
+        User ID: <span th:text="${#authentication.principal.id}"/>
+        </br>
+        Username: <span th:text="${#authentication.principal.username}"/>
+        </br>
+        Email: <span th:text="${#authentication.principal.email}"/>
+        </br>
+<!--                    First Name: <span th:text="${viewUser.getFirstName}"></span>-->
+        <p>
+            <a href="/userSettings" th:href="@{/userSettings}" class="btn btn-success top-btns">Edit Profile</a>
+        </p>
+    </div>
 </div>
+
 <script th:replace="partials :: scripts"/>
 </body>
