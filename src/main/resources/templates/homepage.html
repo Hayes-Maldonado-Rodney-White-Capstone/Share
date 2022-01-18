@@ -283,6 +283,32 @@
 
 </section>
 
+<section class="sign-up-section">
+
+
+    <div class="flex-container img-container">
+        <div class="row">
+
+           <div class="img-overlay-2" th:if="${#authorization.expression('!isAuthenticated()')}">
+                <h3 class="signup-header">Try Share Today!</h3>
+
+               <a href="/registerForm" th:action="@{/registerForm}"  aria-hidden="true" class="btn btn-success signup-btns">Register</a>
+               <a href="/login" th:href="@{/login}" areia-hidden="true" class="btn btn-success signup-btns">Login</a>
+            </div>
+
+            <div class="img-wrapper">
+
+                <img class="signup-img" src="../static/images/homepage-images/signup-picture.png" th:src="@{images/homepage-images/signup-picture.png}" alt="Homepage">
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</section>
+
 
 
 </div>
