@@ -53,8 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/userSettings", // only authenticated users can update profile
-                        "/userProfile" // only authenticated users can edit ads
+                        "/userSettings"// only authenticated users can update profile
+                         // only authenticated users can edit ads
                 )
                 .authenticated()
         ;
