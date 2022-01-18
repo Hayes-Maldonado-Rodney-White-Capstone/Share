@@ -15,7 +15,7 @@
             <span th:text="${#authentication.principal.username}"/></span>
 
         </div>
-        <form th:action="@{'/userSettings/' + ${userId}}" th:object="${user}" th:value="${userId}" th:method="post">
+        <form th:action="@{/userSettings}" th:object="${user}"  th:method="post">
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <ul class="list-group list-group-flush">
@@ -23,7 +23,7 @@
                             <label th:for="firstName">First Name</label>
                             <input th:field="*{firstName}" name="firstName" type="text"/>
                         </li>
-                        <a href="/userSettings" th:href="@{/userSettings/{userId}(userId=${userId})}" class="btn btn-success top-btns">Edit Profile</a>
+                        <a href="/userSettings" th:href="@{/userSettings}" class="btn btn-success top-btns">Edit Profile</a>
 
                     </ul>
                 </div>

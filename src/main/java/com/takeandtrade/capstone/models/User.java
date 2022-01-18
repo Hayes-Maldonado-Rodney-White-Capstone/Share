@@ -143,6 +143,13 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        dateOfBirth = copy.dateOfBirth;
+        phoneNumber = copy.phoneNumber;
+        city = copy.city;
+        state = copy.state;
+        zipCode = copy.zipCode;
     }
 
     public User(){}

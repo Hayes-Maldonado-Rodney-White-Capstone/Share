@@ -2,7 +2,6 @@ package com.takeandtrade.capstone.controllers;
 
 import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.UserRepository;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,10 @@ public class UserController {
     private final UserRepository userDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+
+    public UserController(UserRepository userDao,
+                          PasswordEncoder passwordEncoder) {
+
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
@@ -34,22 +36,23 @@ public class UserController {
         return "redirect:/homepage";
     }
 
-    @GetMapping("/userProfile/")
-    public String userHome() {
-//        User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
-//        model.addAttribute("viewUser", loggedinUser);
-//        userId = loggedinUser.getId();
-//        User userProfile = userDao.getById(userId);
-//        userDao.getById(userId);
+    @GetMapping("/userProfile")
+    public String userHome(Model model) {
+        User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        return "userProfile";
+        model.addAttribute("viewUser", loggedinUser);
+
+//        User userProfile = userDao.getById(id);
+//        model.addAttribute("viewProfile", userProfile);
+
+        return "/userProfile";
     }
 
 
 
-    @GetMapping("/userSettings/{userId}")
-    public String updateUser(@PathVariable Long userId, Model model ) {
-        User updateUser = userDao.getById(userId);
+    @GetMapping("/userSettings")
+    public String updateUser(Model model) {
+        User updateUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", updateUser);
         return "userSettings";
 

@@ -21,8 +21,11 @@
         </br>
         Email: <span th:text="${#authentication.principal.email}"/>
         </br>
-<!--                    First Name: <span th:text="${viewUser.getFirstName}"></span>-->
+        First Name: <span th:text="${#authentication.principal.firstName}"></span>
+        </br>
+        Last Name: <span th:text="${#authentication.principal.lastName}"></span>
         <p>
+
             <a href="/userSettings" th:href="@{/userSettings}" class="btn btn-success top-btns">Edit Profile</a>
         </p>
     </div>
