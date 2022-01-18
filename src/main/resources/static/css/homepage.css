@@ -456,6 +456,27 @@ body {
         height: 1000px;
     }
 
+    .signup-img {
+        margin-top: -50px;
+        width: 2000px;
+        height: 1500px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 5500px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 380px;
+        font-size: 50px;
+    }
+
 }
 
 /* Extra Large -> Large */
@@ -499,7 +520,28 @@ body {
         z-index: -1;
     }
 
-}
+    .signup-img {
+        margin-top: -50px;
+        width: 1400px;
+        height: 1200px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 5500px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 380px;
+        font-size: 50px;
+    }
+
+    }
 
 @media (min-width: 1000px) and (max-width: 1300px) {
 
@@ -583,6 +625,28 @@ body {
         margin-top: -150px;
     }
 
+    .signup-img {
+        margin-top: -50px;
+        width: 1200px;
+        height: 1000px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 7750px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 380px;
+        font-size: 50px;
+    }
+
+
 }
 
 /* Medium -> Small */
@@ -639,6 +703,27 @@ body {
         margin-top: -450px;
     }
 
+    .signup-img {
+        margin-top: -50px;
+        width: 1200px;
+        height: 1200px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 8570px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 450px;
+        font-size: 40px;
+    }
+
 }
 
 /* Extra Small */
@@ -692,6 +777,27 @@ body {
 
     .list-section {
         margin-top: 550px;
+    }
+
+    .signup-img {
+        margin-top: -50px;
+        width: 1200px;
+        height: 1000px;
+        z-index: -1;
+    }
+
+    .img-overlay-2 {
+        position: absolute;
+        top: 9070px;
+        bottom: 0;
+        left: 0;
+        right: 25px;
+        text-align: center;
+    }
+
+    .signup-header {
+        margin-top: 540px;
+        font-size: 40px;
     }
 
 }
