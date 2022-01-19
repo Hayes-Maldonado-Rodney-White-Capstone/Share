@@ -114,11 +114,13 @@ public class ItemController {
         return "/items/edit";
     }
 
-//    @PostMapping("/edit/{postId}")
-//    public String editPost(@PathVariable("postId") Long postId, @ModelAttribute Post post) {
-//        postRepository.save(post);
-//        return "redirect:/index";
-//    }
+    @PostMapping("/items/edit/{itemId}")
+    public String editItem(@PathVariable("itemId") Long itemId, @ModelAttribute Item item) {
+        item.setDatePosted(LocalDateTime.now()); //adding this bc it causes an error during editing
+
+        itemDao.save(item);
+        return "redirect:/items";
+    }
 //
 //    //delete functionality--add a delete button in the show.html
 //    @PostMapping("/posts/index")

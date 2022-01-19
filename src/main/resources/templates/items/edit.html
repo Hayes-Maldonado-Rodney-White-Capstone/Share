@@ -9,7 +9,7 @@
     <form th:method="POST" th:object="${items}" th:value="${itemId}" th:action="@{'/items/edit/' + ${itemId}}">
         <input type="hidden" th:field="*{id}" name="itemId"/>
         <!--probably don't need this since I'm grabbing the id in the url-->
-        <input type="hidden" th:field="*{user}" name="userId">
+        <input type="hidden" th:field="*{user.id}" name="userId">
         <!--need to get the userId so it will update in the DB?-->
         <div class="form-group">
             <label for="itemName">Name of Item</label>
@@ -53,6 +53,8 @@
             <input type="text" class="form-control" id="price" name="price" th:field="*{price}">
         </div>
         <!--** IMAGE can't be changed**-->
+        <input type="hidden" th:field="*{image}" name="image"/>
+
         <label>Is the item available now?</label>
         <div class="form-check">
             <label class="form-check-label" for="yes">
