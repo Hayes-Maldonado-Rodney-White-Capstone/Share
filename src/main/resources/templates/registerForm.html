@@ -12,21 +12,22 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label th:for="firstName">First Name</label>
-                <input th:id="firstName" th:type="text" class="form-control" th:field="*{firstName}"/>
+                <input th:id="firstName" th:type="text" class="form-control" th:field="*{firstName}"
+                       required />
             </div>
             <div class="form-group col-md-6">
                 <label th:for="lastName">Last Name</label>
-                <input th:id="lastName" th:type="text" class="form-control" th:field="*{lastName}"/>
+                <input th:id="lastName" th:type="text" class="form-control" th:field="*{lastName}" required minlength="1"/>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label th:for="dateOfBirth">Enter Date of Birth</label>
-                <input th:id="dateOfBirth" type="date" class="form-control" th:field="*{dateOfBirth}"/>
+                <input th:id="dateOfBirth" type="date" class="form-control" th:field="*{dateOfBirth}" required/>
             </div>
             <div class="form-group col-md-2">
                 <label th:for="phoneNumber">Enter Phone Number</label>
-                <input th:id="phoneNumber" type="text" class="form-control" th:field="*{phoneNumber}"/>
+                <input th:id="phoneNumber" type="text" class="form-control" th:field="*{phoneNumber}" required minlength="10"/>
             </div>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0"
@@ -36,26 +37,26 @@
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label th:for="email">Email Address</label>
-                    <input th:id="email" type="email" class="form-control" th:field="*{email}"/>
+                    <input th:id="email" type="email" class="form-control" th:field="*{email}" required/>
                 </div>
                 <div class="form-group col-md-3">
                     <label th:for="username">Username</label>
-                    <input th:id="username" type="text" class="form-control" th:field="*{username}"/>
+                    <input th:id="username" type="text" class="form-control" th:field="*{username}" required minlength="4"/>
                 </div>
                 <div class="form-group col-md-4">
                     <label th:for="password">Password</label>
-                    <input th:id="password" type="password" class="form-control" th:field="*{password}"/>
+                    <input th:id="password" type="password" class="form-control" th:field="*{password}" required minlength="4"/>
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label th:for="city">City</label>
-                <input th:id="city" th:type="text" class="form-control" th:field="*{city}">
+                <input th:id="city" th:type="text" class="form-control" th:field="*{city}" required>
             </div>
             <div class="form-group col-md-2">
                 <label th:for="state">State</label>
-                <select th:id="state" class="form-control" th:field="*{state}">
+                <select th:id="state" class="form-control" th:field="*{state}" required>
                     <option value="">Select a state...</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -112,7 +113,7 @@
             </div>
             <div class="form-group col-md-2">
                 <label th:for="zipcode">Zipcode</label>
-                <input th:type="text" class="form-control" th:id="zipcode" th:field="*{zipcode}">
+                <input th:type="text" class="form-control" th:id="zipcode" th:field="*{zipcode}" required minlength="5">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
