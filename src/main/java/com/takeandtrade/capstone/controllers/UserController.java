@@ -80,7 +80,9 @@ public class UserController {
         updateTheUser.setCity(city);
         updateTheUser.setState(state);
         updateTheUser.setZipcode(Integer.parseInt(zipcode));
-        updateTheUser.setPassword(password);
+        String hash = passwordEncoder.encode(updateTheUser.getPassword());
+        updateTheUser.setPassword(hash);
+//        updateTheUser.setPassword(password);
 
         userDao.save(updateTheUser);
 
