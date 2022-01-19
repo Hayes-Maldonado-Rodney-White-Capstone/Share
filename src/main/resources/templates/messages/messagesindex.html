@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Index</title>
+</head>
+<body>
+
+<h1>Messages Index</h1>
+
+<h3>Here are the users you can message:</h3>
+
+<div th:each="user:${users}">
+
+    <h3>Username:<span th:text="${user.username}"></span></h3>
+    <form class="m-1" th:action="@{'/messages/' + ${user.id}}" method="GET">
+        <button type="submit" name="viewOneMessage" th:value="${user.id}">Message</button>
+    </form>
+
+</div>
+
+</body>
+</html>
