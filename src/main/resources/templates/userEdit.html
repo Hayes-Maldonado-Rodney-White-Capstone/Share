@@ -7,7 +7,7 @@
 </br>
 <div sec:authorize="isAuthenticated()">
 
-    <form th:action="@{/registerForm}" th:method="POST" th:object="${user}">
+    <form th:action="@{|/userEdit/${user.getId()}|}" th:method="POST" th:object="${user}">
 
         <h1>Edit Profile Form</h1>
 
@@ -23,8 +23,6 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label th:for="dateOfBirth">Enter Date of Birth</label>
-                <input th:id="dateOfBirth" type="date" class="form-control" th:field="*{dateOfBirth}"/>
             </div>
             <div class="form-group col-md-6">
                 <label th:for="phoneNumber">Enter Phone Number</label>
@@ -110,10 +108,10 @@
             </div>
             <div class="form-group col-md-2">
                 <label th:for="zipcode">Zipcode</label>
-                <input th:type="text" class="form-control" th:id="zipcode" th:field="*{zipCode}">
+                <input th:type="number" class="form-control" th:id="zipcode" th:field="*{zipcode}">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Confirm Edit/button>
+        <button type="submit" class="btn btn-primary">Confirm Edit</button>
     </form>
 
 

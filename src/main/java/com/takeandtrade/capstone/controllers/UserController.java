@@ -45,42 +45,42 @@ public class UserController {
 //        User userProfile = userDao.getById(id);
 //        model.addAttribute("viewProfile", userProfile);
 
-        return "/userProfile";
+        return "userProfile";
     }
 
 
 
-    @GetMapping("/userSettings")
+    @GetMapping("/userEdit")
     public String updateUser(Model model) {
         User updateUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", updateUser);
-        return "userSettings";
+        return "userEdit";
 
     }
 
-    @PostMapping("/userSettings")
-    public String saveUserUpdate(
-            @RequestParam(name = "userId") Long id,
-            @RequestParam(name = "firstName") String firstName,
-            @RequestParam(name = "lastName") String lastName,
-            @RequestParam(name = "username") String username,
-            @RequestParam(name = "dateOfBirth") String dateOfBirth,
-            @RequestParam(name = "email") String email,
-            @RequestParam(name = "phoneNumber") Long phoneNumber,
-            @RequestParam(name = "city") String city,
-            @RequestParam(name = "state") String state,
-            @RequestParam(name = "zipcode") int zipcode
+    @PostMapping("/userEdit/{userId}")
+    public String saveUserUpdate(@PathVariable long userId,
+        @RequestParam(name = "firstName") String firstName,
+        @RequestParam(name = "lastName") String lastName,
+        @RequestParam(name = "username") String username,
+        @RequestParam(name = "email") String email,
+        @RequestParam(name = "phoneNumber") Long phoneNumber,
+        @RequestParam(name = "city") String city,
+        @RequestParam(name = "state") String state,
+        @RequestParam(name = "zipcode") String zipcode,
+        @RequestParam(name = "password") String password
+
     ) {
-        User updateTheUser = userDao.getById(id);
+        User updateTheUser = userDao.getById(userId);
         updateTheUser.setFirstName(firstName);
         updateTheUser.setLastName(lastName);
         updateTheUser.setUsername(username);
-        updateTheUser.setDateOfBirth(dateOfBirth);
         updateTheUser.setEmail(email);
         updateTheUser.setPhoneNumber(phoneNumber);
         updateTheUser.setCity(city);
         updateTheUser.setState(state);
-        updateTheUser.setZipCode(zipcode);
+        updateTheUser.setZipcode(Integer.parseInt(zipcode));
+        updateTheUser.setPassword(password);
 
         userDao.save(updateTheUser);
 
