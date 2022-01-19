@@ -1,5 +1,6 @@
 package com.takeandtrade.capstone.models;
 
+import com.mysql.cj.Messages;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -170,4 +171,11 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Item> items;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    private List<Message> sentMessages;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    private List<Message> receivedMessages;
 }
