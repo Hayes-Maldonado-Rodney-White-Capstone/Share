@@ -28,7 +28,8 @@
             <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>
         </form>
         <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
-
+        <!--adding this temporarily to test edit-->
+        <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>
 
     </div>
 </div>
