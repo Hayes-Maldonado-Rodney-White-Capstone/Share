@@ -8,5 +8,12 @@
 
 <h1>Messaging: <span th:text="${user.username}"></span></h1>
 
+<form th:method="POST" th:action="@{'/messages/' +  ${user.getId()}}" th:object="${userMessage}">
+    <label>
+        <textarea name="message" th:field="*{message}"></textarea>
+    </label>
+    <button type="submit" class="btn">Send Message</button>
+</form>
+
 </body>
 </html>
