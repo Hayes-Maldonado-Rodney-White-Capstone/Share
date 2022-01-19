@@ -14,7 +14,7 @@ public class Message {
     private long id;
 
     @Column(nullable = false, length = 1000) //may need to update this to TEXT within mysql
-    private String message;
+    private String content;
 
     @Column(nullable = false)
     @DateTimeFormat(pattern ="mm-dd-yyyy hh:mm")
@@ -32,16 +32,16 @@ public class Message {
 
     }
 
-    public Message(long id, String message, LocalDateTime timeSent, User sender, User receiver) {
+    public Message(long id, String content, LocalDateTime timeSent, User sender, User receiver) {
         this.id = id;
-        this.message = message;
+        this.content = content;
         this.timeSent = timeSent;
         this.sender = sender;
         this.receiver = receiver;
     }
 
-    public Message(String message, LocalDateTime timeSent, User sender, User receiver) {
-        this.message = message;
+    public Message(String content, LocalDateTime timeSent, User sender, User receiver) {
+        this.content = content;
         this.timeSent = timeSent;
         this.sender = sender;
         this.receiver = receiver;
@@ -55,12 +55,12 @@ public class Message {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public LocalDateTime getTimeSent() {
@@ -86,4 +86,6 @@ public class Message {
     public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
+
+
 }
