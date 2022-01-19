@@ -44,7 +44,7 @@ public class User {
     private String state;
 
     @Column (nullable = false)
-    private int zipCode;
+    private int zipcode;
 
     public long getId() {
         return id;
@@ -127,15 +127,15 @@ public class User {
         this.state = state;
     }
 
-    public int getZipCode() {
-        return zipCode;
+    public int getZipcode() {
+        return zipcode;
     }
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
     }
 
-//    @ManyToOne
+    //    @ManyToOne
 //    @JoinColumn (name = "role_id")
 //    private User role;
 
@@ -150,12 +150,12 @@ public class User {
         phoneNumber = copy.phoneNumber;
         city = copy.city;
         state = copy.state;
-        zipCode = copy.zipCode;
+        zipcode = copy.zipcode;
     }
 
     public User(){}
 
-    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, long phoneNumber, String city, String state, int zipCode) {
+    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, long phoneNumber, String city, String state, int zipcode) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -166,7 +166,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.city = city;
         this.state = state;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
