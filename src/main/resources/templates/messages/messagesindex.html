@@ -18,6 +18,12 @@
     </form>
 
 </div>
+<div>
+    <h4>See messages here...</h4>
+    <div class="border border-info m-1 p-1" th:each="message : ${messages}">
+        <p><span th:text="${message.content}"></span></p>
+    </div>
+</div>
 
 </body>
 </html>

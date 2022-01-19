@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<h1>Messaging: <span th:text="${user.username}"></span></h1>
+<h1>You are sending a message to: <span th:text="${user.username}"></span></h1>
 
 <form th:method="POST" th:action="@{'/messages/' +  ${user.getId()}}" th:object="${userMessage}">
     <label>
-        <textarea name="message" th:field="*{message}"></textarea>
+        <textarea name="content" th:field="*{content}"></textarea>
     </label>
     <button type="submit" class="btn">Send Message</button>
 </form>
