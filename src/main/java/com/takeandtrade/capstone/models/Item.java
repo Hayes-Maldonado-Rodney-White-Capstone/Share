@@ -159,7 +159,7 @@ public class Item {
     public String getPhotosImagePath() {
         if (image == null) return null;
 
-        return "/capstoneimages/" + image;
+        return "/images/capstoneimages/" + image;
     }
 
     //one item has one category
