@@ -9,7 +9,7 @@
 <p>this page is not done. Maybe a table would look better, or cards?</p>
 <div class="container mt-4">
     <div th:if="${items.isEmpty()}">
-        <p>There are no posts yet. Write one now.</p>
+        <p>There are no items yet. Post one now.</p>
     </div>
 
     <div class="border border-info m-1 p-1" th:each="item : ${items}">
