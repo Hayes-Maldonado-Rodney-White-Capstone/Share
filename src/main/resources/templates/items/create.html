@@ -6,7 +6,7 @@
 <nav th:insert="partials :: navbar"></nav>
 <div class="container">
     <h1>Add an Item to Lend</h1>
-    <form th:action="@{/items/create}" th:method="post" th:object="${item}">
+    <form th:action="@{/items/create}" th:method="post" th:object="${item}" enctype="multipart/form-data" style="max-width: 400px">
         <input type="hidden" th:field="*{id}" id="itemId">
         <!--date posted will be automatically be created when the user submits the form?-->
         <div class="form-group">
@@ -49,10 +49,13 @@
             <label for="price">Price per day</label>
             <input type="text" class="form-control" id="price" name="price" th:field="*{price}">
         </div>
+
+        <!--** IMAGE **-->
         <div class="form-group">
-            <label for="image">Image</label>
-            <input type="text" class="form-control" id="image" name="image" th:field="*{image}">
+            <label for="images">Image</label>
+            <input type="file" class="form-control" id="images" name="images" accept="image/png, image/jpeg"> <!--th:field="*{image}" this th:field was causing the error message-->
         </div>
+        <div><img id="thumbnail" alt="Image Preview"></div>
 
         <label>Is the item available now?</label>
         <div class="form-check">
@@ -83,5 +86,23 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#images').change(function() {
+        showImageThumbnail(this);
+    });
+
+function showImageThumbnail(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+    reader.onload = function(e){
+        $('#thumbnail').attr('src', e.target.result);
+    };
+    reader.readAsDataURL(file);
+}
+    });
+</script>
+
 </body>
 </html>

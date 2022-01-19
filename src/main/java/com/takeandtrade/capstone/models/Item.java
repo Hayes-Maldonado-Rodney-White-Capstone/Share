@@ -155,6 +155,13 @@ public class Item {
         this.category = category;
     }
 
+    @Transient
+    public String getPhotosImagePath() {
+        if (image == null) return null;
+
+        return "/capstoneimages/" + image;
+    }
+
     //one item has one category
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //adding in cascade and orphanRemoval and fetch bc I got this error More than one row with the given identifier was found: 4
     @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
@@ -174,5 +181,20 @@ public class Item {
     @JoinColumn(name = "user_id")  //this should create a FK in the Item table
     private User user;
 
-
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", itemName='" + itemName + '\'' +
+                ", itemDescription='" + itemDescription + '\'' +
+                ", specialInstructions='" + specialInstructions + '\'' +
+                ", itemCondition='" + itemCondition + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", availability=" + availability +
+                ", datePosted=" + datePosted +
+                ", category=" + category +
+                ", user=" + user +
+                '}';
+    }
 }
