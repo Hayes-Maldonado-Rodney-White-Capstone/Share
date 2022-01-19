@@ -52,17 +52,17 @@ public class ItemController {
     //when the user submits the form, the postmapping saves the information into the db, and then redirects the browser to /items
     @PostMapping("/items/create")
     public String addNewItem(@ModelAttribute Item item, Model model, @RequestParam("images") MultipartFile multipartFile) throws IOException {
-//        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
-//        item.setUser(itemLender);
+        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
+        item.setUser(itemLender);
 
-        //we'll use this code below for testing so we don't have to log in each time, when the create form is function use the code above for production
-        User user = userDao.getById(1L);
-        item.setUser(user);
-        //
+//        //we'll use this code below for testing so we don't have to log in each time, when the create form is function use the code above for production
+//        User user = userDao.getById(1L);
+//        item.setUser(user);
+//        //
         item.setDatePosted(LocalDateTime.now());
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        System.out.println("filename" + fileName);
+        System.out.println("filename " + fileName);
         item.setImage(fileName);
         itemDao.save(item);
 
@@ -98,6 +98,34 @@ public class ItemController {
         model.addAttribute("user", viewItem.getUser()); //getting the user that created the item
         return "/items/viewone";
     }
+
+    //edit functionality
+    @GetMapping("/edit/{itemId}")
+    public String editItemForm(Model model, @PathVariable Long itemId) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("userId", loggedInUser);
+        System.out.println("logged in user" + loggedInUser.getId());
+        Item item = itemDao.getById(itemId);
+        User creator = item.getUser();
+        System.out.println("creator get id" + creator.getId());
+        List<Category> categoryList = categoryDao.findAll();
+        model.addAttribute("categories", categoryList);
+        model.addAttribute("items", item); //this pre-populates the info in the form in the edit.html
+        return "/items/edit";
+    }
+
+//    @PostMapping("/edit/{postId}")
+//    public String editPost(@PathVariable("postId") Long postId, @ModelAttribute Post post) {
+//        postRepository.save(post);
+//        return "redirect:/index";
+//    }
+//
+//    //delete functionality--add a delete button in the show.html
+//    @PostMapping("/posts/index")
+//    public String deletePost(Long postId) {
+//        postRepository.deleteById(postId);
+//        return "redirect:/index";
+//    }
 
 
 

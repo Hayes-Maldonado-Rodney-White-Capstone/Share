@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials ::head(pageTitle='Edit your post')"></head>
+<body>
+<nav th:insert="partials :: navbar"></nav>
+<div class="container">
+    <!--    edit-->
+
+    <form th:method="POST" th:object="${items}" th:value="${itemId}" th:action="@{'/items/edit/' + ${itemId}}">
+        <input type="hidden" th:field="*{id}" name="itemId"/>
+        <!--probably don't need this since I'm grabbing the id in the url-->
+        <input type="hidden" th:field="*{user}" name="userId">
+        <!--need to get the userId so it will update in the DB?-->
+        <div class="form-group">
+            <label for="itemName">Name of Item</label>
+            <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}">
+            <!--do I need a th:value?-->
+        </div>
+        <div class="form-group">
+            <label for="itemDescription">Description</label>
+            <input type="text" class="form-control" id="itemDescription" name="itemDescription"
+                   th:field="*{itemDescription}">
+        </div>
+        <label>Condition</label>
+        <div class="form-check">
+            <label class="form-check-label" for="Excellent">
+                <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition"
+                       id="Excellent"
+                       value="Excellent">
+                Excellent
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label" for="Good">
+                <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Good"
+                       value="Good"> Good
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label" for="Fair">
+                <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Fair"
+                       value="Fair"> Fair
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label" for="Poor">
+                <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Poor"
+                       value="Poor"> Poor
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="price">Price per day</label>
+            <input type="text" class="form-control" id="price" name="price" th:field="*{price}">
+        </div>
+        <!--** IMAGE can't be changed**-->
+        <label>Is the item available now?</label>
+        <div class="form-check">
+            <label class="form-check-label" for="yes">
+                <input type="radio" class="form-check-input" value="1" id="yes" name="yes" th:field="*{availability}"
+                       checked="checked">
+                Yes</label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label" for="no">
+                <input type="radio" class="form-check-input" value="0" id="no" name="no"
+                       th:field="*{availability}">No</label>
+        </div>
+
+        <div class="form-group">
+            <label for="specialInstructions"> Special Instructions</label>
+            <input type="text" class="form-control" id="specialInstructions" name="specialInstructions"
+                   th:field="*{specialInstructions}">
+        </div>
+
+        <div class="form-group">
+            <label for="category-select">Select one category:</label>
+            <select class="form-control" th:field="*{category}" id="category-select">
+                <option th:each="category : ${categories}" th:value="${category.id}"
+                        th:text="${category.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

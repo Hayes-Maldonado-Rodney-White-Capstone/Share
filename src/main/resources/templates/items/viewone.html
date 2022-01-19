@@ -14,6 +14,8 @@
     <p>$<span th:text="${item.price}"></span> per day</p>
     <p>Posted by username: <span th:text="${item.user.username}"></span></p>
     <p>Date posted:<span th:text="${item.datePosted}"></span></p>
+    <!--**IMAGE**-->
+    <img th:src="@{${item.photosImagePath}}" style="width: 250px" />
 
 </div>
 <script th:insert="partials :: scripts"></script>
