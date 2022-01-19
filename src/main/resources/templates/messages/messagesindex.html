@@ -13,7 +13,9 @@
 <div th:each="user:${users}">
 
     <h3>Username:<span th:text="${user.username}"></span></h3>
-    <button>Message</button>
+    <form class="m-1" th:action="@{'/messages/' + ${user.id}}" method="GET">
+        <button type="submit" name="viewOneMessage" th:value="${user.id}">Message</button>
+    </form>
 
 </div>
 

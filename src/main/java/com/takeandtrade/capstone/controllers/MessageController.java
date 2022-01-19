@@ -33,18 +33,18 @@ public class MessageController {
         return "messages/messagesindex";
     }
 
-    @GetMapping("/messages/{otherUserId}")
-    public String pickAReciever(Model model, @PathVariable long recieverId) {
+    @GetMapping("/messages/{recieverId}")
+    public String viewOneMessage(Model model, @PathVariable long recieverId) {
 
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.getById(loggedInUser.getId());
-        model.addAttribute("loggedinuser", user);
+        User viewUser = userDao.getById(recieverId);
 
-        User reciever = userDao.getById(recieverId);
-        model.addAttribute("reciever", reciever);
+        model.addAttribute("user", viewUser);
 
         return "/messages/viewmessage";
+
     }
+
+
 
 
 
