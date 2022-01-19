@@ -21,6 +21,8 @@
         <p>$<span th:text="${item.price}"></span> per day</p>
         <p>Posted by username: <span th:text="${item.user.username}"></span></p>
         <p>Date posted:<span th:text="${item.datePosted}"></span></p>
+        <!--**IMAGE**-->
+        <img th:src="@{${item.photosImagePath}}" style="width: 150px" />
 
         <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
             <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>

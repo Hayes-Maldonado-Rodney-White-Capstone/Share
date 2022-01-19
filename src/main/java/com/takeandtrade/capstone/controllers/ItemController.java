@@ -10,11 +10,17 @@ import com.takeandtrade.capstone.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -45,7 +51,7 @@ public class ItemController {
 
     //when the user submits the form, the postmapping saves the information into the db, and then redirects the browser to /items
     @PostMapping("/items/create")
-    public String addNewItem(@ModelAttribute Item item, Model model) {
+    public String addNewItem(@ModelAttribute Item item, Model model, @RequestParam("images") MultipartFile multipartFile) throws IOException {
 //        User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
 //        item.setUser(itemLender);
 
@@ -54,7 +60,26 @@ public class ItemController {
         item.setUser(user);
         //
         item.setDatePosted(LocalDateTime.now());
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        System.out.println("filename" + fileName);
+        item.setImage(fileName);
         itemDao.save(item);
+
+        String uploadDir = "./capstoneimages/";   ///this should save it in a directory named capstoneimages
+        Path uploadPath = Paths.get(uploadDir);
+        if(!Files.exists(uploadPath)){
+            Files.createDirectories(uploadPath);
+        }
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            System.out.println(filePath.toFile().getAbsolutePath());
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new IOException("Could not save image file: " + fileName, e);
+        }
+
         return "redirect:/items";
     }
 
