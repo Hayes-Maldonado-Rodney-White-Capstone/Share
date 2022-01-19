@@ -10,5 +10,12 @@
 
 <h3>Here are the users you can message:</h3>
 
+<div th:each="user:${users}">
+
+    <h3>Username:<span th:text="${user.username}"></span></h3>
+    <button>Message</button>
+
+</div>
+
 </body>
 </html>
