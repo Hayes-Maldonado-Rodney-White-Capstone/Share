@@ -40,18 +40,6 @@
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Reviews</a>
                         </li>
-                        <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
-                            <a class="nav-link" href="#about" aria-hidden="true"> About
-                            </a>
-                        </li>
-                        <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
-                            <a class="nav-link" href="#features" aria-hidden="true"> Features
-                            </a>
-                        </li>
-                        <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
-                            <a class="nav-link" href="#developers" aria-hidden="true"> Developers
-                            </a>
-                        </li>
                         <li>
                             <form th:action="@{/logout}" th:method="post">
                                 <button style="margin-top: -1px;" sec:authorize="isAuthenticated()" class="btn-link btn nav-link">Logout</button>
