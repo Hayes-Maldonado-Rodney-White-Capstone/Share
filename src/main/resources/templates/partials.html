@@ -54,8 +54,8 @@
                         </li>
                         <li>
                             <form th:action="@{/logout}" th:method="post">
-                                <button sec:authorize="isAuthenticated()" class="btn-link btn">Logout</button>
-                                <button sec:authorize="isAnonymous()" th:href="@{/login}" class="btn-link btn">Login</button>
+                                <a sec:authorize="isAuthenticated()" class="nav-link">Logout</a>
+                                <a sec:authorize="isAnonymous()" th:href="@{/login}" class="nav-link">Login</a>
                             </form>
                         </li>
                     </ul>
