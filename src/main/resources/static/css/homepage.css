@@ -456,7 +456,11 @@ body {
     margin-right: -20px;
     margin-left: -20px;
     margin-bottom: 30px;
+}
 
+.single-avatar-row {
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 /* RESPONSIVENESS */
@@ -584,6 +588,18 @@ body {
         font-size: 50px;
     }
 
+    .credit-header {
+        text-align: center;
+        font-family: 'Roboto Slab', serif;
+        font-size: 60px;
+        margin-top: -100px;
+        color: #006366;
+    }
+
+    .single-avatar-row {
+        margin-bottom: -70px;
+    }
+
     }
 
 @media (min-width: 1000px) and (max-width: 1300px) {
@@ -689,6 +705,15 @@ body {
         font-size: 50px;
     }
 
+    .credit-header {
+        text-align: center;
+        font-family: 'Roboto Slab', serif;
+        font-size: 60px;
+        margin-top: -50px;
+        margin-bottom: -100px;
+        color: #006366;
+    }
+
 
 }
 
@@ -765,6 +790,15 @@ body {
     .signup-header {
         margin-top: 450px;
         font-size: 40px;
+    }
+
+    .credit-header {
+        text-align: center;
+        font-family: 'Roboto Slab', serif;
+        font-size: 60px;
+        margin-top: -30px;
+        margin-bottom: -100px;
+        color: #006366;
     }
 
 }
