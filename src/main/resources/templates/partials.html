@@ -45,11 +45,11 @@
                             </a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
-                            <a class="nav-link" href="/login" th:href="@{/login}" aria-hidden="true"> Features
+                            <a class="nav-link" href="#features" aria-hidden="true"> Features
                             </a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
-                            <a class="nav-link" href="/login" th:href="@{/login}" aria-hidden="true"> Developers
+                            <a class="nav-link" href="#developers" aria-hidden="true"> Developers
                             </a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
