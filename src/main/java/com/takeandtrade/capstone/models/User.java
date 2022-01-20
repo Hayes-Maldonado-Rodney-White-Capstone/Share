@@ -179,9 +179,11 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private List<Message> receivedMessages;
 
-    @ManyToMany(mappedBy = "userReviews")
-    private List<Review> reviews;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
+    private List<Review> reviewed;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consumer")//user that is borrowed the item/writes the review/ and is login
+    private List<Review> writtenReviews;
 
     public List<Item> getItems() {
         return items;
