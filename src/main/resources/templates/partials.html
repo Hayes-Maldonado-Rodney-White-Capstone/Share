@@ -14,7 +14,7 @@
 <!--  Navbar  -->
 <div th:fragment="navbar">
     <section class="navbar-section">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav id="myNavbar" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a href="#" class="navbar-brand">
                     <img class="navbar-logo" src="../static/images/homepage-images/a-logo.png" th:src="@{images/homepage-images/a-logo.png}" alt="CoolBrand">
@@ -41,6 +41,18 @@
                             <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Reviews</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+                            <a class="nav-link" href="#about" aria-hidden="true"> About
+                            </a>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+                            <a class="nav-link" href="#features" aria-hidden="true"> Features
+                            </a>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+                            <a class="nav-link" href="#developers" aria-hidden="true"> Developers
+                            </a>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
                             <a class="nav-link" href="/login" th:href="@{/login}" aria-hidden="true"> Login
                             </a>
                         </li>
@@ -49,7 +61,6 @@
                             </a>
                             <form style="visibility: hidden" id="form" method="post" action="/logout"
                                   th:action="@{/logout}"></form>
-
                         </li>
                     </ul>
                 </div>
