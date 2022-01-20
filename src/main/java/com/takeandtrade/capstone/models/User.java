@@ -179,6 +179,10 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private List<Message> receivedMessages;
 
+    @ManyToMany(mappedBy = "userReviews")
+    private List<Review> reviews;
+
+
     public List<Item> getItems() {
         return items;
     }
