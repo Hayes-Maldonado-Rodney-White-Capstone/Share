@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>You are sending a message to: <span th:text="${user.username}"></span></h1>
+
+<form th:method="POST" th:action="@{'/messages/' +  ${user.getId()}}" th:object="${userMessage}">
+    <label>
+        <textarea name="content" th:field="*{content}"></textarea>
+    </label>
+    <button type="submit" class="btn">Send Message</button>
+</form>
+<hr>
+
+<h4>Messages History</h4>
+<div th:each="message : ${messages}">
+    <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
+        <h3 style="color:darkgreen;"><span th:text="${message.content}"></span></h3>
+        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
+        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+    </div>
+
+    <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
+        <h3 style="color:darkred;"><span th:text="${message.content}"></span></h3>
+        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
+        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+    </div>
+</div>
+
+
+</body>
+</html>
