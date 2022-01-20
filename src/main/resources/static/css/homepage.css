@@ -463,6 +463,30 @@ body {
     margin-bottom: 70px;
 }
 
+/* FOOTER SECTION */
+
+.footer-section {
+    margin-top: -250px;
+}
+
+.footer {
+    background-color: #008a4c;
+}
+
+.footer-link {
+    color: #54e360;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.footer-text {
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+
 /* RESPONSIVENESS */
 
 /* Extra Large */
@@ -600,6 +624,10 @@ body {
         margin-bottom: -70px;
     }
 
+    .footer-section {
+        margin-top: -20px;
+    }
+
     }
 
 @media (min-width: 1000px) and (max-width: 1300px) {
@@ -714,6 +742,9 @@ body {
         color: #006366;
     }
 
+    .footer-section {
+        margin-top: -150px;
+    }
 
 }
 
@@ -801,6 +832,10 @@ body {
         color: #006366;
     }
 
+    .footer-section {
+        margin-top: -200px;
+    }
+
 }
 
 /* Extra Small */
@@ -875,6 +910,10 @@ body {
     .signup-header {
         margin-top: 540px;
         font-size: 40px;
+    }
+
+    .footer-section {
+        margin-top: -200px;
     }
 
 }
