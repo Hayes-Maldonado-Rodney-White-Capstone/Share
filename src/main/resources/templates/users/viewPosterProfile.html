@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Index</title>
+</head>
+<body>
+<nav th:insert="partials :: navbar"></nav>
+<div th:each="userItem: ${userItems}">
+
+    <h2><span th:text="${userItem.itemName}"></span></h2>
+    <p><span th:text="${userItem.price}"></span> per day</p>
+    <img th:src="@{${userItem.photosImagePath}}" style="width: 150px">
+
+</div>
+
+
+
+
+</body>
+
+
+</html>

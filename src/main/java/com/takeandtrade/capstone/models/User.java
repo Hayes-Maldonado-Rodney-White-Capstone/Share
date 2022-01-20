@@ -182,6 +182,38 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
     private List<Review> reviewed;
 
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public void setSentMessages(List<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(List<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
+    }
+
+    public List<Review> getReviewed() {
+        return reviewed;
+    }
+
+    public void setReviewed(List<Review> reviewed) {
+        this.reviewed = reviewed;
+    }
+
+    public List<Review> getWrittenReviews() {
+        return writtenReviews;
+    }
+
+    public void setWrittenReviews(List<Review> writtenReviews) {
+        this.writtenReviews = writtenReviews;
+    }
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "consumer")//user that is borrowed the item/writes the review/ and is login
     private List<Review> writtenReviews;
 

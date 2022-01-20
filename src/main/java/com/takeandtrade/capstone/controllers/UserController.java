@@ -39,6 +39,15 @@ public class UserController {
         return "redirect:/homepage";
     }
 
+    @GetMapping("/viewPosterProfile/{posterId}")
+    public String showPosterProfile(Model model,@PathVariable long posterId){
+                User poster = userDao.getById(posterId);
+
+                model.addAttribute("userItems",poster.getItems());
+                model.addAttribute("reviews", poster.getWrittenReviews());
+        return "/users/viewPosterProfile";
+    }
+
     @GetMapping("/userProfile")
     public String userHome(Model model) {
         User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
