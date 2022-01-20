@@ -178,4 +178,12 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private List<Message> receivedMessages;
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 }

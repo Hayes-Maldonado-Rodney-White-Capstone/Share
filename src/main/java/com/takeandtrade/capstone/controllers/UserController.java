@@ -1,6 +1,7 @@
 package com.takeandtrade.capstone.controllers;
 
 import com.takeandtrade.capstone.models.User;
+import com.takeandtrade.capstone.repositories.ItemRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,13 +14,15 @@ public class UserController {
 
     private final UserRepository userDao;
     private PasswordEncoder passwordEncoder;
+    private final ItemRepository itemDao;
 
 
     public UserController(UserRepository userDao,
-                          PasswordEncoder passwordEncoder) {
+                          PasswordEncoder passwordEncoder, ItemRepository itemDao) {
 
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.itemDao = itemDao;
     }
 
     @GetMapping("/registerForm")
@@ -39,8 +42,11 @@ public class UserController {
     @GetMapping("/userProfile")
     public String userHome(Model model) {
         User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User itemOwner = userDao.getById(loggedinUser.getId());
+        model.addAttribute("itemOwner", itemOwner);
 
         model.addAttribute("viewUser", loggedinUser);
+        model.addAttribute("items", itemDao.findAll());
 
 //        User userProfile = userDao.getById(id);
 //        model.addAttribute("viewProfile", userProfile);

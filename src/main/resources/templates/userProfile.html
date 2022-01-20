@@ -28,6 +28,38 @@
         </p>
     </div>
 </div>
+<div>
+    <h2>My Items</h2>
+    <div th:if="${itemOwner.getItems().isEmpty()}">
+        <p>There are no items yet. Post one now.</p>
+    </div>
+
+    <div th:each="item : ${items}">
+        <div th:if="${item.user.id == itemOwner.id}">
+            <h2><span th:text="${item.itemName}"></span></h2>
+            <p>Description: <span th:text="${item.itemDescription}"></span></p>
+            <p>Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
+            <p>User Zipcode: <span th:text="${item.user.zipcode}"></span></p>
+            <p>Condition: <span th:text="${item.itemCondition}"></span></p>
+            <p>$<span th:text="${item.price}"></span> per day</p>
+            <p>Posted by username: <span th:text="${item.user.username}"></span></p>
+            <p>Date posted:<span th:text="${item.datePosted}"></span></p>
+            <!--**IMAGE**-->
+            <img th:src="@{${item.photosImagePath}}" style="width: 150px"/>
+
+<!--            <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">-->
+<!--                <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>-->
+<!--            </form>-->
+            <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
+            <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>
+
+            <form class="m-1" th:action="@{/items/deleteitem}" method="POST">
+                <button class="btn btn-danger" type="submit" name="itemId" th:value="${item.id}">Delete Item</button>
+                <!--You must use th:value, not just value= -->
+            </form>
+        </div>
+    </div>
+</div>
 
 <script th:replace="partials :: scripts"/>
 </body>
