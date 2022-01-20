@@ -14,16 +14,11 @@
 
     <h3>Username:<span th:text="${user.username}"></span></h3>
     <form class="m-1" th:action="@{'/messages/' + ${user.id}}" method="GET">
-        <button type="submit" name="viewOneMessage" th:value="${user.id}">Message</button>
+        <button type="submit" name="writeOneMessage" th:value="${user.id}">Message</button>
     </form>
 
 </div>
-<div>
-    <h4>See messages here...</h4>
-    <div class="border border-info m-1 p-1" th:each="message : ${messages}">
-        <p><span th:text="${message.content}"></span></p>
-    </div>
-</div>
+
 
 </body>
 </html>
