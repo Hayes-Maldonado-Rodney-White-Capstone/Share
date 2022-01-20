@@ -52,6 +52,11 @@
 <!--            </form>-->
             <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
             <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>
+
+            <form class="m-1" th:action="@{/items/deleteitem}" method="POST">
+                <button class="btn btn-danger" type="submit" name="itemId" th:value="${item.id}">Delete Item</button>
+                <!--You must use th:value, not just value= -->
+            </form>
         </div>
     </div>
 </div>
