@@ -1,0 +1,22 @@
+/* NAVBAR SECTION */
+
+.navbar-section {
+    margin-bottom: 40px;
+}
+
+.navbar {
+    background-color: #1FC168 !important;
+}
+
+.nav-link {
+    color: #006366 !important;
+}
+
+.nav-link:hover {
+    color: black !important;
+}
+
+.navbar-logo {
+    width: 30px;
+    height: 35px;
+}

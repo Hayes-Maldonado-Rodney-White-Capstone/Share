@@ -1,11 +1,9 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials ::head(pageTitle='Profile Page')"></head>
 
-<head th:replace="partials :: head"/>
 <body>
-<nav th:replace="partials :: navbar"/>
-</br>
-
+<nav th:insert="partials :: navbar"></nav>
 
 <div sec:authorize="isAuthenticated()">
     <div th:object="${viewUser}">

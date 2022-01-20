@@ -6,13 +6,13 @@
     <!-- include stylesheets, etc here -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/homepage.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
 </head>
 <body>
 
 <!--  Navbar  -->
-<div class="size-wrapper" th:fragment="navbar">
+<div th:fragment="navbar">
     <section class="navbar-section">
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -31,14 +31,14 @@
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/items" th:href="@{/items}" aria-hidden="true">Borrow Catalog</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Reviews</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
                             <a class="nav-link" href="/login" th:href="@{/login}" aria-hidden="true"> Login
