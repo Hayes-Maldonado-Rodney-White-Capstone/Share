@@ -20,7 +20,7 @@ public class User {
     @Column(nullable = false, length = 255)
     private String lastName;
 
-    @Column (nullable = false, length = 255)
+    @Column (nullable = false, unique = true,  length = 255)
     private String username;
 
     @Column (nullable = false)
@@ -28,10 +28,10 @@ public class User {
     private String dateOfBirth;
 
 
-    @Column (nullable = false, length = 255)
+    @Column (nullable = false, unique = true, length = 255)
     private String email;
 
-    @Column (nullable = false, length = 255)
+    @Column (nullable = false, unique = true, length = 255)
     private String password;
 
     @Column (nullable = false)
@@ -135,6 +135,22 @@ public class User {
         this.zipcode = zipcode;
     }
 
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public void setSentMessages(List<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(List<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
+    }
+
     //    @ManyToOne
 //    @JoinColumn (name = "role_id")
 //    private User role;
@@ -168,6 +184,8 @@ public class User {
         this.state = state;
         this.zipcode = zipcode;
     }
+
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Item> items;

@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <head th:replace="partials::head"></head>
 </head>
 <body>
+<nav th:replace="partials :: navbar"/>
 
 <h1>Messaging: <span th:text="${user.username}"></span></h1>
-
+<div>
+    <form th:method="POST" th:action="@{'/messages/' +  ${otheruser.getId()}}" th:object="${userMessage}">
+        <label>
+            <textarea required cols="100" rows="5" th:field="*{content}"></textarea>
+        </label>
+        <button type="submit" class="btn btn-outline-success" >Send Message</button>
+    </form>
+</div>
 </body>
 </html>
