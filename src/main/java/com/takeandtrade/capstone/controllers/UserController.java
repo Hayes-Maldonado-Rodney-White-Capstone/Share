@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping("/registerForm")
     public String showSignupForm(@ModelAttribute User user) {
 
-        return "registerForm";
+        return "/users/registerForm";
     }
 
     @PostMapping("/registerForm")
@@ -51,7 +51,7 @@ public class UserController {
 //        User userProfile = userDao.getById(id);
 //        model.addAttribute("viewProfile", userProfile);
 
-        return "userProfile";
+        return "/users/userProfile";
     }
 
 
@@ -60,7 +60,7 @@ public class UserController {
     public String updateUser(Model model) {
         User updateUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", updateUser);
-        return "userEdit";
+        return "/users/userEdit";
 
     }
 
