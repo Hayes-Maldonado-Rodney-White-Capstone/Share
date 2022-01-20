@@ -14,6 +14,23 @@
     </label>
     <button type="submit" class="btn">Send Message</button>
 </form>
+<hr>
+
+<h4>Messages History</h4>
+<div th:each="message : ${messages}">
+    <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
+        <h3 style="color:darkgreen;"><span th:text="${message.content}"></span></h3>
+        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
+        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+    </div>
+
+    <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
+        <h3 style="color:darkred;"><span th:text="${message.content}"></span></h3>
+        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
+        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+    </div>
+</div>
+
 
 </body>
 </html>

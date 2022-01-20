@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class MessageController {
@@ -29,21 +30,28 @@ public class MessageController {
         model.addAttribute("users", userDao.findAll());
 
         //        model.addAttribute("items", itemDao.findAll());
-        model.addAttribute("messages", messageDao.findAll());
+//        model.addAttribute("messages", messageDao.findAll());
 
         return "messages/messagesindex";
     }
 
     @GetMapping("/messages/{receiverId}")
     public String writeOneMessage(Model model, @PathVariable long receiverId) {
+        //define the logged in user
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User sendingUser = userDao.getById(loggedInUser.getId());
+        model.addAttribute("loggedInUser", sendingUser);
 
-        User viewUser = userDao.getById(receiverId);
+        //when you click on the message button, it grabs the receipient's id.
+        User receivingUser = userDao.getById(receiverId);
+        model.addAttribute("receivingUser", receivingUser);
 
-        model.addAttribute("user", viewUser);
+        model.addAttribute("user", receivingUser);
         model.addAttribute("userMessage", new Message());
 
-        return "messages/writemessage";
+        model.addAttribute("messages", messageDao.findAll());
 
+        return "messages/writemessage";
     }
 
     @PostMapping("/messages/{receiverId}")
@@ -58,14 +66,14 @@ public class MessageController {
         userMessage.setSender(sendingUser);
         userMessage.setReceiver(receivingUser);
         System.out.println("post mapping sendingUser " + sendingUser.getUsername());
-        System.out.println("post mapping receivingUser " + receivingUser);
+        System.out.println("post mapping receivingUser " + receivingUser.getUsername());
 //        userMessage.setContent(userMessage.getContent());
         userMessage.setTimeSent(LocalDateTime.now());
 
         messageDao.save(userMessage);
 
-//        return "redirect:/messages/" + receiverId;
-        return "redirect:/messages/messagesindex";
+        return "redirect:/messages/" + receiverId;
+//        return "redirect:/messages/messagesindex";
 
 
     }
