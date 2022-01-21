@@ -44,7 +44,7 @@
                             <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Reviews</a>
+                            <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews</a>
                         </li>
                         <li>
                             <form th:action="@{/logout}" th:method="post">
