@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="partials ::head(pageTitle='Write a review')">
 </head>
 <body>
-
+<!--<nav th:replace="partials :: navbor"></nav>-->
+</br>
 <h1>You are writing a review on : <span th:text="${user.username}"></span></h1>
 
 <form th:method="POST" th:action="@{'/reviews/' +  ${user.getId()}}" th:object="${userReview}">
-    <label>
-        <textarea name="reviewTitle" th:field="*{reviewTitle}"></textarea>
+    <div class="form-group">
+    <label for="reviewTitle">Review Title</label>
+        <input type="text" class="form-contorl" name="reviewTitle" id="reviewTitle" th:field="*{reviewTitle}" required></input>
     </label>
+    </div>
+    <div class="form-group">
+        <label for="reviewBody">Review Body</label>
+        <input type="text" class="form-control" name="reviewBody" id="reviewBody" th:field="*{reviewBody}" required></input>
+    </label>
+    </div>
+    <div class="form-group">
+        <label for="rating-select">Rate this person. 1-he scum, 5-he da best</label>
+        <select class="form-control" th:field="*{rating}" id="rating-select" required>
+            <option th:each="rating : ${ratings}" th:value="${rating.id}"
+                    th:text="${rating.rating}"></option>
+        </select>
+    </div>
 
-    <label>
-        <textarea name="reviewBody" th:field="*{reviewBody}"></textarea>
-    </label>
-    <button type="submit" class="btn">Submit Review</button>
+    <button type="submit" class="btn btn-primary">Submit Review</button>
 </form>
 <hr>
 
@@ -25,18 +35,19 @@
     <div th:if="${review.consumer == loggedInUser && review.producer == producerUser}">
         <h3 style="color:darkgreen;"><span th:text="${review.reviewTitle}"></span></h3>
         <p style="color:darkgreen;"><span th:text="${review.reviewBody}"></span></p>
-        <p class="small">producer username: <span th:text="${review.producer.username}"></span></p>
-        <p class="small">consumer username: <span th:text="${review.consumer.username}"></span></p>
+        <p style="color:darkgreen;"><span th:text="${review.rating.rating}"></span></p>
+        <p class="small">You Reviewed: <span th:text="${review.producer.username}"></span></p>
+        <p class="small">Reviewer Username: <span th:text="${review.consumer.username}"></span></p>
     </div>
 
     <div th:if="${review.consumer == producerUser && review.producer == loggedInUser}">
         <h3 style="color:darkred;"><span th:text="${review.reviewTitle}"></span></h3>
         <p style="color:darkred;"><span th:text="${review.reviewBody}"></span></p>
-        <p class="small">producer username: <span th:text="${review.producer.username}"></span></p>
-        <p class="small">consumer username: <span th:text="${review.consumer.username}"></span></p>
+        <p class="small">You Reviewed: <span th:text="${review.producer.username}"></span></p>
+        <p class="small">Reviewer Username: <span th:text="${review.consumer.username}"></span></p>
     </div>
 </div>
 
-
+<script th:replace="partials :: scripts"/>
 </body>
 </html>
