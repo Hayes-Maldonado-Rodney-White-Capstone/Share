@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>You are writing a review on : <span th:text="${user.username}"></span></h1>
+
+<form th:method="POST" th:action="@{'/reviews/' +  ${user.getId()}}" th:object="${userReview}">
+    <label>
+        <textarea name="reviewTitle" th:field="*{reviewTitle}"></textarea>
+    </label>
+
+    <label>
+        <textarea name="reviewBody" th:field="*{reviewBody}"></textarea>
+    </label>
+    <button type="submit" class="btn">Submit Review</button>
+</form>
+<hr>
+
+<h4>Your Review History</h4>
+<div th:each="review : ${reviews}">
+    <div th:if="${review.consumer == loggedInUser && review.producer == producerUser}">
+        <h3 style="color:darkgreen;"><span th:text="${review.reviewTitle}"></span></h3>
+        <p style="color:darkgreen;"><span th:text="${review.reviewBody}"></span></p>
+        <p class="small">producer username: <span th:text="${review.producer.username}"></span></p>
+        <p class="small">consumer username: <span th:text="${review.consumer.username}"></span></p>
+    </div>
+
+    <div th:if="${review.consumer == producerUser && review.producer == loggedInUser}">
+        <h3 style="color:darkred;"><span th:text="${review.reviewTitle}"></span></h3>
+        <p style="color:darkred;"><span th:text="${review.reviewBody}"></span></p>
+        <p class="small">producer username: <span th:text="${review.producer.username}"></span></p>
+        <p class="small">consumer username: <span th:text="${review.consumer.username}"></span></p>
+    </div>
+</div>
+
+
+</body>
+</html>

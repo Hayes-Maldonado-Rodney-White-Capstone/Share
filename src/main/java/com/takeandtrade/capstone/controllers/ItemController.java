@@ -87,6 +87,9 @@ public class ItemController {
     @GetMapping("/items")
     public String viewItemsIndex(Model model) {
         model.addAttribute("items", itemDao.findAll());
+
+        List <Category> categoriesList = categoryDao.findAll();
+        model.addAttribute("categories", categoriesList);
         return "items/itemsindex";
     }
 
@@ -121,14 +124,12 @@ public class ItemController {
         itemDao.save(item);
         return "redirect:/items";
     }
-//
-//    //delete functionality--add a delete button in the show.html
-//    @PostMapping("/posts/index")
-//    public String deletePost(Long postId) {
-//        postRepository.deleteById(postId);
-//        return "redirect:/index";
-//    }
 
-
+    //delete functionality--add a delete button in the show.html the delete button is in the userProfile in the each loop
+    @PostMapping("/items/deleteitem")
+    public String deleteItem(Long itemId) {
+        itemDao.deleteById(itemId);
+        return "redirect:/userProfile";
+    }
 
 }

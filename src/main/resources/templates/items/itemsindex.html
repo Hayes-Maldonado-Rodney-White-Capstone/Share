@@ -15,32 +15,9 @@
 
 <h1>Here are all the Items.</h1>
 <p>this page is not done. Maybe a table would look better, or cards?</p>
-<div class="container mt-4">
     <div th:if="${items.isEmpty()}">
         <p>There are no items yet. Post one now.</p>
     </div>
-
-    <div class="border border-info m-1 p-1" th:each="item : ${items}">
-        <h2><span th:text="${item.itemName}"></span></h2>
-        <p>Description: <span th:text="${item.itemDescription}"></span></p>
-        <p>Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
-        <p>User Zipcode: <span th:text="${item.user.zipcode}"></span></p>
-        <p>Condition: <span th:text="${item.itemCondition}"></span></p>
-        <p>$<span th:text="${item.price}"></span> per day</p>
-        <p>Posted by username: <span th:text="${item.user.username}"></span></p>
-        <p>Date posted:<span th:text="${item.datePosted}"></span></p>
-        <!--**IMAGE**-->
-        <img th:src="@{${item.photosImagePath}}" style="width: 150px" />
-
-        <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
-            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>
-        </form>
-        <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
-        <!--adding this temporarily to test edit-->
-        <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>
-
-    </div>
-</div>
 
 <section class="card-section">
 
@@ -51,7 +28,7 @@
                 <img th:src="@{${item.photosImagePath}}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
                     <div class="tag-container">
-                        <button class="btn cat-btn"><span th:text="${item.itemCondition}"></span></button>
+                        <button class="btn cat-btn"><span th:text="${item.category.name}"></span></button>
                         <button class="btn con-btn"><span th:text="${item.itemCondition}"></span></button>
                         <button class="btn zip-btn"><span th:text="${item.user.zipcode}"></span></button>
                     </div>
@@ -63,7 +40,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 </section>

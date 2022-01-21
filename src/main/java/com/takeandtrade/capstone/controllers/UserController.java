@@ -1,6 +1,7 @@
 package com.takeandtrade.capstone.controllers;
 
 import com.takeandtrade.capstone.models.User;
+import com.takeandtrade.capstone.repositories.ItemRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,19 +14,21 @@ public class UserController {
 
     private final UserRepository userDao;
     private PasswordEncoder passwordEncoder;
+    private final ItemRepository itemDao;
 
 
     public UserController(UserRepository userDao,
-                          PasswordEncoder passwordEncoder) {
+                          PasswordEncoder passwordEncoder, ItemRepository itemDao) {
 
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.itemDao = itemDao;
     }
 
     @GetMapping("/registerForm")
     public String showSignupForm(@ModelAttribute User user) {
 
-        return "registerForm";
+        return "/users/registerForm";
     }
 
     @PostMapping("/registerForm")
@@ -36,16 +39,28 @@ public class UserController {
         return "redirect:/homepage";
     }
 
+    @GetMapping("/viewPosterProfile/{posterId}")
+    public String showPosterProfile(Model model, @PathVariable Long posterId){
+                User poster = userDao.getById(posterId);
+
+                model.addAttribute("userItems",poster.getItems());
+                model.addAttribute("reviews", poster.getWrittenReviews());
+        return "/users/viewPosterProfile";
+    }
+
     @GetMapping("/userProfile")
     public String userHome(Model model) {
         User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User itemOwner = userDao.getById(loggedinUser.getId());
+        model.addAttribute("itemOwner", itemOwner);
 
         model.addAttribute("viewUser", loggedinUser);
+        model.addAttribute("items", itemDao.findAll());
 
 //        User userProfile = userDao.getById(id);
 //        model.addAttribute("viewProfile", userProfile);
 
-        return "userProfile";
+        return "/users/userProfile";
     }
 
 
@@ -54,7 +69,7 @@ public class UserController {
     public String updateUser(Model model) {
         User updateUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", updateUser);
-        return "userEdit";
+        return "/users/userEdit";
 
     }
 

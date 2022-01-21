@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials ::head(pageTitle='Profile Page')"></head>
+
+<body>
+<nav th:insert="partials :: navbar"></nav>
+<div class="container">
+    <div sec:authorize="isAuthenticated()">
+        <div th:object="${viewUser}">
+            </br>
+            <!--        <dev th:object="${#authentication.firstName}">-->
+            <h1>Welcome back, <span th:text="${viewUser.firstName}"></span></h1>
+            <br/>
+
+            User ID: <span th:text="${#authentication.principal.id}"/>
+            </br>
+            Username: <span th:text="${#authentication.principal.username}"/>
+            </br>
+            Email: <span th:text="${#authentication.principal.email}"/>
+            </br>
+            First Name: <span th:text="${#authentication.principal.firstName}"></span>
+            </br>
+            Last Name: <span th:text="${#authentication.principal.lastName}"></span>
+            <p>
+
+                <a href="/userEdit" th:href="@{/userEdit}" class="btn btn-success top-btns">Edit Profile</a>
+            </p>
+        </div>
+    </div>
+    <div>
+        <h2>My Items</h2>
+        <div th:if="${itemOwner.getItems().isEmpty()}">
+            <p>There are no items yet. Post one now.</p>
+
+        </div>
+        <form th:action="@{/items/create}" method="get">
+            <button type="submit" class="btn btn-success">Post an Item, make some money</button>
+        </form>
+        <div th:each="item : ${items}">
+            <div th:if="${item.user.id == itemOwner.id}">
+                <h2><span th:text="${item.itemName}"></span></h2>
+                <p>Description: <span th:text="${item.itemDescription}"></span></p>
+                <p>Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
+                <p>User Zipcode: <span th:text="${item.user.zipcode}"></span></p>
+                <p>Condition: <span th:text="${item.itemCondition}"></span></p>
+                <p>$<span th:text="${item.price}"></span> per day</p>
+                <p>Posted by username: <span th:text="${item.user.username}"></span></p>
+                <p>Date posted:<span th:text="${item.datePosted}"></span></p>
+                <!--**IMAGE**-->
+                <img th:src="@{${item.photosImagePath}}" style="width: 150px"/>
+
+                <form th:action="@{'/edit/' + ${item.id}}" method="GET">
+                    <button class="btn btn-warning" type="submit">Edit Item</button>
+                </form>
+                <!--if we want to use a link instead of button, here's the <a href-->
+                <!--                <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>-->
+                <form class="m-1" th:action="@{/items/deleteitem}" method="POST">
+                    <button class="btn btn-danger" type="submit" name="itemId" th:value="${item.id}">Delete Item
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:replace="partials :: scripts"/>
+</body>

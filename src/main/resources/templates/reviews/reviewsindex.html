@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Index</title>
+</head>
+<body>
+<nav th:insert="partials :: navbar"></nav>
+
+<h1>Review Index</h1>
+
+<h3>Here are the users you can review:</h3>
+
+<div th:each="user:${users}">
+
+    <h3>Username:<span th:text="${user.username}"></span></h3>
+    /reviews/{producer_id}
+    <form class="m-1" th:action="@{'/reviews/' + ${producer.id}}" method="GET">
+        <button type="submit" name="writeOneMessage" th:value="${user.id}">Message</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>

@@ -1,10 +1,12 @@
 .card-section {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px;
 }
 
 
 .card {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-image: url("https://i.postimg.cc/4NZywq0S/green-slant.png");
     background-size: 100%, 400px;
     background-repeat: no-repeat;
