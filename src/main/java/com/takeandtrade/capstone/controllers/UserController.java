@@ -40,9 +40,9 @@ public class UserController {
     }
 
     @GetMapping("/viewPosterProfile/{posterId}")
-    public String showPosterProfile(Model model,@PathVariable long posterId){
+    public String showPosterProfile(Model model, @PathVariable Long posterId){
                 User poster = userDao.getById(posterId);
-
+                model.addAttribute("poster", poster);
                 model.addAttribute("userItems",poster.getItems());
                 model.addAttribute("reviews", poster.getWrittenReviews());
         return "/users/viewPosterProfile";
