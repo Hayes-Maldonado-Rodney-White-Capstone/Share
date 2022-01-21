@@ -29,3 +29,8 @@
     font-family: 'Roboto', serif;
 }
 
+.error {
+    font-family: 'Roboto', serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
