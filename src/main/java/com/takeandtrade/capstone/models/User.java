@@ -182,6 +182,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
     private List<Review> reviewed;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "role")
+    private List<Role> roles;
+
     public List<Message> getSentMessages() {
         return sentMessages;
     }
