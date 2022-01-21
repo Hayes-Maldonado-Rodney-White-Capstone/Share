@@ -10,6 +10,7 @@
 
 .nav-link {
     color: #006366 !important;
+    font-family: 'Roboto', serif !important;
 }
 
 .nav-link:hover {
