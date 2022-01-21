@@ -29,3 +29,14 @@
     font-family: 'Roboto', serif;
 }
 
+.error {
+    font-family: 'Roboto', serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.register {
+    margin-top: 6px;
+    margin-bottom: 3px;
+    font-family: 'Roboto', serif;
+}
