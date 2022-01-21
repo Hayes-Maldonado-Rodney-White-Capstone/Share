@@ -2,6 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials ::head(pageTitle='Item Index')"></head>
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="../static/css/itemsindex.css" th:href="@{/css/itemsindex.css}">
+
 <body>
 <nav th:insert="partials :: navbar"></nav>
 
@@ -33,6 +41,38 @@
 
     </div>
 </div>
+
+<div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+            <img src="https://media.istockphoto.com/photos/picture-frame-isolated-on-white-picture-id182177931?b=1&k=20&m=182177931&s=170667a&w=0&h=5sBtit9b1_dKsZuyZFLxCX_0j8KuN2ZxpnkGgnbHOt4=" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h3 class="card-title">Card Title</h3>
+                <button class="btn cat-btn">Category</button>
+                <button class="btn des-btn">Description</button>
+                <button class="btn zip-btn">Zipcode</button>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Price</p>
+                <button class="btn btn-primary">View Item</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+            <img src="https://media.istockphoto.com/photos/picture-frame-isolated-on-white-picture-id182177931?b=1&k=20&m=182177931&s=170667a&w=0&h=5sBtit9b1_dKsZuyZFLxCX_0j8KuN2ZxpnkGgnbHOt4=" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h3 class="card-title">Card Title</h3>
+                <button class="btn">Category</button>
+                <button class="btn">Description</button>
+                <button class="btn">Zipcode</button>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Price</p>
+                <button class="btn btn-primary">View Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 </body>
