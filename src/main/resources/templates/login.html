@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials::head"/>
+
+<head>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/login.css" th:href="@{/css/login.css}">
+
+</head>
+
 <body>
 <nav th:replace="partials :: navbar"/>
-</br>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-  Invalid Username and Password.
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-md-flex col-md-6 col-lg-7 bg-image"></div>
+    <div class="col-md-6 col-lg-5">
+      <div class="login d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-8 mx-auto form-background">
+              <h3 class="login-title mb-4">Sign in</h3>
+
+              <!-- Sign In Form -->
+              <form th:action="@{/login}" method="post">
+                <div class="form-floating mb-3">
+                  <label class="form-title" for="username">Username</label>
+                  <input name="username" type="text" class="form-control form-mini" id="username" placeholder="Username">
+                </div>
+                <div class="form-floating mb-3">
+                  <label class="form-title" for="password">Password</label>
+                  <input name="password" type="password" class="form-control form-mini" id="password" placeholder="Password">
+                </div>
+
+                <div class="d-grid">
+                  <button class="btn btn-md btn-success btn-login mb-2" type="submit">Sign in</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<form th:action="@{/login}" method="post">
-  <label for="username">Username</label>
-  <input id="username" name="username" type="text" />
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password" />
-  <input type="submit" value="Log In" />
-</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script th:replace="partials :: scripts"/>
 </body>
 </html>
