@@ -32,7 +32,6 @@
         <h2>My Items</h2>
         <div th:if="${itemOwner.getItems().isEmpty()}">
             <p>There are no items yet. Post one now.</p>
-
         </div>
         <form th:action="@{/items/create}" method="get">
             <button type="submit" class="btn btn-success">Post an Item, make some money</button>

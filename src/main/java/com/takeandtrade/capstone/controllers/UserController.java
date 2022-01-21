@@ -1,7 +1,11 @@
 package com.takeandtrade.capstone.controllers;
 
+import com.takeandtrade.capstone.models.Rating;
+import com.takeandtrade.capstone.models.Review;
 import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.ItemRepository;
+import com.takeandtrade.capstone.repositories.RatingRepository;
+import com.takeandtrade.capstone.repositories.ReviewRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,20 +13,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
     private final UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private final ItemRepository itemDao;
+    private final ReviewRepository reviewDao;
+    private final RatingRepository ratingDao;
 
 
     public UserController(UserRepository userDao,
-                          PasswordEncoder passwordEncoder, ItemRepository itemDao) {
+                          PasswordEncoder passwordEncoder, ItemRepository itemDao, ReviewRepository reviewDao, RatingRepository ratingDao) {
 
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.itemDao = itemDao;
+        this.reviewDao = reviewDao;
+        this.ratingDao = ratingDao;
+
     }
 
     @GetMapping("/registerForm")
@@ -111,10 +122,25 @@ public class UserController {
         return "redirect:/homepage";
     }
 
-    @GetMapping("/myReviews")
-    public String showMyReviews(@ModelAttribute User user) {
+    @GetMapping("/myReviews/{userId}")
+    public String showMyReviews(Model model, @PathVariable long userId) {
 
-        return "/users/myReviews";
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User consumerUser = userDao.getById(loggedInUser.getId());//user that is writing the review on the item they borrowed
+        model.addAttribute("loggedInUser", consumerUser);
+
+        User producerUser = userDao.getById(userId);//
+        model.addAttribute("producerUser", producerUser );
+
+        model.addAttribute("user", producerUser);
+        model.addAttribute("userReview", new Review());
+
+        model.addAttribute("reviews", reviewDao.findAll());
+
+        List<Rating> ratingList = ratingDao.findAll();
+        model.addAttribute("ratings", ratingList);
+
+        return "users/myReviews";
     }
 
 

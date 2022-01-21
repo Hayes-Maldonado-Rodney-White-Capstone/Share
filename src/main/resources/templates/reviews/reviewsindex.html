@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials :: head"/>
     <meta charset="UTF-8">
     <title>Message Index</title>
 </head>
 <body>
-<nav th:insert="partials :: navbar"></nav>
+<nav th:replace="partials :: navbar"></nav>
 
 <h1>Review Index</h1>
 
@@ -21,6 +21,6 @@
 
 </div>
 
-
+<script th:replace="partials :: scripts"/>
 </body>
 </html>
