@@ -1,0 +1,31 @@
+.login {
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url('https://i.postimg.cc/2jqHP067/login-image.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-title {
+    font-family: 'Roboto Slab', serif;
+    color: #008a4c;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.form-title {
+    font-family: 'Roboto Slab', serif;
+    color: #006366;
+}
+
+.form-mini {
+    font-family: 'Roboto', serif;
+}
+
+.btn-login {
+    font-family: 'Roboto', serif;
+}
+
