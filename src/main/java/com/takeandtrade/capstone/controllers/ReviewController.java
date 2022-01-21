@@ -1,8 +1,6 @@
 package com.takeandtrade.capstone.controllers;
 
-import com.takeandtrade.capstone.models.Message;
-import com.takeandtrade.capstone.models.Review;
-import com.takeandtrade.capstone.models.User;
+import com.takeandtrade.capstone.models.*;
 import com.takeandtrade.capstone.repositories.RatingRepository;
 import com.takeandtrade.capstone.repositories.ReviewRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ReviewController {
@@ -41,6 +41,9 @@ public class ReviewController {
         model.addAttribute("userReview", new Review());
 
         model.addAttribute("reviews", reviewDao.findAll());
+
+        List<Rating> ratingList = ratingDao.findAll();
+        model.addAttribute("ratings", ratingList);
 
         return "reviews/writereview";
     }
