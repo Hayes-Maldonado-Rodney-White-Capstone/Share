@@ -18,7 +18,7 @@
     <img th:src="@{${item.photosImagePath}}" style="width: 250px" />
 
 </div>
-<form th:action="@{'/viewPosterProfile/' + ${posterId}}" method="GET">
+<form th:action="@{'/viewPosterProfile/' + ${item.getUser().getId()}}" method="GET">
     <button type="submit" class="btn btn-primary" > View poster's profile </button>
 </form>
 <script th:insert="partials :: scripts"></script>
