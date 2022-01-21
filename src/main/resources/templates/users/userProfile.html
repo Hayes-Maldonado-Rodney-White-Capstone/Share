@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials ::head(pageTitle='Profile Page')"></head>
 
 <body>
@@ -32,8 +33,12 @@
     <h2>My Items</h2>
     <div th:if="${itemOwner.getItems().isEmpty()}">
         <p>There are no items yet. Post one now.</p>
-    </div>
 
+    </div>
+<form th:action="@{/items/create}" method="get">
+    <button type="submit" class="btn btn-success">Post an Item, make some money</button>
+
+</form>
     <div th:each="item : ${items}">
         <div th:if="${item.user.id == itemOwner.id}">
             <h2><span th:text="${item.itemName}"></span></h2>
@@ -57,6 +62,7 @@
                 <button class="btn btn-danger" type="submit" name="itemId" th:value="${item.id}">Delete Item</button>
                 <!--You must use th:value, not just value= -->
             </form>
+
         </div>
     </div>
 </div>
