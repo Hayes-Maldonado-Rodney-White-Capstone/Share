@@ -35,7 +35,7 @@
             </div>
             <div class="img-overlay" th:if="${#authorization.expression('!isAuthenticated()')}">
                 <a href="/registerForm" th:action="@{/registerForm}"  aria-hidden="true" class="btn btn-success top-btns">Register</a>
-                <a href="/login" th:href="@{/login}" areia-hidden="true" class="btn btn-success top-btns">Login</a>
+                <a href="/login" th:href="@{/login}" aria-hidden="true" class="btn btn-success top-btns">Login</a>
             </div>
 
 
