@@ -182,7 +182,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
     private List<Review> reviewed;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "role")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Role> roles;
 
     public List<Message> getSentMessages() {
@@ -226,5 +226,13 @@ public class User {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

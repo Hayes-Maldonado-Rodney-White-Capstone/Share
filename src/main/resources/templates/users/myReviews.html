@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials :: head">
     <meta charset="UTF-8">
     <title>My Reviews</title>
 </head>
 <body>
-<nav th:insert="partials :: navbar"></nav>
-
-<h2>My Reviews</h2>
-
+<nav th:replace="partials :: navbar"></nav>
+<br>
+<h2>My Reviews History</h2>
+<div th:if="${producerUser.getWrittenReviews().isEmpty()}">
+    <p>You don't have any reviews yet.</p>
+</div>
+<div th:each="review : ${producerUser.getWrittenReviews()}">
+    <p><span th:text="${review.reviewTitle}"></span></p>
+    <p><span th:text="${review.reviewBody}"></span></p>
+    <p><span th:text="${review.rating.rating}"></span></p>
+</div>
+<script th:replace="partials  :: scripts"/>
 </body>
 </html>
