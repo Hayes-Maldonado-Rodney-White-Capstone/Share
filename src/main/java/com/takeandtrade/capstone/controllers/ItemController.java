@@ -87,6 +87,9 @@ public class ItemController {
     @GetMapping("/items")
     public String viewItemsIndex(Model model) {
         model.addAttribute("items", itemDao.findAll());
+
+        List <Category> categoriesList = categoryDao.findAll();
+        model.addAttribute("categories", categoriesList);
         return "items/itemsindex";
     }
 

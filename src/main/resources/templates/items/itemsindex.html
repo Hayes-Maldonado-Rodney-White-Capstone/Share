@@ -2,37 +2,49 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials ::head(pageTitle='Item Index')"></head>
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="../static/css/itemsindex.css" th:href="@{/css/itemsindex.css}">
+
 <body>
 <nav th:insert="partials :: navbar"></nav>
 
 <h1>Here are all the Items.</h1>
 <p>this page is not done. Maybe a table would look better, or cards?</p>
-<div class="container mt-4">
     <div th:if="${items.isEmpty()}">
         <p>There are no items yet. Post one now.</p>
     </div>
 
-    <div class="border border-info m-1 p-1" th:each="item : ${items}">
-        <h2><span th:text="${item.itemName}"></span></h2>
-        <p>Description: <span th:text="${item.itemDescription}"></span></p>
-        <p>Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
-        <p>User Zipcode: <span th:text="${item.user.zipcode}"></span></p>
-        <p>Condition: <span th:text="${item.itemCondition}"></span></p>
-        <p>$<span th:text="${item.price}"></span> per day</p>
-        <p>Posted by username: <span th:text="${item.user.username}"></span></p>
-        <p>Date posted:<span th:text="${item.datePosted}"></span></p>
-        <!--**IMAGE**-->
-        <img th:src="@{${item.photosImagePath}}" style="width: 150px" />
+<section class="card-section">
 
-        <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
-            <button type="submit" name="viewOnePost" th:value="${item.id}">View This Item</button>
-        </form>
-        <!-- or if we want to use a link instead of button like this <a th:href="@{/posts/{postId}(postId=${post.id})}">View post</a>-->
-        <!--adding this temporarily to test edit-->
-<!--        <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>  we do not want this here, we will edit from the userProfile so the user can edit their own item-->
-
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" th:each="item : ${items}">
+            <div class="card text-center">
+                <h3 class="card-title"><span th:text="${item.itemName}"></span></h3>
+                <img th:src="@{${item.photosImagePath}}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <div class="tag-container">
+                        <button class="btn cat-btn"><span th:text="${item.category.name}"></span></button>
+                        <button class="btn con-btn"><span th:text="${item.itemCondition}"></span></button>
+                        <button class="btn zip-btn"><span th:text="${item.user.zipcode}"></span></button>
+                    </div>
+                    <p class="card-text"><span th:text="${item.itemDescription}"></span></p>
+                    <p class="card-price">$<span th:text="${item.price}"></span> per day</p>
+                    <form class="m-1" th:action="@{'/items/' + ${item.id}}" method="GET">
+                    <button class="btn btn-success" name="viewOnePost" th:value="${item.id}">View Item</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+</section>
+
+
 
 
 </body>
