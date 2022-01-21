@@ -11,38 +11,38 @@
         <!--date posted will be automatically be created when the user submits the form?-->
         <div class="form-group">
             <label for="itemName">Name of Item</label>
-            <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}">
+            <input type="text" class="form-control" id="itemName" name="itemName" th:field="*{itemName}" required>
         </div>
         <div class="form-group">
             <label for="itemDescription">Description</label>
             <input type="text" class="form-control" id="itemDescription" name="itemDescription"
-                   th:field="*{itemDescription}">
+                   th:field="*{itemDescription}" required>
         </div>
         <label>Condition</label>
         <div class="form-check">
             <label class="form-check-label" for="Excellent">
                 <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition"
                        id="Excellent"
-                       value="Excellent">
+                       value="Excellent" required>
                 Excellent
             </label>
         </div>
         <div class="form-check">
             <label class="form-check-label" for="Good">
                 <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Good"
-                       value="Good"> Good
+                       value="Good" required> Good
             </label>
         </div>
         <div class="form-check">
             <label class="form-check-label" for="Fair">
                 <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Fair"
-                       value="Fair"> Fair
+                       value="Fair" required> Fair
             </label>
         </div>
         <div class="form-check">
             <label class="form-check-label" for="Poor">
                 <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Poor"
-                       value="Poor"> Poor
+                       value="Poor" required> Poor
             </label>
         </div>
         <div class="form-group">
@@ -53,21 +53,21 @@
         <!--** IMAGE **-->
         <div class="form-group">
             <label for="images">Image</label>
-            <input type="file" class="form-control" id="images" name="images" accept="image/png, image/jpeg"> <!--th:field="*{image}" this th:field was causing the error message-->
+            <input type="file" class="form-control" id="images" name="images" accept="image/png, image/jpeg" required> <!--th:field="*{image}" this th:field was causing the error message-->
         </div>
         <div><img id="thumbnail" alt="Image Preview"></div>
 
         <label>Is the item available now?</label>
-        <div class="form-check">
+        <div class="form-check" >
             <label class="form-check-label" for="yes">
                 <input type="radio" class="form-check-input" value="1" id="yes" name="yes" th:field="*{availability}"
-                       checked="checked">
+                       checked="checked" required>
                 Yes</label>
         </div>
         <div class="form-check">
             <label class="form-check-label" for="no">
                 <input type="radio" class="form-check-input" value="0" id="no" name="no"
-                       th:field="*{availability}">No</label>
+                       th:field="*{availability}" required>No</label>
         </div>
 
         <div class="form-group">
@@ -78,7 +78,7 @@
 
         <div class="form-group">
             <label for="category-select">Select one category:</label>
-            <select class="form-control" th:field="*{category}" id="category-select">
+            <select class="form-control" th:field="*{category}" id="category-select" required>
                 <option th:each="category : ${categories}" th:value="${category.id}"
                         th:text="${category.name}"></option>
             </select>

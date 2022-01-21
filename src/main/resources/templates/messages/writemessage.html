@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<nav th:replace="partials :: navbar"/>
 <h1>You are sending a message to: <span th:text="${user.username}"></span></h1>
 
 <form th:method="POST" th:action="@{'/messages/' +  ${user.getId()}}" th:object="${userMessage}">
@@ -31,6 +31,6 @@
     </div>
 </div>
 
-
+<script th:replace="partials :: scripts"/>
 </body>
 </html>
