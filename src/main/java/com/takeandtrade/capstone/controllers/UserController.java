@@ -111,6 +111,12 @@ public class UserController {
         return "redirect:/homepage";
     }
 
+    @GetMapping("/myReviews")
+    public String showMyReviews(@ModelAttribute User user) {
+
+        return "/users/myReviews";
+    }
+
 
 }
 
