@@ -1,5 +1,26 @@
+/* TOP SECTION */
+
+.catalog-img {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 1800px;
+    height: 1600px;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 250px;
+    text-align: center;
+    margin-top: 450px;
+}
+
+/* CARD SECTION */
+
 .card-section {
-    margin: 50px;
+    margin: -400px 50px 50px;
 }
 
 
@@ -60,4 +81,62 @@
 .tag-container {
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+/* RESPONSIVENESS */
+
+/* Extra Large -> Large */
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+
+    .catalog-img {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 1400px;
+        height: 1200px;
+    }
+
+    .img-overlay {
+        position: absolute;
+        top: -70px;
+        bottom: 0;
+        left: 170px;
+        text-align: center;
+        margin-top: 450px;
+    }
+
+
+    .card-section {
+        margin: -300px 50px 50px;
+    }
+
+}
+
+/* Large -> Medium */
+
+@media (min-width: 780px) and (max-width: 1000px) {
+
+    .catalog-img {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 1000px;
+        height: 900px;
+    }
+
+    .img-overlay {
+        position: absolute;
+        top: -70px;
+        bottom: 0;
+        left: 160px;
+        text-align: center;
+        margin-top: 350px;
+    }
+
+
+    .card-section {
+        margin: -200px 50px 50px;
+    }
+
 }
