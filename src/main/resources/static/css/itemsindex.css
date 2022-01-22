@@ -80,7 +80,6 @@ body {
 
 .cat-btn-text {
     font-size: 15px;
-    margin-left: 5px;
 }
 
 .con-btn {
@@ -107,8 +106,15 @@ body {
 .cat-icon {
     width: 35px;
     height: 35px;
-    margin-left: 10px;
+    margin-left: -7px;
 }
+
+.loc-icon {
+    width: 35px;
+    height: 35px;
+    margin-left: -10px;
+}
+
 
 /* RESPONSIVENESS */
 

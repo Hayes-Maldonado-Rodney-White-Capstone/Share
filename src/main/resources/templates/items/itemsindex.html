@@ -43,23 +43,27 @@
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" th:each="item : ${items}">
             <div class="card text-center">
-                <div th:if="${item.category.name == 'Electronics'}"><p>IT WORKS!</p></div>
                 <h3 class="card-title"><span th:text="${item.itemName}"></span></h3>
                 <img th:src="@{${item.photosImagePath}}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
                     <div class="tag-container">
 
-                        <button th:if="${item.category.name == 'Automotive'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-automotive.png" th:src="@{images/itemsindex-images/cat-automotive.png}"></button>
-                        <button th:if="${item.category.name == 'Electronics'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-electronics.png" th:src="@{images/itemsindex-images/cat-electronics.png}"></button>
-                        <button th:if="${item.category.name == 'Fashion'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-fashion.png" th:src="@{images/itemsindex-images/cat-fashion.png}"></button>
-                        <button th:if="${item.category.name == 'Home and Garden'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-home-and-garden.png" th:src="@{images/itemsindex-images/cat-home-and-garden.png}"></button>
-                        <button th:if="${item.category.name == 'Sporting Goods'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-sporting-goods.png" th:src="@{images/itemsindex-images/cat-sporting-goods.png}"></button>
-                        <button th:if="${item.category.name == 'Toys and Hobbies'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-toys-and-hobbies.png" th:src="@{images/itemsindex-images/cat-toys-and-hobbies.png}"></button>
-                        <button th:if="${item.category.name == 'Other'}" class="btn cat-btn"><span class="cat-btn-text" th:text="${item.category.name}"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-other.png" th:src="@{images/itemsindex-images/cat-other.png}"></button>
+                        <button th:if="${item.category.name == 'Automotive'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-automotive.png" th:src="@{images/itemsindex-images/cat-automotive.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Electronics'}" class="btn cat-btn"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-electronics.png" th:src="@{images/itemsindex-images/cat-electronics.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Fashion'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-fashion.png" th:src="@{images/itemsindex-images/cat-fashion.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Home and Garden'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-home-and-garden.png" th:src="@{images/itemsindex-images/cat-home-and-garden.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Sporting Goods'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-sporting-goods.png" th:src="@{images/itemsindex-images/cat-sporting-goods.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Toys and Hobbies'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-toys-and-hobbies.png" th:src="@{images/itemsindex-images/cat-toys-and-hobbies.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Other'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-other.png" th:src="@{images/itemsindex-images/cat-other.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
 
 
-                        <button class="btn con-btn"><span th:text="${item.itemCondition}"></span></button>
-                        <button class="btn zip-btn"><span th:text="${item.user.zipcode}"></span></button>
+                        <button th:if="${item.itemCondition == 'Excellent'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/excellent.png" th:src="@{images/itemsindex-images/excellent.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+                        <button th:if="${item.itemCondition == 'Good'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/good.png" th:src="@{images/itemsindex-images/good.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+                        <button th:if="${item.itemCondition == 'Fair'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/fair.png" th:src="@{images/itemsindex-images/fair.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+                        <button th:if="${item.itemCondition == 'Poor'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/poor.png" th:src="@{images/itemsindex-images/poor.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+
+
+                        <button class="btn zip-btn"><img class="loc-icon" src="../static/images/itemsindex-images/location.png" th:src="@{images/itemsindex-images/location.png}"><span th:text="${item.user.zipcode}"></span></button>
                     </div>
                     <p class="card-text"><span th:text="${item.itemDescription}"></span></p>
                     <p class="card-price">$<span th:text="${item.price}"></span> per day</p>
