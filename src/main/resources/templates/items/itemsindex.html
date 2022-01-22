@@ -13,8 +13,27 @@
 <body>
 <nav th:insert="partials :: navbar"></nav>
 
-<h1>Here are all the Items.</h1>
-<p>this page is not done. Maybe a table would look better, or cards?</p>
+<section class="top-section">
+
+
+<div class="flex-container img-container">
+    <div class="row d-flex justify-content-center">
+
+        <div class="img-wrapper">
+
+            <img class="catalog-img" src="../static/images/itemsindex-images/catalog.png" th:src="@{images/itemsindex-images/catalog.png}" alt="Homepage">
+
+        </div>
+                <div class="col-md-8 img-overlay">
+                    <div class="input-group mb-3"> <input type="text" class="form-control input-text" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append"> <button class="btn btn-success btn-lg" type="button">Search</button></div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+</section>
+
     <div th:if="${items.isEmpty()}">
         <p>There are no items yet. Post one now.</p>
     </div>
@@ -22,7 +41,7 @@
 <section class="card-section">
 
     <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" th:each="item : ${items}">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" th:each="item : ${items}">
             <div class="card text-center">
                 <h3 class="card-title"><span th:text="${item.itemName}"></span></h3>
                 <img th:src="@{${item.photosImagePath}}" class="card-img-top" alt="...">
