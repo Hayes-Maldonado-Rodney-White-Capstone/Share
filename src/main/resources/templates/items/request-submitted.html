@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials ::head(pageTitle='Request Submitted!')"></head>
+<body>
+<nav th:insert="partials :: navbar"></nav>
+<div class="container">
+    <h2>Your request was submitted!</h2>
+    <p>The request and approval process is not yet functional. Please reach out to the other user directly to inquire about borrowing their item. Thank you.</p>
+</div>
+<!--<div>-->
+<!--    <p>The request id number is: <span th:text="${viewRequest.id}"></span></p>-->
+<!--    <p>You requested to start/pick up the item on: <span th:text="${viewRequest.getBeginDate()}"></span></p>-->
+<!--    <p>You requested to return the item to the owner on: <span th:text="${viewRequest.getDueDate()}"></span></p>-->
+<!--</div>-->
+
+</body>
+</html>
