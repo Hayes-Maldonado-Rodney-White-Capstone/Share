@@ -2,6 +2,11 @@
     margin-top: 80px;
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: none !important;
+}
+
 .card-size {
     width: 1400px;
     height: 800px;
@@ -63,13 +68,17 @@
 }
 
 .price-text {
-    margin-top: -65px;
+    margin-top: -25px;
     margin-left: 26px;
 }
 
 .my-btn {
-    margin-top: -118px;
+    margin-top: -25px;
     margin-right: 40px;
+}
+
+.view-btn {
+    margin-left: 90px;
 }
 
 
