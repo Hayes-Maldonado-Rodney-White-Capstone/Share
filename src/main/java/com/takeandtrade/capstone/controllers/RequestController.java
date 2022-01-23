@@ -53,16 +53,18 @@ public class RequestController {
         System.out.println("who's making the request " + itemBorrower.getUsername());
         Item requestedItem = itemDao.getById(itemId);
         model.addAttribute(itemId);
+        request.setItemReq(requestedItem); //this is what is setting the FK in the request table.
 
         model.addAttribute("request", request);
+
+        //find all requests for that approver so we can show them on the page?
+        //        model.addAttribute("messages", messageDao.findAll());
+        model.addAttribute("allmyrequests", requestDao.findAll());
 
         //what should happen when someone submits the request form.
         //we should set approver1 to be the string person who posted the item
         request.setApprover1(requestedItem.getUser().getUsername());
         System.out.println("set approver to " + requestedItem.getUser().getUsername());
-        //set the status to Pending?
-//        request.setStatus("PENDING");
-//        System.out.println("status " + request.getStatus());
 
         //save the info to the db
         requestDao.save(request);
