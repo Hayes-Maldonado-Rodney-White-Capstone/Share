@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -33,7 +34,7 @@ public class Item {
     private double price;  //in mysql this can be DECIMAL(6,2) which allows prices up to 9999.99
 
     @Column(nullable = false)
-    private String image;   //in mySQL this will be a BLOB. I need to research whether it should be a String here.
+    private String image;   //string because we are saving the name here
 
     @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
     private boolean availability;
@@ -54,11 +55,14 @@ public class Item {
     @JoinColumn(name = "user_id")  //this should create a FK in the Item table
     private User user;
 
-    //many-to-many between Item and Request
-    @ManyToMany
-    @JoinTable(name = "item_request", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
-    private Collection<Request> requests;
+    //many-to-many between Item and Request--I don't think this is correct...adding a one to many, one user can make many requests
+//    @ManyToMany
+//    @JoinTable(name = "item_request", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
+//    private Collection<Request> requests;
 
+    //one item can have many requests?
+    @OneToMany(mappedBy = "itemReq")
+    List<Request> requests;
 
     //default constructor
     public Item() {
@@ -176,11 +180,11 @@ public class Item {
         this.category = category;
     }
 
-    public Collection<Request> getRequests() {
+    public List<Request> getRequests() {
         return requests;
     }
 
-    public void setRequests(Collection<Request> requests) {
+    public void setRequests(List<Request> requests) {
         this.requests = requests;
     }
 
