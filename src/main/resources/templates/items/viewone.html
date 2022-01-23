@@ -14,93 +14,124 @@
 
 <section class="card-section">
 
-<div class="flex-container">
-    <div class="row no-gutters justify-content-center">
-        <div class="col-lg-12">
+    <div class="flex-container">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-lg-12">
 
-            <div class="card mb-3 card-size">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img class="card-img card-image" th:src="@{${item.photosImagePath}}" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><span th:text="${item.itemName}"></span></h5>
-                            <p class="card-mini-text text-muted">Posted on: <span th:text="${item.datePosted}"></span></p>
-                            <p class="card-text-2"><img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
-                            <form th:action="@{'/viewPosterProfile/' + ${item.getUser().getId()}}" method="GET">
-                                <button class="view-btn btn btn-secondary btn-sm" type="submit"> View poster's profile </button>
-                            </form>
-                            <p class="card-text">Description: <span th:text="${item.itemDescription}"></span></p>
-                            <p class="card-text">Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
+                <div class="card mb-3 card-size">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img class="card-img card-image" th:src="@{${item.photosImagePath}}" alt="...">
                         </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><span th:text="${item.itemName}"></span></h5>
+                                <p class="card-mini-text text-muted">Posted on: <span
+                                        th:text="${item.datePosted}"></span></p>
+                                <p class="card-text-2"><img class="profile-icon"
+                                                            src="https://i.redd.it/sfi496f08hg51.png">&nbsp;&nbsp;Posted
+                                    by <span th:text="${item.user.username}"></span></p>
+                                <form th:action="@{'/viewPosterProfile/' + ${item.getUser().getId()}}" method="GET">
+                                    <button class="view-btn btn btn-secondary btn-sm" type="submit"> View poster's
+                                        profile
+                                    </button>
+                                </form>
+                                <p class="card-text">Description: <span th:text="${item.itemDescription}"></span></p>
+                                <p class="card-text">Special Instructions: <span
+                                        th:text="${item.specialInstructions}"></span></p>
+                            </div>
 
-                        <div class="little-icon-container">
-                        <div class="row">
+                            <div class="little-icon-container">
+                                <div class="row">
 
-                        <div class="col-2">
-                            <img th:if="${item.category.name == 'Automotive'}" class="little-icon" src="https://i.postimg.cc/FKncRqq3/cat-automotive.png">
-                            <img th:if="${item.category.name == 'Electronics'}" class="little-icon" src="https://i.postimg.cc/nhz679r7/cat-electronics.png">
-                            <img th:if="${item.category.name == 'Fashion'}" class="little-icon" src="https://i.postimg.cc/ZnN6Xcw3/cat-fashion.png">
-                            <img th:if="${item.category.name == 'Home and Garden'}" class="little-icon" src="https://i.postimg.cc/9M67P9cf/cat-home-and-garden.png">
-                            <img th:if="${item.category.name == 'Sporting Goods'}" class="little-icon" src="https://i.postimg.cc/cJcwSC79/cat-sporting-goods.png">
-                            <img th:if="${item.category.name == 'Toys and Hobbies'}" class="little-icon" src="https://i.postimg.cc/7YyzfSBs/cat-toys-and-hobbies.png">
-                            <img th:if="${item.category.name == 'Other'}" class="little-icon" src="https://i.postimg.cc/1z4nLBtt/cat-other.png">
+                                    <div class="col-2">
+                                        <img th:if="${item.category.name == 'Automotive'}" class="little-icon"
+                                             src="https://i.postimg.cc/FKncRqq3/cat-automotive.png">
+                                        <img th:if="${item.category.name == 'Electronics'}" class="little-icon"
+                                             src="https://i.postimg.cc/nhz679r7/cat-electronics.png">
+                                        <img th:if="${item.category.name == 'Fashion'}" class="little-icon"
+                                             src="https://i.postimg.cc/ZnN6Xcw3/cat-fashion.png">
+                                        <img th:if="${item.category.name == 'Home and Garden'}" class="little-icon"
+                                             src="https://i.postimg.cc/9M67P9cf/cat-home-and-garden.png">
+                                        <img th:if="${item.category.name == 'Sporting Goods'}" class="little-icon"
+                                             src="https://i.postimg.cc/cJcwSC79/cat-sporting-goods.png">
+                                        <img th:if="${item.category.name == 'Toys and Hobbies'}" class="little-icon"
+                                             src="https://i.postimg.cc/7YyzfSBs/cat-toys-and-hobbies.png">
+                                        <img th:if="${item.category.name == 'Other'}" class="little-icon"
+                                             src="https://i.postimg.cc/1z4nLBtt/cat-other.png">
 
-                        </div>
+                                    </div>
 
-                        <div class="col-2">
+                                    <div class="col-2">
 
-                            <img th:if="${item.itemCondition == 'Excellent'}" class="little-icon" src="https://i.postimg.cc/hvMQk59X/excellent.png">
-                            <img th:if="${item.itemCondition == 'Good'}" class="little-icon" src="https://i.postimg.cc/L6XJqvtV/good.png">
-                            <img th:if="${item.itemCondition == 'Fair'}" class="little-icon" src="https://i.postimg.cc/8zfs45nJ/fair.png">
-                            <img th:if="${item.itemCondition == 'Poor'}" class="little-icon" src="https://i.postimg.cc/wvgv9kxL/poor.png">
+                                        <img th:if="${item.itemCondition == 'Excellent'}" class="little-icon"
+                                             src="https://i.postimg.cc/hvMQk59X/excellent.png">
+                                        <img th:if="${item.itemCondition == 'Good'}" class="little-icon"
+                                             src="https://i.postimg.cc/L6XJqvtV/good.png">
+                                        <img th:if="${item.itemCondition == 'Fair'}" class="little-icon"
+                                             src="https://i.postimg.cc/8zfs45nJ/fair.png">
+                                        <img th:if="${item.itemCondition == 'Poor'}" class="little-icon"
+                                             src="https://i.postimg.cc/wvgv9kxL/poor.png">
 
-                        </div>
-                        <div class="col-2">
-                            <img class="little-icon" src="https://i.postimg.cc/prQJpCKv/location.png">
-                        </div>
-                        </div>
-                        </div>
-
-                        <div class="little-icon-container text-center">
-                            <div class="row">
-                                <div class="col-2">
-                                    <h5 class="icon-text"><span class="cat-btn-text" th:text="${item.category.name}"></span></h5>
-                                </div>
-                                <div class="col-2">
-                                    <h5 class="icon-text"><span th:text="${item.itemCondition}"></span></h5>
-                                </div>
-                                <div class="col-2">
-                                    <h5 class="icon-text"><span th:text="${item.user.zipcode}"></span></h5>
-                                </div>
-                                <div class="col-2">
-                                    <h5 class="price-text">$<span th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span> per day</h5>
-                                </div>
-                                <div class="col-4">
-                                    <button class="btn btn-success btn-lg my-btn" th:if="${item.availability}">Make A Request</button>
-                                    <button class="btn btn-danger btn-lg my-btn" th:unless="${item.availability}">Unavaliable</button>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="little-icon" src="https://i.postimg.cc/prQJpCKv/location.png">
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="little-icon-container text-center">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <h5 class="icon-text"><span class="cat-btn-text"
+                                                                    th:text="${item.category.name}"></span></h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <h5 class="icon-text"><span th:text="${item.itemCondition}"></span></h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <h5 class="icon-text"><span th:text="${item.user.zipcode}"></span></h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <h5 class="price-text">$<span
+                                                th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span>
+                                            per day</h5>
+                                    </div>
+                                    <div class="col-4">
+                                        <form th:action="@{'/request/' + ${item.id}}" method="GET">
+                                            <button class="btn btn-success btn-lg my-btn" name="requestItem" th:value="${item.id}" th:if="${item.availability}">
+                                                Make A Request
+                                            </button>
+                                            <button class="btn btn-danger btn-lg my-btn"
+                                                    th:unless="${item.availability}">Unavaliable
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
-
-
-
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
 
 </section>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

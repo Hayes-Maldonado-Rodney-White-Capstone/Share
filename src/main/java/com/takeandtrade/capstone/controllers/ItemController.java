@@ -6,6 +6,7 @@ import com.takeandtrade.capstone.models.Item;
 import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.CategoryRepository;
 import com.takeandtrade.capstone.repositories.ItemRepository;
+import com.takeandtrade.capstone.repositories.RequestRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -32,11 +33,13 @@ public class ItemController {
     private final ItemRepository itemDao;
     private final CategoryRepository categoryDao;
     private final UserRepository userDao;
+    private final RequestRepository requestDao;
 
-    public ItemController(ItemRepository itemDao, CategoryRepository categoryDao, UserRepository userDao){
+    public ItemController(ItemRepository itemDao, CategoryRepository categoryDao, UserRepository userDao, RequestRepository requestDao){
         this.itemDao = itemDao;
         this.categoryDao = categoryDao;
         this.userDao = userDao;
+        this.requestDao = requestDao;
     }
 
     //this gets the form that allows the logged in user to create a new post
