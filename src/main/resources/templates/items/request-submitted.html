@@ -5,20 +5,30 @@
 <nav th:insert="partials :: navbar"></nav>
 <br>
 <div class="container mb-4">
-    <h2>Your request was submitted!</h2>
-    <p>The user will see the request and can then message you.</p>
+    <div>
+        <h2>Your request was submitted!</h2>
+        <p>The user will see the request and can then message you.</p>
+    </div>
+    <div>
+    <p>My Request</p>
+    <p>request ID <span th:text="${request.id}"></span></p>
+    <!--<p>Dates Requested: <span th:text="${(request.beginDate)}"></span> to <span th:text="${request.dueDate}"></span></p>-->
+    <p>Dates Requested: <span th:text="${#dates.format(request.beginDate, 'mm-dd-yyyy')}"></span> to <span
+            th:text="${#dates.format(request.dueDate, 'mm-dd-yyyy')}"></span></p>
+    <p>Your note/question: <span th:text="${request.notes}"></span></p>
+    <p>Item Requested: <span th:text="${request.getItemReq().itemName}"></span></p>
+        <p>Status: <span th:text="${request.status}"></span></p>
+    </div>
+    <div>
+        <h3>Can I get a list of requests where I am listed as the approver?</h3>
+        <div th:text="${request.itemReq.getRequests()}"></div>
+        <div th:each="thing : ${allmyrequests}">
+            <p><span th:text="thing.name"></span></p>
+            <p><span th:text="thing.itemId"></span></p>
+            <p><span th:text=""></span></p>
+        </div>
+    </div>
 </div>
-<p>My Requests</p>
-<!--<div>-->
-<!--    <p>The request id number is: <span th:text="${viewRequest.id}"></span></p>-->
-<!--    <p>You requested to start/pick up the item on: <span th:text="${viewRequest.getBeginDate()}"></span></p>-->
-<!--    <p>You requested to return the item to the owner on: <span th:text="${viewRequest.getDueDate()}"></span></p>-->
-<!--</div>-->
-<!--<div th:each="review : ${producerUser.getWrittenReviews()}">
-    <p><span th:text="${review.reviewTitle}"></span></p>
-    <p><span th:text="${review.reviewBody}"></span></p>
-    <p><span th:text="${review.rating.rating}"></span></p>
-</div>-->
 <div th:replace="partials :: scripts"></div>
 </body>
 </html>

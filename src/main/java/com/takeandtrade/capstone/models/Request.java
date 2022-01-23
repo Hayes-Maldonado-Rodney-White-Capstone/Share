@@ -1,5 +1,8 @@
 package com.takeandtrade.capstone.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -30,7 +33,7 @@ public class Request {
 
     //do I need a status, like status Open means the approver hasn't approved the request yet?
     @Column
-    private String status = "OPEN";
+    private String status = "PENDING";
 
     @Column(length = 500)
     private String notes;
