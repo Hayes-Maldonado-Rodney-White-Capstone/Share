@@ -1,0 +1,84 @@
+.card-section {
+    margin-top: 80px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: none !important;
+}
+
+.card-size {
+    width: 1400px;
+    height: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.card-image {
+    width: 500px;
+    margin: 100px 40px 20px;
+}
+
+.card-title {
+    margin-left: 90px;
+    margin-top: 75px;
+    font-size: 35px;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.card-mini-text {
+    margin-left: 90px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-text {
+    margin-left: 90px;
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-text-2 {
+    margin-left: 90px;
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.profile-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.little-icon-container {
+    margin-left: 105px;
+    margin-top: 30px;
+}
+
+.little-icon {
+    width: 120px;
+    height: 120px;
+}
+
+.icon-text {
+    margin-left: 8px;
+}
+
+.price-text {
+    margin-top: -25px;
+    margin-left: 26px;
+}
+
+.my-btn {
+    margin-top: -25px;
+    margin-right: 40px;
+}
+
+.view-btn {
+    margin-left: 90px;
+}
+
+
