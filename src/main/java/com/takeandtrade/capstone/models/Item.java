@@ -1,5 +1,8 @@
 package com.takeandtrade.capstone.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -35,7 +38,9 @@ public class Item {
     private boolean availability;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern ="mm-dd-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
 
     //default constructor

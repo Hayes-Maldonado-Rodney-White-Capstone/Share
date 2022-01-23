@@ -3,16 +3,14 @@ package com.takeandtrade.capstone.controllers;
 import com.takeandtrade.capstone.models.Rating;
 import com.takeandtrade.capstone.models.Review;
 import com.takeandtrade.capstone.models.User;
-import com.takeandtrade.capstone.repositories.ItemRepository;
-import com.takeandtrade.capstone.repositories.RatingRepository;
-import com.takeandtrade.capstone.repositories.ReviewRepository;
-import com.takeandtrade.capstone.repositories.UserRepository;
+import com.takeandtrade.capstone.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -23,21 +21,24 @@ public class UserController {
     private final ItemRepository itemDao;
     private final ReviewRepository reviewDao;
     private final RatingRepository ratingDao;
+    private final RoleRepository roleDao;
 
 
     public UserController(UserRepository userDao,
-                          PasswordEncoder passwordEncoder, ItemRepository itemDao, ReviewRepository reviewDao, RatingRepository ratingDao) {
+                          PasswordEncoder passwordEncoder, ItemRepository itemDao, ReviewRepository reviewDao, RatingRepository ratingDao, RoleRepository roleDao) {
 
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.itemDao = itemDao;
         this.reviewDao = reviewDao;
         this.ratingDao = ratingDao;
+        this.roleDao = roleDao;
 
     }
 
     @GetMapping("/registerForm")
-    public String showSignupForm(@ModelAttribute User user) {
+    public String showSignupForm(@ModelAttribute User user, Model model) {
+        model.addAttribute("user", new User());  //I added this line and it made the red squigglies go away on the registerForm
 
         return "/users/registerForm";
     }
@@ -46,6 +47,9 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
+        user.setRoles(Collections.singletonList(roleDao.findByRoleType("user")));
+
         userDao.save(user);
         return "redirect:/homepage";
     }
@@ -85,7 +89,7 @@ public class UserController {
     }
 
     @PostMapping("/userEdit/{userId}")
-    public String saveUserUpdate(@PathVariable long userId,
+    public String saveUserUpdate(@PathVariable Long userId,
         @RequestParam(name = "firstName") String firstName,
         @RequestParam(name = "lastName") String lastName,
         @RequestParam(name = "username") String username,
@@ -106,7 +110,7 @@ public class UserController {
         updateTheUser.setCity(city);
         updateTheUser.setState(state);
         updateTheUser.setZipcode(Integer.parseInt(zipcode));
-        String hash = passwordEncoder.encode(updateTheUser.getPassword());
+        String hash = passwordEncoder.encode(password);
         updateTheUser.setPassword(hash);
 //        updateTheUser.setPassword(password);
 
@@ -118,7 +122,6 @@ public class UserController {
     @PostMapping("/user/delete/{userId}")
     public String deleteUser(@PathVariable Long userId) {
         userDao.deleteById(userId);
-
         return "redirect:/homepage";
     }
 
