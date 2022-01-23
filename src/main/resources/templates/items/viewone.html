@@ -25,18 +25,30 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-mini-text text-muted">Posted on this date</p>
-                            <p class="card-text-2"><img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">&nbsp;&nbsp;Posted by username</p>
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <h5 class="card-title"><span th:text="${item.itemName}"></span></h5>
+                            <p class="card-mini-text text-muted">Posted on: <span th:text="${item.datePosted}"></span></p>
+                            <p class="card-text-2"><img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
+                            <p class="card-text">Description: <span th:text="${item.itemDescription}"></span></p>
+                            <p class="card-text">Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
                         </div>
 
                         <div class="little-icon-container">
                         <div class="row">
+
                         <div class="col-2">
-                            <img class="little-icon" src="https://i.redd.it/sfi496f08hg51.png">
+                            <img th:if="${item.category.name == 'Automotive'}" class="little-icon" src="https://i.postimg.cc/FKncRqq3/cat-automotive.png">
+                            <img th:if="${item.category.name == 'Electronics'}" class="little-icon" src="https://i.postimg.cc/nhz679r7/cat-electronics.png">
+                            <img th:if="${item.category.name == 'Fashion'}" class="little-icon" src="https://i.postimg.cc/ZnN6Xcw3/cat-fashion.png">
+                            <img th:if="${item.category.name == 'Home and Garden'}" class="little-icon" src="https://i.postimg.cc/9M67P9cf/cat-home-and-garden.png">
+                            <img th:if="${item.category.name == 'Sporting Goods'}" class="little-icon" src="https://i.postimg.cc/cJcwSC79/cat-sporting-goods.png">
+                            <img th:if="${item.category.name == 'Toys and Hobbies'}" class="little-icon" src="https://i.postimg.cc/7YyzfSBs/cat-toys-and-hobbies.png">
+                            <img th:if="${item.category.name == 'Other'}" class="little-icon" src="https://i.postimg.cc/1z4nLBtt/cat-other.png">
+
                         </div>
+
+
+
+
                         <div class="col-2">
                             <img class="little-icon" src="https://i.redd.it/sfi496f08hg51.png">
                         </div>
@@ -49,17 +61,20 @@
                         <div class="little-icon-container text-center">
                             <div class="row">
                                 <div class="col-2">
-                                    <h5 class="icon-text">Category</h5>
+                                    <h5 class="icon-text"><span class="cat-btn-text" th:text="${item.category.name}"></span></h5>
                                 </div>
                                 <div class="col-2">
-                                    <h5 class="icon-text">Condition</h5>
+                                    <h5 class="icon-text"><span th:text="${item.itemCondition}"></span></h5>
                                 </div>
                                 <div class="col-2">
-                                    <h5 class="icon-text">ZIP Code</h5>
+                                    <h5 class="icon-text"><span th:text="${item.user.zipcode}"></span></h5>
+                                </div>
+                                <div class="col-2">
+                                    <h5 class="price-text">$<span th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span> per day</h5>
                                 </div>
                                 <div class="col-4">
-                                    <p class="btn btn-success btn-lg my-btn" th:if="${item.availability}">Make A Request</p>
-                                    <p class="btn btn-danger btn-lg my-btn" th:unless="${item.availability}">Currently Being Borrowed</p>
+                                    <button class="btn btn-success btn-lg my-btn" th:if="${item.availability}">Make A Request</button>
+                                    <button class="btn btn-danger btn-lg my-btn" th:unless="${item.availability}">Unavaliable</button>
                                 </div>
                             </div>
                         </div>
