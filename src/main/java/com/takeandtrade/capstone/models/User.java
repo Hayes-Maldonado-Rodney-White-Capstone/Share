@@ -179,9 +179,13 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
     private List<Review> reviewed;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
+
+    //one user can make many requests
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userReq")
+    private List<Request> request;
 
     public List<Message> getSentMessages() {
         return sentMessages;
@@ -233,4 +237,15 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+    public List<Request> getRequest() {
+        return request;
+    }
+
+    public void setRequest(List<Request> request) {
+        this.request = request;
+    }
+
+
+
 }

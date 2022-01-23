@@ -7,7 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -32,7 +34,7 @@ public class Item {
     private double price;  //in mysql this can be DECIMAL(6,2) which allows prices up to 9999.99
 
     @Column(nullable = false)
-    private String image;   //in mySQL this will be a BLOB. I need to research whether it should be a String here.
+    private String image;   //string because we are saving the name here
 
     @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
     private boolean availability;
@@ -42,6 +44,25 @@ public class Item {
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
+
+    //one item has one category
+    @OneToOne()
+    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
+    private Category category;
+
+    //one user can have many items-- many items can have one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")  //this should create a FK in the Item table
+    private User user;
+
+    //many-to-many between Item and Request--I don't think this is correct...adding a one to many, one user can make many requests
+//    @ManyToMany
+//    @JoinTable(name = "item_request", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
+//    private Collection<Request> requests;
+
+    //one item can have many requests?
+    @OneToMany(mappedBy = "itemReq")
+    List<Request> requests;
 
     //default constructor
     public Item() {
@@ -127,7 +148,6 @@ public class Item {
         this.image = image;
     }
 
-
     public boolean isAvailability() {
         return availability;
     }
@@ -160,31 +180,21 @@ public class Item {
         this.category = category;
     }
 
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
+    //for file upload
     @Transient
     public String getPhotosImagePath() {
         if (image == null) return null;
 
         return "/images/capstoneimages/" + image;
     }
-
-    //one item has one category
-    @OneToOne()
-    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
-    private Category category;
-
-    //we'll need to add a getter (I think) after adding the relationship
-    //do I need a constructor similar to this one below, or does it need every field?:
-    //public Item(String name, Category category) {
-    // this.name = name;
-    // this.category = category;
-    // this.category.setItem(this);
-    // }
-
-
-    //one user can have many items-- many items can have one user
-    @ManyToOne
-    @JoinColumn(name = "user_id")  //this should create a FK in the Item table
-    private User user;
 
     @Override
     public String toString() {

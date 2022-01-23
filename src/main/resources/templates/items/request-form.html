@@ -5,25 +5,27 @@
 <nav th:insert="partials :: navbar"></nav>
 <br>
 <div class="container" style="margin-top: 20px;">
-    <p>You are requesting to borrow an item.  (~I need to add a many to many relationship between request and item so we can grab the item ~Mary)</p>
-    <p>The start date is the date that you would like to get the item, and the return date is the date that you will return the item to the owner.</p>
-    <form th:action="@{/items/request-form}" th:method="post" th:object="${request}">
+    <p>You are requesting to borrow an item (<span th:text="${item.getItemName()}"></span>) from username <span th:text="${item.getUser().getUsername()}"></span>.</p>
+    <p>Please fill out this form and they will get back to you as soon as possible. The start date is the date that you would like to get the item, and the return date is the date that you will return the item to the owner.</p>
+    <form th:action="@{'/request/' + ${itemId}}" th:method="post" th:object="${request}">
         <div class="form-group">
             <label for="beginDate">Enter the Start Date</label>
             <span th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}" class="alert alert-danger"></span>
-            <input type="date" class="form-control" id="beginDate" name="beginDate">
+            <input type="datetime-local" class="form-control" id="beginDate" name="beginDate">
         </div>
         <div class="form-group">
             <label for="dueDate">Enter the Return Date</label>
-            <input type="date" class="form-control" id="dueDate" name="dueDate">
+            <input type="datetime-local" class="form-control" id="dueDate" name="dueDate">
         </div>
         <div class="form-group">
-            <input type="hidden" class="form-control" id="postId" th:field="*{id}">
+            <label for="notes">Notes or Questions</label>
+            <input type="textarea" class="form-control" id="notes" name="notes">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 </div>
+<div th:replace="partials :: scripts"></div>
 
 </body>
 </html>

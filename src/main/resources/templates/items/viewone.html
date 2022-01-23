@@ -61,46 +61,59 @@
                             <img class="little-icon" src="https://i.postimg.cc/prQJpCKv/location.png">
                         </div>
                         </div>
-                        </div>
 
-                        <div class="little-icon-container text-center">
-                            <div class="row">
-                                <div class="col-2">
-                                    <h5 class="icon-text"><span class="cat-btn-text" th:text="${item.category.name}"></span></h5>
-                                </div>
-                                <div class="col-2">
-                                    <h5 class="icon-text"><span th:text="${item.itemCondition}"></span></h5>
-                                </div>
-                                <div class="col-2">
-                                    <h5 class="icon-text"><span th:text="${item.user.zipcode}"></span></h5>
-                                </div>
-                                <div class="col-2">
-                                    <h5 class="price-text">$<span th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span> per day</h5>
-                                </div>
-                                <div class="col-4">
-                                    <button class="btn btn-success btn-lg my-btn" th:if="${item.availability}">Make A Request</button>
-                                    <button class="btn btn-danger btn-lg my-btn" th:unless="${item.availability}">Unavaliable</button>
+                            <div class="little-icon-container text-center">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <h5 class="icon-text"><span class="cat-btn-text"
+                                                                    th:text="${item.category.name}"></span></h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <h5 class="icon-text"><span th:text="${item.itemCondition}"></span></h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <h5 class="icon-text"><span th:text="${item.user.zipcode}"></span></h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <h5 class="price-text">$<span
+                                                th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span>
+                                            per day</h5>
+                                    </div>
+                                    <div class="col-4">
+                                        <form th:action="@{'/request/' + ${item.id}}" method="GET">
+                                            <button class="btn btn-success btn-lg my-btn" name="requestItem" th:value="${item.id}" th:if="${item.availability}">
+                                                Make A Request
+                                            </button>
+                                            <button class="btn btn-danger btn-lg my-btn"
+                                                    th:unless="${item.availability}">Unavaliable
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
+
+
                         </div>
-
-
-
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
 
 </section>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
