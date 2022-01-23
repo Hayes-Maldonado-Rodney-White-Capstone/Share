@@ -26,7 +26,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><span th:text="${item.itemName}"></span></h5>
-                            <p class="card-mini-text text-muted">Posted on: <span th:text="${item.datePosted}"></span></p>
+                            <p class="card-mini-text text-muted">Posted on: <span th:text="${#temporals.format(item.datePosted, 'yyyy-MM-dd')}"></span></p>
                             <p class="card-text-2"><img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
                             <form th:action="@{'/viewPosterProfile/' + ${item.getUser().getId()}}" method="GET">
                                 <button class="view-btn btn btn-secondary btn-sm" type="submit"> View poster's profile </button>
