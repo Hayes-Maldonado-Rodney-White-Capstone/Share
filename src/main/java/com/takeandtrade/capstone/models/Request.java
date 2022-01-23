@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -31,6 +32,13 @@ public class Request {
 
     //do I need a status, like status Open means the approver hasn't approved the request yet?
     private String status = "OPEN";
+
+    //will need to add Many to Many mapping between users and items. and a getter to get the logged in user/consumer
+    //I'll need a relationship between the user_id who is submitting the request form. Many users can make many requests?
+    //will need to get the producers id (the person who posted the item and is the approver), the consumers id(the person who is borrowing the item and is making the request), and the item id
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "requests")
+    private Collection<Item> requesteditems;
+
 
     public long getId() {
         return id;
@@ -72,10 +80,11 @@ public class Request {
         this.status = status;
     }
 
+    public Collection<Item> getRequesteditems() {
+        return requesteditems;
+    }
 
-    //will need to add Many to Many mapping between users and items. and a getter to get the logged in user/consumer
-    //I'll need a relationship between the user_id who is submitting the request form. Many users can make many requests?
-    //will need to get the producers id (the person who posted the item and is the approver), the consumers id(the person who is borrowing the item and is making the request), and the item id
-
-
+    public void setRequesteditems(Collection<Item> requesteditems) {
+        this.requesteditems = requesteditems;
+    }
 }

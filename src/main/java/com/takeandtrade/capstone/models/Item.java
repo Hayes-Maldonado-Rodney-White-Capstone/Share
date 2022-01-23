@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -42,6 +43,22 @@ public class Item {
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
+
+    //one item has one category
+    @OneToOne()
+    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
+    private Category category;
+
+    //one user can have many items-- many items can have one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")  //this should create a FK in the Item table
+    private User user;
+
+    //many-to-many between Item and Request
+    @ManyToMany
+    @JoinTable(name = "item_request", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
+    private Collection<Request> requests;
+
 
     //default constructor
     public Item() {
@@ -127,7 +144,6 @@ public class Item {
         this.image = image;
     }
 
-
     public boolean isAvailability() {
         return availability;
     }
@@ -160,31 +176,21 @@ public class Item {
         this.category = category;
     }
 
+    public Collection<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Collection<Request> requests) {
+        this.requests = requests;
+    }
+
+    //for file upload
     @Transient
     public String getPhotosImagePath() {
         if (image == null) return null;
 
         return "/images/capstoneimages/" + image;
     }
-
-    //one item has one category
-    @OneToOne()
-    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
-    private Category category;
-
-    //we'll need to add a getter (I think) after adding the relationship
-    //do I need a constructor similar to this one below, or does it need every field?:
-    //public Item(String name, Category category) {
-    // this.name = name;
-    // this.category = category;
-    // this.category.setItem(this);
-    // }
-
-
-    //one user can have many items-- many items can have one user
-    @ManyToOne
-    @JoinColumn(name = "user_id")  //this should create a FK in the Item table
-    private User user;
 
     @Override
     public String toString() {
