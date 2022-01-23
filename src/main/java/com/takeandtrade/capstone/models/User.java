@@ -4,6 +4,7 @@ import com.mysql.cj.Messages;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -14,13 +15,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 50)
     private String firstName;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 50)
     private String lastName;
 
-    @Column (nullable = false, length = 255)
+    @Column (nullable = false, length = 50)
     private String username;
 
     @Column (nullable = false)
@@ -37,7 +38,7 @@ public class User {
     @Column (nullable = false)
     private long phoneNumber;
 
-    @Column (nullable = false, length = 255)
+    @Column (nullable = false, length = 50)
     private String city;
 
     @Column (nullable = false, length = 2)
@@ -135,10 +136,6 @@ public class User {
         this.zipcode = zipcode;
     }
 
-    //    @ManyToOne
-//    @JoinColumn (name = "role_id")
-//    private User role;
-
     public User(User copy) {
         id = copy.id;
         email = copy.email;
@@ -182,8 +179,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
     private List<Review> reviewed;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Role> roles;
+    @ManyToMany()
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 
     public List<Message> getSentMessages() {
         return sentMessages;
@@ -228,11 +226,11 @@ public class User {
         this.items = items;
     }
 
-    public List<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 }
