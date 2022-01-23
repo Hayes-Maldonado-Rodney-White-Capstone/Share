@@ -1,5 +1,7 @@
+
 .card-section {
-    margin-top: 80px;
+    background-image: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png");
+    background-size: cover;
 }
 
 .card {
@@ -13,6 +15,7 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
+    margin-top: 50px;
 }
 
 .card-image {
@@ -64,6 +67,7 @@
 }
 
 .icon-text {
+    margin-top: -25px;
     margin-left: 8px;
 }
 
@@ -79,6 +83,14 @@
 
 .view-btn {
     margin-left: 90px;
+}
+
+.btn-secondary {
+    background-color: #005250;
+}
+
+.btn-secondary:hover {
+    background-color: #006366;
 }
 
 
