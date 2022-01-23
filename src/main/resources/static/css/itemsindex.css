@@ -1,3 +1,19 @@
+html  {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    overflow: hidden;
+}
+
+.size-wrapper { /* Keeps everything from over-expanding on bigger pages*/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 2000px;
+}
+
 /* TOP SECTION */
 
 .catalog-img {
@@ -62,6 +78,10 @@
     margin-bottom: 4px;
 }
 
+.cat-btn-text {
+    font-size: 15px;
+}
+
 .con-btn {
     background-color: #54e360 !important;
     color: #006366 !important;
@@ -83,7 +103,47 @@
     margin-top: 5px;
 }
 
+.cat-icon {
+    width: 35px;
+    height: 35px;
+    margin-left: -7px;
+}
+
+.loc-icon {
+    width: 35px;
+    height: 35px;
+    margin-left: -10px;
+}
+
+
 /* RESPONSIVENESS */
+
+/* Extra Large */
+
+@media (min-width: 1800px) and (max-width: 2000px) {
+
+    .catalog-img {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 2000px;
+        height: 1800px;
+    }
+
+    .img-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 320px;
+        text-align: center;
+        margin-top: 500px;
+    }
+
+    .card-section {
+        margin: -400px 50px 50px;
+    }
+
+}
 
 /* Extra Large -> Large */
 
@@ -132,6 +192,62 @@
         left: 160px;
         text-align: center;
         margin-top: 350px;
+    }
+
+
+    .card-section {
+        margin: -200px 50px 50px;
+    }
+
+}
+
+/* Medium -> Small */
+
+@media (min-width: 580px) and (max-width: 780px) {
+
+    .catalog-img {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 800px;
+        height: 700px;
+    }
+
+    .img-overlay {
+        position: absolute;
+        top: -70px;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        margin-top: 300px;
+    }
+
+
+    .card-section {
+        margin: -200px 50px 50px;
+    }
+
+}
+
+/* Extra Small */
+
+@media (max-width: 580px)  {
+
+    .catalog-img {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: 800px;
+        height: 700px;
+    }
+
+    .img-overlay {
+        position: absolute;
+        top: -70px;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        margin-top: 300px;
     }
 
 
