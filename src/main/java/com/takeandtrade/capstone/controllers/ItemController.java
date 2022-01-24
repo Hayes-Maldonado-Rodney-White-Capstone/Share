@@ -61,6 +61,8 @@ public class ItemController {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("item", item);
+            List<Category> categoryList = categoryDao.findAll();
+            model.addAttribute("categories", categoryList);
             return "items/create";
         }
 
