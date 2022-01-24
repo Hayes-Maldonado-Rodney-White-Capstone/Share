@@ -6,6 +6,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
@@ -19,6 +21,8 @@ public class Item {
     private long id;
 
     @Column(nullable = false, length = 255)
+    @NotBlank(message = "please enter a title")
+    @Size(min = 2, message = "name must be at least 2 characters")
     private String itemName;
 
     @Column(nullable = false, length = 1000) //may need to update this to TEXT within mysql
