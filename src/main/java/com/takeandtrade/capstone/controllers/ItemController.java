@@ -111,7 +111,7 @@ public class ItemController {
     @PostMapping("/items/search")
     public String searchForItems(@RequestParam("search") String search, Model model) {
 
-        model.addAttribute("search", itemDao.findItemByItemNameContains(search));
+        model.addAttribute("search", itemDao.search(search));
 
         System.out.println("search length " + search.length());
 
