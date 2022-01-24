@@ -28,14 +28,14 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
-                            <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home</a>
+                            <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home<img class="navbar-icon" src="../static/images/homepage-images/nav-home.png" th:src="@{images/homepage-images/nav-home.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile</a>
+                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile<img class="navbar-icon" src="../static/images/homepage-images/nav-profile.png" th:src="@{images/homepage-images/nav-profile.png}"></a>
                         </li>
                         <li class="nav-item dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Borrow
+                                Borrow<img class="navbar-icon" src="../static/images/homepage-images/nav-borrow.png" th:src="@{images/homepage-images/nav-borrow.png}">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/items" th:href="@{/items}">Borrow Catalog</a>
@@ -43,15 +43,15 @@
                             </div>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages</a>
+                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="../static/images/homepage-images/nav-message.png" th:src="@{images/homepage-images/nav-message.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews</a>
+                            <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews<img class="navbar-icon" src="../static/images/homepage-images/nav-review.png" th:src="@{images/homepage-images/nav-review.png}"></a>
                         </li>
                         <li>
                             <form th:action="@{/logout}" th:method="post">
-                                <button style="margin-top: -1px;" sec:authorize="isAuthenticated()" class="btn-link btn nav-link">Logout</button>
-                                <button style="margin-top: -1px;" sec:authorize="isAnonymous()" th:href="@{/login}" class="btn-link btn nav-link">Login</button>
+                                <button style="margin-top: -1px;" sec:authorize="isAuthenticated()" class="btn-link btn nav-link">Logout<img class="navbar-icon" src="../static/images/homepage-images/nav-logout.png" th:src="@{images/homepage-images/nav-logout.png}"></button>
+                                <button style="margin-top: -1px;" sec:authorize="isAnonymous()" th:href="@{/login}" class="btn-link btn nav-link">Login<img class="navbar-icon" src="../static/images/homepage-images/nav-profile.png" th:src="@{images/homepage-images/nav-profile.png}"></button>
                             </form>
                         </li>
                     </ul>
