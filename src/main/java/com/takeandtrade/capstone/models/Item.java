@@ -45,7 +45,7 @@ public class Item {
     @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
     private boolean availability;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 500)
     private String personalizedTermsAndConditions;
 
 
