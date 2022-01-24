@@ -7,14 +7,14 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <br>
-<h2>My Reviews History</h2>
+<h2>What users are saying about you</h2>
 <div th:if="${producerUser.getWrittenReviews().isEmpty()}">
     <p>You don't have any reviews yet.</p>
 </div>
 <div th:each="review : ${producerUser.getWrittenReviews()}">
-    <p><span th:text="${review.reviewTitle}"></span></p>
-    <p><span th:text="${review.reviewBody}"></span></p>
-    <p><span th:text="${review.rating.rating}"></span></p>
+    <p>Review title: <span th:text="${review.reviewTitle}"></span></p>
+    <p>Review body: <span th:text="${review.reviewBody}"></span></p>
+    <p>They rated you at :<span th:text="${review.rating.rating}"></span></p>
 </div>
 <script th:replace="partials  :: scripts"/>
 </body>
