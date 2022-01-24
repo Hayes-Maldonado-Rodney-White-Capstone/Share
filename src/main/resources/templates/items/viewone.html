@@ -138,8 +138,8 @@
 
                     <button class="btn zip-btn"><img class="cat-icon" src="https://i.postimg.cc/prQJpCKv/location.png"><span th:text="${item.user.zipcode}"></span></button>
                 </div>
-                <p class="card-text-2">Description:<span th:text="${item.itemDescription}"></span></p>
-                <p class="card-text-2">Special Instructions:<span th:text="${item.specialInstructions}"></span></p>
+                <p class="card-text-2">Description: <span th:text="${item.itemDescription}"></span></p>
+                <p class="card-text-2">Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
                 <p class="card-price">$<span th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span> per day</p>
                 <form th:action="@{'/request/' + ${item.id}}" method="GET">
                     <button class="btn btn-success btn-lg my-btn-2" name="requestItem" th:value="${item.id}" th:if="${item.availability}">
