@@ -14,7 +14,7 @@
         <div th:object="${viewUser}">
             </br>
             <!--        <dev th:object="${#authentication.firstName}">-->
-            <h1>Welcome back, <span th:text="${viewUser.firstName}"></span></h1>
+            <h1>Welcome back, <span th:text="${#authentication.principal.username}"></span></h1>
             <br/>
 
             User ID: <span th:text="${#authentication.principal.id}"></span>
