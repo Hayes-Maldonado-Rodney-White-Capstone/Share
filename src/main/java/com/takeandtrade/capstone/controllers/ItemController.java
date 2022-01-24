@@ -61,6 +61,8 @@ public class ItemController {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("item", item);
+            List<Category> categoryList = categoryDao.findAll();
+            model.addAttribute("categories", categoryList);
             return "items/create";
         }
 
@@ -109,10 +111,11 @@ public class ItemController {
     @PostMapping("/items/search")
     public String searchForItems(@RequestParam("search") String search, Model model) {
 
-        model.addAttribute("search", itemDao.findItemByItemNameContains(search));
+        model.addAttribute("search", itemDao.search(search));
+
         System.out.println("search length " + search.length());
 
-        return "items/itemsindex";
+        return "items/search";
     }
 
     //view one item

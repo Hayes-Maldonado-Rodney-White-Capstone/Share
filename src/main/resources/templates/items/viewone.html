@@ -33,6 +33,7 @@
                             </form>
                             <p class="card-text">Description: <span th:text="${item.itemDescription}"></span></p>
                             <p class="card-text">Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
+
                         </div>
 
                         <div class="little-icon-container">
@@ -140,6 +141,8 @@
                 </div>
                 <p class="card-text-2">Description: <span th:text="${item.itemDescription}"></span></p>
                 <p class="card-text-2">Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
+                <p class="card-text-2">Terms and Conditions: <span th:text="${item.personalizedTermsAndConditions}"></span></p>
+
                 <p class="card-price">$<span th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span> per day</p>
                 <form th:action="@{'/request/' + ${item.id}}" method="GET">
                     <button class="btn btn-success btn-lg my-btn-2" name="requestItem" th:value="${item.id}" th:if="${item.availability}">
