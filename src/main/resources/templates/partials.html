@@ -43,7 +43,7 @@
                             </div>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" aria-hidden="true">My Requests</a>
+                            <a class="nav-link" href="/myRequests" th:href="@{/myRequests}" aria-hidden="true">My Requests<img class="navbar-icon" src="../static/images/homepage-images/nav-request.png" th:src="@{images/homepage-images/nav-request.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="../static/images/homepage-images/nav-message.png" th:src="@{images/homepage-images/nav-message.png}"></a>
