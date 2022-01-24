@@ -3,33 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!--     Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/writemessage.css" th:href="@{/css/writemessage.css}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"/>
-<h1>You are sending a message to: <span th:text="${user.username}"></span></h1>
+<nav th:replace="partials :: navbar-2"/>
 
+<section class="message-title-section">
+
+<h1 class="message-title">You are sending a message to: <span th:text="${user.username}"></span></h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-12 col-lg-12 d-flex justify-content-center">
+            <div class="form-group">
 <form th:method="POST" th:action="@{'/messages/' +  ${user.getId()}}" th:object="${userMessage}">
     <label>
-        <textarea name="content" th:field="*{content}"></textarea>
+        <textarea class="text-area form-control" name="content" th:field="*{content}"></textarea>
     </label>
-    <button type="submit" class="btn">Send Message</button>
+    <button type="submit" class="btn my-btn btn-success">Send Message</button>
 </form>
-<hr>
-
-<h4>Messages History</h4>
-<div th:each="message : ${messages}">
-    <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
-        <h3 style="color:darkgreen;"><span th:text="${message.content}"></span></h3>
-        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
-        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
-    </div>
-
-    <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
-        <h3 style="color:darkred;"><span th:text="${message.content}"></span></h3>
-        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
-        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+            </div>
+        </div>
     </div>
 </div>
+<hr>
+
+</section>
+
+<div th:each="message : ${messages}">
+<div class="container">
+    <div class="row form-group">
+        <div class="col-xs-12 col-md-offset-2 col-md-12 col-lg-12 col-lg-offset-2">
+                <div class="panel-body body-panel">
+                    <ul class="chat">
+                        <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
+                        <li class="clearfix"><span class="chat-img pull-left">
+                            <img src="https://i.redd.it/sfi496f08hg51.png" alt="User Avatar" class="profile-image" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font"><span th:text="${message.receiver.username}"></span></strong>
+                                    <small class="pull-right text-muted"><span th:text="${message.receiver.getFirstName()}"></span> <span th:text="${message.receiver.getLastName()}"></span></small>
+                                </div>
+                                <p><span th:text="${message.content}"></span></p>
+                            </div>
+                        </li>
+                        </div>
+                        <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="https://cdn-icons-png.flaticon.com/512/163/163801.png" alt="User Avatar" class="profile-image" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="pull-right primary-font"><span th:text="${message.sender.username}"></span></strong>
+                                    <small class=" text-muted"><span th:text="${message.sender.getFirstName()}"></span> <span th:text="${message.sender.getLastName()}"></span></small>
+                                </div>
+                                <p><span th:text="${message.content}"></span></p>
+                            </div>
+                        </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 
 <script th:replace="partials :: scripts"/>
 </body>
