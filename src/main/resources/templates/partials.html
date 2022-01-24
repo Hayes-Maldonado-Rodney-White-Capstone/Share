@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
-                            <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home<img class="navbar-icon" src="../static/images/homepage-images/nav-home.png" th:src="@{images/homepage-images/nav-home.png}"></a>
+                            <a class="nav-link" href="/homepage" th:href="@{/homepage}"><img class="navbar-icon-2" src="../static/images/homepage-images/nav-home.png" th:src="@{images/homepage-images/nav-home.png}">Home</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile<img class="navbar-icon" src="../static/images/homepage-images/nav-profile.png" th:src="@{images/homepage-images/nav-profile.png}"></a>
@@ -41,6 +41,9 @@
                                 <a class="dropdown-item" href="/items" th:href="@{/items}">Borrow Catalog</a>
                                 <a class="dropdown-item" href="/items/create" th:href="@{/items/create}">Create a Post</a>
                             </div>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" aria-hidden="true">My Requests</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="../static/images/homepage-images/nav-message.png" th:src="@{images/homepage-images/nav-message.png}"></a>
