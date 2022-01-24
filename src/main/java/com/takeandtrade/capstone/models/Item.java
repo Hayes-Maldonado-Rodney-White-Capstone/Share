@@ -45,6 +45,10 @@ public class Item {
     @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
     private boolean availability;
 
+    @Column(nullable = true)
+    private String personalizedTermsAndConditions;
+
+
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -75,7 +79,19 @@ public class Item {
     }
 
     //2 constructors, 1 with id and 1 without for insertion and extraction
-    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
+//    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
+//        this.id = id;
+//        this.itemName = itemName;
+//        this.itemDescription = itemDescription;
+//        this.specialInstructions = specialInstructions;
+//        this.itemCondition = itemCondition;
+//        this.price = price;
+//        this.image = image;
+//        this.availability = availability;
+//        this.datePosted = datePosted;
+//    }
+
+    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, String personalizedTermsAndConditions, LocalDateTime datePosted) {
         this.id = id;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
@@ -84,10 +100,22 @@ public class Item {
         this.price = price;
         this.image = image;
         this.availability = availability;
+        this.personalizedTermsAndConditions = personalizedTermsAndConditions;
         this.datePosted = datePosted;
     }
 
-    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
+//    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
+//        this.itemName = itemName;
+//        this.itemDescription = itemDescription;
+//        this.specialInstructions = specialInstructions;
+//        this.itemCondition = itemCondition;
+//        this.price = price;
+//        this.image = image;
+//        this.availability = availability;
+//        this.datePosted = datePosted;
+//    }
+
+    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, String personalizedTermsAndConditions, LocalDateTime datePosted) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.specialInstructions = specialInstructions;
@@ -95,6 +123,7 @@ public class Item {
         this.price = price;
         this.image = image;
         this.availability = availability;
+        this.personalizedTermsAndConditions = personalizedTermsAndConditions;
         this.datePosted = datePosted;
     }
 
@@ -141,6 +170,8 @@ public class Item {
     public double getPrice() {
         return price;
     }
+
+    public String getPersonalizedTermsAndConditions() {return personalizedTermsAndConditions;}
 
     public void setPrice(double price) {
         this.price = price;
@@ -193,6 +224,8 @@ public class Item {
     public void setRequests(List<Request> requests) {
         this.requests = requests;
     }
+
+    public void setPersonalizedTermsAndConditions(String personalizedTermsAndConditions) {this.personalizedTermsAndConditions = personalizedTermsAndConditions;}
 
     //for file upload
     @Transient
