@@ -111,7 +111,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 850px;
+    height: 1250px;
     margin-top: -19px;
 }
 
@@ -142,11 +142,12 @@
     margin-top: 20px;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
+    padding: 5px;
 }
 
 .card-size-2 {
     width: 700px;
-    height: 830px;
+    height: 1150px;
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -197,6 +198,23 @@
     margin-left: -7px;
 }
 
+.card-price {
+    font-size: 18px;
+    font-family: 'Roboto Slab', sans-serif;
+    color: #006366 !important;
+}
+
+.profile-text-2 {
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.view-btn-2 {
+    font-family: 'Roboto Slab', sans-serif;
+    margin-bottom: 30px
+}
+
 /* RESPONSIVENESS */
 
 @media (min-width: 1000px) and (max-width: 1440px) {
@@ -211,4 +229,79 @@
 
 }
 
+/* Large -> Medium */
+
+@media (min-width: 780px) and (max-width: 1000px) {
+
+    .hide-on-lg {
+        display: none;
+    }
+
+    .hide-on-sm {
+        display: block;
+    }
+
+}
+
+/* Medium -> Small */
+
+@media (min-width: 580px) and (max-width: 780px) {
+
+    .hide-on-lg {
+        display: none;
+    }
+
+    .hide-on-sm {
+        display: block;
+    }
+
+    .card-img-top {
+        width: 300px;
+    }
+
+    .card-size-2 {
+        width: 500px;
+        height: 1150px;
+        margin-top: 80px;
+    }
+
+    .card-section-2 {
+        background-image: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 1200px;
+        margin-top: -19px;
+    }
+
+}
+
+/* Extra Small */
+
+@media (max-width: 580px)  {
+
+    .hide-on-lg {
+        display: none;
+    }
+
+    .hide-on-sm {
+        display: block;
+    }
+
+    .card-size-2 {
+        width: 500px;
+        height: 1300px;
+        margin-top: 80px;
+    }
+
+    .card-section-2 {
+        background-image: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 1400px;
+        margin-top: -19px;
+    }
+
+}
 
