@@ -25,7 +25,9 @@ public class Item {
     @Size(min = 2, message = "name must be at least 2 characters")
     private String itemName;
 
-    @Column(nullable = false, length = 1000) //may need to update this to TEXT within mysql
+    @Column(nullable = false, length = 1000)//may need to update this to TEXT within mysql
+    @NotBlank(message = "Better put something in that description")
+    @Size(min = 2, message = "The description must be 2 characters buster!!")
     private String itemDescription;
 
     @Column(nullable = true, length = 1000) //may need to update this to TEXT within mysql
