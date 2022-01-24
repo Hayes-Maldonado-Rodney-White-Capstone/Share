@@ -1,16 +1,8 @@
 package com.takeandtrade.capstone.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -21,11 +13,12 @@ public class Request {
     private long id;
 
     @Column
-    @DateTimeFormat(pattern ="yyyy-mm-dd")
+    @Future()
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date beginDate;
 
     @Column
-    @DateTimeFormat(pattern ="yyyy-mm-dd")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date dueDate;
 
     @Column

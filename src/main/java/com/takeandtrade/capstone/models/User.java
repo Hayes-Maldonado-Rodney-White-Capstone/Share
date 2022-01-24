@@ -4,6 +4,7 @@ import com.mysql.cj.Messages;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,7 @@ public class User {
     private String email;
 
     @Column (nullable = false, length = 255)
+    @NotEmpty(message = "the password cannot be empty")
     private String password;
 
     @Column (nullable = false)

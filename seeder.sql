@@ -1,12 +1,12 @@
 USE share_db;
 
-INSERT INTO category (name) VALUES ('automotive'),
-                                   ('electronics'),
-                                   ('fashion'),
-                                   ('home and garden'),
-                                   ('sporting goods'),
-                                   ('toys and hobbies'),
-                                   ('other');
+INSERT INTO category (name) VALUES ('Automotive'),
+                                   ('Electronics'),
+                                   ('Fashion'),
+                                   ('Home and Garden'),
+                                   ('Sporting Goods'),
+                                   ('Toys and Hobbies'),
+                                   ('Other');
 
 # please do not add any categories. If you do, everyone will need to update their db and we'll need to test the create form again.
 

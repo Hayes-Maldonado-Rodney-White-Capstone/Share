@@ -62,7 +62,7 @@ public class ItemController {
 //        User user = userDao.getById(1L);
 //        item.setUser(user);
 //        //
-        item.setDatePosted(LocalDateTime.now());
+//        item.setDatePosted(LocalDateTime.now());
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         System.out.println("filename " + fileName);
