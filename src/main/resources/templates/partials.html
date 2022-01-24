@@ -63,6 +63,61 @@
         </nav>
     </section>
 </div>
+
+
+<!--  Navbar 2 -->
+<div th:fragment="navbar-2">
+    <section class="navbar-section">
+        <nav id="myNavbar" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a href="/homepage" th:href="@{/homepage}" class="navbar-brand">
+                    <img class="navbar-logo" src="https://i.postimg.cc/6590cqH6/a-logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
+                            <a class="nav-link" href="/homepage" th:href="@{/homepage}"><img class="navbar-icon-2" src="https://i.postimg.cc/XNw8bdZk/nav-home.png">Home</a>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/userProfile" th:href="@{/userProfile}" aria-hidden="true">My Profile<img class="navbar-icon" src="https://i.postimg.cc/Y23WR3GZ/nav-profile.png"></a>
+                        </li>
+                        <li class="nav-item dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Borrow<img class="navbar-icon" src="https://i.postimg.cc/5yR9G6MY/nav-borrow.png">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/items" th:href="@{/items}">Borrow Catalog</a>
+                                <a class="dropdown-item" href="/items/create" th:href="@{/items/create}">Create a Post</a>
+                            </div>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/myRequests" th:href="@{/myRequests}" aria-hidden="true">My Requests<img class="navbar-icon" src="https://i.postimg.cc/WbTQL24t/nav-request.png"></a>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="https://i.postimg.cc/VvrPJg3v/nav-message.png"></a>
+                        </li>
+                        <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews<img class="navbar-icon" src="https://i.postimg.cc/L6PMRyt0/nav-review.png"></a>
+                        </li>
+                        <li>
+                            <form th:action="@{/logout}" th:method="post">
+                                <button style="margin-top: -1px;" sec:authorize="isAuthenticated()" class="btn-link btn nav-link">Logout<img class="navbar-icon" src="https://i.postimg.cc/HLBq3Fmj/nav-logout.png"></button>
+                                <button style="margin-top: -1px;" sec:authorize="isAnonymous()" th:href="@{/login}" class="btn-link btn nav-link">Login<img class="navbar-icon" src="https://i.postimg.cc/Y23WR3GZ/nav-profile.png"></button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+</div>
+
+
+
 <!-- Custom CSS and JS Scripts -->
 <script th:fragment="scripts">
 <!--   JS Scripts -->
