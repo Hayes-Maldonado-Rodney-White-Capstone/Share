@@ -43,7 +43,7 @@ public class Item {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime datePosted;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
+    private LocalDateTime datePosted = LocalDateTime.now();  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP.
 
     //one item has one category
     @OneToOne()

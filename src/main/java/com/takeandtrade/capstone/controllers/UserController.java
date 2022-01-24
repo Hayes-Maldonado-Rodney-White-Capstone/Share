@@ -1,6 +1,7 @@
 package com.takeandtrade.capstone.controllers;
 
 import com.takeandtrade.capstone.models.Rating;
+import com.takeandtrade.capstone.models.Request;
 import com.takeandtrade.capstone.models.Review;
 import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.*;
@@ -8,8 +9,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,10 +25,11 @@ public class UserController {
     private final ReviewRepository reviewDao;
     private final RatingRepository ratingDao;
     private final RoleRepository roleDao;
+    private final RequestRepository requestDao;
 
 
     public UserController(UserRepository userDao,
-                          PasswordEncoder passwordEncoder, ItemRepository itemDao, ReviewRepository reviewDao, RatingRepository ratingDao, RoleRepository roleDao) {
+                          PasswordEncoder passwordEncoder, ItemRepository itemDao, ReviewRepository reviewDao, RatingRepository ratingDao, RoleRepository roleDao, RequestRepository requestDao) {
 
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
@@ -33,6 +37,7 @@ public class UserController {
         this.reviewDao = reviewDao;
         this.ratingDao = ratingDao;
         this.roleDao = roleDao;
+        this.requestDao = requestDao;
 
     }
 
@@ -44,14 +49,19 @@ public class UserController {
     }
 
     @PostMapping("/registerForm")
-    public String saveUser(@ModelAttribute User user) {
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
-        user.setRoles(Collections.singletonList(roleDao.findByRoleType("user")));
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult) {
 
-        userDao.save(user);
-        return "redirect:/homepage";
+        if (bindingResult.hasErrors()){
+            return "users/registerForm";
+        } else {
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
+            user.setRoles(Collections.singletonList(roleDao.findByRoleType("user")));
+
+            userDao.save(user);
+            return "redirect:/homepage";
+        }
     }
 
     @GetMapping("/viewPosterProfile/{posterId}")
@@ -144,6 +154,22 @@ public class UserController {
         model.addAttribute("ratings", ratingList);
 
         return "users/myReviews";
+    }
+
+    @GetMapping("/myRequests")
+    public String showMyRequests(Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User producerUser = userDao.getById(loggedInUser.getId()); //logged in user is the one who posted the item, so they will have requests, and they are approver1
+        model.addAttribute("loggedInUser", producerUser);
+
+
+        model.addAttribute("requests", requestDao.findAll());
+        List<Request> requestList = requestDao.findAll();
+        model.addAttribute("requests", requestList);
+//        model.addAttribute("requestsUser", userDao.findAll());
+//        model.addAttribute("approver", requestDao.findAllByApprover1(loggedInUser.getUsername()));
+
+        return "users/myRequests";
     }
 
 

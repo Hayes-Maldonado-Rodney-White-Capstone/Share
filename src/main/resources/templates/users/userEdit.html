@@ -43,6 +43,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label th:for="password">New Password</label>
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"></span>
                 <input th:id="password" type="password" class="form-control" th:field="*{password}" required minlength="4"/>
             </div>
         </div>

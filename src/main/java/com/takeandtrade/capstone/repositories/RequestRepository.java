@@ -12,7 +12,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 //    Optional<Request> findById(Long id);
     Optional<Request> findByBeginDate(Date beginDate);
 //
-//    Request findByApprover1(String approver1);
+    Request findAllByApprover1(String approver1);
 //    Request findByRequesteditems(Long itemId);
 
 }

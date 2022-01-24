@@ -19,15 +19,7 @@
     <p>Item Requested: <span th:text="${request.getItemReq().itemName}"></span></p>
         <p>Status: <span th:text="${request.status}"></span></p>
     </div>
-    <div>
-        <h3>Can I get a list of requests where I am listed as the approver?</h3>
-        <div th:text="${request.itemReq.getRequests()}"></div>
-        <div th:each="thing : ${allmyrequests}">
-            <p><span th:text="thing.name"></span></p>
-            <p><span th:text="thing.itemId"></span></p>
-            <p><span th:text=""></span></p>
-        </div>
-    </div>
+
 </div>
 <div th:replace="partials :: scripts"></div>
 </body>
