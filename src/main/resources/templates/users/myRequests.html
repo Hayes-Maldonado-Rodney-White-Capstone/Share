@@ -10,7 +10,8 @@
         <div th:each="request : ${requests}">
             <div th:if="${loggedInUser.username != request.userReq.username}">
             <p>Username of the Requester: <span th:text="${request.userReq.username}"></span></p>
-            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
+<!--            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>-->
+            <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>
             <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>
                 <p>Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
                 <p>Request Status: <span th:text="${request.status}"></span></p>
