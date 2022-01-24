@@ -15,8 +15,10 @@ html {
 .message-title {
     text-align: center;
     font-family: 'Roboto Slab', serif;
-    margin-top: 100px;
+    margin-top: 70px;
+    margin-bottom: 100px;
     color: #006366;
+    font-size: 60px;
 }
 
 .profile-image {
@@ -28,6 +30,19 @@ html {
     margin-top: 40px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border: none !important;
+}
+
+.card-text {
+    font-family: 'Roboto Slab', serif;
+}
+
+.card-text-big {
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+}
+
+.btn {
+    font-family: 'Roboto', serif;
 }
 
 
