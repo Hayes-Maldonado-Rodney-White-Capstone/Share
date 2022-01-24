@@ -110,9 +110,10 @@ public class ItemController {
     public String searchForItems(@RequestParam("search") String search, Model model) {
 
         model.addAttribute("search", itemDao.findItemByItemNameContains(search));
+
         System.out.println("search length " + search.length());
 
-        return "items/itemsindex";
+        return "items/search";
     }
 
     //view one item
