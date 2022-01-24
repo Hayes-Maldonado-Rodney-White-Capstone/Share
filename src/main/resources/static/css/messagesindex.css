@@ -1,0 +1,48 @@
+html {
+    background-color: #008a4c;
+}
+
+
+.messaging-section {
+    background-image: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.message-title {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    margin-top: 70px;
+    margin-bottom: 100px;
+    color: #006366;
+    font-size: 60px;
+}
+
+.profile-image {
+    width: 170px;
+    height: 170px;
+}
+
+.card {
+    margin-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: none !important;
+}
+
+.card-text {
+    font-family: 'Roboto Slab', serif;
+}
+
+.card-text-big {
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+}
+
+.btn {
+    font-family: 'Roboto', serif;
+}
+
+
