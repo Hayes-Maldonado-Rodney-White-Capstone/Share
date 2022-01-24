@@ -5,7 +5,7 @@ html  {
 }
 
 body {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .size-wrapper { /* Keeps everything from over-expanding on bigger pages*/

@@ -8,6 +8,7 @@ import com.takeandtrade.capstone.repositories.CategoryRepository;
 import com.takeandtrade.capstone.repositories.ItemRepository;
 import com.takeandtrade.capstone.repositories.RequestRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -101,6 +102,16 @@ public class ItemController {
 
         List <Category> categoriesList = categoryDao.findAll();
         model.addAttribute("categories", categoriesList);
+        return "items/itemsindex";
+    }
+
+    //postmapping for Item Search bar
+    @PostMapping("/items/search")
+    public String searchForItems(@RequestParam("search") String search, Model model) {
+
+        model.addAttribute("search", itemDao.findItemByItemNameContains(search));
+        System.out.println("search length " + search.length());
+
         return "items/itemsindex";
     }
 
