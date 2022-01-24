@@ -2,7 +2,6 @@ package com.takeandtrade.capstone.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import javax.validation.constraints.Future;
 import java.util.Date;
 
 @Entity
@@ -13,7 +12,6 @@ public class Request {
     private long id;
 
     @Column
-    @Future()
     @DateTimeFormat(pattern ="yyyy-MM-dd")
     private Date beginDate;
 
@@ -30,12 +28,6 @@ public class Request {
 
     @Column(length = 500)
     private String notes;
-
-    //will need to add Many to Many mapping between users and items. and a getter to get the logged in user/consumer
-    //I'll need a relationship between the user_id who is submitting the request form. Many users can make many requests?
-    //will need to get the producers id (the person who posted the item and is the approver), the consumers id(the person who is borrowing the item and is making the request), and the item id
-//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "requests")
-//    private Collection<Item> requesteditems;
 
     //many requests for one item?
     @ManyToOne(cascade = CascadeType.ALL)

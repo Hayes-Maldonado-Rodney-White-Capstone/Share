@@ -9,10 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
 
@@ -49,19 +47,14 @@ public class UserController {
     }
 
     @PostMapping("/registerForm")
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult) {
+    public String saveUser(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
+        user.setRoles(Collections.singletonList(roleDao.findByRoleType("user")));
 
-        if (bindingResult.hasErrors()){
-            return "users/registerForm";
-        } else {
-            String hash = passwordEncoder.encode(user.getPassword());
-            user.setPassword(hash);
-            //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
-            user.setRoles(Collections.singletonList(roleDao.findByRoleType("user")));
-
-            userDao.save(user);
-            return "redirect:/homepage";
-        }
+        userDao.save(user);
+        return "redirect:/homepage";
     }
 
     @GetMapping("/viewPosterProfile/{posterId}")

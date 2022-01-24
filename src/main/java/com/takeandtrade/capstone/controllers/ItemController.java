@@ -12,10 +12,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -54,7 +56,13 @@ public class ItemController {
 
     //when the user submits the form, the postmapping saves the information into the db, and then redirects the browser to /items
     @PostMapping("/items/create")
-    public String addNewItem(@ModelAttribute Item item, Model model, @RequestParam("images") MultipartFile multipartFile) throws IOException {
+    public String addNewItem(@Valid @ModelAttribute Item item, Errors validation , Model model, @RequestParam("images") MultipartFile multipartFile) throws IOException {
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("item", item);
+            return "items/create";
+        }
+
         User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
         item.setUser(itemLender);
 
