@@ -35,9 +35,11 @@
                     </div>
                     <h4 class="mb-2 card-text-big"><span th:text="${user.username}"></span></h4>
                     <p class="card-text text-muted mb-4"><span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span></p>
+                    <form class="m-1" th:action="@{'/messages/' + ${user.id}}" method="GET">
                     <button name="writeOneMessage" th:value="${user.id}" type="submit" class="btn btn-success btn-lg">
                         Message now
                     </button>
+                    </form>
             </div>
 
         </div>
