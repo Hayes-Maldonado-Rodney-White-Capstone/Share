@@ -26,10 +26,29 @@
 
 <body>
 <nav th:replace="partials :: navbar-2"/>
+
+<div th:object="${user}">
+
+    <img class="profile-icon" src="https://cdn-icons-png.flaticon.com/512/163/163801.png">
+
+    <h1 class="title"><span th:text="${user.getUsername()}"></span>'s Profile</h1>
+
+    <h5 class="hide">User ID: <span th:text="${user.getId()}"></span></h5>
+    <h5 class="name-text">Name: <span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span></h5>
+    <h5 class="email-text text-muted">Email: <span th:text="${user.getEmail}"/></h5>
+
+    <p class="center-text"> <a href="" class="btn btn-success top-btn">Leave A Review</a>
+    </p>
+
+    <hr>
+
+</div>
+
 <div class="container">
     <div class="row">
         <!--looping through that user's items-->
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" th:each="userItem: ${userItems}">
+
             <div class="card text-center">
                 <h3 class="card-title"><span th:text="${userItem.itemName}"></span></h3>
                 <img th:src="@{${userItem.photosImagePath}}" class="card-img-top" alt="...">

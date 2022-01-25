@@ -16,72 +16,21 @@ body {
 
 /* TOP SECTION */
 
-.profile-icon {
-    width: 200px;
-    height: 200px;
+.catalog-img {
     margin-right: auto;
     margin-left: auto;
-    border-radius: 50%;
     display: block;
-    margin-top: 100px;
+    width: 1800px;
+    height: 1600px;
 }
 
-.title {
+.img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 250px;
     text-align: center;
-    color: #006366 !important;
-    font-family: 'Roboto Slab', serif !important;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.hide {
-    display: none;
-}
-
-hr {
-    border: 1px solid #006366;
-    width: 85%;
-}
-
-.name-text {
-    font-family: 'Roboto', serif !important;
-    text-align: center;
-}
-
-.email-text {
-    font-family: 'Roboto', serif !important;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.center-text {
-    font-family: 'Roboto', serif !important;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.my-items {
-    font-family: 'Roboto Slab', serif !important;
-    text-align: center;
-    color: #006366;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.top-btn {
-    background-color: #008a4c;
-    border: none;
-    font-family: 'Roboto Slab', sans-serif;
-}
-
-.top-btn:hover {
-    background-color: #1FC168;
-    border: none;
-    font-family: 'Roboto', sans-serif;
-}
-
-.btn {
-    font-family: 'Roboto', sans-serif;
+    margin-top: 450px;
 }
 
 /* CARD SECTION */
@@ -178,7 +127,7 @@ hr {
         margin-left: auto;
         display: block;
         width: 2000px;
-        height: 1800px;
+        height: 500px;
     }
 
     .img-overlay {
@@ -198,14 +147,14 @@ hr {
 
 /* Extra Large -> Large */
 
-@media (min-width: 1000px) and (max-width: 1200px) {
+@media (min-width: 1000px)  {
 
     .catalog-img {
         margin-right: auto;
         margin-left: auto;
         display: block;
         width: 1400px;
-        height: 1200px;
+        height: 750px;
     }
 
     .img-overlay {
@@ -226,14 +175,14 @@ hr {
 
 /* Large -> Medium */
 
-@media (min-width: 780px) and (max-width: 1000px) {
+@media (min-width: 780px)  {
 
     .catalog-img {
         margin-right: auto;
         margin-left: auto;
         display: block;
         width: 1000px;
-        height: 900px;
+        height: 500px;
     }
 
     .img-overlay {
@@ -261,7 +210,7 @@ hr {
         margin-left: auto;
         display: block;
         width: 800px;
-        height: 700px;
+        height: 450px;
     }
 
     .img-overlay {
@@ -289,7 +238,7 @@ hr {
         margin-left: auto;
         display: block;
         width: 800px;
-        height: 700px;
+        height: 450px;
     }
 
     .img-overlay {

@@ -61,6 +61,7 @@ public class UserController {
     public String showPosterProfile(Model model, @PathVariable Long posterId){
                 User poster = userDao.getById(posterId);
 
+                model.addAttribute("user", poster);
                 model.addAttribute("userItems",poster.getItems());
                 model.addAttribute("reviews", poster.getWrittenReviews());
         return "/users/viewPosterProfile";
