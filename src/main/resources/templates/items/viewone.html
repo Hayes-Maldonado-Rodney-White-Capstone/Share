@@ -86,10 +86,10 @@
                                             <button class="btn btn-success btn-lg my-btn" name="requestItem" th:value="${item.id}" th:if="${item.availability}">
                                                 Make A Request
                                             </button>
-                                            <button class="btn btn-danger btn-lg my-btn"
-                                                    th:unless="${item.availability}">Unavailable
-                                            </button>
                                         </form>
+                                        <button class="btn btn-danger btn-lg my-btn"
+                                                th:unless="${item.availability}">Unavailable
+                                        </button>
                                     </div>
                                 </div>
                             </div>
