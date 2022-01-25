@@ -147,6 +147,9 @@ public class UserController {
         List<Rating> ratingList = ratingDao.findAll();
         model.addAttribute("ratings", ratingList);
 
+        model.addAttribute("avgRating", reviewDao.findRatingAverage(producerUser.getId()));
+    System.out.println(reviewDao.findRatingAverage(producerUser.getId()));
+        System.out.println(producerUser.getId());
         //testing
         List<Review> reviewList = reviewDao.findAll();
         model.addAttribute("reviewList", reviewList);
