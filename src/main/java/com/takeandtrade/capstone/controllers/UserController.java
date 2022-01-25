@@ -128,14 +128,14 @@ public class UserController {
         return "redirect:/homepage";
     }
 
-    @GetMapping("/myReviews/{userId}")
-    public String showMyReviews(Model model, @PathVariable long userId) {
+    @GetMapping("/myReviews")
+    public String showMyReviews(Model model) {
 
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User consumerUser = userDao.getById(loggedInUser.getId());//user that is writing the review on the item they borrowed
         model.addAttribute("loggedInUser", consumerUser);
 
-        User producerUser = userDao.getById(userId);//
+        User producerUser = userDao.getById(loggedInUser.getId());//
         model.addAttribute("producerUser", producerUser );
 
         model.addAttribute("user", producerUser);

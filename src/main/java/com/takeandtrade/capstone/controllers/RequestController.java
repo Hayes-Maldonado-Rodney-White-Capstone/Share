@@ -72,4 +72,24 @@ public class RequestController {
         return "items/request-submitted";
     }
 
+    //postmapping for approve button
+    @PostMapping("/myRequests/approved")
+    public String submitApproval(Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User producerUser = userDao.getById(loggedInUser.getId()); //logged in user is the one who posted the item, so they will have requests, and they are approver1
+        model.addAttribute("loggedInUser", producerUser);
+
+        model.addAttribute("requests", requestDao.findAll());
+        List<Request> requestList = requestDao.findAll();
+        model.addAttribute("requests", requestList);
+
+        //when the user clicks approve, we need to change the item availability to false
+        //and use the setter to change the request status to APPROVED
+        
+
+
+        return "users/myRequests";
+
+    }
+
 }
