@@ -5,6 +5,7 @@
 <nav th:replace="partials :: navbar"></nav>
 <div class="container">
     <br>
+    <div class="border border-secondary">
     <h1 class="text-center">Pending Requests</h1>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div th:each="request : ${requests}">
@@ -18,13 +19,15 @@
                 <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>
                 <p>Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
                 <p>Request Status: <span th:text="${request.status}"></span></p>
-                <form>
-                    <button class="p-2">Approve</button>
+
+                <form class="d-flex justify-content-center" th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
+                    <button class="p-2 d-flex justify-content-center" th:if="${request.status == 'PENDING'}" >Approve</button>
                 </form>
+                <button class="p-2 d-flex justify-content-center" th:unless="${request.status == 'PENDING'}">Approved</button>
             </div>
         </div> <!--end of forEach div-->
     </div>
-
+    </div>
 </div>
 <div th:replace="partials :: scripts"></div>
 </body>

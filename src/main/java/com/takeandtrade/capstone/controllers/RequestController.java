@@ -73,22 +73,27 @@ public class RequestController {
     }
 
     //postmapping for approve button
-    @PostMapping("/myRequests/approved")
-    public String submitApproval(Model model) {
+    @PostMapping("/myRequests/approve/{requestId}")
+    public String updateApprovalStatus(@PathVariable Long requestId, Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User producerUser = userDao.getById(loggedInUser.getId()); //logged in user is the one who posted the item, so they will have requests, and they are approver1
         model.addAttribute("loggedInUser", producerUser);
+        System.out.println("producer user " + producerUser.getUsername());
 
         model.addAttribute("requests", requestDao.findAll());
         List<Request> requestList = requestDao.findAll();
         model.addAttribute("requests", requestList);
 
-        //when the user clicks approve, we need to change the item availability to false
+        //when the user clicks approve, we don't want to change it to unavailable, because it's not unavailable yet.
         //and use the setter to change the request status to APPROVED
-        
+        Request request = requestDao.getById(requestId);
+        System.out.println("request id " + request);
+        request.getItemReq().setAvailability(false); //we can probably remove this, just because it's approved doesn't mean it's unavailable
+        request.setStatus("APPROVED");
 
+        requestDao.save(request);
 
-        return "users/myRequests";
+        return "redirect:/myRequests";
 
     }
 
