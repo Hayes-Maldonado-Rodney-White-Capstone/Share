@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en-US">
-<head th:replace="partials ::head(pageTitle='Poster\'s Profile')"></head>
+<head>
+    <head th:replace="partials::head"/>
+
+    <meta charset="UTF-8">
+    <title>View Poster Profile</title>
+
+    <!--     Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/viewposterprofile.css" th:href="@{/css/viewposterprofile.css}">
+
+</head>
 </br>
 
 <body>
-<nav th:insert="partials :: navbar"></nav>
+<nav th:replace="partials :: navbar-2"/>
 <div class="container">
     <!--looping through that user's items-->
 <div th:each="userItem: ${userItems}">
