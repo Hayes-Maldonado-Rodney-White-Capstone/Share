@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/static/css/navbar.css">
+<!--    <link rel="stylesheet" href="/static/css/navbar.css">-->
 
     <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
 </head>
@@ -49,7 +49,7 @@
                             <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="../static/images/homepage-images/nav-message.png" th:src="@{images/homepage-images/nav-message.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews<img class="navbar-icon" src="../static/images/homepage-images/nav-review.png" th:src="@{images/homepage-images/nav-review.png}"></a>
+                            <a class="nav-link" href="/myReviews/id" th:href="@{'/myReviews/' + }" aria-hidden="true">My Reviews<img class="navbar-icon" src="../static/images/homepage-images/nav-review.png" th:src="@{images/homepage-images/nav-review.png}"></a>
                         </li>
                         <li>
                             <form th:action="@{/logout}" th:method="post">

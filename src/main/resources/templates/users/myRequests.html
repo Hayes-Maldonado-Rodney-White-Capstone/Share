@@ -4,20 +4,28 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <div class="container">
-    <<br>
-    <h1>Requests that I have received from others</h1>
-
+    <br>
+    <h1 class="text-center">Pending Requests</h1>
+    <div class="d-flex flex-column justify-content-center align-items-center">
         <div th:each="request : ${requests}">
-            <div th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
-            <p>Username of the Requester: <span th:text="${request.userReq.username}"></span></p>
-<!--            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>-->
-            <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>
-            <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>
+            <div class="border border-info" th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
+                <p>Username of Requester: <span th:text="${request.userReq.username}"></span></p>
+                <!--            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>-->
+                <!--thymeleaf date.format sometimes throws an error, not sure when/why-->
+                <p>Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'yyyy-MM-dd')}"></span></p>
+                <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>
+                <p>Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'yyyy-MM-dd')}"></span></p>
+                <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>
                 <p>Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
                 <p>Request Status: <span th:text="${request.status}"></span></p>
-
-        </div>
+                <form>
+                    <button class="p-2">Approve</button>
+                </form>
+            </div>
+        </div> <!--end of forEach div-->
     </div>
+
 </div>
+<div th:replace="partials :: scripts"></div>
 </body>
 </html>

@@ -146,9 +146,14 @@ public class UserController {
         List<Rating> ratingList = ratingDao.findAll();
         model.addAttribute("ratings", ratingList);
 
+        //testing
+        List<Review> reviewList = reviewDao.findAll();
+        model.addAttribute("reviewList", reviewList);
+
         return "users/myReviews";
     }
 
+    //mapped to myRequests.html
     @GetMapping("/myRequests")
     public String showMyRequests(Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -5,17 +5,26 @@
     <title>My Reviews</title>
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
+<nav th:insert="partials :: navbar-2"></nav>
 <br>
-<h2>What users are saying about you</h2>
+<hr>
+<h1>Reviews that other people wrote about me:</h1>
+<div th:each="review : ${user.reviewed}">
+    <p>Review title: <span th:text="${review.reviewTitle}"></span></p>
+    <p>Review body: <span th:text="${review.reviewBody}"></span></p>
+    <p>Rating: <span th:text="${review.rating.rating}"></span></p>
+    <p>Written By: <span th:text="${review.consumer.username}"></span></p>
+</div>
+<h2>Reviews I've written about others</h2>
 <div th:if="${producerUser.getWrittenReviews().isEmpty()}">
     <p>You don't have any reviews yet.</p>
 </div>
 <div th:each="review : ${producerUser.getWrittenReviews()}">
     <p>Review title: <span th:text="${review.reviewTitle}"></span></p>
     <p>Review body: <span th:text="${review.reviewBody}"></span></p>
-    <p>They rated you at :<span th:text="${review.rating.rating}"></span></p>
+    <p>Rating :<span th:text="${review.rating.rating}"></span></p>
 </div>
+
 <script th:replace="partials  :: scripts"/>
 </body>
 </html>
