@@ -8,7 +8,7 @@
     <h1>Requests that I have received from others</h1>
 
         <div th:each="request : ${requests}">
-            <div th:if="${loggedInUser.username != request.userReq.username}">
+            <div th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
             <p>Username of the Requester: <span th:text="${request.userReq.username}"></span></p>
 <!--            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>-->
             <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>
