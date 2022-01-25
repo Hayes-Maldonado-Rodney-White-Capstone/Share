@@ -7,64 +7,87 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
 
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="../static/css/userprofile.css" th:href="@{/css/userprofile.css}">
+
 <body>
 <nav th:insert="partials :: navbar"></nav>
+
+<section class="top-section">
+
 <div class="container">
     <div sec:authorize="isAuthenticated()">
         <div th:object="${viewUser}">
-            </br>
-            <!--        <dev th:object="${#authentication.firstName}">-->
-            <h1>Welcome back, <span th:text="${#authentication.principal.username}"></span></h1>
-            <br/>
 
-            User ID: <span th:text="${#authentication.principal.id}"></span>
-            </br>
-            Username: <span th:text="${#authentication.principal.username}"/>
-            </br>
-            Email: <span th:text="${#authentication.principal.email}"/>
-            </br>
-            First Name: <span th:text="${#authentication.principal.firstName}"></span>
-            </br>
-            Last Name: <span th:text="${#authentication.principal.lastName}"></span>
-            <p>
+            <img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">
 
-                <a href="/userEdit" th:href="@{/userEdit}" class="btn btn-success top-btns">Edit Profile</a>
+            <h1 class="title">Welcome back, <span th:text="${#authentication.principal.username}"></span>!</h1>
+
+            <h5 class="hide">User ID: <span th:text="${#authentication.principal.id}"></span></h5>
+            <h5 class="name-text">Name: <span th:text="${#authentication.principal.firstName}"></span> <span th:text="${#authentication.principal.lastName}"></span></h5>
+            <h5 class="email-text text-muted">Email: <span th:text="${#authentication.principal.email}"/></h5>
+
+            <p class="center-text"> <a href="/userEdit" th:href="@{/userEdit}" class="btn btn-success top-btn">Edit Profile</a>
             </p>
+
+            <hr>
+
         </div>
     </div>
     <div>
-        <h2>My Items</h2>
+
+</section>
+
+        <h2 class="my-items">My Items</h2>
         <div th:if="${itemOwner.getItems().isEmpty()}">
             <p>There are no items yet. Post one now.</p>
         </div>
         <form th:action="@{/items/create}" method="get">
-            <button type="submit" class="btn btn-success">Post an Item, make some money</button>
+            <p class="center-text"><button type="submit" class="btn btn-success btn-lg">Share an Item</button></p>
         </form>
-        <div th:each="item : ${items}">
-            <div th:if="${item.user.id == itemOwner.id}">
-                <h2><span th:text="${item.itemName}"></span></h2>
-                <p>Description: <span th:text="${item.itemDescription}"></span></p>
-                <p>Special Instructions: <span th:text="${item.specialInstructions}"></span></p>
-                <p>User Zipcode: <span th:text="${item.user.zipcode}"></span></p>
-                <p>Condition: <span th:text="${item.itemCondition}"></span></p>
-                <p>Terms and Conditions: <span th:text="${item.personalizedTermsAndConditions}"></span></p>
-                <p>$<span th:text="${item.price}"></span> per day</p>
-                <p>Posted by username: <span th:text="${item.user.username}"></span></p>
-                <p>Date posted:<span th:text="${item.datePosted}"></span></p>
-                <!--**IMAGE**-->
-                <img th:src="@{${item.photosImagePath}}" style="width: 150px"/>
 
-                <form th:action="@{'/edit/' + ${item.id}}" method="GET">
-                    <button class="btn btn-warning" type="submit">Edit Item</button>
-                </form>
-                <!--if we want to use a link instead of button, here's the <a href-->
-                <!--                <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>-->
-                <form class="m-1" th:action="@{/items/deleteitem}" method="POST">
-                    <button class="btn btn-danger" type="submit" name="itemId" th:value="${item.id}">Delete Item
-                    </button>
-                </form>
+
+        <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" th:each="item : ${items}">
+            <div class="card text-center">
+                <h3 class="card-title"><span th:text="${item.itemName}"></span></h3>
+                <img th:src="@{${item.photosImagePath}}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <div class="tag-container">
+
+                        <button th:if="${item.category.name == 'Automotive'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-automotive.png" th:src="@{images/itemsindex-images/cat-automotive.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Electronics'}" class="btn cat-btn"></span><img class="cat-icon" src="../static/images/itemsindex-images/cat-electronics.png" th:src="@{images/itemsindex-images/cat-electronics.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Fashion'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-fashion.png" th:src="@{images/itemsindex-images/cat-fashion.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Home and Garden'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-home-and-garden.png" th:src="@{images/itemsindex-images/cat-home-and-garden.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Sporting Goods'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-sporting-goods.png" th:src="@{images/itemsindex-images/cat-sporting-goods.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Toys and Hobbies'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-toys-and-hobbies.png" th:src="@{images/itemsindex-images/cat-toys-and-hobbies.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+                        <button th:if="${item.category.name == 'Other'}" class="btn cat-btn"><img class="cat-icon" src="../static/images/itemsindex-images/cat-other.png" th:src="@{images/itemsindex-images/cat-other.png}"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
+
+
+                        <button th:if="${item.itemCondition == 'Excellent'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/excellent.png" th:src="@{images/itemsindex-images/excellent.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+                        <button th:if="${item.itemCondition == 'Good'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/good.png" th:src="@{images/itemsindex-images/good.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+                        <button th:if="${item.itemCondition == 'Fair'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/fair.png" th:src="@{images/itemsindex-images/fair.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+                        <button th:if="${item.itemCondition == 'Poor'}" class="btn con-btn"><img class="cat-icon" src="../static/images/itemsindex-images/poor.png" th:src="@{images/itemsindex-images/poor.png}"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
+
+
+                        <button class="btn zip-btn"><img class="loc-icon" src="../static/images/itemsindex-images/location.png" th:src="@{images/itemsindex-images/location.png}"><span th:text="${item.user.zipcode}"></span></button>
+                    </div>
+                    <p class="card-text"><span th:text="${item.itemDescription}"></span></p>
+                    <p class="card-price">$<span th:text="${#numbers.formatDecimal(item.price, 1, 2, 'POINT')}"></span> per day</p>
+                    <form th:action="@{'/edit/' + ${item.id}}" method="GET">
+                        <button class="btn btn-warning" type="submit">Edit Item</button>
+                    </form>
+                    <!--if we want to use a link instead of button, here's the <a href-->
+                    <!--                <a th:href="@{/edit/{itemId}(itemId=${item.id})}">edit item</a>-->
+                    <form class="m-1" th:action="@{/items/deleteitem}" method="POST">
+                        <button class="btn btn-danger" type="submit" name="itemId" th:value="${item.id}">Delete Item
+                        </button>
+                    </form>
+                </div>
+            </div>
 
             </div>
+        </div>
         </div>
     </div>
 </div>
