@@ -21,32 +21,29 @@
 
             <img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">
 
-            <h1 class="title">Welcome back, <span th:text="${#authentication.principal.username}"></span></h1>
-            <br/>
+            <h1 class="title">Welcome back, <span th:text="${#authentication.principal.username}"></span>!</h1>
 
             <h5 class="hide">User ID: <span th:text="${#authentication.principal.id}"></span></h5>
-            </br>
-            <h5>Username: <span th:text="${#authentication.principal.username}"/></h5>
-            </br>
-            <h5>Email: <span th:text="${#authentication.principal.email}"/></h5>
-            </br>
-            <h5>First Name: <span th:text="${#authentication.principal.firstName}"></span></h5>
-            </br>
-            <h5>Last Name: <span th:text="${#authentication.principal.lastName}"></span></h5>
-            <p> <a href="/userEdit" th:href="@{/userEdit}" class="btn btn-success top-btns">Edit Profile</a>
+            <h5 class="name-text">Name: <span th:text="${#authentication.principal.firstName}"></span> <span th:text="${#authentication.principal.lastName}"></span></h5>
+            <h5 class="email-text text-muted">Email: <span th:text="${#authentication.principal.email}"/></h5>
+
+            <p class="center-text"> <a href="/userEdit" th:href="@{/userEdit}" class="btn btn-success top-btn">Edit Profile</a>
             </p>
+
+            <hr>
+
         </div>
     </div>
     <div>
 
 </section>
 
-        <h2>My Items</h2>
+        <h2 class="my-items">My Items</h2>
         <div th:if="${itemOwner.getItems().isEmpty()}">
             <p>There are no items yet. Post one now.</p>
         </div>
         <form th:action="@{/items/create}" method="get">
-            <button type="submit" class="btn btn-success">Post an Item, make some money</button>
+            <p class="center-text"><button type="submit" class="btn btn-success btn-lg">Share an Item</button></p>
         </form>
 
 

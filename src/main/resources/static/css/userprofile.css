@@ -31,10 +31,58 @@ body {
 
 .title {
     text-align: center;
+    color: #006366 !important;
+    font-family: 'Roboto Slab', serif !important;
+    margin-top: 20px;
 }
 
 .hide {
     display: none;
+}
+
+hr {
+    border: 1px solid #006366;
+    width: 85%;
+}
+
+.name-text {
+    font-family: 'Roboto', serif !important;
+    text-align: center;
+}
+
+.email-text {
+    font-family: 'Roboto', serif !important;
+    text-align: center;
+}
+
+.center-text {
+    font-family: 'Roboto', serif !important;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.my-items {
+    font-family: 'Roboto Slab', serif !important;
+    text-align: center;
+    color: #006366;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.top-btn {
+    background-color: #008a4c;
+    border: none;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.top-btn:hover {
+    background-color: #1FC168;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn {
+    font-family: 'Roboto', sans-serif;
 }
 
 
