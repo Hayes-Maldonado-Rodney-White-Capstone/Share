@@ -9,6 +9,8 @@
 <br>
 <hr>
 <h1>Reviews that other people wrote about me:</h1>
+<h1> YOur ratings average:<span th:text="${avgRating}"></span> </h1>
+
 <div th:each="review : ${user.reviewed}">
     <p>Review title: <span th:text="${review.reviewTitle}"></span></p>
     <p>Review body: <span th:text="${review.reviewBody}"></span></p>
