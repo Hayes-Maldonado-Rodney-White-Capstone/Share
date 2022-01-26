@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials ::head(pageTitle='Write a review')">
-</head>
+<head th:replace="partials ::head(pageTitle='Write a Review')"></head>
+
 <body>
-<!--<nav th:replace="partials :: navbor"></nav>-->
+<nav th:replace="partials :: navbar-2"></nav>
 </br>
+<div class="container">
 <h1>You are writing a review on : <span th:text="${user.username}"></span></h1>
 
 <form th:method="POST" th:action="@{'/reviews/' +  ${user.getId()}}" th:object="${userReview}">
@@ -19,7 +20,7 @@
     </label>
     </div>
     <div class="form-group">
-        <label for="rating-select">Rate this person. 1-he scum, 5-he da best</label>
+        <label for="rating-select">Rate this person. 1-bad, 5-great</label>
         <select class="form-control" th:field="*{rating}" id="rating-select" required>
             <option th:each="rating : ${ratings}" th:value="${rating.id}"
                     th:text="${rating.rating}"></option>
@@ -29,8 +30,12 @@
     <button type="submit" class="btn btn-primary">Submit Review</button>
 </form>
 <hr>
-
-<h4>Your Review History</h4>
+<div th:if="${user.getReviewed().isEmpty()}">
+    <h4><span th:text="${user.username}"></span> doesn't have any reviews yet. Leave a 5 if you had a good experience.</h4>
+</div>
+    <div th:unless="${user.getReviewed().isEmpty()}">
+    <h4><span th:text="${user.username}"></span>'s Review History</h4>
+    </div>
 <div th:each="review : ${reviews}">
     <div th:if="${review.consumer == loggedInUser && review.producer == producerUser}">
         <h3 style="color:darkgreen;"><span th:text="${review.reviewTitle}"></span></h3>
@@ -46,6 +51,7 @@
         <p class="small">You Reviewed: <span th:text="${review.producer.username}"></span></p>
         <p class="small">Reviewer Username: <span th:text="${review.consumer.username}"></span></p>
     </div>
+</div>
 </div>
 
 <script th:replace="partials :: scripts"/>
