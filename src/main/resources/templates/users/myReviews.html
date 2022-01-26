@@ -7,26 +7,29 @@
 <body>
 <nav th:insert="partials :: navbar-2"></nav>
 <br>
-<hr>
-<h1>Reviews that other people wrote about me:</h1>
-<h1> YOur ratings average:<span th:text="${avgRating}"></span> </h1>
+<div class="container" style="margin-top: 20px;">
+    <h1>Reviews that other people wrote about me:</h1>
+    <h1> Your ratings average:<span th:text="${avgRating}"></span></h1>
 
-<div th:each="review : ${user.reviewed}">
-    <p>Review title: <span th:text="${review.reviewTitle}"></span></p>
-    <p>Review body: <span th:text="${review.reviewBody}"></span></p>
-    <p>Rating: <span th:text="${review.rating.rating}"></span></p>
-    <p>Written By: <span th:text="${review.consumer.username}"></span></p>
+    <div th:each="review : ${user.reviewed}">
+        <h2>Review title: <span th:text="${review.reviewTitle}"></span></h2>
+        <p>Review body: <span th:text="${review.reviewBody}"></span></p>
+        <p>Rating: <span th:text="${review.rating.rating}"></span></p>
+        <p>Written By: <span th:text="${review.consumer.username}"></span></p>
+    </div>
+    <hr>
+    <h2>Reviews I've written about others</h2>
+    <div th:if="${producerUser.getWrittenReviews().isEmpty()}">
+        <p>You don't have any reviews yet.</p>
+    </div>
+    <div th:each="review : ${producerUser.getWrittenReviews()}">
+        <h2>Review title: <span th:text="${review.reviewTitle}"></span></h2>
+        <p>Review body: <span th:text="${review.reviewBody}"></span></p>
+        <p>Rating :<span th:text="${review.rating.rating}"></span></p>
+    </div>
 </div>
-<h2>Reviews I've written about others</h2>
-<div th:if="${producerUser.getWrittenReviews().isEmpty()}">
-    <p>You don't have any reviews yet.</p>
-</div>
-<div th:each="review : ${producerUser.getWrittenReviews()}">
-    <p>Review title: <span th:text="${review.reviewTitle}"></span></p>
-    <p>Review body: <span th:text="${review.reviewBody}"></span></p>
-    <p>Rating :<span th:text="${review.rating.rating}"></span></p>
-</div>
-
-<script th:replace="partials  :: scripts"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
