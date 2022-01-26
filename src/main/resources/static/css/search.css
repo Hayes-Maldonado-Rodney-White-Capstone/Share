@@ -127,7 +127,7 @@ body {
         margin-left: auto;
         display: block;
         width: 2000px;
-        height: 500px;
+        height: 1800px;
     }
 
     .img-overlay {
@@ -147,14 +147,14 @@ body {
 
 /* Extra Large -> Large */
 
-@media (min-width: 1000px)  {
+@media (min-width: 1000px) and (max-width: 1200px) {
 
     .catalog-img {
         margin-right: auto;
         margin-left: auto;
         display: block;
         width: 1400px;
-        height: 750px;
+        height: 1200px;
     }
 
     .img-overlay {
@@ -175,14 +175,14 @@ body {
 
 /* Large -> Medium */
 
-@media (min-width: 780px)  {
+@media (min-width: 780px) and (max-width: 1000px) {
 
     .catalog-img {
         margin-right: auto;
         margin-left: auto;
         display: block;
         width: 1000px;
-        height: 500px;
+        height: 900px;
     }
 
     .img-overlay {
@@ -210,7 +210,7 @@ body {
         margin-left: auto;
         display: block;
         width: 800px;
-        height: 450px;
+        height: 700px;
     }
 
     .img-overlay {
@@ -238,7 +238,7 @@ body {
         margin-left: auto;
         display: block;
         width: 800px;
-        height: 450px;
+        height: 700px;
     }
 
     .img-overlay {
