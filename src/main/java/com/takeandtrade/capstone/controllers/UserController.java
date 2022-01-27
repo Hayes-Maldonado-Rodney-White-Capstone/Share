@@ -43,10 +43,10 @@ public class UserController {
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());  //I added this line and it made the red squigglies go away on the registerForm
 
-        return "/users/registerForm";
+        return "/users/registerform";
     }
 
-    @PostMapping("/registerForm")
+    @PostMapping("/registerform")
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
