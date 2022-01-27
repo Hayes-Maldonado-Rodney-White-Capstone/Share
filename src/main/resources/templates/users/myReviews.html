@@ -20,26 +20,28 @@
 <body>
 <nav th:insert="partials :: navbar-2"></nav>
 
-<div class="container card-container">
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"><img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">Special title treatment<img class="star-icons" src="https://www.freepnglogos.com/uploads/star-png/star-vector-png-transparent-image-pngpix-21.png"> </h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    </div>
-</div>
-</div>
-
-<div class="container" style="margin-top: 20px;">
-    <h1>Reviews that other people wrote about me:</h1>
     <h1> Your ratings average:<span th:text="${avgRating}"></span></h1>
 
     <div th:each="review : ${user.reviewed}">
-        <h2>Review title: <span th:text="${review.reviewTitle}"></span></h2>
-        <p>Review body: <span th:text="${review.reviewBody}"></span></p>
-        <p>Rating: <span th:text="${review.rating.rating}"></span></p>
-        <p>Written By: <span th:text="${review.consumer.username}"></span></p>
+
+        <div class="container card-container">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><img class="profile-icon" src="https://cdn-icons-png.flaticon.com/512/163/163801.png"><span th:text="${review.consumer.username}"></span>: <span th:text="${review.reviewTitle}"></span>
+
+                        <img th:if="${review.rating.rating == 1}" class="star-icons" src="https://i.postimg.cc/sXJsM2Nh/1-star.png">
+                        <img th:if="${review.rating.rating == 2}" class="star-icons" src="https://i.postimg.cc/DzBX17Dt/2-star.png">
+                        <img th:if="${review.rating.rating == 3}" class="star-icons" src="https://i.postimg.cc/T2HJZJtZ/3-star.png">
+                        <img th:if="${review.rating.rating == 4}" class="star-icons" src="https://i.postimg.cc/7YRDGdmm/4-star.png">
+                        <img th:if="${review.rating.rating == 5}" class="star-icons" src="https://i.postimg.cc/DZ532MSQ/5-star.png">
+
+                    </h5>
+                    <p class="card-text"><span th:text="${review.reviewBody}"></span></p>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
