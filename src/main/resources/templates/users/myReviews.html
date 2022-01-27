@@ -20,7 +20,26 @@
 <body>
 <nav th:insert="partials :: navbar-2"></nav>
 
-    <h1> Your ratings average:<span th:text="${avgRating}"></span></h1>
+<div class="container card-container-2 d-flex justify-content-center text-center">
+<div class="card top-card">
+    <div class="card-block">
+        <h4 class="card-big-title">Review Stats:</h4>
+    </div>
+    <div class="card-block">
+        <p class="card-big-text">Average: <span th:text="${avgRating}"></span></p>
+        <p th:if="${avgRating == 5.0}" class="card-text">Excellent Lender<br><br>Tip: Have a party with your neighbors!</p>
+        <p th:if="${avgRating == 4.5}" class="card-text">Almost-Excellent Lender<br><br>Tip: If you borrow from others, leave a good rating! They might rate you back!</p>
+        <p th:if="${avgRating == 4.0}" class="card-text">Good Lender<br><br>Tip: If you borrow from others, leave a good rating! They might rate you back!</p>
+        <p th:if="${avgRating == 3.5}" class="card-text">Almost-Good Lender<br><br>Tip: Use our built-in messaging system and keep good communication between you and your borrower!</p>
+        <p th:if="${avgRating == 3.0}" class="card-text">Fair Lender<br><br>Tip: Use our built-in messaging system and keep good communication between you and your borrower!</p>
+        <p th:if="${avgRating == 2.5}" class="card-text">Almost-Fair Lender<br><br>Tip: Check out other neighbor's profiles and take some notes! See what makes them a good lender!</p>
+        <p th:if="${avgRating == 2.0}" class="card-text">Okay Lender<br><br>Tip: Check out other neighbor's profiles and take some notes! See what makes them a good lender!</p>
+        <p th:if="${avgRating == 1.5}" class="card-text">Almost-Okay Lender<br><br>Tip: Make sure you're being honest and open on your lending post! People don't like broken stuff!</p>
+        <p th:if="${avgRating == 1.0}" class="card-text">Poor Lender<br><br>Tip: Make sure you're being honest and open on your lending post! People don't like broken stuff!</p>
+        <p th:if="${avgRating == 0.5}" class="card-text">Almost-Poor Lender<br><br>Tip: I got nothing, sorry.</p>
+    </div>
+</div>
+</div>
 
     <div th:each="review : ${user.reviewed}">
 
