@@ -64,7 +64,7 @@ public class UserController {
                 model.addAttribute("user", poster);
                 model.addAttribute("userItems",poster.getItems());
                 model.addAttribute("reviews", poster.getWrittenReviews());
-        return "/users/viewPosterProfile";
+        return "users/viewPosterProfile";
     }
 
     @GetMapping("/userprofile")
@@ -79,7 +79,7 @@ public class UserController {
 //        User userprofile = userDao.getById(id);
 //        model.addAttribute("viewProfile", userprofile);
 
-        return "/users/userprofile";
+        return "users/userprofile";
     }
 
 
@@ -88,7 +88,7 @@ public class UserController {
     public String updateUser(Model model) {
         User updateUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", updateUser);
-        return "/users/userEdit";
+        return "users/userEdit";
 
     }
 

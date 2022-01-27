@@ -124,7 +124,7 @@ public class ItemController {
         Item viewItem = itemDao.getById(itemId);
         model.addAttribute("item", viewItem);
         model.addAttribute("user", viewItem.getUser()); //getting the user that created the item
-        return "/items/viewone";
+        return "items/viewone";
     }
 
     //edit functionality
@@ -139,7 +139,7 @@ public class ItemController {
         List<Category> categoryList = categoryDao.findAll();
         model.addAttribute("categories", categoryList);
         model.addAttribute("items", item); //this pre-populates the info in the form in the edit.html
-        return "/items/edit";
+        return "items/edit";
     }
 
     @PostMapping("/items/edit/{itemId}")
