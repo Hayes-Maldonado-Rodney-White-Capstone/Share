@@ -154,7 +154,7 @@ public class ItemController {
     @PostMapping("/items/deleteitem")
     public String deleteItem(Long itemId) {
         itemDao.deleteById(itemId);
-        return "redirect:/userProfile";
+        return "redirect:/userprofile";
     }
 
 }

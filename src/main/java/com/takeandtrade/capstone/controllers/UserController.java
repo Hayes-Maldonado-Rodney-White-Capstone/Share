@@ -67,7 +67,7 @@ public class UserController {
         return "/users/viewPosterProfile";
     }
 
-    @GetMapping("/userProfile")
+    @GetMapping("/userprofile")
     public String userHome(Model model) {
         User loggedinUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User itemOwner = userDao.getById(loggedinUser.getId());
@@ -76,10 +76,10 @@ public class UserController {
         model.addAttribute("viewUser", loggedinUser);
         model.addAttribute("items", itemDao.findAll());
 
-//        User userProfile = userDao.getById(id);
-//        model.addAttribute("viewProfile", userProfile);
+//        User userprofile = userDao.getById(id);
+//        model.addAttribute("viewProfile", userprofile);
 
-        return "/users/userProfile";
+        return "/users/userprofile";
     }
 
 
@@ -120,7 +120,7 @@ public class UserController {
 
         userDao.save(updateTheUser);
 
-        return "redirect:/userProfile";
+        return "redirect:/userprofile";
     }
 
     @PostMapping("/user/delete/{userId}")
