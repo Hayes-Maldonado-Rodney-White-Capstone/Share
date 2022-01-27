@@ -4,6 +4,13 @@
     font-size: 45px;
 }
 
+.form-title-2 {
+    margin-top: 100px;
+    margin-bottom: 25px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 45px;
+}
+
 label {
     font-family: 'Roboto', sans-serif;
 }
@@ -14,5 +21,11 @@ label {
 
 .btn {
     margin-top: 10px;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.btn-2 {
+    margin-top: 10px;
+    margin-bottom: 30px;
     font-family: 'Roboto', sans-serif !important;
 }
