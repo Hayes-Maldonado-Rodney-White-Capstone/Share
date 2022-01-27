@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <head th:replace="partials ::head(pageTitle='Share')"></head>
-<!--     Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--     Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,29 +21,31 @@
 
 <div class="size-wrapper">
 
-<nav th:replace="partials :: navbar"/>
+    <nav th:replace="partials :: navbar"/>
 
-<section class="top-section">
+    <section class="top-section">
 
-    <div class="flex-container img-container">
-        <div class="row d-flex justify-content-center">
+        <div class="flex-container img-container">
+            <div class="row d-flex justify-content-center">
 
-            <div class="img-wrapper">
-                <div class="tnt-back-layer-img"></div>
+                <div class="img-wrapper">
+                    <div class="tnt-back-layer-img"></div>
 
-                <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png" th:src="@{images/homepage-images/tnt-front-layer.png}" alt="Homepage">
+                    <img class="tnt-top-img" src="../static/images/homepage-images/tnt-front-layer.png"
+                         th:src="@{images/homepage-images/tnt-front-layer.png}" alt="Homepage">
+
+                </div>
+                <div class="img-overlay" th:if="${#authorization.expression('!isAuthenticated()')}">
+                    <a href="/registerForm" th:href="@{/registerForm}" aria-hidden="true"
+                       class="btn btn-success top-btns">Register</a>
+                    <a href="/login" th:href="@{/login}" aria-hidden="true" class="btn btn-success top-btns">Login</a>
+                </div>
+
 
             </div>
-            <div class="img-overlay" th:if="${#authorization.expression('!isAuthenticated()')}">
-                <a href="/registerForm" th:action="@{/registerForm}"  aria-hidden="true" class="btn btn-success top-btns">Register</a>
-                <a href="/login" th:href="@{/login}" aria-hidden="true" class="btn btn-success top-btns">Login</a>
-            </div>
-
-
         </div>
-    </div>
 
-</section>
+    </section>
 
     <section class="about-section">
 
@@ -69,7 +72,8 @@
                     </p>
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <img class="about-img-1" src="../static/images/homepage-images/talking.png" th:src="@{images/homepage-images/talking.png}">
+                    <img class="about-img-1" src="../static/images/homepage-images/talking.png"
+                         th:src="@{images/homepage-images/talking.png}">
                 </div>
             </div>
 
@@ -87,430 +91,484 @@
                     </p>
 
                     <div class="col-xl-6 col-lg-6 hide-on-lg">
-                        <img class="about-img-2" src="../static/images/homepage-images/user.png" th:src="@{images/homepage-images/user.png}">
+                        <img class="about-img-2" src="../static/images/homepage-images/user.png"
+                             th:src="@{images/homepage-images/user.png}">
                     </div>
 
                 </div>
 
-            <div class="row about-rows">
-                <div class="col-xl-6 col-lg-6 hide-on-sm">
-                    <img class="about-img-2" src="../static/images/homepage-images/user.png" th:src="@{images/homepage-images/user.png}">
-                </div>
+                <div class="row about-rows">
+                    <div class="col-xl-6 col-lg-6 hide-on-sm">
+                        <img class="about-img-2" src="../static/images/homepage-images/user.png"
+                             th:src="@{images/homepage-images/user.png}">
+                    </div>
 
-                <div class="col-xl-6 col-lg-6">
-                    <div class="hide-on-sm">
-                    <h1 class="about-mini-header">Why should YOU use Share?</h1>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="hide-on-sm">
+                            <h1 class="about-mini-header">Why should YOU use Share?</h1>
 
-                    <p class="about-p">Why let something sit in a storage room or a garage collecting
-                        dust when you can make money off of it? Share is a simple, easy way to monetize
-                        your belongings without getting rid of them. Not only is Share a great way to earn
-                        money passively for yourself, but it’s also great for your community, allowing others to have
-                        access to things that may not have been accessible by normal means.
+                            <p class="about-p">Why let something sit in a storage room or a garage collecting
+                                dust when you can make money off of it? Share is a simple, easy way to monetize
+                                your belongings without getting rid of them. Not only is Share a great way to earn
+                                money passively for yourself, but it’s also great for your community, allowing others to
+                                have
+                                access to things that may not have been accessible by normal means.
 
-                    </p>
+                            </p>
 
                         </div>
+                    </div>
                 </div>
+
+                <div class="row about-rows">
+                    <div class="col-xl-6 col-lg-6">
+                        <h1 class="about-mini-header">OUR Mission</h1>
+
+                        <p class="about-p">Our mission here at Share is to help people become more
+                            connected with their neighborhoods and keep the world a little greener. In past generations,
+                            not everybody owned a tent, a specialty tool or a bicycle. These things were commonly lent
+                            to
+                            trusted neighbors as a regular practice. Share is hoping to revive this tradition
+                            in a modern and digital way, making things more accessible to others. Using Share
+                            will also negate the need for throwing away unwanted items somewhere to rot and encourage
+                            recycling, sharing and community engagement.
+                        </p>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <img class="about-img-3" src="../static/images/homepage-images/world.png"
+                             th:src="@{images/homepage-images/world.png}">
+                    </div>
+                </div>
+
             </div>
-
-            <div class="row about-rows">
-                <div class="col-xl-6 col-lg-6">
-                    <h1 class="about-mini-header">OUR Mission</h1>
-
-                    <p class="about-p">Our mission here at Share is to help people become more
-                        connected with their neighborhoods and keep the world a little greener. In past generations,
-                        not everybody owned a tent, a specialty tool or a bicycle. These things were commonly lent to
-                        trusted neighbors as a regular practice. Share is hoping to revive this tradition
-                        in a modern and digital way, making things more accessible to others. Using Share
-                        will also negate the need for throwing away unwanted items somewhere to rot and encourage
-                        recycling, sharing and community engagement.
-                    </p>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <img class="about-img-3" src="../static/images/homepage-images/world.png" th:src="@{images/homepage-images/world.png}">
-                </div>
-            </div>
-
-        </div>
 
         </div>
 
     </section>
 
-<section class="slogan-section">
+    <section class="slogan-section">
 
-    <div class="flex-container d-flex justify-content-around">
+        <div class="flex-container d-flex justify-content-around">
 
-        <img class="background-img" src="../static/images/homepage-images/green-bg-2.png" th:src="@{images/homepage-images/green-bg-2.png}" alt="Homepage">
+            <img class="background-img" src="../static/images/homepage-images/green-bg-2.png"
+                 th:src="@{images/homepage-images/green-bg-2.png}" alt="Homepage">
 
-        <div class="card-deck row card-rows">
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
-                <div class="card green">
-                    <h5 class="card-title ani-words-1">Share</h5>
-                    <div class="card-body">
-                        <img class="card-img-top ani-card-1" src="../static/images/homepage-images/share.png" th:src="@{images/homepage-images/share.png}">
+            <div class="card-deck row card-rows">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+                    <div class="card green">
+                        <h5 class="card-title ani-words-1">Share</h5>
+                        <div class="card-body">
+                            <img class="card-img-top ani-card-1" src="../static/images/homepage-images/share.png"
+                                 th:src="@{images/homepage-images/share.png}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+                    <div class="card green">
+                        <h5 class="card-title ani-words-2">Save</h5>
+                        <div class="card-body">
+                            <img class="card-img-top ani-card-2" src="../static/images/homepage-images/save.png"
+                                 th:src="@{images/homepage-images/save.png}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+                    <div class="card green">
+                        <h5 class="card-title ani-words-3">Sell</h5>
+                        <div class="card-body">
+                            <img class="card-img-top ani-card-3" src="../static/images/homepage-images/sell.png"
+                                 th:src="@{images/homepage-images/sell.png}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+                    <div class="card green">
+                        <h5 class="card-title ani-words-4">Smile</h5>
+                        <div class="card-body">
+                            <img class="card-img-top ani-card-4" src="../static/images/homepage-images/smile.png"
+                                 th:src="@{images/homepage-images/smile.png}">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
-            <div class="card green">
-                <h5 class="card-title ani-words-2">Save</h5>
-                <div class="card-body">
-                    <img class="card-img-top ani-card-2" src="../static/images/homepage-images/save.png" th:src="@{images/homepage-images/save.png}">
+        </div>
+
+    </section>
+
+    <section class="list-section">
+
+        <div class="flex-container d-flex justify-content-around">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <h3 id="features" class="list-header hide-on-sm">List...</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-sm">Fashion</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-sm">Sporting Goods</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-sm">Electronics</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <img class="list-img hide-on-sm" src="../static/images/homepage-images/fashion.png"
+                         th:src="@{images/homepage-images/fashion.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <img class="list-img hide-on-sm" src="../static/images/homepage-images/sporting-goods.png"
+                         th:src="@{images/homepage-images/sporting-goods.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <img class="list-img hide-on-sm" src="../static/images/homepage-images/electronics.png"
+                         th:src="@{images/homepage-images/electronics.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-sm">Toys and Hobbies</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-sm">Home and Garden</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-sm">Automotive</h3>
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <img class="list-img hide-on-sm" src="../static/images/homepage-images/toys-and-hobbies.png"
+                         th:src="@{images/homepage-images/toys-and-hobbies.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <img class="list-img hide-on-sm" src="../static/images/homepage-images/home-and-garden.png"
+                         th:src="@{images/homepage-images/home-and-garden.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <img class="list-img hide-on-sm" src="../static/images/homepage-images/automotive.png"
+                         th:src="@{images/homepage-images/automotive.png}">
+                </div>
+                <div class="col-xl-12 col-lg-12">
+                    <h3 class="list-mini-footer hide-on-sm">and more!</h3>
                 </div>
             </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
-            <div class="card green">
-                <h5 class="card-title ani-words-3">Sell</h5>
-                <div class="card-body">
-                    <img class="card-img-top ani-card-3" src="../static/images/homepage-images/sell.png" th:src="@{images/homepage-images/sell.png}">
+        </div>
+
+
+        <div class="flex-container d-flex justify-content-around">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <h3 class="list-header hide-on-lg">List...</h3>
                 </div>
-            </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
-            <div class="card green">
-                <h5 class="card-title ani-words-4">Smile</h5>
-                <div class="card-body">
-                    <img class="card-img-top ani-card-4" src="../static/images/homepage-images/smile.png" th:src="@{images/homepage-images/smile.png}">
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-
-</section>
-
-<section class="list-section">
-
-    <div class="flex-container d-flex justify-content-around">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <h3 id="features" class="list-header hide-on-sm">List...</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-sm">Fashion</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-sm">Sporting Goods</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-sm">Electronics</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <img class="list-img hide-on-sm" src="../static/images/homepage-images/fashion.png" th:src="@{images/homepage-images/fashion.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <img class="list-img hide-on-sm" src="../static/images/homepage-images/sporting-goods.png" th:src="@{images/homepage-images/sporting-goods.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <img class="list-img hide-on-sm" src="../static/images/homepage-images/electronics.png" th:src="@{images/homepage-images/electronics.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-sm">Toys and Hobbies</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-sm">Home and Garden</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-sm">Automotive</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <img class="list-img hide-on-sm" src="../static/images/homepage-images/toys-and-hobbies.png" th:src="@{images/homepage-images/toys-and-hobbies.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <img class="list-img hide-on-sm" src="../static/images/homepage-images/home-and-garden.png" th:src="@{images/homepage-images/home-and-garden.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <img class="list-img hide-on-sm" src="../static/images/homepage-images/automotive.png" th:src="@{images/homepage-images/automotive.png}">
-            </div>
-            <div class="col-xl-12 col-lg-12">
-                <h3 class="list-mini-footer hide-on-sm">and more!</h3>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="flex-container d-flex justify-content-around">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <h3 class="list-header hide-on-lg">List...</h3>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-lg">Fashion</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="list-img hide-on-lg" src="../static/images/homepage-images/fashion.png" th:src="@{images/homepage-images/fashion.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-lg">Sporting Goods</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="list-img hide-on-lg" src="../static/images/homepage-images/sporting-goods.png" th:src="@{images/homepage-images/sporting-goods.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-lg">Electronics</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="list-img hide-on-lg" src="../static/images/homepage-images/electronics.png" th:src="@{images/homepage-images/electronics.png}">
-            </div>
-
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-lg">Toys and Hobbies</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="list-img hide-on-lg" src="../static/images/homepage-images/toys-and-hobbies.png" th:src="@{images/homepage-images/toys-and-hobbies.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-lg">Home and Garden</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="list-img hide-on-lg" src="../static/images/homepage-images/home-and-garden.png" th:src="@{images/homepage-images/home-and-garden.png}">
-            </div>
-            <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
-                <h3 class="list-mini-header hide-on-lg">Automotive</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="list-img hide-on-lg" src="../static/images/homepage-images/automotive.png" th:src="@{images/homepage-images/automotive.png}">
-            </div>
-            <div class="col-xl-12 col-lg-12">
-                <h3 class="list-mini-footer hide-on-lg">and more!</h3>
-            </div>
-        </div>
-    </div>
-
-
-</section>
-
-<section class="sign-up-section">
-
-
-    <div class="flex-container img-container">
-        <div class="row">
-
-           <div class="img-overlay-2" th:if="${#authorization.expression('!isAuthenticated()')}">
-                <h3 class="signup-header">Try Share Today!</h3>
-
-               <a href="/registerForm" th:action="@{/registerForm}"  aria-hidden="true" class="btn btn-success signup-btns">Register</a>
-               <a href="/login" th:href="@{/login}" areia-hidden="true" class="btn btn-success signup-btns">Login</a>
-            </div>
-
-            <div class="img-wrapper">
-
-                <img class="signup-img" src="../static/images/homepage-images/signup-picture.png" th:src="@{images/homepage-images/signup-picture.png}" alt="Homepage">
-
-            </div>
-
-        </div>
-    </div>
-
-
-
-</section>
-
-<section class="credit-section">
-
-
-    <div class="flex-container d-flex justify-content-around">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 d-flex justify-content-center">
-                <h1 id="developers" class="credit-header">The Share Team</h1>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h3 class="credit-name hide-on-sm">Rhiannon Hayes</h3>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h3 class="credit-name hide-on-sm">Jose Maldonado</h3>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h3 class="credit-name hide-on-sm">Mary White</h3>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h3 class="credit-name hide-on-sm">Destiney Rodney</h3>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-            <h5 class="credit-role hide-on-sm">Frontend Developer</h5>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h5 class="credit-role hide-on-sm">Backend Developer</h5>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h5 class="credit-role hide-on-sm">Backend Developer</h5>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <h5 class="credit-role hide-on-sm">Backend Developer</h5>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                    <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/rhi.png" th:src="@{images/homepage-images/rhi.png}" alt="Homepage">
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/jose.png" th:src="@{images/homepage-images/jose.png}" alt="Homepage">
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/mary.png" th:src="@{images/homepage-images/mary.png}" alt="Homepage">
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/destiney.png" th:src="@{images/homepage-images/destiney.png}" alt="Homepage">
-            </div>
-
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <a href="https://github.com/RhiHayes" target=”_blank”>
-                <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
-                </a>
-                <a href="https://www.linkedin.com/in/rhiannon-nicole-hayes/" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
-                </a>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <a href="https://github.com/josemmaldonado" target=”_blank”>
-                <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
-                </a>
-                <a href="https://www.linkedin.com/in/jose-m-maldonado-/" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
-                </a>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <a href="https://github.com/maryawhite" target=”_blank”>
-                <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
-                </a>
-                <a href="https://www.linkedin.com/in/marychindwhite/" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
-                </a>
-            </div>
-            <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
-                <a href="https://github.com/DestineyRodney" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
-                </a>
-                <a href="https://www.linkedin.com/in/destiney-rodney/" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex-container d-flex justify-content-around">
-        <div class="row single-avatar-row">
-            <div class="col-md-12 d-flex justify-content-center">
-                <h3 class="credit-name hide-on-lg">Rhiannon Hayes</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <h5 class="credit-role hide-on-lg">Frontend Developer</h5>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/rhi.png" th:src="@{images/homepage-images/rhi.png}" alt="Homepage">
-            </div>
-            <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                <a href="https://github.com/RhiHayes" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
-                </a>
-            </div>
-            <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                <a href="https://www.linkedin.com/in/rhiannon-nicole-hayes/" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
-                </a>
-            </div>
-
-        <div class="row single-avatar-row">
-            <div class="col-md-12 d-flex justify-content-center">
-                <h3 class="credit-name hide-on-lg">Jose Maldonado</h3>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <h5 class="credit-role hide-on-lg">Backend Developer</h5>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/jose.png" th:src="@{images/homepage-images/jose.png}" alt="Homepage">
-            </div>
-            <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                <a href="https://github.com/josemmaldonado" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
-                </a>
-            </div>
-            <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                <a href="https://www.linkedin.com/in/marychindwhite/" target=”_blank”>
-                    <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
-                </a>
-            </div>
-
-        </div>
-
-            <div class="row single-avatar-row">
-                <div class="col-md-12 d-flex justify-content-center">
-                    <h3 class="credit-name hide-on-lg">Mary White</h3>
+                <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-lg">Fashion</h3>
                 </div>
                 <div class="col-md-12 d-flex justify-content-center">
-                    <h5 class="credit-role hide-on-lg">Backend Developer</h5>
+                    <img class="list-img hide-on-lg" src="../static/images/homepage-images/fashion.png"
+                         th:src="@{images/homepage-images/fashion.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-lg">Sporting Goods</h3>
                 </div>
                 <div class="col-md-12 d-flex justify-content-center">
-                    <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/mary.png" th:src="@{images/homepage-images/mary.png}" alt="Homepage">
+                    <img class="list-img hide-on-lg" src="../static/images/homepage-images/sporting-goods.png"
+                         th:src="@{images/homepage-images/sporting-goods.png}">
                 </div>
-                <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                    <a href="https://github.com/maryawhite" target=”_blank”>
-                        <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-lg">Electronics</h3>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center">
+                    <img class="list-img hide-on-lg" src="../static/images/homepage-images/electronics.png"
+                         th:src="@{images/homepage-images/electronics.png}">
+                </div>
+
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-lg">Toys and Hobbies</h3>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center">
+                    <img class="list-img hide-on-lg" src="../static/images/homepage-images/toys-and-hobbies.png"
+                         th:src="@{images/homepage-images/toys-and-hobbies.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-lg">Home and Garden</h3>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center">
+                    <img class="list-img hide-on-lg" src="../static/images/homepage-images/home-and-garden.png"
+                         th:src="@{images/homepage-images/home-and-garden.png}">
+                </div>
+                <div class="col-xl-4 col-lg-4 d-flex justify-content-center">
+                    <h3 class="list-mini-header hide-on-lg">Automotive</h3>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center">
+                    <img class="list-img hide-on-lg" src="../static/images/homepage-images/automotive.png"
+                         th:src="@{images/homepage-images/automotive.png}">
+                </div>
+                <div class="col-xl-12 col-lg-12">
+                    <h3 class="list-mini-footer hide-on-lg">and more!</h3>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="sign-up-section">
+
+
+        <div class="flex-container img-container">
+            <div class="row">
+
+                <div class="img-overlay-2" th:if="${#authorization.expression('!isAuthenticated()')}">
+                    <h3 class="signup-header">Try Share Today!</h3>
+
+                    <a href="/registerForm" th:action="@{/registerForm}" aria-hidden="true"
+                       class="btn btn-success signup-btns">Register</a>
+                    <a href="/login" th:href="@{/login}" areia-hidden="true"
+                       class="btn btn-success signup-btns">Login</a>
+                </div>
+
+                <div class="img-wrapper">
+
+                    <img class="signup-img" src="../static/images/homepage-images/signup-picture.png"
+                         th:src="@{images/homepage-images/signup-picture.png}" alt="Homepage">
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="credit-section">
+
+
+        <div class="flex-container d-flex justify-content-around">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 d-flex justify-content-center">
+                    <h1 id="developers" class="credit-header">The Share Team</h1>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h3 class="credit-name hide-on-sm">Rhiannon Hayes</h3>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h3 class="credit-name hide-on-sm">Jose Maldonado</h3>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h3 class="credit-name hide-on-sm">Mary White</h3>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h3 class="credit-name hide-on-sm">Destiney Rodney</h3>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h5 class="credit-role hide-on-sm">Frontend Developer</h5>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h5 class="credit-role hide-on-sm">Backend Developer</h5>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h5 class="credit-role hide-on-sm">Backend Developer</h5>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <h5 class="credit-role hide-on-sm">Backend Developer</h5>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/rhi.png"
+                         th:src="@{images/homepage-images/rhi.png}" alt="Homepage">
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/jose.png"
+                         th:src="@{images/homepage-images/jose.png}" alt="Homepage">
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/mary.png"
+                         th:src="@{images/homepage-images/mary.png}" alt="Homepage">
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <img class="avatar-img hide-on-sm" src="../static/images/homepage-images/destiney.png"
+                         th:src="@{images/homepage-images/destiney.png}" alt="Homepage">
+                </div>
+
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <a href="https://github.com/RhiHayes" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png"
+                             th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                    </a>
+                    <a href="https://www.linkedin.com/in/rhiannon-nicole-hayes/" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png"
+                             th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
                     </a>
                 </div>
-                <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <a href="https://github.com/josemmaldonado" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png"
+                             th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                    </a>
                     <a href="https://www.linkedin.com/in/jose-m-maldonado-/" target=”_blank”>
-                        <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png"
+                             th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
                     </a>
                 </div>
-
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <a href="https://github.com/maryawhite" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png"
+                             th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                    </a>
+                    <a href="https://www.linkedin.com/in/marychindwhite/" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png"
+                             th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                    </a>
+                </div>
+                <div class="col-xl-3 col-lg-3 d-flex justify-content-center">
+                    <a href="https://github.com/DestineyRodney" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/github.png"
+                             th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                    </a>
+                    <a href="https://www.linkedin.com/in/destiney-rodney/" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-sm grow" src="../static/images/homepage-images/linkedin.png"
+                             th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                    </a>
+                </div>
             </div>
+        </div>
 
+        <div class="flex-container d-flex justify-content-around">
             <div class="row single-avatar-row">
                 <div class="col-md-12 d-flex justify-content-center">
-                    <h3 class="credit-name hide-on-lg">Destiney Rodney</h3>
+                    <h3 class="credit-name hide-on-lg">Rhiannon Hayes</h3>
                 </div>
                 <div class="col-md-12 d-flex justify-content-center">
-                    <h5 class="credit-role hide-on-lg">Backend Developer</h5>
+                    <h5 class="credit-role hide-on-lg">Frontend Developer</h5>
                 </div>
                 <div class="col-md-12 d-flex justify-content-center">
-                    <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/destiney.png" th:src="@{images/homepage-images/destiney.png}" alt="Homepage">
+                    <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/rhi.png"
+                         th:src="@{images/homepage-images/rhi.png}" alt="Homepage">
                 </div>
                 <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                    <a href="https://github.com/DestineyRodney" target=”_blank”>
-                        <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/github.png" th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                    <a href="https://github.com/RhiHayes" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/github.png"
+                             th:src="@{images/homepage-images/github.png}" alt="Homepage">
                     </a>
                 </div>
                 <div class="col-md-6 col-sm-6 d-flex justify-content-center">
-                    <a href="https://www.linkedin.com/in/destiney-rodney/" target=”_blank”>
-                        <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/linkedin.png" th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                    <a href="https://www.linkedin.com/in/rhiannon-nicole-hayes/" target=”_blank”>
+                        <img class="avatar-icon-img hide-on-lg grow" src="../static/images/homepage-images/linkedin.png"
+                             th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
                     </a>
                 </div>
 
+                <div class="row single-avatar-row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h3 class="credit-name hide-on-lg">Jose Maldonado</h3>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h5 class="credit-role hide-on-lg">Backend Developer</h5>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/jose.png"
+                             th:src="@{images/homepage-images/jose.png}" alt="Homepage">
+                    </div>
+                    <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                        <a href="https://github.com/josemmaldonado" target=”_blank”>
+                            <img class="avatar-icon-img hide-on-lg grow"
+                                 src="../static/images/homepage-images/github.png"
+                                 th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                        <a href="https://www.linkedin.com/in/marychindwhite/" target=”_blank”>
+                            <img class="avatar-icon-img hide-on-lg grow"
+                                 src="../static/images/homepage-images/linkedin.png"
+                                 th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                        </a>
+                    </div>
 
-    </div>
+                </div>
 
+                <div class="row single-avatar-row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h3 class="credit-name hide-on-lg">Mary White</h3>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h5 class="credit-role hide-on-lg">Backend Developer</h5>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/mary.png"
+                             th:src="@{images/homepage-images/mary.png}" alt="Homepage">
+                    </div>
+                    <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                        <a href="https://github.com/maryawhite" target=”_blank”>
+                            <img class="avatar-icon-img hide-on-lg grow"
+                                 src="../static/images/homepage-images/github.png"
+                                 th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                        <a href="https://www.linkedin.com/in/jose-m-maldonado-/" target=”_blank”>
+                            <img class="avatar-icon-img hide-on-lg grow"
+                                 src="../static/images/homepage-images/linkedin.png"
+                                 th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                        </a>
+                    </div>
 
-    </div>
+                </div>
 
-</section>
+                <div class="row single-avatar-row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h3 class="credit-name hide-on-lg">Destiney Rodney</h3>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <h5 class="credit-role hide-on-lg">Backend Developer</h5>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <img class="avatar-img hide-on-lg" src="../static/images/homepage-images/destiney.png"
+                             th:src="@{images/homepage-images/destiney.png}" alt="Homepage">
+                    </div>
+                    <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                        <a href="https://github.com/DestineyRodney" target=”_blank”>
+                            <img class="avatar-icon-img hide-on-lg grow"
+                                 src="../static/images/homepage-images/github.png"
+                                 th:src="@{images/homepage-images/github.png}" alt="Homepage">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                        <a href="https://www.linkedin.com/in/destiney-rodney/" target=”_blank”>
+                            <img class="avatar-icon-img hide-on-lg grow"
+                                 src="../static/images/homepage-images/linkedin.png"
+                                 th:src="@{images/homepage-images/linkedin.png}" alt="Homepage">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="footer-section">
 
-    <footer class="text-center text-white">
-        <!-- Grid container -->
-        <div class="container p-4"></div>
-        <!-- Grid container -->
+        <footer class="text-center text-white">
+            <!-- Grid container -->
+            <div class="container p-4"></div>
+            <!-- Grid container -->
 
-        <!-- Copyright -->
-        <div class="footer-text footer">
-            © 2022 Copyright:
-            <a class="footer-text">Rhiannon Hayes, Jose Maldonado, Mary White, Destiney Rodney</a>
-            <br>
-        </div>
-        <!-- Copyright -->
-    </footer>
+            <!-- Copyright -->
+            <div class="footer-text footer">
+                © 2022 Copyright:
+                <a class="footer-text">Rhiannon Hayes, Jose Maldonado, Mary White, Destiney Rodney</a>
+                <br>
+            </div>
+            <!-- Copyright -->
+        </footer>
 
-</section>
+    </section>
 
 </div>
 <!-- JS Scripts -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 
 <!-- Custom JS -->
 <script type="text/javascript" th:src="@{/js/homepage.js}"></script>

@@ -19,3 +19,6 @@ INSERT INTO rating (rating) VALUES (1),
 
 INSERT INTO role (role_type) VALUES ('admin'),
                                     ('user');
+
+# INSERT INTO user (first_name, last_name, username, date_of_birth, phone_number, city, state, zipcode, email, password)
+#     VALUES ('Cody', 'McCody', 'mccodyface', '02-23-1990', 2105554444, 'San Antonio', 'TX', 78245, 'cody@codeup.com', 'yodastuff42');
