@@ -1,0 +1,41 @@
+body {
+    background: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.card-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.card {
+    border: none !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-title {
+    font-size: 25px;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.card-text {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.profile-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+
+.star-icons {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
