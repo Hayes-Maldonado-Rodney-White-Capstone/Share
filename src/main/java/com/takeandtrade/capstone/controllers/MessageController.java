@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -35,6 +36,25 @@ public class MessageController {
         return "messages/messagesindex";
     }
 
+//    @GetMapping("/messages/{receiverId}")
+//    public String writeOneMessage(Model model, @PathVariable long receiverId) {
+//        //define the logged in user
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User sendingUser = userDao.getById(loggedInUser.getId());
+//        model.addAttribute("loggedInUser", sendingUser);
+//
+//        //when you click on the message button, it grabs the receipient's id.
+//        User receivingUser = userDao.getById(receiverId);
+//        model.addAttribute("receivingUser", receivingUser);
+//
+//        model.addAttribute("user", receivingUser);
+//        model.addAttribute("userMessage", new Message());
+//
+//        model.addAttribute("messages", messageDao.findAll());
+//
+//        return "messages/writemessage";
+//    }
+
     @GetMapping("/messages/{receiverId}")
     public String writeOneMessage(Model model, @PathVariable long receiverId) {
         //define the logged in user
@@ -49,10 +69,16 @@ public class MessageController {
         model.addAttribute("user", receivingUser);
         model.addAttribute("userMessage", new Message());
 
-        model.addAttribute("messages", messageDao.findAll());
+        model.addAttribute("messages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId()));
+        model.addAttribute("moremessages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId));
+
+        List<Message> getmsgs = loggedInUser.getReceivedMessages();
+        model.addAttribute("getmsgs", getmsgs);
 
         return "messages/writemessage";
     }
+
+
 
     @PostMapping("/messages/{receiverId}")
     public String sendMessage(@PathVariable long receiverId, @ModelAttribute Message userMessage) {

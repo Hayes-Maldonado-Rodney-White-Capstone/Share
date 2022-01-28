@@ -50,7 +50,7 @@
             <div class="col-xs-12 col-md-offset-2 col-md-12 col-lg-12 col-lg-offset-2 mb-0">
                 <div class="panel-body body-panel">
                     <ul class="chat">
-                        <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
+
                             <li class="clearfix"><span class="chat-img pull-left">
                             <img src="https://i.redd.it/sfi496f08hg51.png" alt="User Avatar" class="profile-image"/>
                         </span>
@@ -65,8 +65,7 @@
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
                             </li>
-                        </div>
-                        <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
+
                             <li class="right clearfix"><span class="chat-img pull-right">
                             <img src="https://cdn-icons-png.flaticon.com/512/163/163801.png" alt="User Avatar"
                                  class="profile-image"/>
@@ -82,13 +81,54 @@
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
                             </li>
-                        </div>
                     </ul>
                 </div>
             </div>
         </div>
 
 </div>
+
+    <div th:each="message : ${moremessages}">
+
+        <div class="row form-group">
+            <div class="col-xs-12 col-md-offset-2 col-md-12 col-lg-12 col-lg-offset-2 mb-0">
+                <div class="panel-body body-panel">
+                    <ul class="chat">
+                            <li class="clearfix"><span class="chat-img pull-left">
+                            <img src="https://i.redd.it/sfi496f08hg51.png" alt="User Avatar" class="profile-image"/>
+                        </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font username-text"><span
+                                                th:text="${message.sender.username}"></span></strong>
+                                        <small class="pull-right text-muted name-text"><span
+                                                th:text="${message.sender.getFirstName()}"></span> <span
+                                                th:text="${message.sender.getLastName()}"></span></small>
+                                    </div>
+                                    <p class="msg-text"><span th:text="${message.content}"></span></p>
+                                </div>
+                            </li>
+                            <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="https://cdn-icons-png.flaticon.com/512/163/163801.png" alt="User Avatar"
+                                 class="profile-image"/>
+                        </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="pull-right primary-font username-text"><span
+                                                th:text="${message.receiver.username}"></span></strong>
+                                        <small class="name-text text-muted"><span
+                                                th:text="${message.receiver.getFirstName()}"></span> <span
+                                                th:text="${message.receiver.getLastName()}"></span></small>
+                                    </div>
+                                    <p class="msg-text"><span th:text="${message.content}"></span></p>
+                                </div>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 
