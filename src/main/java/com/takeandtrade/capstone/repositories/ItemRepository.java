@@ -13,4 +13,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("SELECT i FROM Item i WHERE CONCAT(i.itemName, i.itemDescription, i.itemCondition, i.category.name, i.user.username, i.user.zipcode) LIKE %?1%")
     public List<Item> search(String search);
 
+    List<Item> findAllByUserIdOrderByDatePosted (Long userId);
+
 }
