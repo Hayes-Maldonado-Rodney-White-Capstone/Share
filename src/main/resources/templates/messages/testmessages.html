@@ -42,19 +42,19 @@
     </div>
 
 </section>
-<p>line 45</p>
+<h4>Messages History</h4>
 <div th:each="message : ${messages}">
-    <p th:text="${message.sender.username}"></p>
-    <p th:text="${message.receiver.username}"></p>
-    <p th:text="${message.content}"></p>
-</div>
+    <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
+        <h3 style="color:darkgreen;"><span th:text="${message.content}"></span></h3>
+        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
+        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+    </div>
 
-
-<p>line 67 more message</p>
-<div th:each="more : ${moremessages}">
-    <p th:text="${more.sender.username}"></p>
-    <p th:text="${more.receiver.username}"></p>
-    <p th:text="${more.content}"></p>
+    <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
+        <h3 style="color:darkred;"><span th:text="${message.content}"></span></h3>
+        <p class="small">receiver username: <span th:text="${message.receiver.username}"></span></p>
+        <p class="small">sender username: <span th:text="${message.sender.username}"></span></p>
+    </div>
 </div>
 
 

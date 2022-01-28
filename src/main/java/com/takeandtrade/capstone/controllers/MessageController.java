@@ -39,25 +39,6 @@ public class MessageController {
         return "messages/messagesindex";
     }
 
-//    @GetMapping("/messages/{receiverId}")
-//    public String writeOneMessage(Model model, @PathVariable long receiverId) {
-//        //define the logged in user
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User sendingUser = userDao.getById(loggedInUser.getId());
-//        model.addAttribute("loggedInUser", sendingUser);
-//
-//        //when you click on the message button, it grabs the receipient's id.
-//        User receivingUser = userDao.getById(receiverId);
-//        model.addAttribute("receivingUser", receivingUser);
-//
-//        model.addAttribute("user", receivingUser);
-//        model.addAttribute("userMessage", new Message());
-//
-//        model.addAttribute("messages", messageDao.findAll());
-//
-//        return "messages/writemessage";
-//    }
-
     @GetMapping("/messages/{receiverId}")
     public String writeOneMessage(Model model, @PathVariable long receiverId) {
         //define the logged in user
@@ -72,17 +53,37 @@ public class MessageController {
         model.addAttribute("user", receivingUser);
         model.addAttribute("userMessage", new Message());
 
-        model.addAttribute("messages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId())); //rec rec
-//        model.addAttribute("moremessages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId)); //rec send
-
-        List<Message> list1 = (messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId()));
-        List<Message> list2 = (messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId));
-        list1.addAll(list2);
-        model.addAttribute("list1", list1);
-        System.out.println();
+        List<Message> allmessages = messageDao.findAllByOrderByIdDesc();
+        model.addAttribute("messages", allmessages);
 
         return "messages/writemessage";
     }
+
+//    @GetMapping("/messages/{receiverId}")
+//    public String writeOneMessage(Model model, @PathVariable long receiverId) {
+//        //define the logged in user
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User sendingUser = userDao.getById(loggedInUser.getId());
+//        model.addAttribute("loggedInUser", sendingUser);
+//
+//        //when you click on the message button, it grabs the receipient's id.
+//        User receivingUser = userDao.getById(receiverId);
+//        model.addAttribute("receivingUser", receivingUser);
+//
+//        model.addAttribute("user", receivingUser);
+//        model.addAttribute("userMessage", new Message());
+//
+//        model.addAttribute("messages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId())); //rec rec
+//        model.addAttribute("moremessages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId)); //rec send
+//
+////        List<Message> list1 = (messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId()));
+////        List<Message> list2 = (messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId));
+////        list1.addAll(list2);
+////        model.addAttribute("list1", list1);
+//        System.out.println();
+//
+//        return "messages/writemessage";
+//    }
 
 
 

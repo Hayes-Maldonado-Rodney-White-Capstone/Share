@@ -126,6 +126,7 @@ public class UserController {
 
     @PostMapping("/user/delete/{userId}")
     public String deleteUser(@PathVariable Long userId) {
+        System.out.println("delete id " + userId);
         userDao.deleteById(userId);
         return "redirect:/homepage";
     }
