@@ -74,7 +74,8 @@ public class UserController {
         model.addAttribute("itemOwner", itemOwner);
 
         model.addAttribute("viewUser", loggedinUser);
-        model.addAttribute("items", itemDao.findAll());
+//        model.addAttribute("items", itemDao.findAll());
+        model.addAttribute("items", itemOwner.getItems());
 
 //        User userprofile = userDao.getById(id);
 //        model.addAttribute("viewProfile", userprofile);

@@ -46,7 +46,7 @@
                             <a class="nav-link" href="/myRequests" th:href="@{/myRequests}" aria-hidden="true">My Requests<img class="navbar-icon" src="../static/images/homepage-images/nav-request.png" th:src="@{images/homepage-images/nav-request.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="../static/images/homepage-images/nav-message.png" th:src="@{images/homepage-images/nav-message.png}"></a>
+                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">Messages<img class="navbar-icon" src="../static/images/homepage-images/nav-message.png" th:src="@{images/homepage-images/nav-message.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews<img class="navbar-icon" src="../static/images/homepage-images/nav-review.png" th:src="@{images/homepage-images/nav-review.png}"></a>
@@ -98,7 +98,7 @@
                             <a class="nav-link" href="/myRequests" th:href="@{/myRequests}" aria-hidden="true">My Requests<img class="navbar-icon" src="https://i.postimg.cc/WbTQL24t/nav-request.png"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">My Messages<img class="navbar-icon" src="https://i.postimg.cc/VvrPJg3v/nav-message.png"></a>
+                            <a class="nav-link" href="/messages/messagesindex" th:href="@{/messages/messagesindex}" aria-hidden="true">Messages<img class="navbar-icon" src="https://i.postimg.cc/VvrPJg3v/nav-message.png"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/myReviews" th:href="@{/myReviews}" aria-hidden="true">My Reviews<img class="navbar-icon" src="https://i.postimg.cc/L6PMRyt0/nav-review.png"></a>

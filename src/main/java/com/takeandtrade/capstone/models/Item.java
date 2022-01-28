@@ -70,8 +70,8 @@ public class Item {
 //    @JoinTable(name = "item_request", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
 //    private Collection<Request> requests;
 
-    //one item can have many requests?
-    @OneToMany(mappedBy = "itemReq")
+    //one item can have many requests. may need to add the cascade here, so when an item is deleted it also deletes the request
+    @OneToMany(mappedBy = "itemReq", cascade = CascadeType.ALL)
     List<Request> requests;
 
     //default constructor

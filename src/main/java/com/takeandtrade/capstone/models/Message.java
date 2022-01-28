@@ -17,7 +17,7 @@ public class Message {
     private String content;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern ="mm-dd-yyyy hh:mm")
+    @DateTimeFormat(pattern ="MM-dd-yyyy hh:mm")
     private LocalDateTime timeSent;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
 
     @ManyToOne
