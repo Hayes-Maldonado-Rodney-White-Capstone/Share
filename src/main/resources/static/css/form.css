@@ -19,6 +19,11 @@ label {
     margin-bottom: 50px;
 }
 
+.form-container-2 {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
 .btn {
     margin-top: 10px;
     font-family: 'Roboto', sans-serif !important;
