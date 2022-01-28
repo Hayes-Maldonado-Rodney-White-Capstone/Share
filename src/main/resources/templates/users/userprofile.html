@@ -36,12 +36,12 @@
     </div>
     <div>
     </div>
-
+</div>
 </section>
 
         <h2 class="my-items">My Items</h2>
         <div th:if="${itemOwner.getItems().isEmpty()}">
-            <p>There are no items yet. Post one now.</p>
+            <p class="text-center">There are no items yet. Post one now.</p>
         </div>
         <form th:action="@{/items/create}" method="get">
             <p class="center-text"><button type="submit" class="btn btn-success btn-lg">Share an Item</button></p>
