@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials ::head(pageTitle='Edit your post')"></head>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="../static/css/form.css" th:href="@{/css/form.css}">
 <body>
-<nav th:insert="partials :: navbar"></nav>
-<div class="container">
-    <!--    edit-->
+<br>
+<nav th:insert="partials :: navbar-2"></nav>
+<div class="container form-container-3 w-50 m-auto">
+    <h1 class="text-center form-title">Edit My Item</h1>
 
     <form th:method="POST" th:object="${items}" th:value="${itemId}" th:action="@{'/items/edit/' + ${itemId}}">
         <input type="hidden" th:field="*{id}" name="itemId"/>
@@ -87,7 +96,9 @@
                         th:text="${category.name}"></option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col text-center">
+        <button type="submit" class="btn btn-success">Submit</button>
+        </div>
     </form>
 
 </div>
