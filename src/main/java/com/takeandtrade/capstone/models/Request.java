@@ -30,7 +30,7 @@ public class Request {
     private String notes;
 
     //many requests for one item?
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()    //removed the cascade here bc it was throwing an error when we tried to delete an item
     @JoinColumn(name = "item_id")
     private Item itemReq;
 

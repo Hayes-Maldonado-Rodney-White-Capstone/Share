@@ -4,12 +4,15 @@ import com.takeandtrade.capstone.models.Message;
 import com.takeandtrade.capstone.models.User;
 import com.takeandtrade.capstone.repositories.MessageRepository;
 import com.takeandtrade.capstone.repositories.UserRepository;
+import org.springframework.core.OrderComparator;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -69,11 +72,14 @@ public class MessageController {
         model.addAttribute("user", receivingUser);
         model.addAttribute("userMessage", new Message());
 
-        model.addAttribute("messages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId()));
-        model.addAttribute("moremessages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId));
+        model.addAttribute("messages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId())); //rec rec
+//        model.addAttribute("moremessages", messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId)); //rec send
 
-        List<Message> getmsgs = loggedInUser.getReceivedMessages();
-        model.addAttribute("getmsgs", getmsgs);
+        List<Message> list1 = (messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(receiverId, sendingUser.getId()));
+        List<Message> list2 = (messageDao.findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(sendingUser.getId(),receiverId));
+        list1.addAll(list2);
+        model.addAttribute("list1", list1);
+        System.out.println();
 
         return "messages/writemessage";
     }
