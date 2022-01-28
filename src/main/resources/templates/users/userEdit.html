@@ -120,7 +120,7 @@
             </div>
 
             <button type="submit" class="btn btn-2 btn-primary">Confirm Edit</button>
-    <form th:action="@{|/user/delete/${user.getId()}|}" method="post" >
+    <form th:action="@{'/user/delete/' + ${user.getId()}}" method="post" >
         <button type="submit" class="btn btn-2 btn-danger">Delete Account</button>
     </form>
 
