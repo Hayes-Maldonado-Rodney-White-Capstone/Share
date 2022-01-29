@@ -2,55 +2,79 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials ::head(pageTitle='Write a Review')"></head>
 
+<!--     Bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/static/css/navbar.css">
+<link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
+
+<!-- Custom CSS -->
+
+<link rel="stylesheet" type="text/css" href="../static/css/myreviews.css" th:href="@{/css/writereview.css}">
+
 <body>
 <nav th:replace="partials :: navbar-2"></nav>
-</br>
-<div class="container">
-<h1>You are writing a review on : <span th:text="${user.username}"></span></h1>
+<section class="message-title-section">
+<div class="container w-50 m-auto">
+<h1 class="message-title">You are writing a review on : <span th:text="${user.username}"></span></h1>
 
 <form th:method="POST" th:action="@{'/reviews/' +  ${user.getId()}}" th:object="${userReview}">
     <div class="form-group">
-    <label for="reviewTitle">Review Title</label>
-        <input type="text" class="form-contorl" name="reviewTitle" id="reviewTitle" th:field="*{reviewTitle}" required></input>
+    <label class="label-title" for="reviewTitle">Review Title</label>
+        <input type="text" class="form-control" name="reviewTitle" id="reviewTitle" th:field="*{reviewTitle}" required></input>
     </label>
     </div>
     <div class="form-group">
-        <label for="reviewBody">Review Body</label>
+        <label class="label-title" for="reviewBody">Review Body</label>
         <input type="text" class="form-control" name="reviewBody" id="reviewBody" th:field="*{reviewBody}" required></input>
     </label>
     </div>
     <div class="form-group">
-        <label for="rating-select">Rate this person. 1-bad, 5-great</label>
+        <label class="label-title" for="rating-select">Rate this person. 1-bad, 5-great</label>
         <select class="form-control" th:field="*{rating}" id="rating-select" required>
             <option th:each="rating : ${ratings}" th:value="${rating.id}"
                     th:text="${rating.rating}"></option>
         </select>
     </div>
-
+    <div class="col text-center">
     <button type="submit" class="btn btn-primary">Submit Review</button>
+    </div>
 </form>
-<hr>
+</section>
 <div th:if="${user.getReviewed().isEmpty()}">
     <h4><span th:text="${user.username}"></span> doesn't have any reviews yet. Leave a 5 if you had a good experience.</h4>
 </div>
     <div th:unless="${user.getReviewed().isEmpty()}">
-    <h4><span th:text="${user.username}"></span>'s Review History</h4>
-    </div>
-<div th:each="review : ${reviews}">
-    <div th:if="${review.consumer == loggedInUser && review.producer == producerUser}">
-        <h3 style="color:darkgreen;"><span th:text="${review.reviewTitle}"></span></h3>
-        <p style="color:darkgreen;"><span th:text="${review.reviewBody}"></span></p>
-        <p style="color:darkgreen;"><span th:text="${review.rating.rating}"></span></p>
-        <p class="small">You Reviewed: <span th:text="${review.producer.username}"></span></p>
-        <p class="small">Reviewer Username: <span th:text="${review.consumer.username}"></span></p>
+    <h4 class="review-title"><span th:text="${user.username}"></span>'s Review History</h4>
     </div>
 
-    <div th:if="${review.consumer == producerUser && review.producer == loggedInUser}">
-        <h3 style="color:darkred;"><span th:text="${review.reviewTitle}"></span></h3>
-        <p style="color:darkred;"><span th:text="${review.reviewBody}"></span></p>
-        <p class="small">You Reviewed: <span th:text="${review.producer.username}"></span></p>
-        <p class="small">Reviewer Username: <span th:text="${review.consumer.username}"></span></p>
+
+<div th:each="review : ${reviews}">
+    <div th:if="${review.consumer == loggedInUser && review.producer == producerUser}">
+        <div class="container card-container">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><img class="profile-icon" src="https://cdn-icons-png.flaticon.com/512/163/163801.png"><span th:text="${review.consumer.username}"></span>: <span th:text="${review.reviewTitle}"></span>
+
+                        <img th:if="${review.rating.rating == 1}" class="star-icons" src="https://i.postimg.cc/sXJsM2Nh/1-star.png">
+                        <img th:if="${review.rating.rating == 2}" class="star-icons" src="https://i.postimg.cc/DzBX17Dt/2-star.png">
+                        <img th:if="${review.rating.rating == 3}" class="star-icons" src="https://i.postimg.cc/T2HJZJtZ/3-star.png">
+                        <img th:if="${review.rating.rating == 4}" class="star-icons" src="https://i.postimg.cc/7YRDGdmm/4-star.png">
+                        <img th:if="${review.rating.rating == 5}" class="star-icons" src="https://i.postimg.cc/DZ532MSQ/5-star.png">
+
+                    </h5>
+                    <p class="card-text"><span th:text="${review.reviewBody}"></span></p>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 </div>
 
