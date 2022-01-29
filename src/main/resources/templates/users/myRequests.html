@@ -6,31 +6,56 @@
 <div class="container">
     <br>
     <div>
-    <h1 class="text-center">Pending Requests</h1>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        <div th:each="request : ${requests}">
-            <div class="border border-info p-4" th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
-                <p>Username of Requester: <span th:text="${request.userReq.username}"></span></p>
-                <!--            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>-->
-                <!--thymeleaf date.format sometimes throws an error, not sure when/why-->
-                <p>Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'yyyy-MM-dd')}"></span></p>
-                <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>
-                <p>Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'yyyy-MM-dd')}"></span></p>
-                <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>
-                <p>Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
-                <p>Request Status: <span th:text="${request.status}"></span></p>
+        <h1 class="text-center">Pending Requests</h1>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div th:each="request : ${requests}">
+                <div class="border border-info p-4"
+                     th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
+                    <p>Username of Requester: <span th:text="${request.userReq.username}"></span></p>
+                    <!--            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>-->
+                    <!--thymeleaf date.format sometimes throws an error, not sure when/why-->
+                    <p>Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span>
+                    </p>
+                    <!--                <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>-->
+                    <p>Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span>
+                    </p>
+                    <!--                <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>-->
+                    <p>Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
+                    <p>Request Status: <span th:text="${request.status}"></span></p>
 
-                <form class="d-flex justify-content-center" th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
-                    <button class="p-2 d-flex justify-content-center" th:if="${request.status == 'PENDING'}" >Approve</button>
-                </form>
-                <div class="p-2 d-flex justify-content-center" th:unless="${request.status == 'PENDING'}">&#10003; Approved</div>
+                    <div class="row d-flex justify-content-center align-items-center">
+                    <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
+                        <button class="p-2 d-flex justify-content-center mr-3" th:if="${request.status == 'PENDING'}">
+                            Approve
+                        </button>
+                    </form>
+                    <div class="p-2 d-flex justify-content-center"
+                         th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#10003; Approved
+                    </div>
+
+                    <form th:action="@{'/myRequests/decline/' + ${request.id}}" th:object="${request}" th:method="post">
+                        <button class="p-1 d-flex justify-content-center ml-3" th:if="${request.status == 'PENDING'}">
+                            Decline
+                        </button>
+                    </form>
+                    <div class="p-2 d-flex justify-content-center"
+                         th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#10060; DECLINED
+                    </div>
+                </div>
             </div>
-        </div> <!--end of forEach div-->
-    </div>
+        </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
