@@ -61,6 +61,7 @@
                                                 th:text="${message.sender.getFirstName()}"></span> <span
                                                 th:text="${message.sender.getLastName()}"></span></small>
                                     </div>
+                                    <small class="pull-right text-muted name-text"><span th:text="${#temporals.format(message.timeSent)}"></span></small>
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
                             </li>
@@ -73,14 +74,16 @@
                                 <div class="chat-body clearfix">
                                     <div class="header">
                                         <strong class="pull-right primary-font username-text"><span
-                                                th:text="${message.receiver.username}"></span></strong>
+                                                th:text="${message.sender.username}"></span></strong> <!--this is still sender bc it's the other user now-->
                                         <small class="name-text text-muted"><span
-                                                th:text="${message.receiver.getFirstName()}"></span> <span
-                                                th:text="${message.receiver.getLastName()}"></span></small>
+                                                th:text="${message.sender.getFirstName()}"></span> <span
+                                                th:text="${message.sender.getLastName()}"></span></small>
                                     </div>
+                                    <small class="pull-right text-muted name-text"><span th:text="${#temporals.format(message.timeSent)}"></span></small>
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
                             </li>
+                        </div>
                         </div>
                     </ul>
                 </div>

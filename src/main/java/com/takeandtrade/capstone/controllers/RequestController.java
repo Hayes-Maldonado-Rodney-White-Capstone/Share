@@ -20,7 +20,6 @@ import java.util.List;
 
 @Controller
 public class RequestController {
-    //dependency injection
     private final RequestRepository requestDao;
     private final UserRepository userDao;
     private final ItemRepository itemDao;
@@ -57,16 +56,11 @@ public class RequestController {
 
         model.addAttribute("request", request);
 
-        //find all requests for that approver so we can show them on the page?
-        //        model.addAttribute("messages", messageDao.findAll());
         model.addAttribute("allmyrequests", requestDao.findAll());
 
-        //what should happen when someone submits the request form.
-        //we should set approver1 to be the string person who posted the item
         request.setApprover1(requestedItem.getUser().getUsername());
         System.out.println("set approver to " + requestedItem.getUser().getUsername());
 
-        //save the info to the db
         requestDao.save(request);
 
         return "items/request-submitted";
@@ -84,17 +78,35 @@ public class RequestController {
         List<Request> requestList = requestDao.findAll();
         model.addAttribute("requests", requestList);
 
-        //when the user clicks approve, we don't want to change it to unavailable, because it's not unavailable yet.
-        //and use the setter to change the request status to APPROVED
         Request request = requestDao.getById(requestId);
         System.out.println("request id " + request);
-        request.getItemReq().setAvailability(false); //we can probably remove this, just because it's approved doesn't mean it's unavailable
+//        request.getItemReq().setAvailability(false); //we can remove this, just because it's approved doesn't mean it's unavailable for that particular date
         request.setStatus("APPROVED");
 
         requestDao.save(request);
 
         return "redirect:/myRequests";
+    }
 
+    //postMapping for decline button
+    @PostMapping("/myRequests/decline/{requestId}")
+    public String updateDeclineStatus(@PathVariable Long requestId, Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User producerUser = userDao.getById(loggedInUser.getId()); //logged in user is the one who posted the item, so they will have requests, and they are approver1
+        model.addAttribute("loggedInUser", producerUser);
+        System.out.println("producer user " + producerUser.getUsername());
+
+        model.addAttribute("requests", requestDao.findAll());
+        List<Request> requestList = requestDao.findAll();
+        model.addAttribute("requests", requestList);
+
+        Request request = requestDao.getById(requestId);
+        System.out.println("request id " + request);
+        request.setStatus("DECLINED");
+
+        requestDao.save(request);
+
+        return "redirect:/messages/messagesindex";
     }
 
 }
