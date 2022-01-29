@@ -73,10 +73,10 @@
                                 <div class="chat-body clearfix">
                                     <div class="header">
                                         <strong class="pull-right primary-font username-text"><span
-                                                th:text="${message.receiver.username}"></span></strong>
+                                                th:text="${message.sender.username}"></span></strong>
                                         <small class="name-text text-muted"><span
-                                                th:text="${message.receiver.getFirstName()}"></span> <span
-                                                th:text="${message.receiver.getLastName()}"></span></small>
+                                                th:text="${message.sender.getFirstName()}"></span> <span
+                                                th:text="${message.sender.getLastName()}"></span></small>
                                     </div>
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
