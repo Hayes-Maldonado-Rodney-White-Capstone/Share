@@ -1,5 +1,6 @@
 package com.takeandtrade.capstone.models;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class Message {
     private String content;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern ="MM-dd-yyyy hh:mm")
+    @CreationTimestamp
     private LocalDateTime timeSent;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
 
     @ManyToOne
