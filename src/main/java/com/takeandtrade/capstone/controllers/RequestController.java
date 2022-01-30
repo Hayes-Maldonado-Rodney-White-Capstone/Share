@@ -106,7 +106,7 @@ public class RequestController {
 
         requestDao.save(request);
 
-        return "redirect:/messages/messagesindex";
+        return "redirect:/myRequests";
     }
 
 }

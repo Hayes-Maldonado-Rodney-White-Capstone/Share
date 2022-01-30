@@ -1,0 +1,42 @@
+body {
+    background: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.request-container {
+    margin-top: 100px;
+}
+
+
+.card {
+    border: none !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 500px;
+    height: 400px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.title {
+    font-size: 50px;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.card-title {
+    font-size: 25px;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.card-text {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-body {
+    margin-top: 20px;
+}
