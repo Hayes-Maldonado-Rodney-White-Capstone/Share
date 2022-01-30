@@ -3,13 +3,12 @@ html {
 }
 
 
-.messaging-section {
-    background-image: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png");
-    background-repeat: no-repeat;
-    background-position: center;
+body {
+    background: url("https://i.postimg.cc/mDcZjXg3/viewone-background.png") no-repeat center center fixed;
     background-size: cover;
-    width: 100%;
-    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 .message-title {
@@ -17,7 +16,7 @@ html {
     font-family: 'Roboto Slab', serif;
     margin-top: 70px;
     margin-bottom: 100px;
-    color: #006366;
+    color: black;
     font-size: 60px;
 }
 

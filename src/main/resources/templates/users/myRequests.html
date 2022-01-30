@@ -11,13 +11,13 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 
-<div class="container">
+<div class="container request-container">
 
-            <h1 class="text-center">Pending Requests</h1>
+            <h1 class="title text-center">Pending Requests</h1>
 
         <div class="d-flex flex-column justify-content-center align-items-center" th:each="request : ${requests}">
             <div class="card text-center" th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
-                <h3 class="card-title"><span th:text="${request.userReq.username}"></span></h3>
+                <h3 class="card-title">From: <span th:text="${request.userReq.username}"></span></h3>
                 <div class="card-body text-center">
                     <p class="card-text">Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
                     <p class="card-text">Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span></p>
@@ -31,8 +31,8 @@
                             Approve
                         </button>
                     </form>
-                    <div class="d-flex justify-content-center"
-                         th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#10003; Approved
+                    <div class="d-flex justify-content-center card-text"
+                         th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#x2713; Approved
                     </div>
 
                     <form th:action="@{'/myRequests/decline/' + ${request.id}}" th:object="${request}" th:method="post">
@@ -40,8 +40,8 @@
                             Decline
                         </button>
                     </form>
-                    <div class="d-flex justify-content-center"
-                         th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#10060; DECLINED
+                    <div class="d-flex justify-content-center card-text"
+                         th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#x2717; Declined
                     </div>
                 </div>
 
