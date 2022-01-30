@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="../static/css/myreviews.css" th:href="@{/css/myrequests.css}">
 <body>
 <nav th:replace="partials :: navbar"></nav>
 
@@ -25,20 +27,20 @@
 
                 <div class="row d-flex justify-content-center align-items-center">
                     <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
-                        <button class="p-1 d-flex justify-content-center mr-3" th:if="${request.status == 'PENDING'}">
+                        <button class="btn btn-success d-flex justify-content-center mr-3 mb-3" th:if="${request.status == 'PENDING'}">
                             Approve
                         </button>
                     </form>
-                    <div class="p-1 d-flex justify-content-center"
+                    <div class="d-flex justify-content-center"
                          th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#10003; Approved
                     </div>
 
                     <form th:action="@{'/myRequests/decline/' + ${request.id}}" th:object="${request}" th:method="post">
-                        <button class="p-1 d-flex justify-content-center ml-3" th:if="${request.status == 'PENDING'}">
+                        <button class="btn btn-danger d-flex justify-content-center ml-3 mb-3" th:if="${request.status == 'PENDING'}">
                             Decline
                         </button>
                     </form>
-                    <div class="p-1 d-flex justify-content-center"
+                    <div class="d-flex justify-content-center"
                          th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#10060; DECLINED
                     </div>
                 </div>
