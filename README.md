@@ -20,6 +20,39 @@ This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MyS
 3. Update the username and password in application.properties to the database you will be using on your local machine
 4. Be sure you are running MYSQL before running the application
 
+<hr>
+
+## Feature List
+
+<details>
+<summary>Our application includes the following features:</summary>
+    
+    - Registering users and allowing them to login
+    - Allowing users to logout
+    - Dynamic navbar for logged in guests and users
+    - Intended Redirects (Register to login, clicking post to individual post page, etc)
+    - Sticky Forms
+    - Custom error messages
+    
+    - CRUD functionality for posts (Create, Edit, Delete)
+    - CRUD functionality for profile (Create, Edit, Delete)
+    - A collective posts page which contain links to each individual post page
+    - An individual post show page that shows additional information
+    - Search functionality that allows users to search through the posts by name, description, category, condition, or zipcode
+    - Dictating if an item is available for a lend/borrow or if it’s off the market
+    
+    - Users can send a request for a an item, which can then be viewed + accepted or denied by the lender
+    - User's posts appear on their profile page
+    - Users can see another person's profile
+    - A user can message another user
+    - A user can leave a review on another person’s profile
+    - A user can see reviews left on another person’s profile
+  
+</details>
+
+
+
+
 
 ##  Stories
 
@@ -57,55 +90,3 @@ This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MyS
     - As a user, I can view my own reviews and messages.
 </details>
 
-## Technologies
-
-<hr>
-
-<details>
-<summary>Languages and Framework:</summary>
-
-    - HTML
-    - Javascript
-    - Java
-    - CSS
-    - Boostrap
-    - Springboot
-    - Thymeleaf
-    - MYSQL
-</details>
-
-## Feature List
-
-<hr>
-
-<details>
-<summary>This application includes the following features:</summary>
-
-    - Implement CRUD for Posts (Create, Edit, Delete)
-    - Implement CRUD for Profile
-    - Register users and allow them to login
-    - Individual Post show page
-    - Allow a user to send a request for a borrow on Individual Post show page (send request to seller so they can confirm or deny request)
-    - Create a collective Ads page which should contain links to each individual Post page
-    - Allow users to logout
-    - Search functionality that allows users to search through the post in your database by title (ZIP code)
-    - Show the user's posts on their profile page
-    - Ensure usernames are unique 
-    - Dynamic navbar for logged in users, guests and admins
-    - Error messages
-    - Sticky Forms
-    - Allow a post to a category
-    - Allow a post to have an image
-    - Intended Redirects (Register to Login, Clicking post to Individual post page, etc)
-    - Allow a user to leave a review on another person’s profile
-    - Allow a user to message another user
-    - Allow a user to see favorited/bookmarked items 
-    - Allow users to see notifications (inquiries about items, trade offers, etc)
-    - Allow a user to view their reputation and see who posted them (the reviews)
-    - Dictate if an item is available for a Take and Trade/trade or if it’s off the market
-    - Allow a seller to see how much time is left for a user to borrow an item (ex: You’re sharing a bike! Time remaining: 2 days). Implement counter/timer as needed and have it update
-    - Allow a user to see which time they’re borrowing and how much time is left (ex: you’re borrowing a bike! Time remaining: 2 days)
-    - Allow a user to impose their own terms and conditions on listed items
-
-
-</details>
