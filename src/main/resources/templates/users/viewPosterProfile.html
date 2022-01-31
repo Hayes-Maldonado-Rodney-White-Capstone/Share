@@ -37,7 +37,9 @@
     <h5 class="name-text">Name: <span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span></h5>
     <h5 class="email-text text-muted">Email: <span th:text="${user.getEmail}"/></h5>
 
-    <p class="center-text"> <a th:href="@{/reviews/{producer_id}(producer_id=${user.id})}" class="btn btn-success top-btn">Leave A Review</a>
+
+    <p class="center-text"> <a th:href="@{/messages/{producer_id}(producer_id=${user.id})}" class="btn btn-success top-btn">Write a Message</a>
+    <a th:href="@{/reviews/{producer_id}(producer_id=${user.id})}" class="btn btn-success top-btn">Leave A Review</a>
     </p>
 
     <hr>
