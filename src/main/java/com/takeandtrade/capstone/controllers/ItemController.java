@@ -80,7 +80,7 @@ public class ItemController {
         item.setImage(fileName);
         itemDao.save(item);
 
-        String uploadDir = "./src/main/resources/static/images/capstoneimages/";   ///this should save it in a directory named capstoneimages
+        String uploadDir = "./src/main/webapp/images/capstoneimages/";   ///this should save it in a directory named capstoneimages
         Path uploadPath = Paths.get(uploadDir);
         if(!Files.exists(uploadPath)){
             Files.createDirectories(uploadPath);
