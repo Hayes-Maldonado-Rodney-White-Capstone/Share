@@ -11,7 +11,7 @@ Our mission here at Share is to help people become more connected with their nei
 
 ## How Share was built/Project Setup
 
-This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot and Thymeleaf and is completely mobile-responsive with all original assets. In a team of four,  we were involved in the full software development cycle including planning, standups, coding, testing, and implementation. This project is meant to demonstrate all the skills learned during the 6 month bootcamp expierence at Codeup.
+This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot and Thymeleaf and is completely mobile-responsive with all original assets. In a team of four,  we were involved in the full software development cycle including planning, standups, coding, testing, and git workflow. This project is meant to demonstrate all the skills learned during the 6 month bootcamp expierence at Codeup.
 
 #### Setup
 
