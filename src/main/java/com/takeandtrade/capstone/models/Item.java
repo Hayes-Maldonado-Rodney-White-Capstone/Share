@@ -21,13 +21,13 @@ public class Item {
     private long id;
 
     @Column(nullable = false, length = 255)
-    @NotBlank(message = "please enter a title")
-    @Size(min = 2, message = "name must be at least 2 characters")
+    @NotBlank(message = "Title can't be blank")
+    @Size(min = 2, message = "Title must be at least 2 characters")
     private String itemName;
 
     @Column(nullable = false, length = 1000)//may need to update this to TEXT within mysql
-    @NotBlank(message = "Better put something in that description")
-    @Size(min = 2, message = "The description must be 2 characters buster!!")
+    @NotBlank(message = "Description can't be blank")
+    @Size(min = 2, message = "Description must be at least 2 characters")
     private String itemDescription;
 
     @Column(nullable = true, length = 1000) //may need to update this to TEXT within mysql
@@ -78,19 +78,6 @@ public class Item {
     public Item() {
     }
 
-    //2 constructors, 1 with id and 1 without for insertion and extraction
-//    public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
-//        this.id = id;
-//        this.itemName = itemName;
-//        this.itemDescription = itemDescription;
-//        this.specialInstructions = specialInstructions;
-//        this.itemCondition = itemCondition;
-//        this.price = price;
-//        this.image = image;
-//        this.availability = availability;
-//        this.datePosted = datePosted;
-//    }
-
     public Item(long id, String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, String personalizedTermsAndConditions, LocalDateTime datePosted) {
         this.id = id;
         this.itemName = itemName;
@@ -103,17 +90,6 @@ public class Item {
         this.personalizedTermsAndConditions = personalizedTermsAndConditions;
         this.datePosted = datePosted;
     }
-
-//    public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, LocalDateTime datePosted) {
-//        this.itemName = itemName;
-//        this.itemDescription = itemDescription;
-//        this.specialInstructions = specialInstructions;
-//        this.itemCondition = itemCondition;
-//        this.price = price;
-//        this.image = image;
-//        this.availability = availability;
-//        this.datePosted = datePosted;
-//    }
 
     public Item(String itemName, String itemDescription, String specialInstructions, String itemCondition, double price, String image, boolean availability, String personalizedTermsAndConditions, LocalDateTime datePosted) {
         this.itemName = itemName;
