@@ -1,20 +1,24 @@
 
 # Share
 
-<hr>
+## About The Idea
 
-## Project Setup (IntelliJ)
+Do you have things laying around your house that you don’t use anymore? Do these things still have use? Would you like to make money off of your items without selling them? You can repurpose and lend out your things using Share!
 
-<hr>
+Share is a social networking and online marketplace that allows members to share and borrow items with fellow neighbors. Share users can list their items, freely adjust daily borrow fees and time limits, and engage in lending with other users. Users can also leave reviews and message others directly, ensuring open and honest communication with the Share community as a whole, so you’ll never feel unsure of your lendings or borrows.
+
+Our mission here at Share is to help people become more connected with their neighborhoods and keep the world a little greener. In past generations, not everybody owned a tent, a specialty tool or a bicycle. These things were commonly lent to trusted neighbors as a regular practice. Share is hoping to revive this tradition in a modern and digital way, making things more accessible to others. Using Share will also negate the need for throwing away unwanted items somewhere to rot and encourage recycling, community engagement, and of course, sharing.
+
+## How Share was built/Project Setup
+
+This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot and Thymeleaf and is completely mobile-responsive with all original assets. In a team of four,  we were involved in thefull software development cycle including planning, standups, coding, testing, and implementation. This project is meant to demonstrate all the skills learned during the 6 month bootcamp expierence at Codeup.
+
+#### Setup
 
 1. Clone the repository to your local machine using new project from version control
 2. Make a copy of the example.properties and name it application.properties
 3. Update the username and password in application.properties to the database you will be using on your local machine
 4. Be sure you are running MYSQL before running the application
-
-## Description
-
-<hr>
 
 
 ##  Stories
