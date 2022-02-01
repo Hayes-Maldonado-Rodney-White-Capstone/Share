@@ -22,13 +22,13 @@
                 <div class="card text-center" th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
                     <h3 class="card-title">From: <span th:text="${request.userReq.username}"></span></h3>
                     <div class="card-body text-center">
+                        <p class="card-text">Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
                         <p class="card-text">Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
                         <p class="card-text">Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span></p>
-                        <p class="card-text">Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
                         <p class="card-text">Request Status: <span th:text="${request.status}"></span></p>
                     </div>
 
-<!--                    <p class="center-text"> <a th:href="@{/messages/{userReq.id}(request.userReq.id=${user.id})}" class="btn btn-success top-btn">Write a Message</a></p>-->
+                    <p class="center-text"> <a th:href="@{/messages/{userId}(userId=${request.userReq.id})}" class="btn btn-success top-btn">Write a Message</a></p>
 
                     <div class="row d-flex justify-content-center align-items-center">
                         <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
@@ -68,6 +68,8 @@
                 <p class="card-text">Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
                 <p class="card-text">Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span></p>
                 <p class="card-text">Request Status: <span th:text="${request.status}"></span></p>
+                <p class="center-text"> <a th:href="@{/messages/{userId}(userId=${request.itemReq.user.id})}" class="btn btn-success top-btn">Write a Message</a></p>
+
             </div>
 
         </div>
@@ -77,64 +79,6 @@
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="container">-->
-<!--    <br>-->
-<!--    <div>-->
-<!--        <h1 class="text-center">Pending Requests</h1>-->
-<!--        <div class="d-flex flex-column justify-content-center align-items-center">-->
-<!--            <div th:each="request : ${requests}">-->
-<!--                <div class="border border-info p-4"-->
-<!--                     th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">-->
-<!--                    <p>Username of Requester: <span th:text="${request.userReq.username}"></span></p>-->
-<!--                    &lt;!&ndash;            <p>Start Date Requested: <span th:text="${#temporals.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>&ndash;&gt;-->
-<!--                    &lt;!&ndash;thymeleaf date.format sometimes throws an error, not sure when/why&ndash;&gt;-->
-<!--                    <p>Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span>-->
-<!--                    </p>-->
-<!--                    &lt;!&ndash;                <p>Start Date Requested: <span th:text="${request.beginDate}"></span></p>&ndash;&gt;-->
-<!--                    <p>Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span>-->
-<!--                    </p>-->
-<!--                    &lt;!&ndash;                <p>Return Date Requested: <span th:text="${request.dueDate}"></span></p>&ndash;&gt;-->
-<!--                    <p>Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>-->
-<!--                    <p>Request Status: <span th:text="${request.status}"></span></p>-->
-
-<!--                    <div class="row d-flex justify-content-center align-items-center">-->
-<!--                    <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">-->
-<!--                        <button class="p-2 d-flex justify-content-center mr-3" th:if="${request.status == 'PENDING'}">-->
-<!--                            Approve-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                    <div class="p-2 d-flex justify-content-center"-->
-<!--                         th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#10003; Approved-->
-<!--                    </div>-->
-
-<!--                    <form th:action="@{'/myRequests/decline/' + ${request.id}}" th:object="${request}" th:method="post">-->
-<!--                        <button class="p-1 d-flex justify-content-center ml-3" th:if="${request.status == 'PENDING'}">-->
-<!--                            Decline-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                    <div class="p-2 d-flex justify-content-center"-->
-<!--                         th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#10060; DECLINED-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</div>-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

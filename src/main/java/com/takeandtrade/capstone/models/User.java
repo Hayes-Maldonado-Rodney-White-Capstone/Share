@@ -21,15 +21,14 @@ public class User {
     @Column(nullable = false, length = 50)
     private String lastName;
 
-    @Column (nullable = false, length = 50)
+    @Column (nullable = false, length = 50, unique = true)
     private String username;
 
     @Column (nullable = false)
-    @DateTimeFormat(pattern ="mm-dd-yyyy")
+    @DateTimeFormat(pattern ="MM-dd-yyyy")
     private String dateOfBirth;
 
-
-    @Column (nullable = false, length = 255)
+    @Column (nullable = false, length = 255, unique = true)
     private String email;
 
     @Column (nullable = false, length = 255)
@@ -46,6 +45,9 @@ public class User {
 
     @Column (nullable = false)
     private int zipcode;
+
+    @Column(nullable = false)
+    private String profileimage;   //string because we are saving the name here
 
     public long getId() {
         return id;
@@ -78,7 +80,6 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
     public String getDateOfBirth() {
         return dateOfBirth;
@@ -136,6 +137,14 @@ public class User {
         this.zipcode = zipcode;
     }
 
+    public String getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(String profileimage) {
+        this.profileimage = profileimage;
+    }
+
     public User(User copy) {
         id = copy.id;
         email = copy.email;
@@ -148,11 +157,12 @@ public class User {
         city = copy.city;
         state = copy.state;
         zipcode = copy.zipcode;
+        profileimage = copy.profileimage;
     }
 
     public User(){}
 
-    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, long phoneNumber, String city, String state, int zipcode) {
+    public User(long id, String firstName, String lastName, String username, String dateOfBirth, String email, String password, long phoneNumber, String city, String state, int zipcode, String profileimage) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -164,6 +174,7 @@ public class User {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        this.profileimage = profileimage;
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -186,6 +197,9 @@ public class User {
     //one user can make many requests
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userReq")
     private List<Request> request;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consumer")//user that is borrowed the item/writes the review/ and is login
+    private List<Review> writtenReviews;
 
     public List<Message> getSentMessages() {
         return sentMessages;
@@ -219,9 +233,6 @@ public class User {
         this.writtenReviews = writtenReviews;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consumer")//user that is borrowed the item/writes the review/ and is login
-    private List<Review> writtenReviews;
-
     public List<Item> getItems() {
         return items;
     }
@@ -246,6 +257,12 @@ public class User {
         this.request = request;
     }
 
+    //for file upload
+    @Transient
+    public String getProfilePhotoImagePath() {
+        if (profileimage == null) return null;
 
+        return "/images/capstoneimages/" + profileimage;
+    }
 
 }
