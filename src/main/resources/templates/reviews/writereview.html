@@ -60,7 +60,7 @@
         <div class="container card-container">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title"><img class="profile-icon" src="https://cdn-icons-png.flaticon.com/512/163/163801.png"><span th:text="${review.consumer.username}"></span>: <span th:text="${review.reviewTitle}"></span>
+                    <h5 class="card-title"><img class="profile-icon" th:src="@{${review.consumer.getProfilePhotoImagePath()}}"><span th:text="${review.consumer.username}"></span>: <span th:text="${review.reviewTitle}"></span>
 
                         <img th:if="${review.rating.rating == 1}" class="star-icons" src="https://i.postimg.cc/sXJsM2Nh/1-star.png">
                         <img th:if="${review.rating.rating == 2}" class="star-icons" src="https://i.postimg.cc/DzBX17Dt/2-star.png">

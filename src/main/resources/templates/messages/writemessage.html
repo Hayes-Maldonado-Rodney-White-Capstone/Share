@@ -51,7 +51,7 @@
                         <div th:each="message : ${messages}">
                         <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
                         <li class="clearfix"><span class="chat-img pull-left">
-                            <img src="https://i.redd.it/sfi496f08hg51.png" alt="User Avatar" class="profile-image"/>
+                            <img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar" class="profile-image"/>
                         </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
@@ -68,7 +68,7 @@
                         </div>
                         <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
                             <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="https://cdn-icons-png.flaticon.com/512/163/163801.png" alt="User Avatar"
+                            <img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar"
                                  class="profile-image"/>
                         </span>
                                 <div class="chat-body clearfix">
