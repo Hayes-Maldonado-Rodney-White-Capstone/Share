@@ -32,6 +32,11 @@ body {
     font-family: 'Roboto Slab', sans-serif;
 }
 
+.big-txt {
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+}
+
 .card-text {
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
@@ -39,4 +44,16 @@ body {
 
 .card-body {
     margin-top: 20px;
+}
+
+.msg-btn {
+    background-color: #008a4c;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.msg-btn:hover {
+    background-color: #1FC168;
+    border: none;
+    font-family: 'Roboto', sans-serif;
 }

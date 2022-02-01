@@ -29,7 +29,7 @@
 
 <div th:object="${user}">
 
-    <img class="profile-icon" src="https://cdn-icons-png.flaticon.com/512/163/163801.png">
+    <img class="profile-icon" th:src="@{${user.getProfilePhotoImagePath()}}">
 
     <h1 class="title"><span th:text="${user.getUsername()}"></span>'s Profile</h1>
 
