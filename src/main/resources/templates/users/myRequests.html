@@ -13,47 +13,56 @@
 
 <div class="container request-container">
 
-            <h1 class="title text-center">Pending Requests</h1>
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
 
-        <div class="d-flex flex-column justify-content-center align-items-center" th:each="request : ${requests}">
-            <div class="card text-center" th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
-                <h3 class="card-title">From: <span th:text="${request.userReq.username}"></span></h3>
-                <div class="card-body text-center">
-                    <p class="card-text">Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
-                    <p class="card-text">Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span></p>
-                    <p class="card-text">Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
-                    <p class="card-text">Request Status: <span th:text="${request.status}"></span></p>
-                </div>
+            <h1 class="title text-center">Incoming Requests</h1>
 
-                <div class="row d-flex justify-content-center align-items-center">
-                    <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
-                        <button class="btn btn-success d-flex justify-content-center mr-3 mb-3" th:if="${request.status == 'PENDING'}">
-                            Approve
-                        </button>
-                    </form>
-                    <div class="d-flex justify-content-center card-text"
-                         th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#x2713; Approved
+            <div class="d-flex flex-column justify-content-center align-items-center" th:each="request : ${requests}">
+                <div class="card text-center" th:if="${loggedInUser.username != request.userReq.username  && loggedInUser.username == request.approver1}">
+                    <h3 class="card-title">From: <span th:text="${request.userReq.username}"></span></h3>
+                    <div class="card-body text-center">
+                        <p class="card-text">Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
+                        <p class="card-text">Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span></p>
+                        <p class="card-text">Item they are requesting: <span th:text="${request.itemReq.itemName}"></span></p>
+                        <p class="card-text">Request Status: <span th:text="${request.status}"></span></p>
                     </div>
 
-                    <form th:action="@{'/myRequests/decline/' + ${request.id}}" th:object="${request}" th:method="post">
-                        <button class="btn btn-danger d-flex justify-content-center ml-3 mb-3" th:if="${request.status == 'PENDING'}">
-                            Decline
-                        </button>
-                    </form>
-                    <div class="d-flex justify-content-center card-text"
-                         th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#x2717; Declined
-                    </div>
-                </div>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
+                            <button class="btn btn-success d-flex justify-content-center mr-3 mb-3" th:if="${request.status == 'PENDING'}">
+                                Approve
+                            </button>
+                        </form>
+                        <div class="d-flex justify-content-center card-text"
+                             th:unless="${request.status == 'PENDING' || request.status == 'DECLINED'}">&#x2713; Approved
+                        </div>
 
+                        <form th:action="@{'/myRequests/decline/' + ${request.id}}" th:object="${request}" th:method="post">
+                            <button class="btn btn-danger d-flex justify-content-center ml-3 mb-3" th:if="${request.status == 'PENDING'}">
+                                Decline
+                            </button>
+                        </form>
+                        <div class="d-flex justify-content-center card-text"
+                             th:unless="${request.status == 'PENDING' || request.status == 'APPROVED'}">&#x2717; Declined
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            </div>
+
+        </div>
+<div class="col-lg-6 col-md-12">
+
+    <h1 class="title text-center">Outgoing Requests</h1>
+
     <!--requests that I made to borrow someone else's items-->
     <div class="d-flex flex-column justify-content-center align-items-center" th:each="request : ${requests}">
         <div class="card text-center" th:if="${loggedInUser.username == request.userReq.username  && loggedInUser.username != request.approver1}">
-<!--            <h3 class="card-title">From: <span th:text="${request.userReq.username}"></span></h3>-->
+            <!--            <h3 class="card-title">From: <span th:text="${request.userReq.username}"></span></h3>-->
             <h3 class="card-title">To: <span th:text="${request.approver1}"></span></h3>
             <div class="card-body text-center">
-                <h4 class="card-text">Item requested: <span th:text="${request.itemReq.itemName}"></span></h4>
+                <p class="card-text">Item requested: <span th:text="${request.itemReq.itemName}"></span></p>
                 <p class="card-text">Start Date Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span></p>
                 <p class="card-text">Return Date Requested: <span th:text="${#dates.format(request.dueDate, 'MM-dd-yyyy')}"></span></p>
                 <p class="card-text">Request Status: <span th:text="${request.status}"></span></p>
@@ -62,7 +71,9 @@
         </div>
     </div>
 
-    </div>
+</div>
+
+</div>
 </div>
 
 
