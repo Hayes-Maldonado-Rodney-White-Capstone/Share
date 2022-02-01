@@ -28,6 +28,8 @@
                         <p class="card-text">Request Status: <span th:text="${request.status}"></span></p>
                     </div>
 
+<!--                    <p class="center-text"> <a th:href="@{/messages/{userReq.id}(request.userReq.id=${user.id})}" class="btn btn-success top-btn">Write a Message</a></p>-->
+
                     <div class="row d-flex justify-content-center align-items-center">
                         <form th:action="@{'/myRequests/approve/' + ${request.id}}" th:object="${request}" th:method="post">
                             <button class="btn btn-success d-flex justify-content-center mr-3 mb-3" th:if="${request.status == 'PENDING'}">
