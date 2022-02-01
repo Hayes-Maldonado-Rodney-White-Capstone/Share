@@ -19,7 +19,9 @@
     <div sec:authorize="isAuthenticated()">
         <div th:object="${viewUser}">
 
-            <img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">
+<!--            <img class="profile-icon" src="https://i.redd.it/sfi496f08hg51.png">-->
+            <img class="profile-icon" th:src="@{${viewUser.getProfilePhotoImagePath()}}" alt="profile picture">
+
 
             <h1 class="title">Welcome back, <span th:text="${#authentication.principal.username}"></span>!</h1>
 

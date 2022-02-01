@@ -18,7 +18,7 @@
     <div id="create-item-div" class="d-flex justify-content-center align-items-center">
     <form th:action="@{/items/create}" th:method="post" th:object="${item}" enctype="multipart/form-data" style="max-width: 400px">
         <input type="hidden" th:field="*{id}" id="itemId">
-        <!--date posted will be automatically be created when the user submits the form?-->
+        <!--date posted will be automatically be created when the user submits the form-->
         <div class="form-group">
             <label for="itemName">Name of Item</label>
             <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}" class="bg-danger text-uppercase"></span>
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
             <label for="price">Price per day</label>
-            <input type="text" class="form-control" id="price" name="price" th:field="*{price}">
+            <label>$</label><input type="text" class="form-control" id="price" name="price" th:field="*{price}">
         </div>
 
         <!--** IMAGE **-->

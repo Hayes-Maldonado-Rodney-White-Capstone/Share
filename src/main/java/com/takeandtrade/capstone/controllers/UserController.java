@@ -9,8 +9,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,13 +55,34 @@ public class UserController {
     }
 
     @PostMapping("/registerform")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user, @RequestParam("profilepic") MultipartFile multipartFile) throws IOException {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
         user.setRoles(Collections.singletonList(roleDao.findByRoleType("user")));
 
+        //for profile pictures
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        System.out.println("filename " + fileName);
+        user.setProfileimage(fileName);
+
         userDao.save(user);
+
+        //fileupload2
+        String uploadDir = "./src/main/webapp/images/capstoneimages/";   ///this should save it in a directory named capstoneimages
+        Path uploadPath = Paths.get(uploadDir);
+        if(!Files.exists(uploadPath)){
+            Files.createDirectories(uploadPath);
+        }
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            System.out.println(filePath.toFile().getAbsolutePath());
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new IOException("Could not save image file: " + fileName, e);
+        }
+
         return "redirect:/homepage";
     }
 
