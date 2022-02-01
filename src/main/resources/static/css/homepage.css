@@ -29,6 +29,12 @@ body {
     margin-right: auto;
     margin-left: auto;
     display: block;
+    margin-top: -50px;
+}
+
+.error-text {
+    font-size: 25px;
+    font-family: 'Roboto Slab', serif;
 }
 
 /* NAVBAR SECTION */
