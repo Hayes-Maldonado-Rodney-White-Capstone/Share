@@ -124,12 +124,23 @@ public class UserController {
         return "redirect:/userprofile";
     }
 
-    @PostMapping ("/user/delete/{userId}")
-    public String deleteUser(@PathVariable Long userId) {
-        System.out.println("delete id " + userId);
-        userDao.deleteById(userId);
-        return "redirect:/homepage";
+//    @PostMapping ("/user/delete/{userId}")
+//    public String deleteUser(@PathVariable Long userId) {
+//        System.out.println("delete id " + userId);
+//        userDao.deleteById(userId);
+//        return "redirect:/homepage";
+//    }
+
+    @PostMapping ("/user/delete")
+    public String deleteUser() {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loggedInUser.getId());
+        userDao.delete(user);
+        return "redirect:../login";
     }
+
+
+
 
     @GetMapping("/myReviews")
     public String showMyReviews(Model model) {

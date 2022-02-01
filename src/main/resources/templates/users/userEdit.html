@@ -75,7 +75,7 @@
             <button type="submit" class="btn btn-2 btn-primary">Confirm Edit</button>
         </div>
     </form>
-            <form th:action="@{'/user/delete/' + ${user.getId()}}" method="POST">
+            <form th:action="@{/user/delete}" method="POST" th:object="${user}">
                 <button type="submit" class="btn btn-2 btn-danger">Delete Account</button>
             </form>
         </div>

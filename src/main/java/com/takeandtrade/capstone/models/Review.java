@@ -98,7 +98,7 @@ public class Review {
 
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "rating_id") //this should create a foreign key in the review table
     private Rating rating;
 

@@ -179,7 +179,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producer")//user that is publishing the post/item to share
     private List<Review> reviewed;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
