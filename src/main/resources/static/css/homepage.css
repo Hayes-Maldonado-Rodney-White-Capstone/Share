@@ -35,6 +35,8 @@ body {
 .error-text {
     font-size: 25px;
     font-family: 'Roboto Slab', serif;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 /* NAVBAR SECTION */
