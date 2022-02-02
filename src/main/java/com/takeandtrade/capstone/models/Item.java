@@ -25,29 +25,30 @@ public class Item {
     @Size(min = 2, message = "Title must be at least 2 characters")
     private String itemName;
 
-    @Column(nullable = false, length = 1000)//may need to update this to TEXT within mysql
+    @Column(nullable = false, length = 1000)
     @NotBlank(message = "Description can't be blank")
     @Size(min = 2, message = "Description must be at least 2 characters")
     private String itemDescription;
 
-    @Column(nullable = true, length = 1000) //may need to update this to TEXT within mysql
+    @Column(nullable = true, length = 1000)
     private String specialInstructions;
 
     @Column(nullable = false)
-    private String itemCondition;  //this will be a checkbox on the form, excellent, good, fair, poor
+    @NotBlank(message = "Choose the condition")
+    private String itemCondition;
 
     @Column(nullable = true)
     private double price;  //in mysql this can be DECIMAL(6,2) which allows prices up to 9999.99
 
     @Column(nullable = false)
-    private String image;   //string because we are saving the name here
+    @NotBlank(message = "Upload a file under 5MB")
+    private String image;   //file name
 
-    @Column(nullable = false)  //would be nice if it automatically defaults to true (the item is available) can be data type TINYINT in mysql
+    @Column(nullable = false)
     private boolean availability;
 
     @Column(nullable = true, length = 500)
     private String personalizedTermsAndConditions;
-
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -57,20 +58,14 @@ public class Item {
 
     //one item has one category
     @OneToOne()
-    @JoinColumn(name = "category_id") //this should create a foreign key in the Item table
+    @JoinColumn(name = "category_id")
     private Category category;
 
     //one user can have many items-- many items can have one user
     @ManyToOne
-    @JoinColumn(name = "user_id")  //this should create a FK in the Item table
+    @JoinColumn(name = "user_id")
     private User user;
 
-    //many-to-many between Item and Request--I don't think this is correct...adding a one to many, one user can make many requests
-//    @ManyToMany
-//    @JoinTable(name = "item_request", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "request_id"))
-//    private Collection<Request> requests;
-
-    //one item can have many requests. may need to add the cascade here, so when an item is deleted it also deletes the request
     @OneToMany(mappedBy = "itemReq", cascade = CascadeType.ALL)
     List<Request> requests;
 
