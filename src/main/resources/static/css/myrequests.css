@@ -17,7 +17,7 @@ body {
     margin-top: 30px;
     margin-bottom: 30px;
     width: 500px;
-    height: 400px;
+    height: 450px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -28,12 +28,14 @@ body {
 }
 
 .card-title {
-    font-size: 25px;
+    font-size: 35px;
     font-family: 'Roboto Slab', sans-serif;
 }
 
-.big-txt {
-    font-size: 24px;
+.big-text {
+    margin-top: -25px;
+    margin-bottom: 20px;
+    font-size: 25px;
     font-family: 'Roboto', sans-serif;
 }
 
