@@ -53,70 +53,18 @@
             <input type="file" class="form-control" id="profilepic" name="profilepic" accept="image/png, image/jpeg">
         </div>
         <div><img id="thumbnail" alt="Image Preview"></div>
-
-            <div class="form-group">
+        <div class="form-group border-secondary" id="zipbox">
+            <label th:for="zipcode">Zipcode</label>
+            <input type="text" class="form-control" name="zipcode" id="zipcode">
+        </div>
+        <div class="form-group" id="citybox">
                 <label th:for="city">City</label>
                 <input th:id="city" th:type="text" class="form-control" th:field="*{city}" required>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="statebox">
                 <label th:for="state">State</label>
                 <select th:id="state" class="form-control" th:field="*{state}" required>
                     <option value="TX">Texas</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label th:for="zipcode">Zipcode</label>
-                <select th:type="text" class="form-control" th:id="zipcode" th:field="*{zipcode}" required>
-                    <option value="78201">78201</option>
-                    <option value="78202">78202</option>
-                    <option value="78203">78203</option>
-                    <option value="78204">78204</option>
-                    <option value="78205">78205</option>
-                    <option value="78206">78206</option>
-                    <option value="78207">78207</option>
-                    <option value="78208">78208</option>
-                    <option value="78209">78209</option>
-                    <option value="78210">78210</option>
-                    <option value="78211">78211</option>
-                    <option value="78212">78212</option>
-                    <option value="78213">78213</option>
-                    <option value="78214">78214</option>
-                    <option value="78215">78215</option>
-                    <option value="78216">78216</option>
-                    <option value="78217">78217</option>
-                    <option value="78218">78218</option>
-                    <option value="78219">78219</option>
-                    <option value="78220">78220</option>
-                    <option value="78221">78221</option>
-                    <option value="78222">78222</option>
-                    <option value="78223">78223</option>
-                    <option value="78224">78224</option>
-                    <option value="78225">78225</option>
-                    <option value="78226">78226</option>
-                    <option value="78227">78227</option>
-                    <option value="78228">78228</option>
-                    <option value="78229">78229</option>
-                    <option value="78230">78230</option>
-                    <option value="78231">78231</option>
-                    <option value="78232">78232</option>
-                    <option value="78233">78233</option>
-                    <option value="78234">78234</option>
-                    <option value="78235">78235</option>
-                    <option value="78236">78236</option>
-                    <option value="78237">78237</option>
-                    <option value="78238">78238</option>
-                    <option value="78239">78239</option>
-                    <option value="78240">78240</option>
-                    <option value="78241">78241</option>
-                    <option value="78242">78242</option>
-                    <option value="78243">78243</option>
-                    <option value="78244">78244</option>
-                    <option value="78245">78245</option>
-                    <option value="78246">78246</option>
-                    <option value="78247">78247</option>
-                    <option value="78248">78248</option>
-                    <option value="78249">78249</option>
-                    <option value="78250">78250</option>
                 </select>
             </div>
         <div class="col text-center">
@@ -126,7 +74,7 @@
 </div>
 
 <!-- JS Scripts -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -144,6 +92,45 @@
             };
             reader.readAsDataURL(file);
         }
+        $('#citybox').hide();
+        $('#statebox').hide();
+        // OnKeyDown Function
+        $("#zipcode").keyup(function() {
+            var zip_in = $(this);
+            var zip_box = $('#zipbox');
+
+            if (zip_in.val().length<5) {
+                zip_box.removeClass('error success');
+            } else if (zip_in.val() < 78201 || zip_in.val() > 78250){
+                zip_box.addClass('bg-danger').removeClass('border-secondary');
+                alert("currently serving limited zipcodes within San Antonio, TX, please try again");
+            } else if (zip_in.val().length>5) {
+                zip_box.addClass('bg-danger').removeClass('border-secondary');
+                alert("please enter 5 digits");
+            } else if ((zip_in.val().length == 5) ) {
+                zip_box.removeClass('bg-danger');
+
+                // Make HTTP Request
+                $.ajax({
+                    url: "http://api.zippopotam.us/us/" + zip_in.val(),
+                    cache: false,
+                    dataType: "json",
+                    type: "GET",
+                    success: function(result, success) {
+                        $('#citybox').slideDown();
+                        $('#statebox').slideDown();
+                        // US Zip Code Records Officially Map to only 1 Primary Location
+                        places = result['places'][0];
+                        $("#city").val(places['place name']);
+                        // $("#state").val('TX');
+                        zip_box.addClass('border-success').removeClass('border-danger');
+                    },
+                    error: function(result, success) {
+                        zip_box.removeClass('border-success').addClass('border-danger');
+                    }
+                });
+            }
+        });
     });
 </script>
 </body>
