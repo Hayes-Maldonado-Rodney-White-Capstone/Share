@@ -55,8 +55,7 @@
     </div>
 
 
-<div th:each="review : ${reviews}">
-    <div th:if="${review.consumer == loggedInUser && review.producer == producerUser}">
+<div th:each="review : ${user.reviewed}">
         <div class="container card-container">
             <div class="card">
                 <div class="card-body">
@@ -73,7 +72,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 </div>
 </div>
