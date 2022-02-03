@@ -15,7 +15,7 @@
 <div class="container form-container-3 w-50 m-auto">
     <h1 class="text-center form-title">Edit My Item</h1>
 
-    <form th:method="POST" th:object="${items}" th:value="${itemId}" th:action="@{'/items/edit/' + ${itemId}}">
+    <form class="my-form" th:method="POST" th:object="${items}" th:value="${itemId}" th:action="@{'/items/edit/' + ${itemId}}">
         <input type="hidden" th:field="*{id}" name="itemId"/>
         <!--probably don't need this since I'm grabbing the id in the url-->
         <input type="hidden" th:field="*{user.id}" name="userId">
