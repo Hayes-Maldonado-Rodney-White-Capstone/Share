@@ -19,9 +19,9 @@
 <div class="container" style="margin-top: 20px;">
     <div class="w-50 m-auto">
     <h1 class="text-center form-title">Request an Item</h1>
-    <p>You are requesting to borrow an item (<span th:text="${item.getItemName()}"></span>) from <span th:text="${item.getUser().getUsername()}"></span>.</p>
-    <p>Please fill out this form and they will get back to you as soon as possible. The start date is the date that you would like to get the item, and the return date is the date that you will return the item to the owner.</p>
-    <form th:action="@{'/request/' + ${itemId}}" th:method="post" th:object="${request}">
+    <p class="my-text">You are requesting to borrow an item (<span th:text="${item.getItemName()}"></span>) from <span th:text="${item.getUser().getUsername()}"></span>.</p>
+    <p class="my-text">Please fill out this form and they will get back to you as soon as possible. The start date is the date that you would like to get the item, and the return date is the date that you will return the item to the owner.</p>
+    <form class="my-form" th:action="@{'/request/' + ${itemId}}" th:method="post" th:object="${request}">
         <div class="form-group">
             <label for="beginDate">Enter the Start Date</label>
             <input type="date" class="form-control" id="beginDate" name="beginDate">
