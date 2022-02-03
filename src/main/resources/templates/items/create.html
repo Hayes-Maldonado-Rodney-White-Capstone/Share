@@ -13,10 +13,9 @@
 <nav th:replace="partials :: navbar-2"></nav>
 <br>
 <div class="container form-container" style="margin-top: 20px;">
-<div>
     <h1 class="text-center form-title">Add an Item to Lend</h1>
     <div id="create-item-div" class="d-flex justify-content-center align-items-center">
-    <form th:action="@{/items/create}" th:method="post" th:object="${item}" enctype="multipart/form-data" style="max-width: 400px">
+    <form class="my-form" th:action="@{/items/create}" th:method="post" th:object="${item}" enctype="multipart/form-data" style="max-width: 400px">
         <input type="hidden" th:field="*{id}" id="itemId">
         <!--date posted will be automatically be created when the user submits the form-->
         <div class="form-group">
@@ -109,7 +108,6 @@
         </div>
     </form>
     </div>
-</div>
 </div>
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
