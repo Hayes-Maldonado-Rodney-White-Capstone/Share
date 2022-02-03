@@ -31,7 +31,7 @@
                             <a class="nav-link" href="/homepage" th:href="@{/homepage}"><img class="navbar-icon-2" src="../static/images/homepage-images/nav-home.png" th:src="@{images/homepage-images/nav-home.png}">Home</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/userprofile" th:href="@{/userprofile}" aria-hidden="true">My Profile<img class="navbar-icon" src="../static/images/homepage-images/nav-profile.png" th:src="@{images/homepage-images/nav-profile.png}"></a>
+                            <a class="nav-link" href="/userprofile" th:href="@{/userprofile}" aria-hidden="true"><span th:text="${#authentication.principal.username}"></span>'s Profile<img class="navbar-icon" src="../static/images/homepage-images/nav-profile.png" th:src="@{images/homepage-images/nav-profile.png}"></a>
                         </li>
                         <li class="nav-item dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +83,7 @@
                             <a class="nav-link" href="/homepage" th:href="@{/homepage}"><img class="navbar-icon-2" src="https://i.postimg.cc/XNw8bdZk/nav-home.png">Home</a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" href="/userprofile" th:href="@{/userprofile}" aria-hidden="true">My Profile<img class="navbar-icon" src="https://i.postimg.cc/Y23WR3GZ/nav-profile.png"></a>
+                            <a class="nav-link" href="/userprofile" th:href="@{/userprofile}" aria-hidden="true"><span th:text="${#authentication.principal.username}"></span>'s Profile<img class="navbar-icon" src="https://i.postimg.cc/Y23WR3GZ/nav-profile.png"></a>
                         </li>
                         <li class="nav-item dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
