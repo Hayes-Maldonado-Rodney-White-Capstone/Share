@@ -16,7 +16,7 @@
 
     <h1 class="form-title text-center">Create an account</h1>
 
-    <form th:action="@{/registerform}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
+    <form class="my-form" th:action="@{/registerform}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
             <div class="form-group">
                 <label th:for="firstName">First Name</label>
                 <input th:id="firstName" th:type="text" class="form-control" th:field="*{firstName}"
