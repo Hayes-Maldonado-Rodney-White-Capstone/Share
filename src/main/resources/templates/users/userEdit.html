@@ -17,9 +17,9 @@
 
 <div sec:authorize="isAuthenticated()">
 
-    <form th:action="@{|/userEdit/${user.getId()}|}" th:method="POST" th:object="${user}">
-
         <div class="container">
+
+            <form class="my-form-2" th:action="@{|/userEdit/${user.getId()}|}" th:method="POST" th:object="${user}">
 
             <h1 class="text-center form-title-2">Edit Profile Form</h1>
 
@@ -73,11 +73,17 @@
 
 
             <button type="submit" class="btn btn-2 btn-primary">Confirm Edit</button>
+            </form>
         </div>
-    </form>
+
+    <div class="col text-center">
+        <br>
             <form th:action="@{/user/delete}" method="POST" th:object="${user}">
                 <button type="submit" class="btn btn-2 btn-danger">Delete Account</button>
             </form>
+        </div>
+
+
         </div>
 
 </div>
