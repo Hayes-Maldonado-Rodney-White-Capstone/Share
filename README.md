@@ -11,7 +11,7 @@ Our mission here at Share is to help people become more connected with their nei
 
 ## How Share was built/Project Setup
 
-This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot and Thymeleaf and is completely mobile-responsive with all original assets. In a team of four,  we were involved in the full software development cycle including planning, standups, coding, testing, and git workflow. This project is meant to demonstrate all the skills learned during the 6 month bootcamp expierence at Codeup.
+This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot and Thymeleaf and is completely mobile-responsive with all original assets. In a team of four,  we were involved in the full software development cycle including planning, standups, coding, testing, and git workflow. This project is meant to demonstrate all the skills learned during the 6 month bootcamp experience at Codeup.
 
 #### Setup
 
@@ -90,3 +90,16 @@ This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MyS
     - As a user, I can view my own reviews and messages.
 </details>
 
+## Citations
+
+<details>
+    <summary></summary>
+    
+   * Nam Ha Minh, for ideas on file upload, https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial and search functionality     https://www.codejava.net/frameworks/spring-boot/spring-data-jpa-filter-search-examples
+
+   * https://github.com/jcrane613/YUWorkflow for ideas on form validation and a request/approval process
+    
+   * https://github.com/Tomasz-Makuch/library-springsecuirty-h2-thymeleaf/blob/master/src/main/resources/templates/borrowBook.html for general ideas on borrowing items 
+    
+   * Zipcode API http://www.zippopotam.us/
+    </details>
