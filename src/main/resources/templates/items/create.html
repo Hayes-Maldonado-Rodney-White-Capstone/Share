@@ -65,7 +65,6 @@
 
         <!--** IMAGE **-->
         <div class="form-group">
-            <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="bg-danger"></span>
             <label for="images">Image</label>
             <input type="file" class="form-control" id="images" name="images" accept="image/png, image/jpeg">
         </div>
