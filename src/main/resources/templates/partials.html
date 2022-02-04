@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
-                            <a class="nav-link" href="/homepage" th:href="@{/homepage}"><img class="navbar-icon-2" src="../static/images/homepage-images/nav-home.png" th:src="@{images/homepage-images/nav-home.png}">Home</a>
+                            <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home<img class="navbar-icon" src="../static/images/homepage-images/nav-home.png" th:src="@{images/homepage-images/nav-home.png}"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/userprofile" th:href="@{/userprofile}" aria-hidden="true"><span th:text="${#authentication.principal.username}"></span>'s Profile<img class="navbar-icon" src="../static/images/homepage-images/nav-profile.png" th:src="@{images/homepage-images/nav-profile.png}"></a>
@@ -80,7 +80,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
-                            <a class="nav-link" href="/homepage" th:href="@{/homepage}"><img class="navbar-icon-2" src="https://i.postimg.cc/XNw8bdZk/nav-home.png">Home</a>
+                            <a class="nav-link" href="/homepage" th:href="@{/homepage}">Home<img class="navbar-icon" src="https://i.postimg.cc/XNw8bdZk/nav-home.png"></a>
                         </li>
                         <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
                             <a class="nav-link" href="/userprofile" th:href="@{/userprofile}" aria-hidden="true"><span th:text="${#authentication.principal.username}"></span>'s Profile<img class="navbar-icon" src="https://i.postimg.cc/Y23WR3GZ/nav-profile.png"></a>
