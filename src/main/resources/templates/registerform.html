@@ -54,7 +54,8 @@
             <label for="profilepic">Profile Picture</label>
             <input type="file" class="form-control" id="profilepic" name="profilepic" accept="image/png, image/jpeg">
         </div>
-        <div><img id="thumbnail" alt="Image Preview"></div>
+        <div><img id="thumbnail" alt="Image Preview" class="invisible" style="max-width: 250px;"></div>
+
         <div class="form-group border-secondary" id="zipbox">
             <label th:for="zipcode">Zipcode</label>
             <input type="text" class="form-control" name="zipcode" id="zipcode">
@@ -90,7 +91,7 @@
             file = fileInput.files[0];
             reader = new FileReader();
             reader.onload = function(e){
-                $('#thumbnail').attr('src', e.target.result);
+                $('#thumbnail').removeClass('invisible').addClass('visible').attr('src', e.target.result);
             };
             reader.readAsDataURL(file);
         }
