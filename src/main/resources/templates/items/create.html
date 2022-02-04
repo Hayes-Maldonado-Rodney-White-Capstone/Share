@@ -53,25 +53,26 @@
             </label>
         </div>
         <div class="form-check">
-            <label class="form-check-label" for="Poor">
+            <label class="form-check-label mb-2" for="Poor">
                 <input class="form-check-input" type="radio" th:field="*{itemCondition}" name="itemCondition" id="Poor"
                        value="Poor" required> Poor
             </label>
         </div>
         <div class="form-group">
             <label for="price">Price per day</label>
-            <label>$</label><input type="text" class="form-control" id="price" name="price" th:field="*{price}">
+            <label>$</label><input type="number" class="form-control" id="price" name="price" pattern="[0-9]+([\.,][0-9]+)?" step="0.01"
+                                   title="This should be a number with up to 2 decimal places.">
         </div>
 
         <!--** IMAGE **-->
         <div class="form-group">
-            <label for="images">Image</label>
-            <input type="file" class="form-control" id="images" name="images" accept="image/png, image/jpeg">
+            <label for="images">Image (jpg, png)</label>
+            <input type="file" class="form-control" id="images" name="images" accept="image/png, image/jpeg" required>
         </div>
-        <div><img id="thumbnail" alt="Image Preview"></div>
+        <div class="mb-3"><img id="thumbnail" alt="Image Preview" class="invisible" style="max-width: 250px;"></div>
 
         <label>Is the item available now?</label>
-        <div class="form-check" >
+        <div class="form-check">
             <label class="form-check-label" for="yes">
                 <input type="radio" class="form-check-input" value="1" id="yes" name="yes" th:field="*{availability}"
                        checked required>
@@ -83,7 +84,7 @@
                        th:field="*{availability}" required>No</label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="specialInstructions"> Special Instructions</label>
             <input type="text" class="form-control" id="specialInstructions" name="specialInstructions"
                    th:field="*{specialInstructions}">
@@ -123,7 +124,7 @@ function showImageThumbnail(fileInput) {
     file = fileInput.files[0];
     reader = new FileReader();
     reader.onload = function(e){
-        $('#thumbnail').attr('src', e.target.result);
+        $('#thumbnail').removeClass('invisible').addClass('visible').attr('src', e.target.result);
     };
     reader.readAsDataURL(file);
 }
