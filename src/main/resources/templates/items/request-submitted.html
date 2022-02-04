@@ -22,7 +22,7 @@
         <div class="my-request">
     <h3 class="my-req-title">My Request</h3>
     <p>Item Requested: <span th:text="${request.getItemReq().itemName}"></span></p>
-    <p>Request ID <span th:text="${request.id}"></span></p>
+    <p>Request ID: <span th:text="${request.id}"></span></p>
     <p>Status: <span th:text="${request.status}"></span></p>
     <!--<p>Dates Requested: <span th:text="${(request.beginDate)}"></span> to <span th:text="${request.dueDate}"></span></p>-->
     <p>Dates Requested: <span th:text="${#dates.format(request.beginDate, 'MM-dd-yyyy')}"></span> to <span
