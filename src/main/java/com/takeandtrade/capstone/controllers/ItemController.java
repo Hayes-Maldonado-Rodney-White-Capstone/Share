@@ -143,10 +143,28 @@ public class ItemController {
     }
 
     @PostMapping("/items/edit/{itemId}")
-    public String editItem(@PathVariable("itemId") Long itemId, @ModelAttribute Item item) {
+    public String editItem(@PathVariable("itemId") Long itemId, @ModelAttribute Item item, @RequestParam("images") MultipartFile multipartFile) throws IOException {
         item.setDatePosted(LocalDateTime.now()); //adding this bc it causes an error during editing
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        System.out.println("filename " + fileName);
+        item.setImage(fileName);
 
         itemDao.save(item);
+        String uploadDir = "./src/main/webapp/images/capstoneimages/";   ///this should save it in a directory named capstoneimages
+        Path uploadPath = Paths.get(uploadDir);
+        if(!Files.exists(uploadPath)){
+            Files.createDirectories(uploadPath);
+        }
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            System.out.println(filePath.toFile().getAbsolutePath());
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new IOException("Could not save image file: " + fileName, e);
+        }
+
+
         return "redirect:/items";
     }
 
