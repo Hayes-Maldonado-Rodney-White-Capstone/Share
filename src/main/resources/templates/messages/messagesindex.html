@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="card-text mt-3 mb-4">
-                        <img th:src="@{${user.getProfilePhotoImagePath()}}" class="rounded-circle img-fluid profile-image"/>
+                        <a th:href="@{'/viewPosterProfile/'+ ${user.id}}"><img th:src="@{${user.getProfilePhotoImagePath()}}" class="rounded-circle img-fluid profile-image"/></a>
                     </div>
                     <h4 class="mb-2 card-text-big"><span th:text="${user.username}"></span></h4>
                     <p class="card-text text-muted mb-4"><span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span></p>

@@ -25,6 +25,11 @@ body {
     height: 170px;
 }
 
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+
 .card {
     margin-top: 40px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

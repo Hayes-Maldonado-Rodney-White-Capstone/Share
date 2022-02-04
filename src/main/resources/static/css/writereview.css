@@ -84,6 +84,10 @@ body {
     margin: 10px;
 }
 
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
 
 .star-icons {
     width: 150px;

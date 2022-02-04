@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><span th:text="${item.itemName}"></span></h5>
                             <p class="card-mini-text text-muted">Posted on: <span th:text="${#temporals.format(item.datePosted, 'MM-dd-yyyy')}"></span></p>
-                            <p class="profile-text"><img class="profile-icon" th:src="@{${item.getUser().getProfilePhotoImagePath()}}">&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
+                            <p class="profile-text"><a th:href="@{'/viewPosterProfile/'+ ${item.getUser().getId()}}"><img class="profile-icon" th:src="@{${item.getUser().getProfilePhotoImagePath()}}"></a>&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
                             <form th:action="@{'/viewPosterProfile/' + ${item.getUser().getId()}}" method="GET">
                                 <button class="view-btn btn btn-secondary btn-sm" type="submit"> View poster's profile </button>
                             </form>
@@ -119,9 +119,9 @@
             <div class="card-body text-center">
                 <div class="tag-container">
 
-                    <p class="profile-text-2"><img class="profile-icon" th:src="@{${item.getUser().getProfilePhotoImagePath()}}">&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
+                    <p class="profile-text-2"><a th:href="@{'/viewPosterProfile/'+ ${item.getUser().getId()}}"><img class="profile-icon" th:src="@{${item.getUser().getProfilePhotoImagePath()}}"></a>&nbsp;&nbsp;Posted by <span th:text="${item.user.username}"></span></p>
                     <form th:action="@{'/viewPosterProfile/' + ${item.getUser().getId()}}" method="GET">
-                        <button class="view-btn-2 btn btn-secondary btn-sm" type="submit"> View poster's profile </button>
+                        <button class="view-btn-2 btn btn-secondary btn-sm" type="submit"> View profile </button>
                     </form>
 
                     <button th:if="${item.category.name == 'Automotive'}" class="btn cat-btn"><img class="cat-icon" src="https://i.postimg.cc/FKncRqq3/cat-automotive.png"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
