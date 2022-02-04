@@ -69,8 +69,8 @@
                         </div>
                         <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
                             <li class="right clearfix"><span class="chat-img pull-right">
-                            <img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar"
-                                 class="profile-image"/>
+                            <a th:href="@{'/viewPosterProfile/' + ${message.sender.getId()}}"><img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar"
+                                 class="their-profile-image"/></a>
                         </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
