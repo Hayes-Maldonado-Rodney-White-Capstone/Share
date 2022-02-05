@@ -45,7 +45,7 @@ public class Item {
     private String image;   //file name
 
     @Column(nullable = false)
-    private boolean availability;
+    private boolean availability = true;
 
     @Column(nullable = true, length = 500)
     private String personalizedTermsAndConditions;
