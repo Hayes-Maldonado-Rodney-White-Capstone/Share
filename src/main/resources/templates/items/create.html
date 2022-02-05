@@ -3,6 +3,7 @@
 <head th:replace="partials ::head(pageTitle='Create a post')"></head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/6590cqH6/a-logo.png">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,16 +77,14 @@
         <label>Is the item available now?</label>
         <div class="form-check">
             <label class="form-check-label" for="yes">
-                <input type="radio" class="form-check-input" value="1" id="yes" name="yes" th:field="*{availability}"
-                       required>
-                Yes</label>
+                <input type="radio" class="form-check-input" value="yes" id="yes" th:field="*{availability}"
+                       required>Yes</label>
         </div>
         <div class="form-check">
             <label class="form-check-label" for="no">
-                <input type="radio" class="form-check-input" value="0" id="no" name="no"
+                <input type="radio" class="form-check-input" value="no" id="no"
                        th:field="*{availability}" required>No</label>
         </div>
-
         <div class="form-group mt-2">
             <label for="specialInstructions"> Special Instructions</label>
             <input type="text" class="form-control" id="specialInstructions" name="specialInstructions"

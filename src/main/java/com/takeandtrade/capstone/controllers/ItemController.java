@@ -164,11 +164,10 @@ public class ItemController {
             throw new IOException("Could not save image file: " + fileName, e);
         }
 
-
         return "redirect:/items";
     }
 
-    //delete functionality--add a delete button in the show.html the delete button is in the userProfile in the each loop
+    //delete functionality
     @PostMapping("/items/deleteitem")
     public String deleteItem(Long itemId) {
         itemDao.deleteById(itemId);
