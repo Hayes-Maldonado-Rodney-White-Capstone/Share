@@ -1,7 +1,10 @@
+<div align="center">
+<img src="https://i.postimg.cc/6qJ25kTs/logo-4-1.jpg" width="700">
+</div>
 
-# Share
- 
+<div align="center">
 <h3>https://share-project.site/</h3>
+</div>
 
 ## About The Idea
 
@@ -13,7 +16,7 @@ Our mission here at Share is to help people become more connected with their nei
 
 ## Technologies/Project Setup
 
-This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot, Thymeleaf and multiple APIs. This application is also completely mobile-responsive with all original assets. In a team of four,  we were involved in the full software development cycle including planning, standups, coding, testing, and git workflow. This project demonstrates all the skills learned during the 6 month bootcamp experience at Codeup.
+This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MySQL, Java, SpringBoot, Thymeleaf and multiple APIs. This application is also completely mobile-responsive with all original assets created using Clip Studio Paint. In a team of four,  we were involved in the full software development cycle including planning, standups, coding, testing, and git workflow. This project demonstrates all the skills learned during the 6 month bootcamp experience at Codeup.
 
 #### Setup
 
