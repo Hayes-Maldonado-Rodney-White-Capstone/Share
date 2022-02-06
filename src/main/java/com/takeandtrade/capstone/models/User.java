@@ -4,6 +4,10 @@ import com.mysql.cj.Messages;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -16,12 +20,18 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 50)
+    @NotBlank(message = "First name can't be blank")
+    @Size(min = 1, message = "First name must be at least 1 character")
     private String firstName;
 
     @Column(nullable = false, length = 50)
+    @NotBlank(message = "Last name can't be blank")
+    @Size(min = 1, message = "Last name must be at least 1 character")
     private String lastName;
 
     @Column (nullable = false, length = 50, unique = true)
+    @NotBlank(message = "username can't be blank")
+    @Size(min = 4, message = "username must be at least 4 characters")
     private String username;
 
     @Column (nullable = false)
@@ -29,9 +39,12 @@ public class User {
     private String dateOfBirth;
 
     @Column (nullable = false, length = 255, unique = true)
+    @Email(message = "Invalid email. Try again")
     private String email;
 
     @Column (nullable = false, length = 255)
+    @NotBlank(message = "password can't be blank")
+    @Size(min = 4, message = "password must be at least 4 characters")
     private String password;
 
     @Column (nullable = false)
@@ -44,6 +57,7 @@ public class User {
     private String state;
 
     @Column (nullable = false)
+    @Min(value = 78201, message = "enter your 5 digit zip code between 78201 and 78250")
     private int zipcode;
 
     @Column(nullable = false)

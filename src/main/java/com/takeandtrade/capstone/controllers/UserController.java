@@ -10,9 +10,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -55,7 +57,12 @@ public class UserController {
     }
 
     @PostMapping("/registerform")
-    public String saveUser(@ModelAttribute User user, @RequestParam("profilepic") MultipartFile multipartFile) throws IOException {
+    public String saveUser(@Valid @ModelAttribute User user, Errors validation, Model model, @RequestParam("profilepic") MultipartFile multipartFile) throws IOException {
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            return "registerform";
+        }
+
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         //uses will be assigned the role of user upon registration, remember to use the seeder file after created the role table the first time, and after dropping your db
@@ -103,11 +110,7 @@ public class UserController {
         model.addAttribute("itemOwner", itemOwner);
 
         model.addAttribute("viewUser", loggedinUser);
-//        model.addAttribute("items", itemDao.findAll());
         model.addAttribute("items", itemOwner.getItems());
-
-//        User userprofile = userDao.getById(id);
-//        model.addAttribute("viewProfile", userprofile);
 
         return "users/userprofile";
     }
@@ -169,8 +172,6 @@ public class UserController {
     }
 
 
-
-
     @GetMapping("/myReviews")
     public String showMyReviews(Model model) {
 
@@ -206,12 +207,9 @@ public class UserController {
         User producerUser = userDao.getById(loggedInUser.getId()); //logged in user is the one who posted the item, so they will have requests, and they are approver1
         model.addAttribute("loggedInUser", producerUser);
 
-
         model.addAttribute("requests", requestDao.findAll());
         List<Request> requestList = requestDao.findAll();
         model.addAttribute("requests", requestList);
-//        model.addAttribute("requestsUser", userDao.findAll());
-//        model.addAttribute("approver", requestDao.findAllByApprover1(loggedInUser.getUsername()));
 
         return "users/myRequests";
     }

@@ -21,11 +21,13 @@
 
     <form class="my-form" th:action="@{/registerform}" th:method="POST" th:object="${user}" enctype="multipart/form-data">
             <div class="form-group">
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="bg-danger"></span>
                 <label th:for="firstName">First Name</label>
                 <input th:id="firstName" th:type="text" class="form-control" th:field="*{firstName}"
                        required minlength="1"/>
             </div>
             <div class="form-group">
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="bg-danger"></span>
                 <label th:for="lastName">Last Name</label>
                 <input th:id="lastName" th:type="text" class="form-control" th:field="*{lastName}" required minlength="1"/>
             </div>
@@ -35,17 +37,20 @@
             </div>
             <div class="form-group">
                 <label th:for="phoneNumber">Enter Phone Number</label>
-                <input th:id="phoneNumber" type="text" class="form-control" th:field="*{phoneNumber}" required minlength="10"/>
+                <input th:id="phoneNumber" type="text" class="form-control" th:field="*{phoneNumber}" minlength="10" title="numbers only, no dashes or ()" required/>
             </div>
                 <div class="form-group">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="bg-danger"></span>
                     <label th:for="email">Email Address</label>
                     <input th:id="email" type="email" class="form-control" th:field="*{email}" required/>
                 </div>
                 <div class="form-group">
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="bg-danger"></span>
                     <label th:for="username">Username</label>
                     <input th:id="username" type="text" class="form-control" th:field="*{username}" required minlength="4"/>
                 </div>
                 <div class="form-group">
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="bg-danger"></span>
                     <label th:for="password">Password</label>
                     <input th:id="password" type="password" class="form-control" th:field="*{password}" required minlength="4"/>
                 </div>
@@ -58,8 +63,9 @@
         <div><img id="thumbnail" alt="Image Preview" class="invisible" style="max-width: 250px;"></div>
 
         <div class="form-group border-secondary" id="zipbox">
+            <span th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" class="bg-danger"></span>
             <label th:for="zipcode">Zipcode</label>
-            <input type="text" class="form-control" name="zipcode" id="zipcode">
+            <input type="text" class="form-control" name="zipcode" id="zipcode" required>
         </div>
         <div class="form-group" id="citybox">
                 <label th:for="city">City</label>
