@@ -45,7 +45,9 @@
 </div>
 </div>
 
-    <div th:each="review : ${user.reviewed}">
+<!--    <div th:each="review : ${user.reviewed}">-->
+<div th:each="i : ${#numbers.sequence(user.reviewed.size() -1, 0, -1)}"
+        th:with="review=${user.reviewed[i]}">
 
         <div class="container card-container">
             <div class="card">
