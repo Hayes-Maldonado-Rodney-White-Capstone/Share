@@ -49,16 +49,19 @@
     <button type="submit" class="btn btn-primary">Submit Review</button>
     </div>
 </form>
-</section>
+</div></section>
+
 <div th:if="${user.getReviewed().isEmpty()}">
-    <h4><span th:text="${user.username}"></span> doesn't have any reviews yet. Leave a 5 if you had a good experience.</h4>
+    <h4 class="text-center"><span th:text="${user.username}"></span> doesn't have any reviews yet. Leave a 5 if you had a good experience.</h4>
 </div>
     <div th:unless="${user.getReviewed().isEmpty()}">
     <h4 class="review-title"><span th:text="${user.username}"></span>'s Review History</h4>
     </div>
 
 
-<div th:each="review : ${user.reviewed}">
+<!--<div th:each="review : ${user.reviewed}">-->
+<div th:each="i : ${#numbers.sequence(user.reviewed.size() -1, 0, -1)}"
+     th:with="review=${user.reviewed[i]}">
         <div class="container card-container">
             <div class="card">
                 <div class="card-body">
