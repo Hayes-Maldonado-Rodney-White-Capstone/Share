@@ -101,4 +101,27 @@ This full-stack application was made using HTML, CSS, Bootstrap, JavaScript, MyS
    * https://github.com/Tomasz-Makuch/library-springsecuirty-h2-thymeleaf/blob/master/src/main/resources/templates/borrowBook.html for general ideas on borrowing items 
     
    * Zipcode API http://www.zippopotam.us/
+    
+   * Random Cat Fact API https://catfact.ninja/
     </details>
+    
+<hr>
+    
+##  The Future Of Share (2.0)
+
+The future of Share is bright and the team will continue to improve upon this application even after Codeup. The whole team put a lot of work into this project and we all want to make it the best it can be. Features may be added to this list at any time and will be moved to our current features list once they are successfully implemented and tested.
+
+<details>
+    <summary>Future Features</summary>
+    
+   * A notification system that allows users to be notified of requests, messages and reviews
+    
+   * The ability for users to offer a trade request, either of listed items, non-listed items or services
+
+   * Complete mobile responsiveness/mobile specific styling (we have only partial responsiveness right now)
+    
+   * Implementing some sort of payment API like Paypal API or Stripe API
+    
+ </details>
+   
+
