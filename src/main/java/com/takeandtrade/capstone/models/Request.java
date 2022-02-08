@@ -20,16 +20,15 @@ public class Request {
     private Date dueDate;
 
     @Column
-    private String approver1;  //the lender is approver 1. the approver is the person who posted the item. setapprover to the username that posted the item.  so we can use item.getUser.getusername
+    private String approver1;  //the lender is approver1. the approver is the person who posted the item. setapprover to the username that posted the item.  so we can use item.getUser.getusername
 
-    //do I need a status, like status Open means the approver hasn't approved the request yet?
     @Column
     private String status = "PENDING";
 
     @Column(length = 500)
     private String notes;
 
-    //many requests for one item?
+    //many requests for one item
     @ManyToOne()    //removed the cascade here bc it was throwing an error when we tried to delete an item
     @JoinColumn(name = "item_id")
     private Item itemReq;

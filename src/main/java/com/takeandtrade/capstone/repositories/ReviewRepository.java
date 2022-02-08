@@ -11,5 +11,4 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("SELECT AVG(rating) FROM Review WHERE producer.id = ?1")
     public Double findRatingAverage(Long producerId);
 
-
 }

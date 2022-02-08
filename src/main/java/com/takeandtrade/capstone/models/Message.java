@@ -14,12 +14,12 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 1000) //may need to update this to TEXT within mysql
+    @Column(nullable = false, length = 1000)
     private String content;
 
     @Column(nullable = false)
     @CreationTimestamp
-    private LocalDateTime timeSent;  //in mySQL, DATETIME NOT NULL default CURRENT_TIMESTAMP. Need to research this too, do I need an annotation, a getter/setter etc
+    private LocalDateTime timeSent;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -87,7 +87,5 @@ public class Message {
     public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
-
-
 
 }

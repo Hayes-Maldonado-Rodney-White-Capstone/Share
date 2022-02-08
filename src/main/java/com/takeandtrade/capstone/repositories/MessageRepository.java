@@ -11,8 +11,5 @@ import java.util.Optional;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-//    List<Message> findAllByReceiverIdAndSenderIdOrderByTimeSentDesc(Long receiverId, Long senderId);
-
-//    List<Message> findAllByIdOrderByIdDesc();
     List<Message> findAllByOrderByIdDesc();
 }

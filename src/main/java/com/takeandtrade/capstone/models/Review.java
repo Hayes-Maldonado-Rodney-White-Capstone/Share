@@ -19,7 +19,6 @@ public class Review {
     private String reviewBody;
 
 
-
     public Review(long id, String reviewTitle, String reviewBody, User producer, User consumer, Rating rating) {
         this.id = id;
         this.reviewTitle = reviewTitle;
@@ -88,21 +87,15 @@ public class Review {
     }
 
     @ManyToOne
-    @JoinColumn(name = "producer_id")//user that is publishing the post/item to share
+    @JoinColumn(name = "producer_id") //user that is publishing the post/item to share
     public User producer;
 
     @ManyToOne
-    @JoinColumn(name = "consumer_id")// user that is borrowed the item/writes the review/ and is login
+    @JoinColumn(name = "consumer_id") // user that is borrowed the item/writes the review/ and is logged in
     public User consumer;
 
-
-
-
     @OneToOne()
-    @JoinColumn(name = "rating_id") //this should create a foreign key in the review table
+    @JoinColumn(name = "rating_id") //this creates a foreign key in the review table
     private Rating rating;
-
-
-
 
 }

@@ -38,7 +38,7 @@ public class Item {
     private String itemCondition;
 
     @Column(nullable = true)
-    private double price;  //in mysql this can be DECIMAL(6,2) which allows prices up to 9999.99
+    private double price;
 
     @Column(nullable = false)
 //    @NotBlank(message = "Upload a file under 5MB") this doesn't work correctly

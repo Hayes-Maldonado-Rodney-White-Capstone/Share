@@ -46,14 +46,15 @@
 
 </section>
 <div class="container">
-        <div class="row form-group">
-            <div class="col-xs-12 col-md-offset-2 col-md-12 col-lg-12 col-lg-offset-2 mb-0">
-                <div class="panel-body body-panel">
-                    <ul class="chat">
-                        <div th:each="message : ${messages}">
+    <div class="row form-group">
+        <div class="col-xs-12 col-md-offset-2 col-md-12 col-lg-12 col-lg-offset-2 mb-0">
+            <div class="panel-body body-panel">
+                <ul class="chat">
+                    <div th:each="message : ${messages}">
                         <div th:if="${message.sender == loggedInUser && message.receiver == receivingUser}">
-                        <li class="clearfix"><span class="chat-img pull-left">
-                            <img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar" class="profile-image"/>
+                            <li class="clearfix"><span class="chat-img pull-left">
+                            <img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar"
+                                 class="profile-image"/>
                         </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
@@ -63,83 +64,42 @@
                                                 th:text="${message.sender.getFirstName()}"></span> <span
                                                 th:text="${message.sender.getLastName()}"></span></small>
                                     </div>
-                                    <small class="pull-right text-muted name-text"><span th:text="${#temporals.format(message.timeSent)}"></span></small>
+                                    <small class="pull-right text-muted name-text"><span
+                                            th:text="${#temporals.format(message.timeSent)}"></span></small>
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
                             </li>
                         </div>
                         <div th:if="${message.sender == receivingUser && message.receiver == loggedInUser}">
                             <li class="right clearfix"><span class="chat-img pull-right">
-                            <a th:href="@{'/viewPosterProfile/' + ${message.sender.getId()}}"><img th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar"
-                                 class="their-profile-image"/></a>
+                            <a th:href="@{'/viewPosterProfile/' + ${message.sender.getId()}}"><img
+                                    th:src="@{${message.sender.getProfilePhotoImagePath()}}" alt="User Avatar"
+                                    class="their-profile-image"/></a>
                         </span>
                                 <div class="chat-body clearfix">
                                     <div class="header">
                                         <strong class="pull-right primary-font username-text"><span
 
-                                                th:text="${message.sender.username}"></span></strong> <!--this is still sender bc it's the other user now-->
+                                                th:text="${message.sender.username}"></span></strong>
+                                        <!--this is still sender bc it's the other user now-->
 
                                         <small class="name-text text-muted"><span
                                                 th:text="${message.sender.getFirstName()}"></span> <span
                                                 th:text="${message.sender.getLastName()}"></span></small>
                                     </div>
-                                    <small class="pull-right text-muted name-text"><span th:text="${#temporals.format(message.timeSent)}"></span></small>
+                                    <small class="pull-right text-muted name-text"><span
+                                            th:text="${#temporals.format(message.timeSent)}"></span></small>
                                     <p class="msg-text"><span th:text="${message.content}"></span></p>
                                 </div>
                             </li>
                         </div>
-                        </div>
-
-                    </ul>
-                </div>
+                    </div>
+                </ul>
             </div>
         </div>
-
+    </div>
 </div>
-<!--<p>Received Messages</p>-->
-<!--    <div th:each="message : ${moremessages}">-->
-
-<!--        <div class="row form-group">-->
-<!--            <div class="col-xs-12 col-md-offset-2 col-md-12 col-lg-12 col-lg-offset-2 mb-0">-->
-<!--                <div class="panel-body body-panel">-->
-<!--                    <ul class="chat">-->
-<!--                            <li class="clearfix"><span class="chat-img pull-left">-->
-<!--                            <img src="https://i.redd.it/sfi496f08hg51.png" alt="User Avatar" class="profile-image"/>-->
-<!--                        </span>-->
-<!--                                <div class="chat-body clearfix">-->
-<!--                                    <div class="header">-->
-<!--                                        <strong class="primary-font username-text"><span-->
-<!--                                                th:text="${message.sender.username}"></span></strong>-->
-<!--                                        <small class="pull-right text-muted name-text"><span-->
-<!--                                                th:text="${message.sender.getFirstName()}"></span> <span-->
-<!--                                                th:text="${message.sender.getLastName()}"></span></small>-->
-<!--                                    </div>-->
-<!--                                    <p class="msg-text"><span th:text="${message.content}"></span></p>-->
-<!--                                </div>-->
-<!--                            </li>-->
-<!--&lt;!&ndash;                            <li class="right clearfix"><span class="chat-img pull-right">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <img src="https://cdn-icons-png.flaticon.com/512/163/163801.png" alt="User Avatar"&ndash;&gt;-->
-<!--&lt;!&ndash;                                 class="profile-image"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="chat-body clearfix">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="header">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <strong class="pull-right primary-font username-text"><span&ndash;&gt;-->
-<!--&lt;!&ndash;                                                th:text="${message.receiver.username}"></span></strong>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <small class="name-text text-muted"><span&ndash;&gt;-->
-<!--&lt;!&ndash;                                                th:text="${message.receiver.getFirstName()}"></span> <span&ndash;&gt;-->
-<!--&lt;!&ndash;                                                th:text="${message.receiver.getLastName()}"></span></small>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <p class="msg-text"><span th:text="${message.content}"></span></p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </li>&ndash;&gt;-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </div>-->
 </div>
-
 
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

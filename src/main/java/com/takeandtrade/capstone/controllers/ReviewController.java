@@ -28,7 +28,7 @@ public class ReviewController {
     }
 
 
-    @GetMapping("/reviews/{producer_id}")//we are writing the review on the user that posted the item
+    @GetMapping("/reviews/{producer_id}")  //we are writing the review on the user that posted the item
     public String writeReview(Model model, @PathVariable long producer_id){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User consumerUser = userDao.getById(loggedInUser.getId());//user that is writing the review on the item they borrowed
@@ -57,14 +57,9 @@ public class ReviewController {
         review.setConsumer(consumerUser);
         review.setProducer(producerUser);
 
-        System.out.println(consumerUser);
-        System.out.println(producerUser);
-
         reviewDao.save(review);
 
         return "redirect:/reviews/"+ producer_id;
     }
-
-
 
 }
