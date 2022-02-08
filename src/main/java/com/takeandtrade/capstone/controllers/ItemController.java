@@ -45,17 +45,16 @@ public class ItemController {
         this.requestDao = requestDao;
     }
 
-    //this gets the form that allows the logged in user to create a new post
+    //get the form that allows the logged in user to create a new post
     @GetMapping("/items/create")
     public String viewCreateItemForm(Model model){
         model.addAttribute("item", new Item());
         List<Category> categoryList = categoryDao.findAll();
         model.addAttribute("categories", categoryList);
-
         return "items/create";
     }
 
-    //when the user submits the form, the postmapping saves the information into the db, and then redirects the browser to /items
+    //when the user submits the form, postmapping saves the information into the db
     @PostMapping("/items/create")
     public String addNewItem(@Valid @ModelAttribute Item item, Errors validation , Model model, @RequestParam("images") MultipartFile multipartFile) throws IOException {
         if (validation.hasErrors()) {
@@ -69,23 +68,16 @@ public class ItemController {
         User itemLender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  //this grabs the logged in user
         item.setUser(itemLender);
 
-//        //we'll use this code below for testing so we don't have to log in each time, when the create form is function use the code above for production
-//        User user = userDao.getById(1L);
-//        item.setUser(user);
-//        //
-//        item.setDatePosted(LocalDateTime.now());
-
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         System.out.println("filename " + fileName);
         item.setImage(fileName);
         itemDao.save(item);
 
-        String uploadDir = "./src/main/webapp/images/capstoneimages/";   ///this should save it in a directory named capstoneimages
+        String uploadDir = "./src/main/webapp/images/capstoneimages/";   ///this creates a directory
         Path uploadPath = Paths.get(uploadDir);
         if(!Files.exists(uploadPath)){
             Files.createDirectories(uploadPath);
         }
-
         try (InputStream inputStream = multipartFile.getInputStream()) {
             Path filePath = uploadPath.resolve(fileName);
             System.out.println(filePath.toFile().getAbsolutePath());
@@ -93,7 +85,6 @@ public class ItemController {
         } catch (IOException e) {
             throw new IOException("Could not save image file: " + fileName, e);
         }
-
         return "redirect:/items";
     }
 
@@ -101,20 +92,15 @@ public class ItemController {
     @GetMapping("/items")
     public String viewItemsIndex(Model model) {
         model.addAttribute("items", itemDao.findAll());
-
         List <Category> categoriesList = categoryDao.findAll();
         model.addAttribute("categories", categoriesList);
         return "items/itemsindex";
     }
 
-    //postmapping for Item Search bar
+    //postmapping for Item search bar
     @PostMapping("/items/search")
     public String searchForItems(@RequestParam("search") String search, Model model) {
-
         model.addAttribute("search", itemDao.search(search));
-
-        System.out.println("search length " + search.length());
-
         return "items/search";
     }
 
@@ -144,18 +130,16 @@ public class ItemController {
 
     @PostMapping("/items/edit/{itemId}")
     public String editItem(@PathVariable("itemId") Long itemId, @ModelAttribute Item item, @RequestParam("images") MultipartFile multipartFile) throws IOException {
-        item.setDatePosted(LocalDateTime.now()); //adding this bc it causes an error during editing
+        item.setDatePosted(LocalDateTime.now()); //set the date again after editing the item
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        System.out.println("filename " + fileName);
         item.setImage(fileName);
 
         itemDao.save(item);
-        String uploadDir = "./src/main/webapp/images/capstoneimages/";   ///this should save it in a directory named capstoneimages
+        String uploadDir = "./src/main/webapp/images/capstoneimages/";
         Path uploadPath = Paths.get(uploadDir);
         if(!Files.exists(uploadPath)){
             Files.createDirectories(uploadPath);
         }
-
         try (InputStream inputStream = multipartFile.getInputStream()) {
             Path filePath = uploadPath.resolve(fileName);
             System.out.println(filePath.toFile().getAbsolutePath());
@@ -163,7 +147,6 @@ public class ItemController {
         } catch (IOException e) {
             throw new IOException("Could not save image file: " + fileName, e);
         }
-
         return "redirect:/items";
     }
 

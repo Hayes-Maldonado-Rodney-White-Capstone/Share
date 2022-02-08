@@ -18,7 +18,6 @@
 <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}">
 
 <!-- Custom CSS -->
-
 <link rel="stylesheet" type="text/css" href="../static/css/myreviews.css" th:href="@{/css/writereview.css}">
 
 <body>
@@ -49,7 +48,8 @@
     <button type="submit" class="btn btn-primary">Submit Review</button>
     </div>
 </form>
-</div></section>
+</div>
+</section>
 
 <div th:if="${user.getReviewed().isEmpty()}">
     <h4 class="text-center"><span th:text="${user.username}"></span> doesn't have any reviews yet. Leave a 5 if you had a good experience.</h4>
@@ -57,7 +57,6 @@
     <div th:unless="${user.getReviewed().isEmpty()}">
     <h4 class="review-title"><span th:text="${user.username}"></span>'s Review History</h4>
     </div>
-
 
 <!--<div th:each="review : ${user.reviewed}">-->
 <div th:each="i : ${#numbers.sequence(user.reviewed.size() -1, 0, -1)}"
@@ -78,7 +77,6 @@
                 </div>
             </div>
         </div>
-
 </div>
 </div>
 

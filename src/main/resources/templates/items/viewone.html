@@ -96,8 +96,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -133,12 +131,10 @@
                     <button th:if="${item.category.name == 'Toys and Hobbies'}" class="btn cat-btn"><img class="cat-icon" src="https://i.ibb.co/x6m7373/cat-toys-and-hobbies.png"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
                     <button th:if="${item.category.name == 'Other'}" class="btn cat-btn"><img class="cat-icon" src="https://i.ibb.co/Qpr7LY5/cat-other.png"><span class="cat-btn-text" th:text="${item.category.name}"></span></button>
 
-
                     <button th:if="${item.itemCondition == 'Excellent'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/hvMQk59X/excellent.png"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
                     <button th:if="${item.itemCondition == 'Good'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/L6XJqvtV/good.png"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
                     <button th:if="${item.itemCondition == 'Fair'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/8zfs45nJ/fair.png"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
                     <button th:if="${item.itemCondition == 'Poor'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/wvgv9kxL/poor.png"><span class="cat-btn-text" th:text="${item.itemCondition}"></span></button>
-
 
                     <button class="btn zip-btn"><img class="cat-icon" src="https://i.postimg.cc/prQJpCKv/location.png"><span th:text="${item.user.zipcode}"></span></button>
                 </div>

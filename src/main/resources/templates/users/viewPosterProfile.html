@@ -36,16 +36,16 @@
     <h1 class="title"><span th:text="${user.getUsername()}"></span>'s Profile</h1>
 
     <h5 class="hide">User ID: <span th:text="${user.getId()}"></span></h5>
-    <h5 class="name-text">Name: <span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span></h5>
+    <h5 class="name-text">Name: <span th:text="${user.getFirstName()}"></span> <span
+            th:text="${user.getLastName()}"></span></h5>
     <h5 class="email-text text-muted">Email: <span th:text="${user.getEmail}"/></h5>
 
-
-    <p class="center-text"> <a th:href="@{/messages/{producer_id}(producer_id=${user.id})}" class="btn btn-success top-btn">Write a Message</a>
-    <a th:href="@{/reviews/{producer_id}(producer_id=${user.id})}" class="btn btn-success top-btn">Write/See Reviews</a>
+    <p class="center-text"><a th:href="@{/messages/{producer_id}(producer_id=${user.id})}"
+                              class="btn btn-success top-btn">Write a Message</a>
+        <a th:href="@{/reviews/{producer_id}(producer_id=${user.id})}" class="btn btn-success top-btn">Write/See
+            Reviews</a>
     </p>
-
     <hr>
-
 </div>
 
 <div class="container">
@@ -59,25 +59,50 @@
                 <div class="card-body text-center">
                     <div class="tag-container">
 
-                        <button th:if="${userItem.category.name == 'Automotive'}" class="btn cat-btn"><img class="cat-icon" src="https://i.postimg.cc/FKncRqq3/cat-automotive.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
-                        <button th:if="${userItem.category.name == 'Electronics'}" class="btn cat-btn"></span><img class="cat-icon" src="https://i.postimg.cc/nhz679r7/cat-electronics.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
-                        <button th:if="${userItem.category.name == 'Fashion'}" class="btn cat-btn"><img class="cat-icon" src="https://i.postimg.cc/ZnN6Xcw3/cat-fashion.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
-                        <button th:if="${userItem.category.name == 'Home and Garden'}" class="btn cat-btn"><img class="cat-icon" src="https://i.postimg.cc/9M67P9cf/cat-home-and-garden.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
-                        <button th:if="${userItem.category.name == 'Sporting Goods'}" class="btn cat-btn"><img class="cat-icon" src="https://i.postimg.cc/cJcwSC79/cat-sporting-goods.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
-                        <button th:if="${userItem.category.name == 'Toys and Hobbies'}" class="btn cat-btn"><img class="cat-icon" src="https://i.ibb.co/x6m7373/cat-toys-and-hobbies.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
-                        <button th:if="${userItem.category.name == 'Other'}" class="btn cat-btn"><img class="cat-icon" src="https://i.ibb.co/Qpr7LY5/cat-other.png"><span class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Automotive'}" class="btn cat-btn"><img
+                                class="cat-icon" src="https://i.postimg.cc/FKncRqq3/cat-automotive.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Electronics'}" class="btn cat-btn"></span><img
+                                class="cat-icon" src="https://i.postimg.cc/nhz679r7/cat-electronics.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Fashion'}" class="btn cat-btn"><img class="cat-icon"
+                                                                                                        src="https://i.postimg.cc/ZnN6Xcw3/cat-fashion.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Home and Garden'}" class="btn cat-btn"><img
+                                class="cat-icon" src="https://i.postimg.cc/9M67P9cf/cat-home-and-garden.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Sporting Goods'}" class="btn cat-btn"><img
+                                class="cat-icon" src="https://i.postimg.cc/cJcwSC79/cat-sporting-goods.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Toys and Hobbies'}" class="btn cat-btn"><img
+                                class="cat-icon" src="https://i.ibb.co/x6m7373/cat-toys-and-hobbies.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
+                        <button th:if="${userItem.category.name == 'Other'}" class="btn cat-btn"><img class="cat-icon"
+                                                                                                      src="https://i.ibb.co/Qpr7LY5/cat-other.png"><span
+                                class="cat-btn-text" th:text="${userItem.category.name}"></span></button>
 
 
-                        <button th:if="${userItem.itemCondition == 'Excellent'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/hvMQk59X/excellent.png"><span class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
-                        <button th:if="${userItem.itemCondition == 'Good'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/L6XJqvtV/good.png"><span class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
-                        <button th:if="${userItem.itemCondition == 'Fair'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/8zfs45nJ/fair.png"><span class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
-                        <button th:if="${userItem.itemCondition == 'Poor'}" class="btn con-btn"><img class="cat-icon" src="https://i.postimg.cc/wvgv9kxL/poor.png"><span class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
+                        <button th:if="${userItem.itemCondition == 'Excellent'}" class="btn con-btn"><img
+                                class="cat-icon" src="https://i.postimg.cc/hvMQk59X/excellent.png"><span
+                                class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
+                        <button th:if="${userItem.itemCondition == 'Good'}" class="btn con-btn"><img class="cat-icon"
+                                                                                                     src="https://i.postimg.cc/L6XJqvtV/good.png"><span
+                                class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
+                        <button th:if="${userItem.itemCondition == 'Fair'}" class="btn con-btn"><img class="cat-icon"
+                                                                                                     src="https://i.postimg.cc/8zfs45nJ/fair.png"><span
+                                class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
+                        <button th:if="${userItem.itemCondition == 'Poor'}" class="btn con-btn"><img class="cat-icon"
+                                                                                                     src="https://i.postimg.cc/wvgv9kxL/poor.png"><span
+                                class="cat-btn-text" th:text="${userItem.itemCondition}"></span></button>
 
 
-                        <button class="btn zip-btn"><img class="loc-icon" src="https://i.postimg.cc/prQJpCKv/location.png"><span th:text="${userItem.user.zipcode}"></span></button>
+                        <button class="btn zip-btn"><img class="loc-icon"
+                                                         src="https://i.postimg.cc/prQJpCKv/location.png"><span
+                                th:text="${userItem.user.zipcode}"></span></button>
                     </div>
                     <p class="card-text"><span th:text="${userItem.itemDescription}"></span></p>
-                    <p class="card-price">$<span th:text="${#numbers.formatDecimal(userItem.price, 1, 2, 'POINT')}"></span> per day</p>
+                    <p class="card-price">$<span
+                            th:text="${#numbers.formatDecimal(userItem.price, 1, 2, 'POINT')}"></span> per day</p>
                     <form class="m-1" th:action="@{'/items/' + ${userItem.id}}" method="GET">
                         <button class="btn btn-success" name="viewOnePost" th:value="${userItem.id}">View Item</button>
                     </form>
@@ -85,7 +110,6 @@
             </div>
         </div>
     </div>
-    <!--looping through that user's reviews-->
 </div>
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -99,6 +123,5 @@
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
 </body>
-
 
 </html>

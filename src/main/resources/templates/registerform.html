@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="bg-danger"></span>
                     <label th:for="password">Password</label>
-                    <input th:id="password" type="password" class="form-control" th:field="*{password}" required minlength="4"/>
+                    <input th:id="password" type="password" class="form-control" th:field="*{password}" required minlength="8"/>
                 </div>
 
         <!--** IMAGE **-->
