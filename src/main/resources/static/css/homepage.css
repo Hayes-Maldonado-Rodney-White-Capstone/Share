@@ -82,16 +82,6 @@ body {
     height: 1500px;
 }
 
-.tnt-top-back-img {
-    position: absolute;
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    width: 1800px;
-    height: 800px;
-    z-index: -1;
-}
-
 .img-overlay {
     position: absolute;
     top: 0;
@@ -112,7 +102,7 @@ body {
 .tnt-back-layer-img {
     position: absolute;
     width: 2000px;
-    height: 100%;
+    height: 1000px;
     overflow: hidden;
     z-index: -1;
 }
@@ -120,8 +110,8 @@ body {
 .tnt-back-layer-img:before, .tnt-back-layer-img:after {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 2000px;
+    height: 1000px;
     background: url(https://i.postimg.cc/XJF6SX0D/tnt-back-layer.png) repeat-x 0 / 100% auto;
     background-size: 40%;
     animation: move 20s linear infinite;
@@ -600,9 +590,12 @@ body {
         margin-top: 350px;
     }
 
+    .tnt-back-layer-img {
+        height: 600px;
+    }
+
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 40% !important;
-        height: 65%;
     }
 
     .card-rows {
@@ -707,9 +700,12 @@ body {
         margin-top: 290px;
     }
 
+    .tnt-back-layer-img {
+        height: 500px;
+    }
+
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 35% !important;
-        height: 55%;
     }
 
     .hide-on-sm {
@@ -796,9 +792,12 @@ body {
         margin-top: 230px;
     }
 
+    .tnt-back-layer-img {
+        height: 400px;
+    }
+
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 30% !important;
-        height: 45%;
     }
 
     .hide-on-sm {
@@ -885,9 +884,12 @@ body {
         margin-top: 180px;
     }
 
+    .tnt-back-layer-img {
+        height: 400px;
+    }
+
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
         background-size: 13% !important;
-        height: 55%;
     }
 
     .hide-on-sm {
