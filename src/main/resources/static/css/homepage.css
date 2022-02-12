@@ -1136,6 +1136,7 @@ html, body {
     .signup-header {
         margin-top: 540px;
         font-size: 40px;
+        margin-left: 10px;
     }
 
     .credit-header {
