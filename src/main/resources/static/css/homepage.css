@@ -6,7 +6,13 @@ html  {
 
 body {
     overflow: hidden;
+    position: relative
 }
+
+html, body {
+    overflow-x: hidden;
+}
+
 
 .size-wrapper { /* Keeps everything from over-expanding on bigger pages*/
     margin-left: auto;
