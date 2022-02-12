@@ -574,6 +574,8 @@ html, body {
 
 }
 
+/* IMAGE OVERLAY 2 RESPONSIVE START */
+
 @media (min-width: 1201px) and (max-width: 1300px) {
 
     .img-overlay-2 {
@@ -646,7 +648,7 @@ html, body {
 
 }
 
-@media (min-width: 581px) and (max-width: 630px) {
+@media (min-width: 600px) and (max-width: 630px) {
 
     .img-overlay-2 {
         top: 8700px;
@@ -654,19 +656,102 @@ html, body {
 
 }
 
+@media (min-width: 581px) and (max-width: 599px) {
+
+    .img-overlay-2 {
+        top: 8800px;
+    }
+
+}
+
+
 @media (max-width: 580px) {
     .img-overlay-2 {
-        top: 8450px;
+        top: 8850px;
     }
 }
 
-@media (min-width: 550px) and (max-width: 579px) {
+@media (min-width: 560px) and (max-width: 579px) {
 
     .img-overlay-2 {
-        top: 8950px;
+        top: 8400px;
     }
 
 }
+
+@media (min-width: 500px) and (max-width: 559px) {
+
+    .img-overlay-2 {
+        top: 8500px;
+    }
+
+}
+
+@media (min-width: 470px) and (max-width: 499px) {
+
+    .img-overlay-2 {
+        top: 8600px;
+    }
+
+}
+
+@media (min-width: 440px) and (max-width: 469px) {
+
+    .img-overlay-2 {
+        top: 8700px;
+    }
+
+}
+
+@media (min-width: 401px) and (max-width: 439px) {
+
+    .img-overlay-2 {
+        top: 8850px;
+    }
+
+}
+
+@media (min-width: 395px) and (max-width: 400px) {
+
+    .img-overlay-2 {
+        top: 8700px;
+    }
+
+}
+
+@media (min-width: 370px) and (max-width: 394px) {
+
+    .img-overlay-2 {
+        top: 8850px;
+    }
+
+}
+
+@media (min-width: 355px) and (max-width: 369px) {
+
+    .img-overlay-2 {
+        top: 9000px;
+    }
+
+}
+
+@media (min-width: 345px) and (max-width: 355px) {
+
+    .img-overlay-2 {
+        top: 9050px;
+    }
+
+}
+
+@media (min-width: 340px) and (max-width: 344px) {
+
+    .img-overlay-2 {
+        top: 9080px;
+    }
+
+}
+
+/* IMAGE OVERLAY 2 RESPONSIVE END */
 
 /* Extra Large -> Large */
 
