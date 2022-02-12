@@ -103,6 +103,7 @@ html, body {
     font-size: 25px;
     padding-left: 15px;
     padding-right: 15px;
+    font-family: 'Roboto', serif;
 }
 
 .tnt-back-layer-img {
@@ -155,14 +156,12 @@ html, body {
 }
 
 .about-mini-header {
-    margin-right: 40px;
-    margin-left: 40px;
     text-align: center;
-    margin-top: 120px;
     font-family: 'Roboto Slab', serif;
     color: #008a4c;
     padding-left: 10px;
     padding-right: 10px;
+    margin: 120px 40px 25px;
 }
 
 .about-p {
@@ -898,6 +897,7 @@ html, body {
     .about-header {
         margin-top: 20px;
         margin-bottom: -30px;
+        padding: 10px;
     }
 
     .card-rows {
@@ -937,32 +937,76 @@ html, body {
 
 }
 
-/* Extra Small */
+/* Phone Sizes */
 
-@media (max-width: 580px)  {
+@media (min-width: 400px) and (max-width: 579px) {
+
+    .about-img-1 {
+        width: 375px;
+        height: 375px;
+        margin-top: 20px;
+    }
+
+    .about-img-2 {
+        width: 375px;
+        height: 375px;
+        margin-top: 20px;
+    }
+
+    .about-img-3 {
+        width: 375px;
+        height: 375px;
+        margin-top: 20px;
+    }
+
+}
+
+@media (min-width: 340px) and (max-width: 400px)  {
+
+    .about-img-1 {
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .about-img-2 {
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .about-img-3 {
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+    }
+
+}
+
+@media (min-width: 340px) and (max-width: 579px)  {
 
     .tnt-top-img {
         width: 650px;
-        height: 500px;
+        height: 550px;
     }
 
     .top-btns {
         margin-left: 10px;
-        font-size: 12px;
-        padding-left: 10px;
-        padding-right: 10px;
+        font-size: 13px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .img-overlay {
-        margin-top: 180px;
+        margin-top: 190px;
     }
 
     .tnt-back-layer-img {
-        height: 400px;
+        height: 450px;
     }
 
     .tnt-back-layer-img:before, .tnt-back-layer-img:after {
-        background-size: 13% !important;
+        background-size: 15% !important;
     }
 
     .hide-on-sm {
@@ -975,8 +1019,14 @@ html, body {
 
     .about-header {
         margin-top: 20px;
-        margin-bottom: -80px;
+        margin-bottom: 0px;
     }
+
+    .about-mini-header {
+        margin-bottom: 25px;
+        margin-top: -1px;
+    }
+
 
     .card-rows {
         margin-top: 350px;
@@ -1004,8 +1054,18 @@ html, body {
         font-size: 40px;
     }
 
+    .credit-header {
+        margin-top: 25px;
+        margin-bottom: -20px;
+    }
+
+    .single-avatar-row {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
     .footer-section {
-        margin-top: -200px;
+        margin-top: -100px;
     }
 
 }
