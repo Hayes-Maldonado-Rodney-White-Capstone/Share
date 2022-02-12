@@ -992,7 +992,7 @@ html, body {
 
     .top-btns {
         margin-left: 10px;
-        font-size: 13px;
+        font-size: 15px;
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -1026,7 +1026,6 @@ html, body {
         margin-bottom: 25px;
         margin-top: -1px;
     }
-
 
     .card-rows {
         margin-top: 350px;
