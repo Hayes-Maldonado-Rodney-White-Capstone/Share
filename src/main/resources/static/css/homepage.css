@@ -6,7 +6,7 @@ html  {
 
 body {
     overflow: hidden;
-    position: relative
+    position: relative;
 }
 
 html, body {
@@ -523,6 +523,10 @@ html, body {
         display: block;
         width: 2000px;
         height: 1600px;
+    }
+
+    .tnt-back-layer-img {
+        height: 980px;
     }
 
     .top-btns {
