@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,9 +57,25 @@ public class UserController {
     }
 
     @PostMapping("/registerform")
-    public String saveUser(@Valid @ModelAttribute User user, Errors validation, Model model, @RequestParam("profilepic") MultipartFile multipartFile) throws IOException {
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Errors validation, Model model, @RequestParam("profilepic") MultipartFile multipartFile) throws IOException {
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
+            return "registerform";
+        }
+
+        //if a user tries to register with a username that already exists, show a message and don't let them register
+        if (userDao.findUserByUsername(user.getUsername()).isPresent()) {       //in order to use isPresent, you have to update the UserRepository with Optional<User> findUserByUsername(@Param("username") String username);
+            bindingResult
+                    .rejectValue("username", "error.user",
+                            "That username already exists, please select a different username");
+            return "registerform";
+        }
+
+        //if a user tries to register with an email that already exists, show a message and don't let them register
+        if (userDao.findByEmail(user.getEmail()).isPresent()) {
+            bindingResult
+                    .rejectValue("email", "error.user",
+                            "There is already a user registered with that email.");
             return "registerform";
         }
 
