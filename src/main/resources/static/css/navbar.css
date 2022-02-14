@@ -8,13 +8,19 @@
     background-color: #1FC168 !important;
 }
 
+
+
 .nav-link {
+    display: inline-block !important;
     color: #006366 !important;
     font-family: 'Roboto', serif !important;
+    text-align: center !important;
 }
 
 .nav-link:hover {
+    display: inline-block !important;
     color: black !important;
+    text-align: center !important;
 }
 
 .navbar-logo {
@@ -35,3 +41,4 @@
     width: 30px;
     height: 30px;
 }
+
