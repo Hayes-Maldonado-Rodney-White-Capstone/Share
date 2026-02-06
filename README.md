@@ -2,10 +2,6 @@
 <img src="https://i.postimg.cc/6qJ25kTs/logo-4-1.jpg" width="700">
 </div>
 
-<div align="center">
-<h3>https://share-project.site/</h3>
-</div>
-
 ## About The Idea
 
 Do you have things laying around your house that you don’t use anymore? Do these things still have use? Would you like to make money off of your items without selling them? You can repurpose and lend out your things using Share!
